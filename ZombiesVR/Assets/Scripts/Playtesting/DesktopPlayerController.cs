@@ -30,6 +30,9 @@ public class DesktopPlayerController : MonoBehaviour
 
     private void Movement()
     {
+        cmd.fowardMovement = Input.GetAxisRaw("Vertical");
+        cmd.rightMovement = Input.GetAxisRaw("Horizontal");
+
         float inputModifyFactor = (cmd.fowardMovement != 0.0f && cmd.rightMovement != 0.0f) ? 0.75f : 1.0f;
 
         float fowardInput = m_MoveSpeed * cmd.fowardMovement * inputModifyFactor;
