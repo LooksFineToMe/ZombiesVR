@@ -285,7 +285,7 @@ MonoBehaviour:
   - {fileID: 1092851701}
   m_Players:
   - {fileID: 344833707}
-  m_TimeOffset: 5
+  m_TimeOffset: 1
   m_WaveSpawnValue: 1
   m_IncrementValues: 1
 --- !u!4 &646235307
@@ -2689,6 +2689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base_Zombie_AI
       objectReference: {fileID: 0}
+    - target: {fileID: 6356358324245743116, guid: 2b172beadc830a541a3eec9594e6de90,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7957029237797762079, guid: 2b172beadc830a541a3eec9594e6de90,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2766,7 +2771,7 @@ PrefabInstance:
     - target: {fileID: 7604891368979450273, guid: 6a289157ff8e8b54598c84b465f45f3d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: 4.385
       objectReference: {fileID: 0}
     - target: {fileID: 7604891368979450273, guid: 6a289157ff8e8b54598c84b465f45f3d,
         type: 3}
