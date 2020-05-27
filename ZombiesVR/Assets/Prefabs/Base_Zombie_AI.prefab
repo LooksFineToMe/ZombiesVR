@@ -1717,11 +1717,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementSpeed: 1
   m_RotationSpeed: 140
-  m_AttackRange: 4
+  m_AttackRange: 1.4
   m_HeathPoints: 10
   m_AttackDamage: 1
   m_Animations: {fileID: 3105160620144612135}
-  m_ReadyToAttack: 0
+  withinRange: 0
   m_Target: {fileID: 0}
   m_WaveValue: 1
   m_Spawner: {fileID: 0}

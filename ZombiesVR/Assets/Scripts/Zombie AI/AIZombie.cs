@@ -44,8 +44,7 @@ public class AIZombie : MonoBehaviour
 
             if (withinRange)
             {
-                print("fighting");
-                m_NavMesh.isStopped = true;
+                AttackPlayer();
             }
 
             if (!withinRange)
@@ -58,6 +57,13 @@ public class AIZombie : MonoBehaviour
         {
             FindTarget();
         }
+    }
+
+    private void AttackPlayer()
+    {
+        print("fighting");
+        m_NavMesh.isStopped = true;
+        m_Animations.SetBool("Attacking", true);
     }
 
     //for testing purposes, will intergrate AI Wander soon
@@ -77,6 +83,7 @@ public class AIZombie : MonoBehaviour
     {
         if (!m_NavMesh.isStopped)
         {
+            m_Animations.SetBool("Attacking", false);
             m_NavMesh.destination = m_Target.transform.position;
         }
     }
@@ -112,5 +119,18 @@ public class AIZombie : MonoBehaviour
     public void SetWaveManager(WaveManager waveManager)
     {
         m_Spawner = waveManager;
+    }
+
+    //lose hp || call function on collision enter
+    public void TakePlayerDamage()
+    {
+        m_HeathPoints --;
+
+        if (m_HeathPoints <= 0)
+        {
+            m_Spawner.m_LivingZombies.Remove(this);
+            //change this later
+            Destroy(this.gameObject);
+        }
     }
 }
