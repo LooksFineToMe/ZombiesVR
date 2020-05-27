@@ -31,6 +31,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] public int m_WaveValue = 1;
 
     [HideInInspector] public WaveManager m_Spawner;
+    public AnimatorClipInfo[] clipinfo;//Matts
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,15 @@ public class AIZombie : MonoBehaviour
         else
         {
             FindTarget();
+        }
+    }
+    private void Update()
+    {
+        clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
+        print(clipinfo[0].clip.name);
+        if (clipinfo[0].clip.name == "ZOMBIE_Walk")
+        {
+            
         }
     }
 
