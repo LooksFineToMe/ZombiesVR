@@ -13,7 +13,8 @@ public class AIZombie : MonoBehaviour
     [SerializeField] float m_AttackRange = 2f;
     [SerializeField] public int m_HeathPoints = 10;
     [SerializeField] public int m_AttackDamage = 1;
-    [SerializeField] public bool m_ReadyToAttack = false;
+    [SerializeField] Animator m_Animations;
+    [SerializeField] public bool withinRange;
 
     private NavMeshAgent m_NavMesh;
     [Header("Player Specific")]
@@ -39,17 +40,18 @@ public class AIZombie : MonoBehaviour
     {
         if (m_Target != null)
         {
-            bool withinRange = CalculateDistance();
+            withinRange = CalculateDistance();
 
-            if (withinRange && m_ReadyToAttack)
+            if (withinRange)
             {
                 print("fighting");
+                m_NavMesh.isStopped = true;
             }
 
             if (!withinRange)
             {
+                m_NavMesh.isStopped = false;
                 MoveTowards();
-                RotateTowards();
             }
         }
         else
@@ -73,9 +75,13 @@ public class AIZombie : MonoBehaviour
 
     private void MoveTowards()
     {
-        m_NavMesh.destination = m_Target.transform.position;
+        if (!m_NavMesh.isStopped)
+        {
+            m_NavMesh.destination = m_Target.transform.position;
+        }
     }
 
+    //not for this project
     private void RotateTowards()
     {
         Vector3 dir = m_Target.transform.position - transform.position;
