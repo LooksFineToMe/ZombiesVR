@@ -62,7 +62,7 @@ public class Shooting : MonoBehaviour
     }
     void Fire()
     {
-        if (muzzleflash != null) muzzleflash.Play();
+        if (muzzleflash != null) { muzzleflash.Play(); }
         //Spawns Bullet
         Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
         //Adds velocity
