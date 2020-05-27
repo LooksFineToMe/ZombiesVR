@@ -44,19 +44,27 @@ public class AIZombie : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
+        print(clipinfo[0].clip.name);
+
         if (m_Target != null)
         {
             withinRange = CalculateDistance();
 
             if (withinRange)
             {
-                m_NavMesh.isStopped = true;
+                m_Animations.SetBool("Attacking", true);
+                m_NavMesh.speed = .1f;
             }
 
             if (!withinRange)
             {
-                m_NavMesh.isStopped = false;
-                MoveTowards();
+                m_Animations.SetBool("Attacking", false);
+                if (clipinfo[0].clip.name == "ZOMBIE_Walk")
+                {
+                    m_NavMesh.speed = 1f;
+                    MoveTowards();
+                }
             }
         }
         else
@@ -66,32 +74,7 @@ public class AIZombie : MonoBehaviour
     }
     private void Update()
     {
-        clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
-        print(clipinfo[0].clip.name);
-        if (clipinfo[0].clip.name == "ZOMBIE_Walk")
-        {
-            
-        }
-    }
 
-    private void AttackPlayer()
-    {
-        if (!attackedPlayer)
-        {
-            StartCoroutine(AttackAnimations());
-            attackedPlayer = true;
-        }
-    }
-
-    private void CancelAttacks()
-    {
-        if (attackedPlayer)
-        {
-            StopAllCoroutines();
-            m_Animations.SetBool("AttackLeft", false);
-            m_Animations.SetBool("AttackRight", false);
-            m_Animations.SetBool("Attacking", false);
-        }
     }
 
     //for testing purposes, will intergrate AI Wander soon
@@ -109,10 +92,7 @@ public class AIZombie : MonoBehaviour
 
     private void MoveTowards()
     {
-        if (!m_NavMesh.isStopped)
-        {
-            m_NavMesh.destination = m_Target.transform.position;
-        }
+        m_NavMesh.destination = m_Target.transform.position;
     }
 
     //not for this project
@@ -147,19 +127,6 @@ public class AIZombie : MonoBehaviour
     {
         m_Spawner = waveManager;
     }
-
-    private IEnumerator AttackAnimations()
-    {
-        m_Animations.SetBool("Attacking", true);
-        m_Animations.SetBool("AttackLeft", true);
-        m_Animations.SetBool("AttackRight", false);
-        yield return new WaitForSeconds(3.8f);
-        m_Animations.SetBool("AttackLeft", false);
-        m_Animations.SetBool("AttackRight", true);
-        yield return new WaitForSeconds(.5f);
-        attackedPlayer = false;
-    }
-
 
     //lose hp || call function on collision enter
     public void TakePlayerDamage()
