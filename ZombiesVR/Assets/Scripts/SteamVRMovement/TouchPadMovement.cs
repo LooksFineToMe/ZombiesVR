@@ -10,6 +10,7 @@ public class TouchPadMovement : MonoBehaviour
     [Header("SetUp")]
     public Player player;
     public SteamVR_Action_Vector2 touchPadInput;
+    public SteamVR_Action_Boolean sprint;
     public Transform cameraTransform;
     private CapsuleCollider capsuleCollider;
     // Start is called before the first frame update
@@ -32,5 +33,12 @@ public class TouchPadMovement : MonoBehaviour
         capsuleCollider.center = cameraTransform.localPosition - 0.5f * distanceFromFloor * Vector3.up;
 
 
+    }
+    private void Update()
+    {
+        if (sprint.state)
+        { moveSpeed = 4; }
+        else
+        { moveSpeed = 2; }
     }
 }

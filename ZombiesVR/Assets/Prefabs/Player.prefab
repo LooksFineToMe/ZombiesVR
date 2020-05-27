@@ -1559,6 +1559,9 @@ MonoBehaviour:
   touchPadInput:
     actionPath: /actions/default/in/TouchPadMove
     needsReinit: 0
+  sprint:
+    actionPath: /actions/default/in/Sprint
+    needsReinit: 0
   cameraTransform: {fileID: 567777114178279027}
 --- !u!114 &1673428074
 MonoBehaviour:
