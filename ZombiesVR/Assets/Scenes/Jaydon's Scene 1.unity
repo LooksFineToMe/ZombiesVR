@@ -338,7 +338,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6352
+  m_Name: pb_Mesh17690
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1599,7 +1599,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-10762
+  m_Name: pb_Mesh17652
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2688,11 +2688,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Base_Zombie_AI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356358324245743116, guid: 2b172beadc830a541a3eec9594e6de90,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7957029237797762079, guid: 2b172beadc830a541a3eec9594e6de90,
         type: 3}
