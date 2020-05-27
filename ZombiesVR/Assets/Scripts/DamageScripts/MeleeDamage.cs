@@ -6,7 +6,6 @@ public class MeleeDamage : MonoBehaviour
 {
     Rigidbody rb;
     public float minimumVelocity = 0.05f;
-    public Animator ani;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();

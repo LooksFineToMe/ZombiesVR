@@ -1638,13 +1638,14 @@ GameObject:
   - component: {fileID: 3105160620144612135}
   - component: {fileID: 4066783575428128810}
   - component: {fileID: 2784706964815831989}
+  - component: {fileID: 396316464}
   m_Layer: 0
   m_Name: Base_Zombie_AI
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7957029237797762079
 Transform:
   m_ObjectHideFlags: 0
@@ -1725,6 +1726,19 @@ MonoBehaviour:
   m_Target: {fileID: 0}
   m_WaveValue: 1
   m_Spawner: {fileID: 0}
+--- !u!65 &396316464
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356358324245743116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.67631906, z: 1}
+  m_Center: {x: 0, y: 1.100965, z: 0}
 --- !u!1 &6415014143921830741
 GameObject:
   m_ObjectHideFlags: 0

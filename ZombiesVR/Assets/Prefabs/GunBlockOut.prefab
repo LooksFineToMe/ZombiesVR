@@ -880,9 +880,9 @@ MonoBehaviour:
   trackPadHaptic:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
-  bullet: {fileID: 8118540569940751795}
+  bullet: {fileID: 7348525535776300291, guid: 45f7c62033d796e48bdeae0987442f99, type: 3}
   barrelPivot: {fileID: 578510215}
-  shootingSpeed: 1
+  shootingSpeed: 30
   fireRate: 0.5
   currentAmmo: 1
   currentAmmoText: {fileID: 0}
