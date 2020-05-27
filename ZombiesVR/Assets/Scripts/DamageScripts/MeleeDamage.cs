@@ -6,6 +6,7 @@ public class MeleeDamage : MonoBehaviour
 {
     Rigidbody rb;
     public float minimumVelocity = 0.05f;
+    public int axeDamage = 3;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -13,10 +14,8 @@ public class MeleeDamage : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<AIZombie>().TakePlayerDamage(); }
-        if (rb.velocity.magnitude >= minimumVelocity && collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(collision.gameObject);
-        }
+        if (rb.velocity.magnitude >= minimumVelocity && collision.gameObject.CompareTag("Enemy")) 
+        { collision.gameObject.GetComponent<AIZombie>().TakePlayerDamage(axeDamage); }
     }
     private void Update()
     {

@@ -1723,6 +1723,8 @@ MonoBehaviour:
   m_AttackDamage: 1
   m_Animations: {fileID: 3105160620144612135}
   withinRange: 0
+  m_DeathRagDoll: {fileID: 5690081693474532743, guid: 3e3ad723723dc9e4eabdf0f17477f96f,
+    type: 3}
   m_Target: {fileID: 0}
   m_WaveValue: 1
   m_Spawner: {fileID: 0}

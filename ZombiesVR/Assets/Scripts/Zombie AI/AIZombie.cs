@@ -15,6 +15,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] public int m_AttackDamage = 1;
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
+    [SerializeField] GameObject m_DeathRagDoll;
 
     private float attackTime;
     private float walkTime;
@@ -129,15 +130,19 @@ public class AIZombie : MonoBehaviour
     }
 
     //lose hp || call function on collision enter
-    public void TakePlayerDamage()
+    public void TakePlayerDamage(int damageSource)
     {
-        m_HeathPoints --;
+        m_HeathPoints -= damageSource;//
 
         if (m_HeathPoints <= 0)
         {
             m_Spawner.m_LivingZombies.Remove(this);
             //change this later
+            //spawn ragdoll
+            m_Animations.enabled = false;
             Destroy(this.gameObject);
+            
+            
         }
     }
 }

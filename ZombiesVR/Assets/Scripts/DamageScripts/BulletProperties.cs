@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletProperties : MonoBehaviour
 {
     public float timeToDestroy;
+    public int bulletDamage = 1;
     void Start()
     {
         Destroy(gameObject, timeToDestroy);
@@ -12,7 +13,7 @@ public class BulletProperties : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<AIZombie>().TakePlayerDamage(); }
+        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<AIZombie>().TakePlayerDamage(bulletDamage); }
         Destroy(gameObject);
     }
 }
