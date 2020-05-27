@@ -2689,6 +2689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base_Zombie_AI
       objectReference: {fileID: 0}
+    - target: {fileID: 6356358324245743116, guid: 2b172beadc830a541a3eec9594e6de90,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7957029237797762079, guid: 2b172beadc830a541a3eec9594e6de90,
         type: 3}
       propertyPath: m_LocalPosition.x
