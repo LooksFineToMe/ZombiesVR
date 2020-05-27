@@ -138,9 +138,10 @@ public class AIZombie : MonoBehaviour
         {
             m_Spawner.m_LivingZombies.Remove(this);
             //change this later
-            //spawn ragdoll
-            m_Animations.enabled = false;
-            Destroy(this.gameObject);
+            
+            m_Animations.enabled = false;//disables the animator so that ragdoll can take over
+            //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
+            Destroy(this.gameObject);//remember to remove this function when ragdoll works
             
             
         }

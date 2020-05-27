@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 739664012350610663}
   - component: {fileID: 739664012350610662}
   - component: {fileID: 739664012350610656}
+  - component: {fileID: 174128441}
   m_Layer: 0
   m_Name: axe
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8746621140997265569}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.139589, y: 2, z: 7.1773815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -100,7 +101,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &739664012350610660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -125,8 +126,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3015918, y: 0.018024513, z: 0.14314091}
-  m_Center: {x: -0.0014009178, y: 0, z: -0.24237353}
+  m_Size: {x: 0.3015918, y: 0.018024513, z: 0.12383807}
+  m_Center: {x: -0.0014009178, y: 0, z: -0.25202495}
 --- !u!114 &739664012350610663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentFlags: 44
+  attachmentFlags: 28
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
   releaseVelocityStyle: 1
@@ -222,7 +223,7 @@ MonoBehaviour:
   hideControllerOnAttach: 0
   handAnimationOnPickup: 0
   setRangeOfMotionOnPickup: -1
-  useHandObjectAttachmentPoint: 1
+  useHandObjectAttachmentPoint: 0
   attachEaseIn: 0
   snapAttachEaseInCurve:
     serializedVersion: 2
@@ -267,3 +268,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d81366771bbd142a3f281fb69265e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &174128441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746621140997265569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f8d7423500067469029fc0403497de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumVelocity: 0.6
+  axeDamage: 3
