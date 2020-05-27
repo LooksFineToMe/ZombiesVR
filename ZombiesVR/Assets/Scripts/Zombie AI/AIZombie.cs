@@ -16,6 +16,11 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
 
+    private float attackTime;
+    private float walkTime;
+
+    private bool attackedPlayer;
+
     private NavMeshAgent m_NavMesh;
     [Header("Player Specific")]
     [SerializeField] GameObject m_Target;
@@ -44,7 +49,7 @@ public class AIZombie : MonoBehaviour
 
             if (withinRange)
             {
-                AttackPlayer();
+                m_NavMesh.isStopped = true;
             }
 
             if (!withinRange)
@@ -61,9 +66,22 @@ public class AIZombie : MonoBehaviour
 
     private void AttackPlayer()
     {
-        print("fighting");
-        m_NavMesh.isStopped = true;
-        m_Animations.SetBool("Attacking", true);
+        if (!attackedPlayer)
+        {
+            StartCoroutine(AttackAnimations());
+            attackedPlayer = true;
+        }
+    }
+
+    private void CancelAttacks()
+    {
+        if (attackedPlayer)
+        {
+            StopAllCoroutines();
+            m_Animations.SetBool("AttackLeft", false);
+            m_Animations.SetBool("AttackRight", false);
+            m_Animations.SetBool("Attacking", false);
+        }
     }
 
     //for testing purposes, will intergrate AI Wander soon
@@ -83,7 +101,6 @@ public class AIZombie : MonoBehaviour
     {
         if (!m_NavMesh.isStopped)
         {
-            m_Animations.SetBool("Attacking", false);
             m_NavMesh.destination = m_Target.transform.position;
         }
     }
@@ -120,6 +137,19 @@ public class AIZombie : MonoBehaviour
     {
         m_Spawner = waveManager;
     }
+
+    private IEnumerator AttackAnimations()
+    {
+        m_Animations.SetBool("Attacking", true);
+        m_Animations.SetBool("AttackLeft", true);
+        m_Animations.SetBool("AttackRight", false);
+        yield return new WaitForSeconds(3.8f);
+        m_Animations.SetBool("AttackLeft", false);
+        m_Animations.SetBool("AttackRight", true);
+        yield return new WaitForSeconds(.5f);
+        attackedPlayer = false;
+    }
+
 
     //lose hp || call function on collision enter
     public void TakePlayerDamage()
