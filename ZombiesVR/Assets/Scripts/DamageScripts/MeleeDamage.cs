@@ -19,6 +19,7 @@ public class MeleeDamage : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -26,49 +27,55 @@ public class MeleeDamage : MonoBehaviour
         if (rb.velocity.magnitude >= minimumVelocity && collision.gameObject.CompareTag("Enemy")) 
         { 
             collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
-            impactTarget = gameObject.GetComponent<Rigidbody>();
-            impactTimer = 0;
+            //impactTarget = collision.gameObject.GetComponent<Rigidbody>();
+            //impactTimer = 0;
         }
     }
     
     private void Update()
     {
-        //TestFunction();
+        TestFunction();
         impactTimer += Time.deltaTime;
         print(rb.velocity);
         RagDollEffect();
+        impact = axePos.localPosition;
     }
 
     private void TestFunction()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(axePos.transform.position, axePos.transform.TransformDirection(Vector3.forward), out hit))
+        if (Physics.Raycast(axePos.transform.position, axePos.transform.TransformDirection(Vector3.forward), out hit, 1))
         {
             if (hit.rigidbody != null)
             {
+                print(hit.collider.name);
                 //find the RagdollHelper component and activate ragdolling
                 RagdollHelper helper = GetComponent<RagdollHelper>();
+                //helper.anim = hit.rigidbody.GetComponent<Animator>();
+                //we need to find a way to set the animator of the object being hit
                 helper.ragdolled = true;
 
                 //set the impact target to whatever the ray hit
                 impactTarget = hit.rigidbody;
 
                 //impact direction also according to the ray
+                //impact = axePos.transform.TransformDirection(Vector3.forward) * 2.0f;
                 impact = axePos.transform.TransformDirection(Vector3.forward) * 2.0f;
-
                 //the impact will be reapplied for the next 250ms
                 //to make the connected objects follow even though the simulated body joints
                 //might stretch
-                impactEndTime = Time.deltaTime + 0.25f;
+                impactEndTime = Time.deltaTime + .25f;
+                
             }
         }
-    }
-    public void RagDollEffect()
-    {
         if (Time.deltaTime < impactEndTime && impactTarget != null)
         {
             impactTarget.AddForce(impact, ForceMode.VelocityChange);
         }
+    }
+    public void RagDollEffect()
+    {
+        
     }
 }

@@ -1649,6 +1649,36 @@ Transform:
   m_Father: {fileID: 133262417}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1274632835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274632836}
+  m_Layer: 0
+  m_Name: RayCastPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1274632836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274632835}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.1662, y: 0, z: -0.262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5708704292622740146}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1284193657
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,6 +2666,7 @@ GameObject:
   - component: {fileID: 739664012350610656}
   - component: {fileID: 174128441}
   - component: {fileID: 174128442}
+  - component: {fileID: 1180928058}
   m_Layer: 0
   m_Name: axe
   m_TagString: Untagged
@@ -2656,6 +2687,7 @@ Transform:
   m_Children:
   - {fileID: 470047396}
   - {fileID: 1593573852}
+  - {fileID: 1274632836}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2902,6 +2934,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumVelocity: 2
   axeDamage: 3
+  axePos: {fileID: 1274632836}
+  impactTarget: {fileID: 0}
+  impact: {x: 0, y: 0, z: 0}
+  impactTimer: 0
+  impactEndTime: 0
 --- !u!114 &174128442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2931,3 +2968,17 @@ MonoBehaviour:
   previewPoseSelection: 0
   blendingBehaviours: []
   scale: 1
+--- !u!114 &1180928058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746621140997265569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70782601f63629543b828b4f811f32b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollToMecanimBlendTime: 0.5
+  anim: {fileID: 0}
