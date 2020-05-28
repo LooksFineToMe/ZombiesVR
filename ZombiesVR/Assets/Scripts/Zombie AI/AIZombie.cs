@@ -58,7 +58,8 @@ public class AIZombie : MonoBehaviour
             if (withinRange)
             {
                 m_Animations.SetBool("Attacking", true);
-                m_NavMesh.speed = .1f;
+                m_NavMesh.speed = .5f;
+                MoveTowards();
             }
 
             if (!withinRange)
@@ -156,15 +157,8 @@ public class AIZombie : MonoBehaviour
             m_Eliminated = true; //bool to tell the AI to stop moving
 
             m_Spawner.m_LivingZombies.Remove(this);
-            //change this later
+
             m_RH.ragdolled = true;
-            /*
-            m_Animations.enabled = false; //disables the animator so that ragdoll can take over
-            for (int i = 0; i < m_rb.Length; i++)
-            {
-                m_rb[i].isKinematic = false;
-            }
-            */
             //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
             Destroy(this.gameObject, 5);//keep this to optimise performence
         }
