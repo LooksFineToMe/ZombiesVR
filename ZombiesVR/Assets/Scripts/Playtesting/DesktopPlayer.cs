@@ -117,7 +117,7 @@ public class DesktopPlayer : MonoBehaviour
         m_RayDistance = PlayerController.height * 0.5f + PlayerController.radius;
         m_SlideLimit = PlayerController.slopeLimit - 0.1f;
 
-        /*cmd = new Cmd();*/
+        playerInput = new Cmd();
 
         playerSpawnPos = transform.position;
         playerSpawnRot = m_PlayerView.rotation;
@@ -210,13 +210,16 @@ public class DesktopPlayer : MonoBehaviour
     {
         float inputModifyFactor = (playerInput.fowardInput != 0.00f && playerInput.strafeInput != 0.0f && limitDiagonalSpeed) ? 0.01f : 1.0f;
 
-        playerInput.fowardInput *= inputModifyFactor;
-        playerInput.strafeInput *= inputModifyFactor;
+        playerInput.fowardInput = Input.GetAxisRaw("Vertical") * inputModifyFactor;
+        playerInput.strafeInput = Input.GetAxisRaw("Horizontal") * inputModifyFactor;
     }
     
 
     private void QueueNextJump()
     {
+        playerInput.jumpInput = Input.GetButtonDown("Jump");
+        playerInput.jumpInputUp = Input.GetButtonUp("Jump");
+
         if (m_HoldJumpToBHop)
         {
             wishJump = playerInput.jumpInput;
