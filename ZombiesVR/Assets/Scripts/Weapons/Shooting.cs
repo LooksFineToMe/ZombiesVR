@@ -20,6 +20,7 @@ public class Shooting : MonoBehaviour
     public float fireRate = 0.5f;
     public int currentAmmo = 0;
     public bool magInGun;
+    public ReloadPoint reloadPoint;
     float timer;// For fireRate
 
     [Header("FeedBack")]
@@ -76,6 +77,7 @@ public class Shooting : MonoBehaviour
 
     private void DropMag()
     {
+        reloadPoint.magInGun = false;
         magazine.SetActive(false);
         Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
         currentAmmo = 0;

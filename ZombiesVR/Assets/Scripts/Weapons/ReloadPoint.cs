@@ -5,8 +5,10 @@ using UnityEngine;
 public class ReloadPoint : MonoBehaviour
 {
     public Shooting m_Gun;
+    public bool magInGun;
     public void ReloadGun(int magcount)
     {
+        magInGun = true;
         m_Gun.Reloading(magcount);
     }
 }

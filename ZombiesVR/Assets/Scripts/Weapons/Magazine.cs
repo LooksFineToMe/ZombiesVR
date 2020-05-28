@@ -17,12 +17,12 @@ public class Magazine : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(weaponType))
-        { 
+        if (other.gameObject.CompareTag(weaponType) && other.GetComponent<ReloadPoint>().magInGun == false)
+        {
+            
             other.gameObject.GetComponent<ReloadPoint>().ReloadGun(magCount);
             m_Interactable.attachedToHand.DetachObject(magazine);
             magazine.SetActive(false);
-        
         }
     }
 }
