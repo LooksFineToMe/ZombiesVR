@@ -56,6 +56,7 @@ public class WaveManager : MonoBehaviour
         while (m_CurrentValueOfWave < m_WaveSpawnValue)
         {
             AIZombie zombie = Instantiate(m_Zombies[Random.Range(0, m_Zombies.Count - 1)]);
+            zombie.transform.parent = gameObject.transform;
             zombie.transform.position = m_SpawnLocations[Random.Range(0, m_SpawnLocations.Count - 1)].transform.position;
             zombie.SetWaveManager(this);
             zombie.m_Spawner = this;

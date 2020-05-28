@@ -9,7 +9,9 @@ public class AIZombie : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float m_MovementSpeed = 5f;
     [SerializeField] float m_RotationSpeed = 5f;
+    [SerializeField] Rigidbody[] m_rb;
     [Header("Combat")]
+    [SerializeField] bool m_Eliminated = false;
     [SerializeField] float m_AttackRange = 2f;
     [SerializeField] public int m_HeathPoints = 10;
     [SerializeField] public int m_AttackDamage = 1;
@@ -75,7 +77,10 @@ public class AIZombie : MonoBehaviour
     }
     private void Update()
     {
-
+#if UNITY_EDITOR
+        if (m_Eliminated)
+            TakePlayerDamage(m_HeathPoints);
+#endif
     }
 
     //for testing purposes, will intergrate AI Wander soon
@@ -93,7 +98,18 @@ public class AIZombie : MonoBehaviour
 
     private void MoveTowards()
     {
-        m_NavMesh.destination = m_Target.transform.position;
+        if (!m_Eliminated)
+        {
+            m_NavMesh.destination = m_Target.transform.position;
+
+            Quaternion newRot = Quaternion.LookRotation(m_NavMesh.desiredVelocity);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_RotationSpeed * Time.deltaTime);
+        }
+        else if (m_Eliminated)
+        {
+            m_NavMesh.isStopped = true;
+        }
     }
 
     //not for this project
@@ -132,18 +148,22 @@ public class AIZombie : MonoBehaviour
     //lose hp || call function on collision enter
     public void TakePlayerDamage(int damageSource)
     {
-        m_HeathPoints -= damageSource;//
+        m_HeathPoints -= damageSource;
 
         if (m_HeathPoints <= 0)
         {
+            m_Eliminated = true; //bool to tell the AI to stop moving
+
             m_Spawner.m_LivingZombies.Remove(this);
             //change this later
             
-            m_Animations.enabled = false;//disables the animator so that ragdoll can take over
+            m_Animations.enabled = false; //disables the animator so that ragdoll can take over
+            for (int i = 0; i < m_rb.Length; i++)
+            {
+                m_rb[i].isKinematic = false;
+            }
             //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
-            Destroy(this.gameObject);//remember to remove this function when ragdoll works
-            
-            
+            Destroy(this.gameObject, 5);//keep this to optimise performence
         }
     }
 }
