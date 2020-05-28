@@ -15,7 +15,7 @@ public class MeleeDamage : MonoBehaviour
     {
         //if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<AIZombie>().TakePlayerDamage(); }
         if (rb.velocity.magnitude >= minimumVelocity && collision.gameObject.CompareTag("Enemy")) 
-        { collision.gameObject.GetComponent<AIZombie>().TakePlayerDamage(axeDamage); }
+        { collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage); }
     }
     private void Update()
     {

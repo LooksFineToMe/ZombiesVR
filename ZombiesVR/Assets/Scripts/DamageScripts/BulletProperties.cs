@@ -13,7 +13,7 @@ public class BulletProperties : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<AIZombie>().TakePlayerDamage(bulletDamage); }
+        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage); }
         Destroy(gameObject);
     }
 }
