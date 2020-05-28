@@ -79,7 +79,7 @@ public class RagdollHelper : MonoBehaviour
         }
 
         //Store the Animator component
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
 
