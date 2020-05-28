@@ -78,4 +78,8 @@ public class StairDismount : MonoBehaviour
             impactTarget.AddForce(impact, ForceMode.VelocityChange);
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }
