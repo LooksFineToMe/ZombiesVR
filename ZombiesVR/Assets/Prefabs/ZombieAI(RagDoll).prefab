@@ -390,7 +390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4080831877124110692
 Transform:
   m_ObjectHideFlags: 0
@@ -463,15 +463,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementSpeed: 5
   m_RotationSpeed: 50
-  m_AttackRange: 2
-  m_HeathPoints: 10
-  m_AttackDamage: 1
-  m_Animations: {fileID: 1078998178780695412}
-  withinRange: 0
-  m_DeathRagDoll: {fileID: 0}
-  m_Target: {fileID: 0}
-  m_WaveValue: 1
-  m_Spawner: {fileID: 0}
   m_rb:
   - {fileID: 7790032735906111413}
   - {fileID: 2578415652037762678}
@@ -484,6 +475,16 @@ MonoBehaviour:
   - {fileID: 4632650539339422465}
   - {fileID: 5296930020163922889}
   - {fileID: 682690439838600733}
+  m_Eliminated: 0
+  m_AttackRange: 2
+  m_HeathPoints: 10
+  m_AttackDamage: 1
+  m_Animations: {fileID: 1078998178780695412}
+  withinRange: 0
+  m_DeathRagDoll: {fileID: 0}
+  m_Target: {fileID: 0}
+  m_WaveValue: 1
+  m_Spawner: {fileID: 0}
 --- !u!1 &1137643205212681774
 GameObject:
   m_ObjectHideFlags: 0
