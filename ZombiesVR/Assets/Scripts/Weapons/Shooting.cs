@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
 {
     [Header("SteamVR Inputs")]
     public SteamVR_Action_Boolean fireAction;
+    public SteamVR_Action_Boolean dropMagAction;
     public SteamVR_Action_Vibration trackPadHaptic;
 
     [Header("BulletSettings")]
@@ -17,13 +18,16 @@ public class Shooting : MonoBehaviour
     public Transform barrelPivot;
     public float shootingSpeed = 1;
     public float fireRate = 0.5f;
-    public float currentAmmo = 1;
+    public int currentAmmo = 0;
+    public bool magInGun;
     float timer;// For fireRate
 
     [Header("FeedBack")]
     public Text currentAmmoText;
     public AudioSource gunClick;
     public ParticleSystem muzzleflash;
+    public GameObject magazine;
+    public GameObject droppedMag;
 
     [Header("BulletEffects")]
     private Interactable interactable;//This script is needed to figure out the hand that is holding the gun
@@ -34,7 +38,6 @@ public class Shooting : MonoBehaviour
     {
         gunClick = GetComponent<AudioSource>();
         interactable = GetComponent<Interactable>();
-        Reloading();
     }
     // Update is called once per frame
     void Update()
@@ -46,7 +49,7 @@ public class Shooting : MonoBehaviour
             if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0)
             {
                 print("implement ammo");
-                //currentAmmo--;
+                currentAmmo--;
                 nextTimeToFire = 0;
                 Fire();
                 Pulse(0.1f, 150, 75, source);//This Passes through the values for controller vibration
@@ -55,11 +58,31 @@ public class Shooting : MonoBehaviour
             {
                 currentAmmo--;
                 nextTimeToFire = 0;
-                gunClick.Play();
+                if (gunClick != null) { gunClick.Play(); }
                 Pulse(0.1f, 75, 75, source);//This Passes through the values for controller vibration
             }
         }
+        if (interactable.attachedToHand != null)
+        {
+            SteamVR_Input_Sources source = interactable.attachedToHand.handType;//Checks what hand the gun is in
+            if (dropMagAction[source].state && magInGun == true)
+            {
+                Pulse(0.1f, 75, 75, source);//This Passes through the values for controller vibration
+                magInGun = false;
+                DropMag();
+            }
+        }
     }
+
+    private void DropMag()
+    {
+        magazine.SetActive(false);
+        Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
+        currentAmmo = 0;
+        print("Drop Magazine");
+        //remember to add a way for the dropped mag to carry the ammo count with it
+    }
+
     void Fire()
     {
         if (muzzleflash != null) { muzzleflash.Play(); }
@@ -69,11 +92,14 @@ public class Shooting : MonoBehaviour
         bulletrb.velocity = barrelPivot.forward * shootingSpeed;
         UpdateAmmoCount();
     }
-    private void Reloading()
+    public void Reloading(int reloadAmount)
     {
         //Add reload
-        print("Reloading");
-        if (gunClick != null) gunClick.Play();
+        magInGun = true;
+        magazine.SetActive(true);
+        currentAmmo = reloadAmount;
+        print("Reloading: " + reloadAmount + "Bullets");
+        if (gunClick != null) { gunClick.Play(); }
     }
     void UpdateAmmoCount()
     {
