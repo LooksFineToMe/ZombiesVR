@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CameraShoot : MonoBehaviour
 {
-
+    public float Range = 20;
     public float impactForce = 2;
     public bool knock = false;
+
+    public LayerMask rayCastMask;
 
     float impactEndTime = 0;
     Rigidbody impactTarget = null;
@@ -24,7 +26,7 @@ public class CameraShoot : MonoBehaviour
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             //check if the ray hits a physic collider
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, Range, rayCastMask))
             {
                 //check if the raycast target has a rigid body (belongs to the ragdoll)
                 if (hit.rigidbody != null)
@@ -48,6 +50,7 @@ public class CameraShoot : MonoBehaviour
                 }
             }
         }
+        Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * Range, Color.blue);
 
         if (Time.deltaTime < impactEndTime && hit.rigidbody != null)
         {
