@@ -13,7 +13,7 @@ public class BulletProperties : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage); }
+        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/); }
         Destroy(gameObject);
     }
 }
