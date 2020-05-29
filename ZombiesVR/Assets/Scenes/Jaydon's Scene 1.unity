@@ -161,15 +161,16 @@ MonoBehaviour:
   useCameraTilt: 0
   gravity: 20
   friction: 14
-  m_MoveSpeed: 12
-  m_MoveAcceleration: 18
+  m_MoveSpeed: 15
+  m_MoveAcceleration: 16
   m_MoveDeacceleration: 15
   m_AirAcceleration: 0
   m_AirDeacceleration: 20
-  m_AirControl: 0.2
-  m_SideStrafeAcceleration: 15
-  m_SideStrafeSpeed: 1
-  m_JumpSpeed: 4
+  m_AirControl: 0.1
+  m_SideStrafeAcceleration: 14
+  m_SideStrafeSpeed: 3
+  m_JumpSpeed: 5
+  m_JumpReset: 0.6
   limitDiagonalSpeed: 1
   DebugText: 0
   FPS: {fileID: 0}
@@ -189,7 +190,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.15
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
