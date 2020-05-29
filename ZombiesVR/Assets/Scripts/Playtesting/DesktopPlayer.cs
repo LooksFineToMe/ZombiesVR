@@ -58,6 +58,7 @@ public class DesktopPlayer : MonoBehaviour
     [SerializeField] float m_SideStrafeAcceleration = 50.0f;//how fast acceleration occurs to get up to sideStrafeSpeed when side strafing
     [SerializeField] float m_SideStrafeSpeed = 1.0f;        //what the max speed to generate when side strafing
     [SerializeField] float m_JumpSpeed = 8.0f;              //the speed at which the character's up axis gains when hitting jump
+    [SerializeField] float m_JumpReset = 1f;
     [SerializeField] bool limitDiagonalSpeed = false;
     [SerializeField] bool DebugText = true;
 
@@ -82,6 +83,8 @@ public class DesktopPlayer : MonoBehaviour
 
     //player status
     private bool isDead = false;
+
+    private bool hasJumped = false;
 
     private Vector3 playerSpawnPos;
     private Quaternion playerSpawnRot;
@@ -177,8 +180,6 @@ public class DesktopPlayer : MonoBehaviour
         {
             PlayerRespawn();
         }
-
-
     }
 
     void CameraControllers()
@@ -226,10 +227,11 @@ public class DesktopPlayer : MonoBehaviour
             return;
         }
 
-        if (playerInput.jumpInput && !wishJump)
+        if (playerInput.jumpInput && !wishJump && !hasJumped)
+        {
             wishJump = true;
-        if (playerInput.jumpInputUp)
-            wishJump = false;
+            hasJumped = true;
+        }
     }
     //exec when the player is in the air
     void AirMovement()
@@ -256,6 +258,7 @@ public class DesktopPlayer : MonoBehaviour
             accel = m_AirDeacceleration;
         else
             accel = m_AirAcceleration;
+
         //if the player is only strafing left or right
 
         if (playerInput.fowardInput == 0 && playerInput.strafeInput != 0)
@@ -346,7 +349,13 @@ public class DesktopPlayer : MonoBehaviour
         {
             playerVelocity.y = m_JumpSpeed;
             wishJump = false;
+            Invoke(nameof(ResetJump), m_JumpReset);
         }
+    }
+
+    private void ResetJump()
+    {
+        hasJumped = false;
     }
 
     private void ApplyFriction(float t)
