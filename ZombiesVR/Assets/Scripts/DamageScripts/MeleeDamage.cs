@@ -47,14 +47,17 @@ public class MeleeDamage : MonoBehaviour
 
         if (Physics.Raycast(axePos.transform.position, axePos.transform.TransformDirection(Vector3.forward), out hit, 1))
         {
-            if (hit.rigidbody != null)
+            if (hit.rigidbody != null && hit.rigidbody.GetComponentInParent<RagdollHelper>() != null)
             {
                 print(hit.collider.name);
                 //find the RagdollHelper component and activate ragdolling
-                RagdollHelper helper = GetComponent<RagdollHelper>();
-                //helper.anim = hit.rigidbody.GetComponent<Animator>();
-                //we need to find a way to set the animator of the object being hit
+
+                RagdollHelper helper = hit.rigidbody.GetComponentInParent<RagdollHelper>();
+                //print(hit.collider.GetComponentInParent<RagdollHelper>().ToString());
                 helper.ragdolled = true;
+                helper.anim = hit.rigidbody.GetComponentInParent<Animator>();
+                //we need to find a way to set the animator of the object being hit
+
 
                 //set the impact target to whatever the ray hit
                 impactTarget = hit.rigidbody;
@@ -66,7 +69,7 @@ public class MeleeDamage : MonoBehaviour
                 //to make the connected objects follow even though the simulated body joints
                 //might stretch
                 impactEndTime = Time.deltaTime + .25f;
-                
+
             }
         }
         if (Time.deltaTime < impactEndTime && impactTarget != null)
