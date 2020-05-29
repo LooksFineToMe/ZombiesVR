@@ -7,7 +7,7 @@ public class WaveManager : MonoBehaviour
     [Header("AI And Player Specific")]
     [SerializeField] List<AIZombie> m_Zombies;
     [HideInInspector] public List<AIZombie> m_LivingZombies;
-    [SerializeField] List<GameObject> m_SpawnLocations;
+    [SerializeField] public List<GameObject> m_SpawnLocations;
     [SerializeField] public List<GameObject> m_Players;
 
     [Header("Waves Specific")]
