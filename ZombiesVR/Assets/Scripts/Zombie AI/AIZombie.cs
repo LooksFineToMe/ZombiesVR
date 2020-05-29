@@ -20,6 +20,13 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [SerializeField] GameObject m_DeathRagDoll;
+    
+    //Creating a quick timer just to get them walking again
+    //TESTING ONLY
+    float timer;
+    float riseAgain = 4;
+    //these floats are just used in the update function
+    //TESTING ONLY
 
     private float attackTime;
     private float walkTime;
@@ -52,8 +59,9 @@ public class AIZombie : MonoBehaviour
         clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
         print(clipinfo[0].clip.name);
 
-        if (m_Target != null)
+        if (m_Target != null && m_RH.ragdolled == false)
         {
+            
             withinRange = CalculateDistance();
 
             if (withinRange)
@@ -80,6 +88,11 @@ public class AIZombie : MonoBehaviour
     }
     private void Update()
     {
+        timer += Time.deltaTime;
+        if (timer >= riseAgain)
+        {
+            m_RH.ragdolled = false;
+        }
 #if UNITY_EDITOR
         if (m_Eliminated)
             TakePlayerDamage(m_HeathPoints);
@@ -152,7 +165,7 @@ public class AIZombie : MonoBehaviour
     public void TakePlayerDamage(int damageSource/*, bool knocked*/)
     {
         m_HeathPoints -= damageSource;
-
+        timer = 0;
         //if (knocked)
         //{
         //    m_NavMesh.isStopped = true;
