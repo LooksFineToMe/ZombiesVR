@@ -47,7 +47,7 @@ public class Shooting : MonoBehaviour
         if (interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;//Checks what hand the gun is in
-            if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0)
+            if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0 )
             {
                 print("implement ammo");
                 currentAmmo--;

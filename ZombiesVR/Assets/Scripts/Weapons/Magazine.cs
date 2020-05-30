@@ -11,10 +11,18 @@ public class Magazine : MonoBehaviour
     public GameObject magazine;
     Interactable m_Interactable;
     public float timer;
+    public GameObject[] bullets;
 
     private void Awake()
     {
         m_Interactable = GetComponent<Interactable>();
+    }
+    private void Start()
+    {
+        for (int i = 0; i < magCount; i++)
+        {
+            bullets[i].SetActive(true);
+        }
     }
     private void Update()
     {
