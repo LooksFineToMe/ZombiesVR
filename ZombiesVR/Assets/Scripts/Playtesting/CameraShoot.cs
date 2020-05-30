@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraShoot : MonoBehaviour
 {
     public float Range = 20;
+    public GameObject m_PlayerHand;
     public float impactForce = 2;
     public bool knock = false;
 
@@ -29,24 +30,29 @@ public class CameraShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Range, rayCastMask))
             {
                 //check if the raycast target has a rigid body (belongs to the ragdoll)
-                if (hit.rigidbody != null)
+                //if (hit.rigidbody != null && hit.rigidbody.GetComponentInParent<RagdollHelper>() != null)
+                //{
+                //    //find the RagdollHelper component and activate ragdolling
+                //    RagdollHelper helper = hit.rigidbody.GetComponentInParent<RagdollHelper>();
+                //    AIZombie ai = hit.rigidbody.GetComponentInParent<AIZombie>();
+
+                //    //set the impact target to whatever the ray hit
+                //    impactTarget = hit.rigidbody;
+
+                //    //impact direction also according to the ray
+                //    impact = ray.direction * impactForce;
+                //    ai.TakePlayerDamage(10);
+
+                //    //the impact will be reapplied for the next 250ms
+                //    //to make the connected objects follow even though the simulated body joints
+                //    //might stretch
+                //    impactEndTime = Time.deltaTime + 2f;
+                //}
+
+                if (hit.collider.tag == "Gun" && hit.collider.GetComponent<PickUPItem>() != null)
                 {
-                    //find the RagdollHelper component and activate ragdolling
-                    RagdollHelper helper = hit.rigidbody.GetComponentInParent<RagdollHelper>();
-                    AIZombie ai = hit.rigidbody.GetComponentInParent<AIZombie>();
-                    helper.ragdolled = true;
-
-                    //set the impact target to whatever the ray hit
-                    impactTarget = hit.rigidbody;
-
-                    //impact direction also according to the ray
-                    impact = ray.direction * impactForce;
-                    ai.TakePlayerDamage(10);
-
-                    //the impact will be reapplied for the next 250ms
-                    //to make the connected objects follow even though the simulated body joints
-                    //might stretch
-                    impactEndTime = Time.deltaTime + 2f;
+                    PickUPItem weapon = hit.collider.GetComponent<PickUPItem>();
+                    GrabObject(weapon, true);
                 }
             }
         }
@@ -56,5 +62,24 @@ public class CameraShoot : MonoBehaviour
         {
             impactTarget.AddForce(impact, ForceMode.Impulse);
         }
+    }
+
+    private void GrabObject(PickUPItem weapon, bool grabbed)
+    {
+        Vector3 handPos = m_PlayerHand.transform.position;
+        Quaternion handRot = m_PlayerHand.transform.rotation;
+        if (grabbed)
+        {
+            weapon.GetComponent<Rigidbody>().isKinematic = true;
+            weapon.transform.parent = m_PlayerHand.transform;
+            weapon.transform.position = handPos;
+            weapon.transform.rotation = handRot;
+        }
+        else
+        {
+            weapon.GetComponent<Rigidbody>().isKinematic = false;
+            weapon.transform.parent = weapon.transform;
+        }
+
     }
 }
