@@ -125,3 +125,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 2
   bulletDamage: 1
+  bulletPos: {fileID: 7348525535776300295}
+  impactTarget: {fileID: 0}
+  bulletForce: 10

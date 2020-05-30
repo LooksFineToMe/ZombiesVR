@@ -32,7 +32,7 @@ public class MeleeDamage : MonoBehaviour
 
             if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<RagdollHelper>() != null)
             {
-                tempAxePos = axePos;
+                
                 //find the RagdollHelper component and activate ragdolling
 
                 RagdollHelper helper = collision.rigidbody.GetComponentInParent<RagdollHelper>();
@@ -53,7 +53,7 @@ public class MeleeDamage : MonoBehaviour
                 {
                     helper.ragdolled = true;
                     collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
-                    impactTarget.AddForce(tempAxePos.transform.forward * axeForce, ForceMode.VelocityChange);
+                    impactTarget.AddForce(axePos.transform.forward * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
                 }
             }
         }

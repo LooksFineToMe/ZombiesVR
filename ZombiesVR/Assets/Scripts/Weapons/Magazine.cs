@@ -10,10 +10,15 @@ public class Magazine : MonoBehaviour
     public int magCount = 8;
     public GameObject magazine;
     Interactable m_Interactable;
+    public float timer;
 
     private void Awake()
     {
         m_Interactable = GetComponent<Interactable>();
+    }
+    private void Update()
+    {
+        timer += Time.deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -21,8 +26,21 @@ public class Magazine : MonoBehaviour
         {
             
             other.gameObject.GetComponent<ReloadPoint>().ReloadGun(magCount);
-            m_Interactable.attachedToHand.DetachObject(magazine);
+            if (m_Interactable.attachedToHand == true)
+            {
+                m_Interactable.attachedToHand.DetachObject(magazine);
+            }
             magazine.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("Belt") && timer >= .4f)
+        {
+            if (m_Interactable.attachedToHand == true)
+            {
+                m_Interactable.attachedToHand.DetachObject(magazine);
+            }
+            gameObject.transform.parent = other.gameObject.transform;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<MeshCollider>().isTrigger = true;
         }
     }
 }

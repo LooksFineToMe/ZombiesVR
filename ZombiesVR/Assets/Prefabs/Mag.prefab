@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 158719523806231992}
   m_Layer: 0
   m_Name: Mag
-  m_TagString: Untagged
+  m_TagString: Magazine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Gun
   - Pistol
+  - Magazine
+  - Belt
   layers:
   - Default
   - TransparentFX

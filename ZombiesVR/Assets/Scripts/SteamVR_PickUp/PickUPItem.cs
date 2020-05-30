@@ -18,6 +18,12 @@ public class PickUPItem : MonoBehaviour
     public void PickUpObject()
     {
         gameObject.layer = LayerMask.NameToLayer("Player");
+        gameObject.GetComponent<MeshCollider>().isTrigger = false;
+        gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        if (gameObject.GetComponent<Magazine>() != null)
+        {
+            gameObject.GetComponent<Magazine>().timer = 0;
+        }
     }
     public void DropObject()
     {
