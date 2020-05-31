@@ -68,7 +68,7 @@ public class AIZombie : MonoBehaviour
             {
                 m_Animations.SetBool("Attacking", true);
                 m_NavMesh.speed = .5f;
-                MoveTowards();
+                RotateTowards();
             }
 
             if (!withinRange)
@@ -131,10 +131,9 @@ public class AIZombie : MonoBehaviour
     //not for this project
     private void RotateTowards()
     {
-        Vector3 dir = m_Target.transform.position - transform.position;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, dir, m_RotationSpeed, 0);
+        Quaternion newRot = Quaternion.LookRotation(m_NavMesh.desiredVelocity);
 
-        transform.rotation = Quaternion.LookRotation(newDir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_RotationSpeed * Time.deltaTime);
     }
 
     private bool CalculateDistance()
@@ -187,14 +186,12 @@ public class AIZombie : MonoBehaviour
 
     public void Stagger()
     {
-        m_NavMesh.isStopped = true;   
         m_Animations.SetBool("Staggered", true);
-        Invoke(nameof(ResetStagger), .8f);
+        Invoke(nameof(ResetStagger), .01f);
     }
 
     private void ResetStagger()
     {
-        m_NavMesh.isStopped = false;
         m_Animations.SetBool("Staggered", false);
     }
 
