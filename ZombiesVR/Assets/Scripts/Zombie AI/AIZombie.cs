@@ -185,6 +185,19 @@ public class AIZombie : MonoBehaviour
         }
     }
 
+    public void Stagger()
+    {
+        m_NavMesh.isStopped = true;   
+        m_Animations.SetBool("Staggered", true);
+        Invoke(nameof(ResetStagger), .8f);
+    }
+
+    private void ResetStagger()
+    {
+        m_NavMesh.isStopped = false;
+        m_Animations.SetBool("Staggered", false);
+    }
+
     public void ResetKnock()
     {
         m_NavMesh.isStopped = false;
