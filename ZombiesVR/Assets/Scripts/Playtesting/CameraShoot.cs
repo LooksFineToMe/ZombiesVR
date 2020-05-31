@@ -29,31 +29,31 @@ public class CameraShoot : MonoBehaviour
             //check if the ray hits a physic collider
             if (Physics.Raycast(ray, out hit, Range, rayCastMask))
             {
-                //check if the raycast target has a rigid body (belongs to the ragdoll)
-                //if (hit.rigidbody != null && hit.rigidbody.GetComponentInParent<RagdollHelper>() != null)
-                //{
-                //    //find the RagdollHelper component and activate ragdolling
-                //    RagdollHelper helper = hit.rigidbody.GetComponentInParent<RagdollHelper>();
-                //    AIZombie ai = hit.rigidbody.GetComponentInParent<AIZombie>();
+                //check if the raycast target has a rigid body(belongs to the ragdoll)
+                if (hit.rigidbody != null && hit.rigidbody.GetComponentInParent<RagdollHelper>() != null)
+                {
+                    //find the RagdollHelper component and activate ragdolling
+                    RagdollHelper helper = hit.rigidbody.GetComponentInParent<RagdollHelper>();
+                    AIZombie ai = hit.rigidbody.GetComponentInParent<AIZombie>();
+                    ai.Stagger();
+                    //set the impact target to whatever the ray hit
+                    //impactTarget = hit.rigidbody;
 
-                //    //set the impact target to whatever the ray hit
-                //    impactTarget = hit.rigidbody;
+                    ////impact direction also according to the ray
+                    //impact = ray.direction * impactForce;
 
-                //    //impact direction also according to the ray
-                //    impact = ray.direction * impactForce;
-                //    ai.TakePlayerDamage(10);
-
-                //    //the impact will be reapplied for the next 250ms
-                //    //to make the connected objects follow even though the simulated body joints
-                //    //might stretch
-                //    impactEndTime = Time.deltaTime + 2f;
-                //}
+                    ////the impact will be reapplied for the next 250ms
+                    ////to make the connected objects follow even though the simulated body joints
+                    ////might stretch
+                    //impactEndTime = Time.deltaTime + 2f;
+                }
 
                 if (hit.collider.tag == "Gun" && hit.collider.GetComponent<PickUPItem>() != null)
                 {
                     PickUPItem weapon = hit.collider.GetComponent<PickUPItem>();
                     GrabObject(weapon, true);
                 }
+                print(hit.collider.name);
             }
         }
         Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * Range, Color.blue);
