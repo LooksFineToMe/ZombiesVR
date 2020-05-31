@@ -76,7 +76,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.002446711, y: -0.40595424, z: -0.0051453114}
+  m_ConnectedAnchor: {x: 0.0024466068, y: -0.40595442, z: -0.0051451623}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -124,6 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &350500412017914899
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &699441125155980076
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +514,7 @@ MonoBehaviour:
   m_RH: {fileID: 1315178961373879097}
   m_Eliminated: 0
   m_AttackRange: 2
+  m_TimeToGetUp: 2
   m_HeathPoints: 10
   m_AttackDamage: 1
   m_Animations: {fileID: 1078998178780695412}
@@ -869,7 +874,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0912447, y: -0.06656402, z: -0.00055372715}
+  m_ConnectedAnchor: {x: -0.0912447, y: -0.06656402, z: -0.00055360794}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -917,6 +922,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &2580898409645346776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 10
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &4721935195139452443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,6 +1804,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5296930020163922890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,6 +1930,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5306740754457704079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,7 +2007,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.004937649, y: 0.21595305, z: -0.0014855862}
+  m_ConnectedAnchor: {x: 0.004937649, y: 0.21595305, z: -0.0014858246}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2042,6 +2055,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 0
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5712107732584854225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2318,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.2740468, y: 0.00000032782555, z: -0.000000059604645}
+  m_ConnectedAnchor: {x: -0.27404702, y: 0.00000044703484, z: -0.000000029802322}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2351,6 +2366,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6404271777985140990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,6 +2492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6440334716574478845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2725,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0912447, y: -0.066563904, z: -0.00055372715}
+  m_ConnectedAnchor: {x: 0.0912447, y: -0.066563904, z: -0.00055360794}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2754,6 +2773,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 1
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6851599486617088581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,6 +3070,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
+  isDetachable: 0
+  detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &7806679214906844608
 GameObject:
   m_ObjectHideFlags: 0
