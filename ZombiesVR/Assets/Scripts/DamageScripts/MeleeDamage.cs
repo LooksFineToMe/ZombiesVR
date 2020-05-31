@@ -56,6 +56,10 @@ public class MeleeDamage : MonoBehaviour
                 }
             }
         }
+        else if (rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
+        }
     }
     
     private void Update()

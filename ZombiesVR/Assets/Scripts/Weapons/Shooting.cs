@@ -33,6 +33,8 @@ public class Shooting : MonoBehaviour
     [Header("BulletEffects")]
     private Interactable interactable;//This script is needed to figure out the hand that is holding the gun
     [SerializeField] float nextTimeToFire = 0f;
+    [Header("Spawning")]
+    public Spawner_Mag spawner_Mag;
 
     //public Animator animator;
     private void Start()
@@ -74,17 +76,18 @@ public class Shooting : MonoBehaviour
             }
         }
     }
-
+    [ContextMenu("DropMag")]
     private void DropMag()
     {
         reloadPoint.magInGun = false;
         magazine.SetActive(false);
         Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
+        if (currentAmmo == 0) { spawner_Mag.SpawnAmmo(); }        
         currentAmmo = 0;
         print("Drop Magazine");
         //remember to add a way for the dropped mag to carry the ammo count with it
     }
-
+    [ContextMenu("Fire")]
     void Fire()
     {
         if (muzzleflash != null) { muzzleflash.Play(); }
@@ -94,6 +97,7 @@ public class Shooting : MonoBehaviour
         bulletrb.velocity = barrelPivot.forward * shootingSpeed;
         UpdateAmmoCount();
     }
+    [ContextMenu("Reload")]
     public void Reloading(int reloadAmount)
     {
         //Add reload
