@@ -30,5 +30,8 @@ public class PlayerBelt : MonoBehaviour
     private void LateUpdate()
     {
         gameObject.transform.position = player.position + offset;
+        var euler = player.transform.eulerAngles;
+        Quaternion rotY = Quaternion.Euler(0, euler.y, 0);
+        transform.rotation = rotY;
     }
 }
