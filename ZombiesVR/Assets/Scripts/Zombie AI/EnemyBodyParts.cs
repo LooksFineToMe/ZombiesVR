@@ -39,7 +39,7 @@ public class EnemyBodyParts : MonoBehaviour
 
     }
 
-    //doesnt work
+    //vr
     private void OnCollisionEnter(Collision collision)
     {
         print("collided with " + collision.gameObject.name);
@@ -47,6 +47,21 @@ public class EnemyBodyParts : MonoBehaviour
         {
             collision.gameObject.GetComponentInParent<PlayerStats>().TakeDamage();
             print("hit " + collision.gameObject.name);
+            if (collision.gameObject.GetComponent<CharacterController>())
+            {
+                print("character controller");
+            }
+        }
+    }
+
+    //desktop
+    private void OnControllerColliderHit(ControllerColliderHit controllerHit)
+    {
+        print("collided with " + controllerHit.gameObject.name);
+        if (controllerHit.gameObject.CompareTag("Player") && controllerHit.gameObject.GetComponent<PlayerStats>() != null && applyDamage)
+        {
+            controllerHit.gameObject.GetComponent<PlayerStats>().TakeDamage();
+            print("hit " + controllerHit.gameObject.name);
         }
     }
 }
