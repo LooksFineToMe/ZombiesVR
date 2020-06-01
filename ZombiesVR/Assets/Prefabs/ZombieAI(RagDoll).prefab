@@ -76,7 +76,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0024466068, y: -0.40595442, z: -0.0051451623}
+  m_ConnectedAnchor: {x: 0.002446711, y: -0.40595424, z: -0.0051453114}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -125,6 +125,10 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  bloodParticle: {fileID: 0}
+  particlePos: {fileID: 0}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &350500412017914899
 GameObject:
@@ -312,6 +316,11 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 5296930020163922890}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 1
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &699441125155980076
 GameObject:
@@ -874,7 +883,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0912447, y: -0.06656402, z: -0.00055360794}
+  m_ConnectedAnchor: {x: -0.0912447, y: -0.06656402, z: -0.00055372715}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -923,6 +932,10 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  bloodParticle: {fileID: 0}
+  particlePos: {fileID: 0}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &2580898409645346776
 GameObject:
@@ -1556,6 +1569,10 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 10
   isDetachable: 1
+  bloodParticle: {fileID: 0}
+  particlePos: {fileID: 0}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &4721935195139452443
 GameObject:
@@ -1805,6 +1822,10 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  bloodParticle: {fileID: 0}
+  particlePos: {fileID: 0}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5296930020163922890
 GameObject:
@@ -1931,6 +1952,11 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 7477610181958831603}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5306740754457704079
 GameObject:
@@ -2007,7 +2033,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.004937649, y: 0.21595305, z: -0.0014858246}
+  m_ConnectedAnchor: {x: 0.004937649, y: 0.21595305, z: -0.0014855862}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2056,6 +2082,10 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 0
+  bloodParticle: {fileID: 0}
+  particlePos: {fileID: 0}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5712107732584854225
 GameObject:
@@ -2318,7 +2348,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.27404702, y: 0.00000044703484, z: -0.000000029802322}
+  m_ConnectedAnchor: {x: -0.2740468, y: 0.00000032782555, z: -0.000000059604645}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2367,6 +2397,11 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 6404271777985140990}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 1
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6404271777985140990
 GameObject:
@@ -2493,6 +2528,11 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 6630742375939194882}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6440334716574478845
 GameObject:
@@ -2725,7 +2765,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0912447, y: -0.066563904, z: -0.00055360794}
+  m_ConnectedAnchor: {x: 0.0912447, y: -0.066563904, z: -0.00055372715}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2774,6 +2814,10 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  bloodParticle: {fileID: 0}
+  particlePos: {fileID: 0}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6851599486617088581
 GameObject:
@@ -3071,6 +3115,10 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 0
+  bloodParticle: {fileID: 0}
+  particlePos: {fileID: 0}
+  bloodOffset: {x: 0, y: 0, z: 0}
+  applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &7806679214906844608
 GameObject:

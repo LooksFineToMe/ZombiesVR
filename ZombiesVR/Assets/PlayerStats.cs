@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
     {
         health -= 1;
         DamageEffect();
-
+        print("player has been hit");
         if (health <= 0)
         {
             GameOver();
