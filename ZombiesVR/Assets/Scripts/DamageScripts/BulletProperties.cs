@@ -47,8 +47,14 @@ public class BulletProperties : MonoBehaviour
                 impactTarget.AddForce(bulletPos.transform.forward * bulletForce, ForceMode.VelocityChange);
             }
         }
-        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/); }
-        gameObject.GetComponent<SphereCollider>().enabled = false;
-        particle.SetActive(false);
+        if (collision.gameObject.CompareTag("Enemy")) 
+        { 
+            collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/);
+            Destroy(gameObject);
+            //gameObject.GetComponent<SphereCollider>().enabled = false;
+            //particle.SetActive(false);
+        }
+        
+        
     }
 }
