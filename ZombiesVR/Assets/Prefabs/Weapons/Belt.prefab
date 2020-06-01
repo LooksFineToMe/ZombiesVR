@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8427328551957604414}
   m_Layer: 8
   m_Name: Belt
-  m_TagString: Untagged
+  m_TagString: Belt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8427328551957604415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.7, y: 2.25, z: 6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 8427328552159920627}
   m_Father: {fileID: 0}
@@ -1223,7 +1223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  offset: {x: 0, y: 0.5, z: 0}
+  offset: {x: 0, y: -0.5, z: 0.1}
 --- !u!1 &8427328552159920620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8427328552159920620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.274, y: 0, z: 0}
+  m_LocalPosition: {x: -0.2836, y: 0, z: 0}
   m_LocalScale: {x: 0.06751027, y: 0.06751027, z: 0.06751027}
   m_Children: []
   m_Father: {fileID: 8427328551957604417}

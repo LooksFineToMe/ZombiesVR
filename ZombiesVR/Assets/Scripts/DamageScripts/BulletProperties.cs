@@ -12,6 +12,7 @@ public class BulletProperties : MonoBehaviour
     public Transform bulletPos;
     public Rigidbody impactTarget;
     public float bulletForce = 10;
+    public GameObject particle;
     void Start()
     {
         Destroy(gameObject, timeToDestroy);
@@ -19,8 +20,7 @@ public class BulletProperties : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/); }
-        Destroy(gameObject);
+        
         if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<RagdollHelper>() != null)
         {
             
@@ -47,5 +47,8 @@ public class BulletProperties : MonoBehaviour
                 impactTarget.AddForce(bulletPos.transform.forward * bulletForce, ForceMode.VelocityChange);
             }
         }
+        if (collision.gameObject.CompareTag("Enemy")) { collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/); }
+        gameObject.GetComponent<SphereCollider>().enabled = false;
+        particle.SetActive(false);
     }
 }
