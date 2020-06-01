@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -58,6 +59,6 @@ public class PlayerStats : MonoBehaviour
 
     private void GameOver()
     {
-        print("Game is Over");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

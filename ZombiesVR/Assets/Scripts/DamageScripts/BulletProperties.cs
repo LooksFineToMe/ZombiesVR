@@ -44,12 +44,12 @@ public class BulletProperties : MonoBehaviour
             {
                 helper.ragdolled = true;
                 collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage);
-                impactTarget.AddForce(bulletPos.transform.forward * bulletForce, ForceMode.VelocityChange);
+                //impactTarget.AddForce(bulletPos.transform.forward * bulletForce, ForceMode.VelocityChange);
             }
         }
         if (collision.gameObject.CompareTag("Enemy")) 
         { 
-            collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/);
+            //collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/);
             Destroy(gameObject);
             //gameObject.GetComponent<SphereCollider>().enabled = false;
             //particle.SetActive(false);

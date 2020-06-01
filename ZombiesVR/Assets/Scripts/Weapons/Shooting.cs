@@ -59,7 +59,7 @@ public class Shooting : MonoBehaviour
             }
             else if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo <= 0)
             {
-                currentAmmo--;
+                currentAmmo = 0;
                 nextTimeToFire = 0;
                 if (gunClick != null) { gunClick.Play(); }
                 Pulse(0.1f, 75, 75, source);//This Passes through the values for controller vibration
