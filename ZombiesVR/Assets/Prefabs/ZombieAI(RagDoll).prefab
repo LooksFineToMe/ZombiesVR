@@ -125,6 +125,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  isLeg: 1
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 6740941827861631420}
@@ -317,6 +318,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  isLeg: 0
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 5296930020163922890}
@@ -934,6 +936,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  isLeg: 1
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 7790032735906111414}
@@ -1572,6 +1575,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 10
   isDetachable: 1
+  isLeg: 0
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 2475074623359654352}
@@ -1826,6 +1830,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  isLeg: 1
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 2578415652037762679}
@@ -1957,6 +1962,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  isLeg: 0
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 7477610181958831603}
@@ -2087,6 +2093,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 0
+  isLeg: 0
   bloodParticle: {fileID: 0}
   particlePos: {fileID: 0}
   bloodOffset: {x: 0, y: 0, z: 0}
@@ -2402,6 +2409,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  isLeg: 0
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 6404271777985140990}
@@ -2533,6 +2541,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  isLeg: 0
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 6630742375939194882}
@@ -2819,6 +2828,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
+  isLeg: 1
   bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
     type: 3}
   particlePos: {fileID: 7790032735906111414}
@@ -3121,6 +3131,7 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 0
+  isLeg: 0
   bloodParticle: {fileID: 0}
   particlePos: {fileID: 0}
   bloodOffset: {x: 0, y: 0, z: 0}
