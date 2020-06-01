@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 public class PlayerBelt : MonoBehaviour
 {
     public Transform player;
+    public Vector3 offset;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +26,9 @@ public class PlayerBelt : MonoBehaviour
     {
         //trying to rotate on the Y based on the players head postion 
         //gameObject.transform.Rotate(0, player.transform.rotation.y, 0);
+    }
+    private void LateUpdate()
+    {
+        gameObject.transform.position = player.position + offset;
     }
 }
