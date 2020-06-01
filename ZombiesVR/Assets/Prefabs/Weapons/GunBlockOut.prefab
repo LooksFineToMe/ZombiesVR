@@ -510,7 +510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578510214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0369, z: 0.2186}
+  m_LocalPosition: {x: 0, y: 0.0369, z: 0.186}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8118540569940751822}
@@ -2536,9 +2536,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080344369}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.5464, y: 1, z: 14.701165}
+  m_LocalScale: {x: 9.546399, y: 1, z: 14.701166}
   m_Children: []
   m_Father: {fileID: 3200833460626378286}
   m_RootOrder: 0
@@ -2753,9 +2753,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861563627436943847}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0576, z: -0.1039}
-  m_LocalScale: {x: 0.0037863234, y: 0.0037863234, z: 0.0037863234}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.05760002, z: -0.103899956}
+  m_LocalScale: {x: 0.0037863236, y: 0.0037863234, z: 0.0037863234}
   m_Children:
   - {fileID: 2080344370}
   m_Father: {fileID: 8118540569940751822}
@@ -2819,8 +2819,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 7.460977, y: 1.5865822, z: 11.503861}
+  m_Center: {x: 0, y: -0.29329103, z: 0}
 --- !u!114 &1711953056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3692,9 +3692,9 @@ MonoBehaviour:
   trackPadHaptic:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
-  bullet: {fileID: 7348525535776300291, guid: 45f7c62033d796e48bdeae0987442f99, type: 3}
+  bullet: {fileID: 1044082343842805234, guid: 7fa8852e0c214264c84a92dc44affccf, type: 3}
   barrelPivot: {fileID: 578510215}
-  shootingSpeed: 20
+  shootingSpeed: 60
   fireRate: 0.5
   currentAmmo: 0
   magInGun: 0

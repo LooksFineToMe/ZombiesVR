@@ -3031,7 +3031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumVelocity: 1
   axeDamage: 3
-  axeForce: 15
+  axeForce: 30
   impactTarget: {fileID: 0}
   impact: {x: 0, y: 0, z: 0}
 --- !u!114 &174128442

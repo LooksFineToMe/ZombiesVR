@@ -19,6 +19,8 @@ public class PlayerStats : MonoBehaviour
     [Tooltip("How quickly we want the damage vignette to reset")]
     public float vgReset = 1f;
 
+    public VRPostProcessing vrpp;
+
     private Vignette vg;
 
     private void Start()
@@ -37,7 +39,9 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage()
     {
         health -= 1;
+
         DamageEffect();
+        
         print("player has been hit");
         if (health <= 0)
         {
@@ -48,6 +52,7 @@ public class PlayerStats : MonoBehaviour
     [ContextMenu("Damage")]
     private void DamageEffect()
     {
+        //vrpp.DamageEffect();
         vg.intensity.value = damageIntensity;
     }
 

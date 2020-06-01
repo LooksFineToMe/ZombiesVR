@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 720085048403549457}
   - component: {fileID: 720085048417702781}
   - component: {fileID: 720085048417666287}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BloodPoolGrowing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4770,7 +4770,7 @@ GameObject:
   - component: {fileID: 720085048417708577}
   - component: {fileID: 720085048419592395}
   - component: {fileID: 4823866740492961216}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BloodFlowing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
