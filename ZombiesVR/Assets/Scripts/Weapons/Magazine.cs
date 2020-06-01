@@ -30,7 +30,7 @@ public class Magazine : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(weaponType) && other.GetComponent<ReloadPoint>().magInGun == false)
+        if (other.gameObject.CompareTag(weaponType) && other.GetComponent<ReloadPoint>().magInGun == false && timer > 1)
         {
             
             other.gameObject.GetComponent<ReloadPoint>().ReloadGun(magCount);
