@@ -76,7 +76,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.002446711, y: -0.40595424, z: -0.0051453114}
+  m_ConnectedAnchor: {x: 0.002446413, y: -0.40595388, z: -0.00514549}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -269,7 +269,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.274047, y: 0.00000047683716, z: -0.00000014156103}
+  m_ConnectedAnchor: {x: 0.27404702, y: 0.00000023841858, z: -0.00000011175871}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -465,13 +465,19 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078998178780695415}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0aea4f06ebf004f44a509de32d95cfad, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 9453656e3d94cdd4b86bdfc7ff363230, type: 3}
   m_Controller: {fileID: 9100000, guid: fef9de6c85b89eb4987480081fb650aa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:LeftHandPinky2'\n\tTransform
+    'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
+    'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftHandMiddle3'\n\tTransform 'mixamorig:LeftShoulder'\n\tand
+    more ...\n\tFrom animation clip 'Zombie_Attack_Left'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -526,12 +532,13 @@ MonoBehaviour:
   m_RH: {fileID: 1315178961373879097}
   m_Eliminated: 0
   m_AttackRange: 2
-  m_TimeToGetUp: 2
+  m_TimeToGetUp: 5
   m_HeathPoints: 10
   m_AttackDamage: 1
   m_Animations: {fileID: 1078998178780695412}
   withinRange: 0
   m_DeathRagDoll: {fileID: 0}
+  crawling: 0
   m_Target: {fileID: 0}
   m_WaveValue: 1
   m_Spawner: {fileID: 0}
@@ -561,7 +568,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ragdollToMecanimBlendTime: 0.5
   anim: {fileID: 0}
-  LeftFootBone: {fileID: 0}
 --- !u!1 &1137643205212681774
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +893,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0912447, y: -0.06656402, z: -0.00055372715}
+  m_ConnectedAnchor: {x: -0.091243744, y: -0.06656402, z: -0.0005540848}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1023,7 +1029,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -840037777384891287, guid: 0aea4f06ebf004f44a509de32d95cfad, type: 3}
+  - {fileID: -840037777384891287, guid: 9453656e3d94cdd4b86bdfc7ff363230, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1048,7 +1054,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -1525253381413818895, guid: 0aea4f06ebf004f44a509de32d95cfad, type: 3}
+  m_Mesh: {fileID: -1525253381413818895, guid: 9453656e3d94cdd4b86bdfc7ff363230, type: 3}
   m_Bones:
   - {fileID: 4564631415326579682}
   - {fileID: 4571195173475737156}
@@ -1781,7 +1787,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0024468154, y: -0.40595403, z: -0.005170539}
+  m_ConnectedAnchor: {x: -0.002446264, y: -0.40595406, z: -0.005170107}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1913,7 +1919,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.18571721, y: 0.24191843, z: -0.018502459}
+  m_ConnectedAnchor: {x: 0.18571761, y: 0.24191871, z: -0.018502042}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -2044,7 +2050,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.004937649, y: 0.21595305, z: -0.0014855862}
+  m_ConnectedAnchor: {x: 0.0049381256, y: 0.21595281, z: -0.0014858246}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2360,7 +2366,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.2740468, y: 0.00000032782555, z: -0.000000059604645}
+  m_ConnectedAnchor: {x: -0.27404657, y: 0.00000029802322, z: -0.000000014901161}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2492,7 +2498,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.17084661, y: 0.27237058, z: 0.03471516}
+  m_ConnectedAnchor: {x: -0.17084667, y: 0.27237085, z: 0.03471554}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -2779,7 +2785,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0912447, y: -0.066563904, z: -0.00055372715}
+  m_ConnectedAnchor: {x: 0.091243744, y: -0.066563964, z: -0.0005540848}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3186,7 +3192,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4565884009001823619, guid: 0aea4f06ebf004f44a509de32d95cfad, type: 3}
+  - {fileID: -4565884009001823619, guid: 9453656e3d94cdd4b86bdfc7ff363230, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3211,7 +3217,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4777371684598551356, guid: 0aea4f06ebf004f44a509de32d95cfad, type: 3}
+  m_Mesh: {fileID: 4777371684598551356, guid: 9453656e3d94cdd4b86bdfc7ff363230, type: 3}
   m_Bones:
   - {fileID: 4564631415326579682}
   - {fileID: 4571195173475737156}

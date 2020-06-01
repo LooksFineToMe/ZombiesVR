@@ -40,8 +40,10 @@ public class CameraShoot : MonoBehaviour
 
                     //impact direction also according to the ray
                     impact = ray.direction * impactForce;
-                    hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(1);
 
+                    helper.ragdolled = true;
+                    //hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(2);
+                    
                     //the impact will be reapplied for the next 250ms
                     //to make the connected objects follow even though the simulated body joints
                     //might stretch
@@ -53,7 +55,7 @@ public class CameraShoot : MonoBehaviour
                     PickUPItem weapon = hit.collider.GetComponent<PickUPItem>();
                     GrabObject(weapon, true);
                 }
-                print(hit.collider.name);
+                //print(hit.collider.name);
             }
         }
         Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * Range, Color.blue);

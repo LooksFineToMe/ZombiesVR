@@ -51,7 +51,6 @@ public class EnemyBodyParts : MonoBehaviour
         if (isLeg && !aiZombie.crawling)  //create crawler zombie if the detached game object is a leg
         {
             StartCoroutine(aiZombie.CreateCrawler());
-            print("crawling");
         }
     }
 

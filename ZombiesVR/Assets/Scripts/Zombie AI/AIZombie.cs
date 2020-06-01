@@ -75,7 +75,7 @@ public class AIZombie : MonoBehaviour
             if (!withinRange)
             {
                 m_Animations.SetBool("Attacking", false);
-                if (clipinfo[0].clip.name == "ZOMBIE_Walk")
+                if (clipinfo[0].clip.name == "Zombie_Walk")
                 {
                     m_NavMesh.speed = 1f;
                     MoveTowards();
@@ -188,7 +188,7 @@ public class AIZombie : MonoBehaviour
     {
         m_NavMesh.speed = 0;
         m_RH.ragdolled = true;
-        Invoke(nameof(ResetKnock), m_TimeToGetUp);
+        //Invoke(nameof(ResetKnock), m_TimeToGetUp);
     }
 
     public IEnumerator CreateCrawler()
@@ -211,7 +211,7 @@ public class AIZombie : MonoBehaviour
         m_Animations.SetBool("Staggered", false);
     }
 
-    public void ResetKnock()
+    private void ResetKnock()
     {
         m_NavMesh.speed = 1;
         m_RH.ragdolled = false;

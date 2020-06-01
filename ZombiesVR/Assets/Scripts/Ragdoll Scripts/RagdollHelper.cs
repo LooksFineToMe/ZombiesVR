@@ -23,6 +23,8 @@ Perhaps there could be an editor script that precomputes the needed information.
 
 public class RagdollHelper : MonoBehaviour
 {
+    AIZombie zombieAI;
+
     //Possible states of the ragdoll
     enum RagdollState
     {
@@ -57,11 +59,11 @@ public class RagdollHelper : MonoBehaviour
     //Declare an Animator member variable, initialized in Start to point to this gameobject's Animator component.
     [HideInInspector] public Animator anim;
 
-    public Transform LeftFootBone;
-
     // Initialization, first frame of game
     void Start()
     {
+        zombieAI = GetComponent<AIZombie>();
+
         //Set all RigidBodies to kinematic so that they can be controlled with Mecanim
         //and there will be no glitches when transitioning to a ragdoll
         setKinematic(true);
@@ -88,74 +90,12 @@ public class RagdollHelper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     void LateUpdate()
     {
-        //Clear the get up animation controls so that we don't end up repeating the animations indefinitely
-        anim.SetBool("GetUpFromBelly", false);
-        anim.SetBool("GetUpFromBack", false);
-
-        //Blending from ragdoll back to animated
-        if (state == RagdollState.blendToAnim)
-        {
-            if (Time.time <= ragdollingEndTime + mecanimToGetUpTransitionTime)
-            {
-                //If we are waiting for Mecanim to start playing the get up animations, update the root of the mecanim
-                //character to the best match with the ragdoll
-                Vector3 animatedToRagdolled = ragdolledHipPosition - anim.GetBoneTransform(HumanBodyBones.Hips).position;
-                Vector3 newRootPosition = transform.position + animatedToRagdolled;
-
-                //Now cast a ray from the computed position downwards and find the highest hit that does not belong to the character 
-                RaycastHit[] hits = Physics.RaycastAll(new Ray(newRootPosition, Vector3.down));
-                newRootPosition.y = 0;
-                foreach (RaycastHit hit in hits)
-                {
-                    if (!hit.transform.IsChildOf(transform))
-                    {
-                        newRootPosition.y = Mathf.Max(newRootPosition.y, hit.point.y);
-                    }
-                }
-                transform.position = newRootPosition;
-
-                //Get body orientation in ground plane for both the ragdolled pose and the animated get up pose
-                Vector3 ragdolledDirection = ragdolledHeadPosition - ragdolledFeetPosition;
-                ragdolledDirection.y = 0;
-
-                Vector3 meanFeetPosition = 0.5f * (anim.GetBoneTransform(HumanBodyBones.LeftFoot).position + anim.GetBoneTransform(HumanBodyBones.RightFoot).position);
-                Vector3 animatedDirection = anim.GetBoneTransform(HumanBodyBones.Head).position - meanFeetPosition;
-                animatedDirection.y = 0;
-
-                //Try to match the rotations. Note that we can only rotate around Y axis, as the animated characted must stay upright,
-                //hence setting the y components of the vectors to zero. 
-                transform.rotation *= Quaternion.FromToRotation(animatedDirection.normalized, ragdolledDirection.normalized);
-            }
-            //compute the ragdoll blend amount in the range 0...1
-            float ragdollBlendAmount = 1.0f - (Time.time - ragdollingEndTime - mecanimToGetUpTransitionTime) / ragdollToMecanimBlendTime;
-            ragdollBlendAmount = Mathf.Clamp01(ragdollBlendAmount);
-
-            //In LateUpdate(), Mecanim has already updated the body pose according to the animations. 
-            //To enable smooth transitioning from a ragdoll to animation, we lerp the position of the hips 
-            //and slerp all the rotations towards the ones stored when ending the ragdolling
-            foreach (BodyPart b in bodyParts)
-            {
-                if (b.transform != transform)
-                { //this if is to prevent us from modifying the root of the character, only the actual body parts
-                  //position is only interpolated for the hips
-                    if (b.transform == anim.GetBoneTransform(HumanBodyBones.Hips))
-                        b.transform.position = Vector3.Lerp(b.transform.position, b.storedPosition, ragdollBlendAmount);
-                    //rotation is interpolated for all body parts
-                    b.transform.rotation = Quaternion.Slerp(b.transform.rotation, b.storedRotation, ragdollBlendAmount);
-                }
-            }
-
-            //if the ragdoll blend amount has decreased to zero, move to animated state
-            if (ragdollBlendAmount == 0)
-            {
-                state = RagdollState.animated;
-                return;
-            }
-        }
+        BlendToAnimation();
     }
 
     //A helper function to set the isKinematc property of all RigidBodies in the children of the 
@@ -199,6 +139,7 @@ public class RagdollHelper : MonoBehaviour
                     setKinematic(true); //disable gravity etc.
                     ragdollingEndTime = Time.time; //store the state change time
                     anim.enabled = true; //enable animation
+
                     state = RagdollState.blendToAnim;
 
                     //Store the ragdolled position for blending
@@ -214,7 +155,11 @@ public class RagdollHelper : MonoBehaviour
                     ragdolledHipPosition = anim.GetBoneTransform(HumanBodyBones.Hips).position;
 
                     //Initiate the get up animation
-                    if (anim.GetBoneTransform(HumanBodyBones.Hips).forward.y > 0) //hip hips forward vector pointing upwards, initiate the get up from back animation
+                    if (zombieAI.crawling)
+                    {
+                        return;
+                    }
+                    else if (anim.GetBoneTransform(HumanBodyBones.Hips).forward.y > 0) //hip hips forward vector pointing upwards, initiate the get up from back animation
                     {
                         anim.SetBool("GetUpFromBack", true);
                     }
@@ -225,6 +170,75 @@ public class RagdollHelper : MonoBehaviour
                 } //if (state==RagdollState.ragdolled)
             }   //if value==false	
         } //set
+    }
+
+    private void BlendToAnimation()
+    {
+        //Clear the get up animation controls so that we don't end up repeating the animations indefinitely
+        anim.SetBool("GetUpFromBelly", false);
+        anim.SetBool("GetUpFromBack", false);
+
+        //Blending from ragdoll back to animated
+        if (state == RagdollState.blendToAnim)
+        {
+            if (Time.time <= ragdollingEndTime + mecanimToGetUpTransitionTime)
+            {
+                //If we are waiting for Mecanim to start playing the get up animations, update the root of the mecanim
+                //character to the best match with the ragdoll
+                Vector3 animatedToRagdolled = ragdolledHipPosition - anim.GetBoneTransform(HumanBodyBones.Hips).position;
+                Vector3 newRootPosition = transform.position + animatedToRagdolled;
+
+                //Now cast a ray from the computed position downwards and find the highest hit that does not belong to the character 
+                RaycastHit[] hits = Physics.RaycastAll(new Ray(newRootPosition, Vector3.down));
+                newRootPosition.y = 0;
+                foreach (RaycastHit hit in hits)
+                {
+                    if (!hit.transform.IsChildOf(transform))
+                    {
+                        newRootPosition.y = Mathf.Max(newRootPosition.y, hit.point.y);
+                    }
+                }
+                transform.position = newRootPosition;
+
+                //Get body orientation in ground plane for both the ragdolled pose and the animated get up pose
+                Vector3 ragdolledDirection = ragdolledHeadPosition - ragdolledFeetPosition;
+                ragdolledDirection.y = 0;
+
+                Vector3 meanFeetPosition = 0.5f * (anim.GetBoneTransform(HumanBodyBones.LeftFoot).position + anim.GetBoneTransform(HumanBodyBones.RightFoot).position);
+                Vector3 animatedDirection = anim.GetBoneTransform(HumanBodyBones.Head).position - meanFeetPosition;
+                animatedDirection.y = 0;
+
+                //Try to match the rotations. Note that we can only rotate around Y axis, as the animated characted must stay upright,
+                //hence setting the y components of the vectors to zero. 
+                transform.rotation *= Quaternion.FromToRotation(animatedDirection.normalized, ragdolledDirection.normalized);
+            }
+
+            //compute the ragdoll blend amount in the range 0...1
+            float ragdollBlendAmount = 1.0f - (Time.time - ragdollingEndTime - mecanimToGetUpTransitionTime) / ragdollToMecanimBlendTime;
+            ragdollBlendAmount = Mathf.Clamp01(ragdollBlendAmount);
+
+            //In LateUpdate(), Mecanim has already updated the body pose according to the animations. 
+            //To enable smooth transitioning from a ragdoll to animation, we lerp the position of the hips 
+            //and slerp all the rotations towards the ones stored when ending the ragdolling
+            foreach (BodyPart b in bodyParts)
+            {
+                if (b.transform != transform)
+                { //this if is to prevent us from modifying the root of the character, only the actual body parts
+                  //position is only interpolated for the hips
+                    if (b.transform == anim.GetBoneTransform(HumanBodyBones.Hips))
+                        b.transform.position = Vector3.Lerp(b.transform.position, b.storedPosition, ragdollBlendAmount);
+                    //rotation is interpolated for all body parts
+                    b.transform.rotation = Quaternion.Slerp(b.transform.rotation, b.storedRotation, ragdollBlendAmount);
+                }
+            }
+
+            //if the ragdoll blend amount has decreased to zero, move to animated state
+            if (ragdollBlendAmount == 0)
+            {
+                state = RagdollState.animated;
+                return;
+            }
+        }
     }
 
 }
