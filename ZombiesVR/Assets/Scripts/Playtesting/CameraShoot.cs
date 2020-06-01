@@ -35,17 +35,17 @@ public class CameraShoot : MonoBehaviour
                     //find the RagdollHelper component and activate ragdolling
                     RagdollHelper helper = hit.rigidbody.GetComponentInParent<RagdollHelper>();
                     AIZombie ai = hit.rigidbody.GetComponentInParent<AIZombie>();
-                    ai.Stagger();
                     //set the impact target to whatever the ray hit
-                    //impactTarget = hit.rigidbody;
+                    impactTarget = hit.rigidbody;
 
-                    ////impact direction also according to the ray
-                    //impact = ray.direction * impactForce;
+                    //impact direction also according to the ray
+                    impact = ray.direction * impactForce;
+                    ai.Knock();
 
-                    ////the impact will be reapplied for the next 250ms
-                    ////to make the connected objects follow even though the simulated body joints
-                    ////might stretch
-                    //impactEndTime = Time.deltaTime + 2f;
+                    //the impact will be reapplied for the next 250ms
+                    //to make the connected objects follow even though the simulated body joints
+                    //might stretch
+                    impactEndTime = Time.deltaTime + 2f;
                 }
 
                 if (hit.collider.tag == "Gun" && hit.collider.GetComponent<PickUPItem>() != null)

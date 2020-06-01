@@ -165,12 +165,6 @@ public class AIZombie : MonoBehaviour
     {
         m_HeathPoints -= damageSource;
         timer = 0;
-        //if (knocked)
-        //{
-        //    m_NavMesh.isStopped = true;
-        //    m_RH.ragdolled = true;
-        //    Invoke(nameof(ResetKnock), m_TimeToGetUp);
-        //}
 
         if (m_HeathPoints <= 0)
         {
@@ -182,6 +176,13 @@ public class AIZombie : MonoBehaviour
             //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
             Destroy(this.gameObject, 5);//keep this to optimise performence
         }
+    }
+
+    public void Knock()
+    {
+        m_NavMesh.isStopped = true;
+        m_RH.ragdolled = true;
+        Invoke(nameof(ResetKnock), m_TimeToGetUp);
     }
 
     public void Stagger()
