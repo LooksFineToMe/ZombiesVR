@@ -20,6 +20,8 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [SerializeField] GameObject m_DeathRagDoll;
+
+    [HideInInspector] public bool crawling = false;
     
     //Creating a quick timer just to get them walking again
     //TESTING ONLY
@@ -57,18 +59,17 @@ public class AIZombie : MonoBehaviour
     void FixedUpdate()
     {
         clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
-        print(clipinfo[0].clip.name);
+        //print(clipinfo[0].clip.name);
 
         if (m_Target != null && m_RH.ragdolled == false)
         {
             
             withinRange = CalculateDistance();
 
-            if (withinRange)
+            if (withinRange && !crawling)
             {
                 m_Animations.SetBool("Attacking", true);
                 m_NavMesh.speed = .5f;
-                RotateTowards();
             }
 
             if (!withinRange)
@@ -77,6 +78,11 @@ public class AIZombie : MonoBehaviour
                 if (clipinfo[0].clip.name == "ZOMBIE_Walk")
                 {
                     m_NavMesh.speed = 1f;
+                    MoveTowards();
+                }
+                else if (clipinfo[0].clip.name == "Zombie_Crawl")
+                {
+                    m_NavMesh.speed = 0.8f;
                     MoveTowards();
                 }
             }
@@ -124,7 +130,7 @@ public class AIZombie : MonoBehaviour
         }
         else if (m_Eliminated)
         {
-            m_NavMesh.isStopped = true;
+            m_NavMesh.speed = 0;
         }
     }
 
@@ -180,9 +186,18 @@ public class AIZombie : MonoBehaviour
 
     public void Knock()
     {
-        m_NavMesh.isStopped = true;
+        m_NavMesh.speed = 0;
         m_RH.ragdolled = true;
         Invoke(nameof(ResetKnock), m_TimeToGetUp);
+    }
+
+    public IEnumerator CreateCrawler()
+    {
+        m_RH.ragdolled = true;
+        m_NavMesh.speed = 0;
+        yield return new WaitForSeconds(m_TimeToGetUp);
+        m_Animations.SetTrigger("Crawler");
+        m_NavMesh.speed = 1;
     }
 
     public void Stagger()
@@ -198,7 +213,7 @@ public class AIZombie : MonoBehaviour
 
     public void ResetKnock()
     {
-        m_NavMesh.isStopped = false;
+        m_NavMesh.speed = 1;
         m_RH.ragdolled = false;
     }
 }

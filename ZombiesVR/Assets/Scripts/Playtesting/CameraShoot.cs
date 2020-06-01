@@ -40,7 +40,7 @@ public class CameraShoot : MonoBehaviour
 
                     //impact direction also according to the ray
                     impact = ray.direction * impactForce;
-                    ai.Knock();
+                    hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(1);
 
                     //the impact will be reapplied for the next 250ms
                     //to make the connected objects follow even though the simulated body joints
