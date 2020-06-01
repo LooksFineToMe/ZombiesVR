@@ -20,7 +20,7 @@ public class BulletProperties : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        ContactPoint contactPoint = collision.contacts[0];
         if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<RagdollHelper>() != null)
         {
             
@@ -44,6 +44,7 @@ public class BulletProperties : MonoBehaviour
             {
                 helper.ragdolled = true;
                 collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage);
+                impactTarget.AddForce(-contactPoint.normal * (bulletForce), ForceMode.VelocityChange);
                 //impactTarget.AddForce(bulletPos.transform.forward * bulletForce, ForceMode.VelocityChange);
             }
         }
