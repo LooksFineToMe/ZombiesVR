@@ -28,6 +28,15 @@ public class EnemyBodyParts : MonoBehaviour
             DetachGameObject();
         }
     }
+    public void Stagger(int damageSource)
+    {
+        aiZombie.TakePlayerDamage(damageSource/*, knocked*/);
+        aiZombie.Stagger();
+        if (isDetachable == true)
+        {
+            DetachGameObject();
+        }
+    }
 
     [ContextMenu("Dismemberment")]
     void DetachGameObject()

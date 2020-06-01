@@ -13,6 +13,8 @@ public class MeleeDamage : MonoBehaviour
     [Header("RagDoll Settings")]
     public Rigidbody impactTarget = null;
     public Vector3 impact;
+
+    float timer;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -57,14 +59,16 @@ public class MeleeDamage : MonoBehaviour
             }
         }
         //REMEMBER TO RE_ENABLE THIS
-        else if (rb.velocity.magnitude > 1 && rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy"))
+        else if (rb.velocity.magnitude > 1f && rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy") && timer >= .2f)
         {
-            collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
+            timer = 0;
+            collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(axeDamage);
         }
     }
     
     private void Update()
     {
+        timer += Time.deltaTime;
         print(rb.velocity);
     }
 }
