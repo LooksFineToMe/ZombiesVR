@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 624898738}
   - component: {fileID: 624898741}
   - component: {fileID: 624898740}
-  - component: {fileID: 624898739}
   m_Layer: 0
   m_Name: Bullet (4)
   m_TagString: Untagged
@@ -80,20 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &624898739
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624898737}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &677137691
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +90,6 @@ GameObject:
   - component: {fileID: 677137692}
   - component: {fileID: 677137695}
   - component: {fileID: 677137694}
-  - component: {fileID: 677137693}
   m_Layer: 0
   m_Name: Bullet (6)
   m_TagString: Untagged
@@ -174,20 +158,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &677137693
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677137691}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &784800061
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +207,6 @@ GameObject:
   - component: {fileID: 1406590481}
   - component: {fileID: 1406590484}
   - component: {fileID: 1406590483}
-  - component: {fileID: 1406590482}
   m_Layer: 0
   m_Name: Bullet (7)
   m_TagString: Untagged
@@ -306,20 +275,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1406590482
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406590480}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1496768329
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +286,6 @@ GameObject:
   - component: {fileID: 1496768330}
   - component: {fileID: 1496768333}
   - component: {fileID: 1496768332}
-  - component: {fileID: 1496768331}
   m_Layer: 0
   m_Name: Bullet (1)
   m_TagString: Untagged
@@ -400,20 +354,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1496768331
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496768329}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1532055369
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +365,6 @@ GameObject:
   - component: {fileID: 1532055370}
   - component: {fileID: 1532055373}
   - component: {fileID: 1532055372}
-  - component: {fileID: 1532055371}
   m_Layer: 0
   m_Name: Bullet (3)
   m_TagString: Untagged
@@ -494,20 +433,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1532055371
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532055369}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1693696713
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +444,6 @@ GameObject:
   - component: {fileID: 1693696714}
   - component: {fileID: 1693696717}
   - component: {fileID: 1693696716}
-  - component: {fileID: 1693696715}
   m_Layer: 0
   m_Name: Bullet (2)
   m_TagString: Untagged
@@ -588,20 +512,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1693696715
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693696713}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1949708691
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +523,6 @@ GameObject:
   - component: {fileID: 1949708692}
   - component: {fileID: 1949708695}
   - component: {fileID: 1949708694}
-  - component: {fileID: 1949708693}
   m_Layer: 0
   m_Name: Bullet (5)
   m_TagString: Untagged
@@ -682,20 +591,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1949708693
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949708691}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1970827899
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +602,6 @@ GameObject:
   - component: {fileID: 1970827903}
   - component: {fileID: 1970827902}
   - component: {fileID: 1970827901}
-  - component: {fileID: 1970827900}
   m_Layer: 0
   m_Name: Bullet (8)
   m_TagString: Untagged
@@ -776,20 +670,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1970827900
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970827899}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &165882594982697323
 GameObject:
   m_ObjectHideFlags: 0
