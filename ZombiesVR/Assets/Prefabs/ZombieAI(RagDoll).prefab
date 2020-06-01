@@ -125,8 +125,9 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
-  bloodParticle: {fileID: 0}
-  particlePos: {fileID: 0}
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 6740941827861631420}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
@@ -933,8 +934,9 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
-  bloodParticle: {fileID: 0}
-  particlePos: {fileID: 0}
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 7790032735906111414}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
@@ -1570,8 +1572,9 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 10
   isDetachable: 1
-  bloodParticle: {fileID: 0}
-  particlePos: {fileID: 0}
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 2475074623359654352}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
@@ -1823,8 +1826,9 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
-  bloodParticle: {fileID: 0}
-  particlePos: {fileID: 0}
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 2578415652037762679}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
@@ -2815,8 +2819,9 @@ MonoBehaviour:
   aiZombie: {fileID: 1078998178780695414}
   extraDamage: 0
   isDetachable: 1
-  bloodParticle: {fileID: 0}
-  particlePos: {fileID: 0}
+  bloodParticle: {fileID: 720085048403892299, guid: e0eb229406bdd804db2b1637bfc0ff94,
+    type: 3}
+  particlePos: {fileID: 7790032735906111414}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   detachedScale: {x: 0, y: 0, z: 0}
