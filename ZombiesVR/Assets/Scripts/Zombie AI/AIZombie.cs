@@ -15,13 +15,15 @@ public class AIZombie : MonoBehaviour
     [SerializeField] bool m_Eliminated = false;
     [SerializeField] float m_AttackRange = 2f;
     [SerializeField] float m_TimeToGetUp = 2f;
-    [SerializeField] public float m_HeathPoints = 10;
+    [SerializeField] public float m_HeathPoints = 100;
     [SerializeField] public int m_AttackDamage = 1;
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [SerializeField] GameObject m_DeathRagDoll;
 
     [HideInInspector] public bool crawling = false;
+    private bool isBleeding = false;
+    private float m_BleedingSpeed;
     
     //Creating a quick timer just to get them walking again
     //TESTING ONLY
@@ -91,6 +93,9 @@ public class AIZombie : MonoBehaviour
         {
             FindTarget();
         }
+
+        if (isBleeding)
+            BleedingOut();
     }
     private void Update()
     {
@@ -181,6 +186,21 @@ public class AIZombie : MonoBehaviour
             m_RH.ragdolled = true;
             //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
             Destroy(this.gameObject, 5);//keep this to optimise performence
+        }
+    }
+
+    //call this in body part scripts
+    public void CallBleedOut(float bleedSpeed)
+    {
+        isBleeding = true;
+        m_BleedingSpeed = bleedSpeed; //set the private float to = this local variable
+    }
+
+    private void BleedingOut() //if bleed out is true then call this function every frame until death
+    {
+        if (m_HeathPoints >= 0 && !m_Eliminated)
+        {
+            m_HeathPoints -= m_BleedingSpeed * Time.deltaTime;
         }
     }
 
