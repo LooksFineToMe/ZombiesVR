@@ -20,7 +20,6 @@ public class AIZombie : MonoBehaviour
     [SerializeField] public int m_AttackDamage = 1;
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
-    [SerializeField] GameObject m_DeathRagDoll;
 
     [HideInInspector] public bool crawling = false;
     private bool isBleeding = false;
@@ -217,30 +216,29 @@ public class AIZombie : MonoBehaviour
         }
     }
 
-    public void Knock()
-    {
-        m_NavMesh.speed = 0;
-        m_RH.ragdolled = true;
-        //Invoke(nameof(ResetKnock), m_TimeToGetUp);
-    }
-
     public IEnumerator CreateCrawler()
     {
         m_RH.ragdolled = true;
-        m_NavMesh.speed = 0;
-        yield return new WaitForSeconds(m_TimeToGetUp);
-        m_Animations.SetTrigger("Crawler");
-        m_NavMesh.speed = 1;
-    }
-
-    public void Stagger()
-    {
-        m_Animations.SetBool("Staggered", true);
-
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = true;
+        yield return new WaitForSeconds(m_TimeToGetUp);
+        m_RH.ragdolled = false;
+        m_Animations.SetTrigger("Crawler");
+        m_NavMesh.velocity = agentVelocity;
+        m_NavMesh.isStopped = false;
+    }
 
-        Invoke(nameof(ResetStagger), .01f);
+    [ContextMenu("Stagger")]
+    public void Stagger()
+    {
+        if (!crawling)
+        {
+            m_Animations.SetBool("Staggered", true);
+            m_NavMesh.velocity = Vector3.zero;
+            m_NavMesh.isStopped = true;
+
+            Invoke(nameof(ResetStagger), .01f);
+        }
     }
 
     private void ResetStagger()
@@ -248,11 +246,5 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.velocity = agentVelocity;
         m_NavMesh.isStopped = false;
         m_Animations.SetBool("Staggered", false);
-    }
-
-    private void ResetKnock()
-    {
-        m_NavMesh.speed = 1;
-        m_RH.ragdolled = false;
     }
 }
