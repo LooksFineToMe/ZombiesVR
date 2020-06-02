@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class AIZombie : MonoBehaviour
@@ -68,6 +69,7 @@ public class AIZombie : MonoBehaviour
             {
                 fightingPlayer = true; //bool to tell the body parts to apply damage
                 m_Animations.SetBool("Attacking", true);
+                AttackPlayer();
                 m_NavMesh.speed = .5f;
                 RotateTowards();
             }
@@ -112,6 +114,12 @@ public class AIZombie : MonoBehaviour
         {
             this.enabled = false;
         }
+    }
+
+    private void AttackPlayer()
+    {
+        int randomNumber = Random.Range(1, 4);
+        m_Animations.SetTrigger("Attack" + randomNumber);
     }
 
     private void MoveTowards()
