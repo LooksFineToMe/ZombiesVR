@@ -118,7 +118,7 @@ public class AIZombie : MonoBehaviour
 
     private void AttackPlayer()
     {
-        int randomNumber = Random.Range(1, 4);
+        int randomNumber = Random.Range(1, 2);
         m_Animations.SetTrigger("Attack" + randomNumber);
     }
 
