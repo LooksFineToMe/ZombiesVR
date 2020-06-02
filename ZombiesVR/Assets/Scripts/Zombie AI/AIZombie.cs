@@ -11,7 +11,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] float m_MovementSpeed = 5f;
     [SerializeField] float m_RotationSpeed = 5f;
     [SerializeField] Rigidbody[] m_rb;
-    [SerializeField] RagdollHelper m_RH;
+    [SerializeField]public RagdollHelper m_RH;
     [Header("Combat")]
     [SerializeField] bool m_Eliminated = false;
     [SerializeField] float m_AttackRange = 2f;
@@ -202,7 +202,7 @@ public class AIZombie : MonoBehaviour
     public void CallBleedOut(float bleedSpeed)
     {
         isBleeding = true;
-        m_BleedingSpeed = bleedSpeed; //set the private float to = this local variable
+        m_BleedingSpeed += bleedSpeed; //adds the private float to + this local variable
     }
 
     private void BleedingOut() //if bleed out is true then call this function every frame until death

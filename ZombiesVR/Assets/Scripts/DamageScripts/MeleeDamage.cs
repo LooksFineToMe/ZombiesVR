@@ -51,7 +51,7 @@ public class MeleeDamage : MonoBehaviour
                 //impact = axePos.transform.TransformDirection(Vector3.forward) * 2.0f;
                 //to make the connected objects follow even though the simulated body joints
                 //might stretch
-                if (collision.rigidbody.GetComponentInParent<RagdollHelper>().ragdolled == false && rb.velocity.magnitude >= minimumVelocity)
+                if (collision.rigidbody.GetComponentInParent<AIZombie>().m_RH.ragdolled == false && rb.velocity.magnitude >= minimumVelocity)
                 {
                     StartCoroutine(zombie.ZombieRagdoll());
                     collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
