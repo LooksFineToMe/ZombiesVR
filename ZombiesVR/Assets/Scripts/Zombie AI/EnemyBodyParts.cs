@@ -20,7 +20,7 @@ public class EnemyBodyParts : MonoBehaviour
     public Vector3 detachedScale;
     
     //added "knocked" bool to AI.TAKEPLAYERDAMAGE
-    public void DamageBodyPart(int damagesource/*, bool knocked*/)
+    public void DamageBodyPart(float damagesource/*, bool knocked*/)
     {
         aiZombie.TakePlayerDamage(damagesource + extraDamage/*, knocked*/);
         if (isDetachable == true)
@@ -28,7 +28,7 @@ public class EnemyBodyParts : MonoBehaviour
             DetachGameObject();
         }
     }
-    public void Stagger(int damageSource)
+    public void Stagger(float damageSource)
     {
         aiZombie.TakePlayerDamage(damageSource/*, knocked*/);
         aiZombie.Stagger();
