@@ -16,6 +16,7 @@ public class EnemyBodyParts : MonoBehaviour
     public Vector3 bloodOffset;
     [Tooltip("Specify if this body part can apply damage to the player")]
     public bool applyDamage = false;
+    public float bleedTimer;
 
     public Vector3 detachedScale;
     
@@ -28,11 +29,11 @@ public class EnemyBodyParts : MonoBehaviour
             DetachGameObject();
         }
     }
-    public void Stagger(float damageSource)
+    public void Stagger(float damageSource, int bodypartDamge)
     {
         aiZombie.TakePlayerDamage(damageSource/*, knocked*/);
         aiZombie.Stagger();
-        if (isDetachable == true)
+        if (isDetachable == true && bodypartDamge >= 3)
         {
             DetachGameObject();
         }
@@ -43,7 +44,7 @@ public class EnemyBodyParts : MonoBehaviour
     {
         if (applyDamage)
             applyDamage = false;
-
+        //aiZombie.BleedOut(bleedTimer);
         gameObject.transform.localScale = detachedScale;
         //to avoid the blood particle effect size being change by the detatch scale we set its position to the parent of the arm
         Instantiate(bloodParticle, gameObject.transform.position + bloodOffset, Quaternion.identity);
