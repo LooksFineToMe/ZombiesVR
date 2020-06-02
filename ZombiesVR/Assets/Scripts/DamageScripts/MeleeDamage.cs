@@ -10,6 +10,7 @@ public class MeleeDamage : MonoBehaviour
     public float axeDamage = 3;
     public float axeForce = 30f;
     public int bodypartDamage;
+    public bool isBluntWeapon;
 
     [Header("RagDoll Settings")]
     public Rigidbody impactTarget = null;
@@ -24,7 +25,7 @@ public class MeleeDamage : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         
-        if (rb.velocity.magnitude >= minimumVelocity && collision.gameObject.CompareTag("Enemy")) 
+        if (collision.gameObject.CompareTag("Enemy")) 
         {
             ContactPoint contactPoint = collision.contacts[0];
             
@@ -50,7 +51,7 @@ public class MeleeDamage : MonoBehaviour
                 //impact = axePos.transform.TransformDirection(Vector3.forward) * 2.0f;
                 //to make the connected objects follow even though the simulated body joints
                 //might stretch
-                if (collision.rigidbody.GetComponentInParent<RagdollHelper>().ragdolled == false)
+                if (collision.rigidbody.GetComponentInParent<RagdollHelper>().ragdolled == false && rb.velocity.magnitude >= minimumVelocity)
                 {
                     helper.ragdolled = true;
                     collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
@@ -58,14 +59,24 @@ public class MeleeDamage : MonoBehaviour
                     impactTarget.AddForce(-contactPoint.normal * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
                     impactTarget = null;
                 }
+                else if (rb.velocity.magnitude > 1f && rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy") && timer >= .2f && isBluntWeapon == true)
+                {
+                    timer = 0;
+                    helper.ragdolled = true;
+                    impactTarget.AddForce(-contactPoint.normal * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
+                    collision.rigidbody.GetComponent<EnemyBodyParts>().BluntDamage(axeDamage);
+                }
+                else if (rb.velocity.magnitude > 1f && rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy") && timer >= .2f && isBluntWeapon == false)
+                {
+                    timer = 0;
+                    collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(axeDamage, bodypartDamage);
+                }
             }
+            
         }
         //REMEMBER TO RE_ENABLE THIS
-        else if (rb.velocity.magnitude > 1f && rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy") && timer >= .2f)
-        {
-            timer = 0;
-            collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(axeDamage, bodypartDamage);
-        }
+        
+        
     }
     
     private void Update()
