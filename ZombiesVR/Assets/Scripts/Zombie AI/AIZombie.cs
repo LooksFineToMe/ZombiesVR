@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -115,7 +116,7 @@ public class AIZombie : MonoBehaviour
     {
         if (m_Spawner.m_Players.Count != 0)
         {
-            m_Target = m_Spawner.m_Players[Random.Range(0, m_Spawner.m_Players.Count)];
+            m_Target = m_Spawner.m_Players[UnityEngine.Random.Range(0, m_Spawner.m_Players.Count)];
         }
         else
         {
@@ -179,14 +180,19 @@ public class AIZombie : MonoBehaviour
 
         if (m_HeathPoints <= 0)
         {
-            m_Eliminated = true; //bool to tell the AI to stop moving
-
-            m_Spawner.m_LivingZombies.Remove(this);
-
-            m_RH.ragdolled = true;
-            //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
-            Destroy(this.gameObject, 5);//keep this to optimise performence
+            DeahtEvent();
         }
+    }
+
+    private void DeahtEvent()
+    {
+        m_Eliminated = true; //bool to tell the AI to stop moving
+
+        m_Spawner.m_LivingZombies.Remove(this);
+
+        m_RH.ragdolled = true;
+        //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
+        Destroy(this.gameObject, 5);//keep this to optimise performence
     }
 
     //call this in body part scripts
@@ -201,6 +207,10 @@ public class AIZombie : MonoBehaviour
         if (m_HeathPoints >= 0 && !m_Eliminated)
         {
             m_HeathPoints -= m_BleedingSpeed * Time.deltaTime;
+        }
+        else if (m_HeathPoints <= 0)
+        {
+            DeahtEvent();
         }
     }
 
