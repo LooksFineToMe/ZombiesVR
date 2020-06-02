@@ -15,7 +15,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] bool m_Eliminated = false;
     [SerializeField] float m_AttackRange = 2f;
     [SerializeField] float m_TimeToGetUp = 2f;
-    [SerializeField] public int m_HeathPoints = 10;
+    [SerializeField] public float m_HeathPoints = 10;
     [SerializeField] public int m_AttackDamage = 1;
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
@@ -167,7 +167,7 @@ public class AIZombie : MonoBehaviour
     }
 
     //lose hp, did we knock the player over with the weapon? or did we kill him with the next blow || call function on collision enter
-    public void TakePlayerDamage(int damageSource/*, bool knocked*/)
+    public void TakePlayerDamage(float damageSource/*, bool knocked*/)
     {
         m_HeathPoints -= damageSource;
         timer = 0;
