@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBodyParts : MonoBehaviour
 {
     public AIZombie aiZombie;
-    public int extraDamage;
+    public float extraDamage;
     public bool isDetachable;
     [Tooltip("If this gameobject is detachable then ask if its also the leg, if this is a leg then we set to a crawling anitmation when detached")]
     public bool isLeg = false;

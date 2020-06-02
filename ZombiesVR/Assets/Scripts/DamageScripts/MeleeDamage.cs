@@ -7,7 +7,7 @@ public class MeleeDamage : MonoBehaviour
 {
     Rigidbody rb;
     public float minimumVelocity = 0.05f;
-    public int axeDamage = 3;
+    public float axeDamage = 3;
     public float axeForce = 30f;
 
     [Header("RagDoll Settings")]
