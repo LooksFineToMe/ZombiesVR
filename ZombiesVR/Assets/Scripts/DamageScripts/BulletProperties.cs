@@ -6,7 +6,7 @@ public class BulletProperties : MonoBehaviour
 {
     [Header("BulletProperties")]
     public float timeToDestroy;
-    public int bulletDamage = 1;
+    public float bulletDamage = 1;
 
     [Header("RagDollPhysics")]
     public Transform bulletPos;
