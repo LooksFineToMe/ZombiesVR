@@ -3029,7 +3029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f8d7423500067469029fc0403497de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumVelocity: 4
+  minimumVelocity: 5
   axeDamage: 30
   axeForce: 10
   bodypartDamage: 3

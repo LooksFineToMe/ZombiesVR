@@ -2515,10 +2515,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f8d7423500067469029fc0403497de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumVelocity: 1
-  axeDamage: 30
+  minimumVelocity: 4
+  axeDamage: 20
   axeForce: 15
   bodypartDamage: 0
+  isBluntWeapon: 1
   impactTarget: {fileID: 0}
   impact: {x: 0, y: 0, z: 0}
 --- !u!114 &8646273310862745469
