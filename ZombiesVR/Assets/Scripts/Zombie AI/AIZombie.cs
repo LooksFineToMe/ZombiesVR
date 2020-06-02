@@ -25,13 +25,6 @@ public class AIZombie : MonoBehaviour
     [HideInInspector] public bool crawling = false;
     private bool isBleeding = false;
     private float m_BleedingSpeed;
-    
-    //Creating a quick timer just to get them walking again
-    //TESTING ONLY
-    float timer;
-    float riseAgain = 4;
-    //these floats are just used in the update function
-    //TESTING ONLY
 
     private float attackTime;
     private float walkTime;
@@ -75,6 +68,7 @@ public class AIZombie : MonoBehaviour
             {
                 m_Animations.SetBool("Attacking", true);
                 m_NavMesh.speed = .5f;
+                RotateTowards();
             }
 
             if (!withinRange)
@@ -87,7 +81,7 @@ public class AIZombie : MonoBehaviour
                 }
                 else if (clipinfo[0].clip.name == "Zombie_Crawl")
                 {
-                    m_NavMesh.speed = 0.8f;
+                    m_NavMesh.speed = 0.5f;
                     MoveTowards();
                 }
             }
@@ -102,15 +96,7 @@ public class AIZombie : MonoBehaviour
     }
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= riseAgain)
-        {
-            m_RH.ragdolled = false;
-        }
-#if UNITY_EDITOR
-        if (m_Eliminated)
-            TakePlayerDamage(m_HeathPoints);
-#endif
+
     }
 
     //for testing purposes, will intergrate AI Wander soon
@@ -130,24 +116,29 @@ public class AIZombie : MonoBehaviour
     {
         if (!m_Eliminated)
         {
-            m_NavMesh.destination = m_Target.transform.position;
+            Vector3 target = m_Target.transform.position - transform.position;
 
-            Quaternion newRot = Quaternion.LookRotation(m_NavMesh.desiredVelocity);
+            if (target != Vector3.zero)
+            {
+                m_NavMesh.destination = m_Target.transform.position;
+
+                Quaternion newRot = Quaternion.LookRotation(target);
+
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_RotationSpeed * Time.deltaTime);
+            }
+        }
+    }
+    
+    private void RotateTowards()
+    {
+        Vector3 target = m_Target.transform.position - transform.position;
+        if (target != Vector3.zero)
+        {
+            Quaternion newRot = Quaternion.LookRotation(target);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_RotationSpeed * Time.deltaTime);
         }
-        else if (m_Eliminated)
-        {
-            m_NavMesh.speed = 0;
-        }
-    }
 
-    //not for this project
-    private void RotateTowards()
-    {
-        Quaternion newRot = Quaternion.LookRotation(m_NavMesh.desiredVelocity);
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_RotationSpeed * Time.deltaTime);
     }
 
     private bool CalculateDistance()
@@ -178,7 +169,6 @@ public class AIZombie : MonoBehaviour
     public void TakePlayerDamage(float damageSource/*, bool knocked*/)
     {
         m_HeathPoints -= damageSource;
-        timer = 0;
 
         if (m_HeathPoints <= 0)
         {
@@ -186,9 +176,20 @@ public class AIZombie : MonoBehaviour
         }
     }
 
+    public IEnumerator ZombieRagdoll()
+    {
+        m_RH.ragdolled = true;
+        yield return new WaitForSeconds(m_TimeToGetUp);
+        m_RH.ragdolled = false;
+    }
+
+    [ContextMenu("Kill")]
     private void DeahtEvent()
     {
         m_Eliminated = true; //bool to tell the AI to stop moving
+
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = true;
 
         m_Spawner.m_LivingZombies.Remove(this);
 
