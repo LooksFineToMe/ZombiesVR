@@ -38,6 +38,8 @@ public class BulletProperties : MonoBehaviour
             impactTarget = collision.rigidbody;
 
             collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(bulletDamage, bodypartDamage);
+
+            impactTarget = null;
             //impact direction also according to the ray
             //impact = axePos.transform.TransformDirection(Vector3.forward) * 2.0f;
             //to make the connected objects follow even though the simulated body joints

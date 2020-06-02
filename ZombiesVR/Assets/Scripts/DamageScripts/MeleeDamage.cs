@@ -56,6 +56,7 @@ public class MeleeDamage : MonoBehaviour
                     collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
                     //impactTarget.AddForce(axePos.transform.forward * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
                     impactTarget.AddForce(-contactPoint.normal * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
+                    impactTarget = null;
                 }
             }
         }

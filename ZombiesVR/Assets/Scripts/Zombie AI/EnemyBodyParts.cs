@@ -17,6 +17,7 @@ public class EnemyBodyParts : MonoBehaviour
     [Tooltip("Specify if this body part can apply damage to the player")]
     public bool applyDamage = false;
     public float bleedTimer;
+    private int bodyPartDamaged;
 
     public Vector3 detachedScale;
     
@@ -29,11 +30,13 @@ public class EnemyBodyParts : MonoBehaviour
             DetachGameObject();
         }
     }
-    public void Stagger(float damageSource, int bodypartDamge)
+    public void Stagger(float damageSource, int bodypartDamage)
     {
         aiZombie.TakePlayerDamage(damageSource/*, knocked*/);
         aiZombie.Stagger();
-        if (isDetachable == true && bodypartDamge >= 3)
+        bodyPartDamaged += bodypartDamage;
+
+        if (isDetachable == true && bodyPartDamaged >= 3)
         {
             DetachGameObject();
         }
