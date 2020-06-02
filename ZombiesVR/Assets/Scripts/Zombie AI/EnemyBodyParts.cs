@@ -47,7 +47,7 @@ public class EnemyBodyParts : MonoBehaviour
     {
         if (applyDamage)
             applyDamage = false;
-        //aiZombie.BleedOut(bleedTimer);
+        aiZombie.CallBleedOut(bleedTimer);
         gameObject.transform.localScale = detachedScale;
         //to avoid the blood particle effect size being change by the detatch scale we set its position to the parent of the arm
         Instantiate(bloodParticle, gameObject.transform.position + bloodOffset, Quaternion.identity);
