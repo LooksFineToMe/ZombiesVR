@@ -38,6 +38,8 @@ public class AIZombie : MonoBehaviour
 
     private bool attackedPlayer;
 
+    private Vector3 agentVelocity = Vector3.zero;
+
     private NavMeshAgent m_NavMesh;
     [Header("Player Specific")]
     [SerializeField] GameObject m_Target;
@@ -233,11 +235,17 @@ public class AIZombie : MonoBehaviour
     public void Stagger()
     {
         m_Animations.SetBool("Staggered", true);
+
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = true;
+
         Invoke(nameof(ResetStagger), .01f);
     }
 
     private void ResetStagger()
     {
+        m_NavMesh.velocity = agentVelocity;
+        m_NavMesh.isStopped = false;
         m_Animations.SetBool("Staggered", false);
     }
 

@@ -38,7 +38,7 @@ ModelImporter:
       name: Zombie_Hit_Reaction
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 30
+      firstFrame: 15
       lastFrame: 125
       wrapMode: 0
       orientationOffsetY: 0

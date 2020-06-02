@@ -41,7 +41,7 @@ public class CameraShoot : MonoBehaviour
                     //impact direction also according to the ray
                     impact = ray.direction * impactForce;
 
-                    helper.ragdolled = true;
+                    ai.Stagger();
                     //hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(2);
                     
                     //the impact will be reapplied for the next 250ms
