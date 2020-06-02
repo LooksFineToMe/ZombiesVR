@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8427328551957604412}
   - component: {fileID: 8427328551957604413}
   - component: {fileID: 8427328551957604414}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Belt
   m_TagString: Belt
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 8427328552159920624}
   - component: {fileID: 8427328552159920625}
   - component: {fileID: 8427328552159920626}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
