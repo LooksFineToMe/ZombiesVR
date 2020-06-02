@@ -7,6 +7,7 @@ public class BulletProperties : MonoBehaviour
     [Header("BulletProperties")]
     public float timeToDestroy;
     public float bulletDamage = 1;
+    public int bodypartDamage = 1;
 
     [Header("RagDollPhysics")]
     public Transform bulletPos;
@@ -36,7 +37,9 @@ public class BulletProperties : MonoBehaviour
             //set the impact target to whatever the ray hit
             impactTarget = collision.rigidbody;
 
-            collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(bulletDamage);
+            collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(bulletDamage, bodypartDamage);
+
+            impactTarget = null;
             //impact direction also according to the ray
             //impact = axePos.transform.TransformDirection(Vector3.forward) * 2.0f;
             //to make the connected objects follow even though the simulated body joints

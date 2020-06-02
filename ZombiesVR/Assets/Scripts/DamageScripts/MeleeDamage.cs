@@ -9,6 +9,7 @@ public class MeleeDamage : MonoBehaviour
     public float minimumVelocity = 0.05f;
     public float axeDamage = 3;
     public float axeForce = 30f;
+    public int bodypartDamage;
 
     [Header("RagDoll Settings")]
     public Rigidbody impactTarget = null;
@@ -55,6 +56,7 @@ public class MeleeDamage : MonoBehaviour
                     collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
                     //impactTarget.AddForce(axePos.transform.forward * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
                     impactTarget.AddForce(-contactPoint.normal * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
+                    impactTarget = null;
                 }
             }
         }
@@ -62,7 +64,7 @@ public class MeleeDamage : MonoBehaviour
         else if (rb.velocity.magnitude > 1f && rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy") && timer >= .2f)
         {
             timer = 0;
-            collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(axeDamage);
+            collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(axeDamage, bodypartDamage);
         }
     }
     

@@ -14084,7 +14084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 2
-  bulletDamage: 1
+  bulletDamage: 20
+  bodypartDamage: 2
   bulletPos: {fileID: 1044082343843051070}
   impactTarget: {fileID: 0}
   bulletForce: 10
