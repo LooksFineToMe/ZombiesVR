@@ -20,6 +20,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] public int m_AttackDamage = 1;
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
+    [HideInInspector] public bool fightingPlayer;
 
     [HideInInspector] public bool crawling = false;
     private bool isBleeding = false;
@@ -65,6 +66,7 @@ public class AIZombie : MonoBehaviour
 
             if (withinRange && !crawling)
             {
+                fightingPlayer = true; //bool to tell the body parts to apply damage
                 m_Animations.SetBool("Attacking", true);
                 m_NavMesh.speed = .5f;
                 RotateTowards();
@@ -72,6 +74,7 @@ public class AIZombie : MonoBehaviour
 
             if (!withinRange)
             {
+                fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
                 m_Animations.SetBool("Attacking", false);
                 if (clipinfo[0].clip.name == "Zombie_Walk")
                 {
