@@ -63,7 +63,7 @@ public class AIZombie : MonoBehaviour
             
             withinRange = CalculateDistance();
 
-            if (withinRange && !crawling && !m_Eliminated)
+            if (withinRange && !crawling && !m_Eliminated && m_RH.ragdolled == false)
             {
                 fightingPlayer = true; //bool to tell the body parts to apply damage
                 m_Animations.SetBool("Attacking", true);
@@ -72,7 +72,7 @@ public class AIZombie : MonoBehaviour
                 RotateTowards();
             }
 
-            if (!withinRange && !m_Eliminated)
+            if (!withinRange && !m_Eliminated && !m_RH.ragdolled == false)
             {
                 fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
                 m_Animations.SetBool("Attacking", false);
