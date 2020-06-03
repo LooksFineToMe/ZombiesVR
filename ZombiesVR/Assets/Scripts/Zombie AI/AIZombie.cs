@@ -12,7 +12,10 @@ public class AIZombie : MonoBehaviour
     [SerializeField] float m_MovementSpeed = 5f;
     [SerializeField] float m_RotationSpeed = 5f;
     [SerializeField] Rigidbody[] m_rb;
-    [SerializeField]public RagdollHelper m_RH;
+    [SerializeField] public RagdollHelper m_RH;
+    private bool canWalk;       //the canWalk bool is first called in the FINDTARGET() function, if canWalk is false, 
+                                //the zombie will not move from their current position
+
     [Header("Combat")]
     [SerializeField] bool m_Eliminated = false;
     [SerializeField] float m_AttackRange = 2f;
@@ -26,12 +29,7 @@ public class AIZombie : MonoBehaviour
     [HideInInspector] public bool crawling = false;
     private bool isBleeding = false;
     private float m_BleedingSpeed;
-
-    private float attackTime;
-    private float walkTime;
-
-    private bool attackedPlayer;
-
+    
     private Vector3 agentVelocity = Vector3.zero;
 
     private NavMeshAgent m_NavMesh;
@@ -65,7 +63,7 @@ public class AIZombie : MonoBehaviour
             
             withinRange = CalculateDistance();
 
-            if (withinRange && !crawling)
+            if (withinRange && !crawling && !m_Eliminated)
             {
                 fightingPlayer = true; //bool to tell the body parts to apply damage
                 m_Animations.SetBool("Attacking", true);
@@ -74,19 +72,18 @@ public class AIZombie : MonoBehaviour
                 RotateTowards();
             }
 
-            if (!withinRange)
+            if (!withinRange && !m_Eliminated)
             {
                 fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
                 m_Animations.SetBool("Attacking", false);
-                if (clipinfo[0].clip.name == "Zombie_Walk")
+
+                if (canWalk)
                 {
-                    m_NavMesh.speed = 1f;
-                    MoveTowards();
+                    MoveTowards(1);
                 }
-                else if (clipinfo[0].clip.name == "Zombie_Crawl")
+                else if (crawling)
                 {
-                    m_NavMesh.speed = 0.5f;
-                    MoveTowards();
+                    MoveTowards(.05f);
                 }
             }
         }
@@ -98,6 +95,7 @@ public class AIZombie : MonoBehaviour
         if (isBleeding)
             BleedingOut();
     }
+
     private void Update()
     {
 
@@ -109,6 +107,7 @@ public class AIZombie : MonoBehaviour
         if (m_Spawner.m_Players.Count != 0)
         {
             m_Target = m_Spawner.m_Players[UnityEngine.Random.Range(0, m_Spawner.m_Players.Count)];
+            canWalk = true;
         }
         else
         {
@@ -122,7 +121,7 @@ public class AIZombie : MonoBehaviour
         m_Animations.SetTrigger("Attack" + randomNumber);
     }
 
-    private void MoveTowards()
+    private void MoveTowards(float agentSpeed)
     {
         if (!m_Eliminated)
         {
@@ -130,6 +129,8 @@ public class AIZombie : MonoBehaviour
 
             if (target != Vector3.zero)
             {
+                m_NavMesh.speed = agentSpeed;
+
                 m_NavMesh.destination = m_Target.transform.position;
 
                 Quaternion newRot = Quaternion.LookRotation(target);
@@ -242,14 +243,16 @@ public class AIZombie : MonoBehaviour
     [ContextMenu("Scream")]
     private void ZombieScream()
     {
+        canWalk = false;
         m_Animations.SetTrigger("Scream");
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = true;
-        Invoke(nameof(ResetScream), 1);
+        Invoke(nameof(ResetScream), 3f);
     }
 
     private void ResetScream()
     {
+        canWalk = true;
         m_NavMesh.velocity = agentVelocity;
         m_NavMesh.isStopped = false;
     }
@@ -259,18 +262,22 @@ public class AIZombie : MonoBehaviour
     {
         if (!crawling)
         {
+            canWalk = false;
             m_Animations.SetBool("Staggered", true);
             m_NavMesh.velocity = Vector3.zero;
             m_NavMesh.isStopped = true;
 
-            Invoke(nameof(ResetStagger), .01f);
+            StartCoroutine(ResetStagger());
         }
     }
 
-    private void ResetStagger()
+    private IEnumerator ResetStagger()
     {
+        yield return new WaitForSeconds(.01f);
+        m_Animations.SetBool("Staggered", false);
+        yield return new WaitForSeconds(1);
         m_NavMesh.velocity = agentVelocity;
         m_NavMesh.isStopped = false;
-        m_Animations.SetBool("Staggered", false);
+        canWalk = true;
     }
 }

@@ -82,8 +82,11 @@ public class EnemyBodyParts : MonoBehaviour
         print("collided with " + controllerHit.gameObject.name);
         if (controllerHit.gameObject.CompareTag("Player") && controllerHit.gameObject.GetComponent<PlayerStats>() != null && applyDamage)
         {
-            controllerHit.gameObject.GetComponent<PlayerStats>().TakeDamage();
-            print("hit " + controllerHit.gameObject.name);
+            if (aiZombie.fightingPlayer)
+            {
+                controllerHit.gameObject.GetComponent<PlayerStats>().TakeDamage();
+                print("hit " + controllerHit.gameObject.name);
+            }
         }
     }
 }
