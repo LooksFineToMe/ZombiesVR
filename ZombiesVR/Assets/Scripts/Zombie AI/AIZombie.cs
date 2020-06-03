@@ -239,6 +239,21 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = false;
     }
 
+    [ContextMenu("Scream")]
+    private void ZombieScream()
+    {
+        m_Animations.SetTrigger("Scream");
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = true;
+        Invoke(nameof(ResetScream), 1);
+    }
+
+    private void ResetScream()
+    {
+        m_NavMesh.velocity = agentVelocity;
+        m_NavMesh.isStopped = false;
+    }
+
     [ContextMenu("Stagger")]
     public void Stagger()
     {
