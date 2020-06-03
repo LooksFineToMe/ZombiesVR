@@ -35,12 +35,14 @@ public class Shooting : MonoBehaviour
     [SerializeField] float nextTimeToFire = 0f;
     [Header("Spawning")]
     public Spawner_Mag spawner_Mag;
+    public Rigidbody rb;
 
     //public Animator animator;
     private void Start()
     {
         gunClick = GetComponent<AudioSource>();
         interactable = GetComponent<Interactable>();
+        rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
     void Update()
@@ -95,6 +97,8 @@ public class Shooting : MonoBehaviour
         Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
         //Adds velocity
         bulletrb.velocity = barrelPivot.forward * shootingSpeed;
+        //rb.AddRelativeForce(0, 500, 0);
+        rb.AddRelativeTorque(0, 500, 0);
         UpdateAmmoCount();
     }
     [ContextMenu("Reload")]
