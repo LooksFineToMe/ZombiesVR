@@ -1020,7 +1020,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1581,6 +1581,7 @@ MonoBehaviour:
   playerVolume: {fileID: 2440628066908440234}
   damageIntensity: 0.5
   vgReset: 1
+  vrpp: {fileID: 1851425608}
 --- !u!1 &568205370083091519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2774,7 +2775,8 @@ GameObject:
   - component: {fileID: 3776430969185834668}
   - component: {fileID: 5982888982992194750}
   - component: {fileID: 2440628066908440234}
-  m_Layer: 8
+  - component: {fileID: 1851425608}
+  m_Layer: 0
   m_Name: Post Processing Box Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2825,3 +2827,18 @@ MonoBehaviour:
   blendDistance: 1
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 273d697d31716224da556da9362e1598, type: 2}
+--- !u!114 &1851425608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955740801724407741}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cab4c56261b7434f97e654b7a432501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerVolume: {fileID: 2440628066908440234}
+  damageIntensity: 0.5
+  vgReset: 1

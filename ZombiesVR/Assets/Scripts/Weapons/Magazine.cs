@@ -10,7 +10,9 @@ public class Magazine : MonoBehaviour
     public int magCount = 8;
     public GameObject magazine;
     Interactable m_Interactable;
+    [HideInInspector]
     public float timer;
+
     public GameObject[] bullets;
 
     private void Awake()
@@ -22,6 +24,10 @@ public class Magazine : MonoBehaviour
         for (int i = 0; i < magCount; i++)
         {
             bullets[i].SetActive(true);
+        }
+        if (magCount <= 0)
+        {
+            Destroy(gameObject, 4);
         }
     }
     private void Update()
@@ -38,7 +44,7 @@ public class Magazine : MonoBehaviour
             {
                 m_Interactable.attachedToHand.DetachObject(magazine);
             }
-            magazine.SetActive(false);
+            Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("Belt") && timer >= .4f)
         {
@@ -48,7 +54,12 @@ public class Magazine : MonoBehaviour
             }
             gameObject.transform.parent = other.gameObject.transform;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            gameObject.GetComponent<MeshCollider>().isTrigger = true;
+            gameObject.GetComponent<BoxCollider>().isTrigger = true;
+            for (int i = 0; i < gameObject.GetComponentsInChildren<BoxCollider>().Length; i++)
+            {
+                gameObject.GetComponentsInChildren<BoxCollider>()[0].isTrigger = true;
+            }
+            
         }
     }
 }
