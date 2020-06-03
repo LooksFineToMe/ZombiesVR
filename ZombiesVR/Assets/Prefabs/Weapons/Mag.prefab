@@ -2625,6 +2625,7 @@ GameObject:
   - component: {fileID: 8598708035778058010}
   - component: {fileID: -4349057994074433489}
   - component: {fileID: 5841331525327139285}
+  - component: {fileID: 1502820594830606052}
   m_Layer: 0
   m_Name: Mag
   m_TagString: Untagged
@@ -2863,6 +2864,25 @@ MonoBehaviour:
   previewPoseSelection: 0
   blendingBehaviours: []
   scale: 1
+--- !u!114 &1502820594830606052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598708035778058004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f8d7423500067469029fc0403497de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumVelocity: 0.05
+  axeDamage: 3
+  axeForce: 30
+  bodypartDamage: 0
+  isBluntWeapon: 0
+  impactTarget: {fileID: 0}
+  impact: {x: 0, y: 0, z: 0}
 --- !u!1 &9142074730401996701
 GameObject:
   m_ObjectHideFlags: 0
