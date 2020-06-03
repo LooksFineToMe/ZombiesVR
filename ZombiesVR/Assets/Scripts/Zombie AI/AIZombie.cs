@@ -58,7 +58,7 @@ public class AIZombie : MonoBehaviour
         clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
         //print(clipinfo[0].clip.name);
 
-        if (m_Target != null && m_RH.ragdolled == false)
+        if (m_Target != null && !m_RH.ragdolled)
         {
             
             withinRange = CalculateDistance();
@@ -106,7 +106,7 @@ public class AIZombie : MonoBehaviour
     {
         if (m_Spawner.m_Players.Count != 0)
         {
-            m_Target = m_Spawner.m_Players[UnityEngine.Random.Range(0, m_Spawner.m_Players.Count)];
+            m_Target = m_Spawner.m_Players[Random.Range(0, m_Spawner.m_Players.Count)];
             canWalk = true;
         }
         else
@@ -123,7 +123,7 @@ public class AIZombie : MonoBehaviour
 
     private void MoveTowards(float agentSpeed)
     {
-        if (!m_Eliminated)
+        if (!m_Eliminated && canWalk)
         {
             Vector3 target = m_Target.transform.position - transform.position;
 
@@ -149,7 +149,6 @@ public class AIZombie : MonoBehaviour
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_RotationSpeed * Time.deltaTime);
         }
-
     }
 
     private bool CalculateDistance()
@@ -187,9 +186,18 @@ public class AIZombie : MonoBehaviour
         }
     }
 
+    [ContextMenu("Ragdoll")]
+    void Ragdoll()
+    {
+        StartCoroutine(ZombieRagdoll());
+    }
+
     public IEnumerator ZombieRagdoll()
     {
         m_RH.ragdolled = true;
+        canWalk = false;
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = true;
         yield return new WaitForSeconds(m_TimeToGetUp);
         m_RH.ragdolled = false;
     }
@@ -250,7 +258,7 @@ public class AIZombie : MonoBehaviour
         Invoke(nameof(ResetScream), 3f);
     }
 
-    private void ResetScream()
+    private void ResetScream()                                    
     {
         canWalk = true;
         m_NavMesh.velocity = agentVelocity;
@@ -269,6 +277,32 @@ public class AIZombie : MonoBehaviour
 
             StartCoroutine(ResetStagger());
         }
+    }
+
+    //called from ragdoll helper
+    public IEnumerator GetUpFromBelly()
+    {
+        m_Animations.SetBool("GetUpFromBelly", true);
+        canWalk = false;
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = true;
+        yield return new WaitForSeconds(2.5f);
+        canWalk = true;
+        m_NavMesh.velocity = agentVelocity;
+        m_NavMesh.isStopped = false;
+    }
+
+    //called from ragdoll helper
+    public IEnumerator GetUpFromBack()
+    {
+        m_Animations.SetBool("GetUpFromBack", true);
+        canWalk = false;
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = true;
+        yield return new WaitForSeconds(2.5f);
+        canWalk = true;
+        m_NavMesh.velocity = agentVelocity;
+        m_NavMesh.isStopped = false;
     }
 
     private IEnumerator ResetStagger()

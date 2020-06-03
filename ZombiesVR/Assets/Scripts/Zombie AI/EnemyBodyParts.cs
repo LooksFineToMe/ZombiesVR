@@ -77,16 +77,16 @@ public class EnemyBodyParts : MonoBehaviour
     }
 
     //desktop
-    private void OnControllerColliderHit(ControllerColliderHit controllerHit)
-    {
-        print("collided with " + controllerHit.gameObject.name);
-        if (controllerHit.gameObject.CompareTag("Player") && controllerHit.gameObject.GetComponent<PlayerStats>() != null && applyDamage)
-        {
-            if (aiZombie.fightingPlayer)
-            {
-                controllerHit.gameObject.GetComponent<PlayerStats>().TakeDamage();
-                print("hit " + controllerHit.gameObject.name);
-            }
-        }
-    }
+    //private void OnControllerColliderHit(ControllerColliderHit controllerHit)
+    //{
+    //    print("collided with " + controllerHit.gameObject.name);
+    //    if (controllerHit.gameObject.CompareTag("Player") && controllerHit.gameObject.GetComponent<PlayerStats>() != null && applyDamage)
+    //    {
+    //        if (aiZombie.fightingPlayer)
+    //        {
+    //            controllerHit.gameObject.GetComponent<PlayerStats>().TakeDamage();
+    //            print("hit " + controllerHit.gameObject.name);
+    //        }
+    //    }
+    //}
 }

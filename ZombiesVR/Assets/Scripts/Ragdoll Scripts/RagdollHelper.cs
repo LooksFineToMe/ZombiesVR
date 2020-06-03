@@ -161,11 +161,13 @@ public class RagdollHelper : MonoBehaviour
                     }
                     else if (anim.GetBoneTransform(HumanBodyBones.Hips).forward.y > 0) //hip hips forward vector pointing upwards, initiate the get up from back animation
                     {
-                        anim.SetBool("GetUpFromBack", true);
+                        StartCoroutine(zombieAI.GetUpFromBack());
+                        //anim.SetBool("GetUpFromBack", true);
                     }
                     else
                     {
-                        anim.SetBool("GetUpFromBelly", true);
+                        StartCoroutine(zombieAI.GetUpFromBack());
+                        //anim.SetBool("GetUpFromBelly", true);
                     }
                 } //if (state==RagdollState.ragdolled)
             }   //if value==false	
