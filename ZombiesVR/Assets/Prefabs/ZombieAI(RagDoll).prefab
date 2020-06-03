@@ -473,13 +473,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-    'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:LeftHandPinky2'\n\tTransform
-    'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
-    'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftHandMiddle3'\n\tTransform 'mixamorig:LeftShoulder'\n\tand
-    more ...\n\tFrom animation clip 'Zombie_Attack_Left'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -539,7 +533,7 @@ MonoBehaviour:
   m_AttackDamage: 1
   m_Animations: {fileID: 1078998178780695412}
   withinRange: 0
-  m_DeathRagDoll: {fileID: 0}
+  fightingPlayer: 0
   crawling: 0
   m_Target: {fileID: 0}
   m_WaveValue: 1
@@ -1471,6 +1465,7 @@ GameObject:
   - component: {fileID: 4632650539339422465}
   - component: {fileID: 4632650539339422466}
   - component: {fileID: 2169496147429914929}
+  - component: {fileID: 5115114905782349388}
   m_Layer: 9
   m_Name: mixamorig:Head
   m_TagString: Enemy
@@ -1506,8 +1501,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09044936
-  m_Center: {x: 0, y: 0.09044936, z: 0}
+  m_Radius: 0.12
+  m_Center: {x: 0, y: 0.05, z: 0.02}
 --- !u!54 &4632650539339422465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1592,6 +1587,20 @@ MonoBehaviour:
   applyDamage: 0
   bleedTimer: 15
   detachedScale: {x: 0, y: 0, z: 0}
+--- !u!136 &5115114905782349388
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4632650539339422467}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.05, z: 0.03}
 --- !u!1 &4721935195139452443
 GameObject:
   m_ObjectHideFlags: 0
