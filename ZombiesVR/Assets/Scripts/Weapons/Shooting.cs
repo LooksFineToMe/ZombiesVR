@@ -20,8 +20,10 @@ public class Shooting : MonoBehaviour
     public float fireRate = 0.5f;
     public int currentAmmo = 0;
     public bool magInGun;
+    public int recoilAmount = -15;// Recoil must be -(Number)
     public ReloadPoint reloadPoint;
-    float timer;// For fireRate
+    public bool semiAuto;
+
 
     [Header("FeedBack")]
     public Text currentAmmoText;
@@ -46,12 +48,12 @@ public class Shooting : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {   
         nextTimeToFire += Time.deltaTime;
         if (interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;//Checks what hand the gun is in
-            if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0 )
+            if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo > 0 && semiAuto == true)
             {
                 print("implement ammo");
                 currentAmmo--;
@@ -59,7 +61,7 @@ public class Shooting : MonoBehaviour
                 Fire();
                 Pulse(0.1f, 150, 75, source);//This Passes through the values for controller vibration
             }
-            else if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo <= 0)
+            else if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo <= 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo <= 0 && semiAuto == true)
             {
                 currentAmmo = 0;
                 nextTimeToFire = 0;
@@ -97,8 +99,7 @@ public class Shooting : MonoBehaviour
         Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
         //Adds velocity
         bulletrb.velocity = barrelPivot.forward * shootingSpeed;
-        //rb.AddRelativeForce(0, 500, 0);
-        rb.AddRelativeTorque(0, 500, 0);
+        rb.AddRelativeTorque(recoilAmount, 0, 0);
         UpdateAmmoCount();
     }
     [ContextMenu("Reload")]
