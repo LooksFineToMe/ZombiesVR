@@ -5,12 +5,12 @@ using UnityEngine;
 public class WindowChanger : MonoBehaviour
 {
     public Material[] materials;
-    Material material;
-    float timer;
-    int ChangeWindowTime;
+    public Material material;
+    public float timer;
+    public int ChangeWindowTime;
     private void Start()
     {
-        material = GetComponent<Material>();
+        //material = GetComponent<Material>();
     }
     private void Update()
     {
