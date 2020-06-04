@@ -16,6 +16,14 @@ public class AIZombie : MonoBehaviour
     private bool canWalk;       //the canWalk bool is first called in the FINDTARGET() function, if canWalk is false, 
                                 //the zombie will not move from their current position
 
+    [Header("Sight")]
+    private bool calledScream = false;
+    [SerializeField] int m_ScreamChance = 5;
+    private int scream;
+    [SerializeField] float m_HeightMultiplier;
+    [SerializeField] float m_SightDistance = 10;
+
+
     [Header("Combat")]
     [SerializeField] bool m_Eliminated = false;
     [SerializeField] float m_AttackRange = 2f;
@@ -50,6 +58,8 @@ public class AIZombie : MonoBehaviour
         m_NavMesh = GetComponent<NavMeshAgent>();
         m_NavMesh.speed = m_MovementSpeed;
         m_NavMesh.angularSpeed = m_RotationSpeed;
+
+        m_HeightMultiplier = 1.36f;
     }
 
     // Update is called once per frame
@@ -98,7 +108,8 @@ public class AIZombie : MonoBehaviour
 
     private void Update()
     {
-
+        if (!calledScream)
+            ZombieSight();
     }
 
     //for testing purposes, will intergrate AI Wander soon
@@ -314,4 +325,59 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = false;
         canWalk = true;
     }
+
+    private void ZombieSight()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(transform.position + Vector3.up * m_HeightMultiplier, transform.forward * m_SightDistance, Color.red);
+        Debug.DrawRay(transform.position + Vector3.up * m_HeightMultiplier, (transform.forward + transform.right).normalized * m_SightDistance, Color.red);
+        Debug.DrawRay(transform.position + Vector3.up * m_HeightMultiplier, (transform.forward - transform.right).normalized * m_SightDistance, Color.red);
+
+        if (Physics.Raycast(transform.position + Vector3.up * m_HeightMultiplier, transform.forward, out hit, m_SightDistance))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                scream = Random.Range(1, m_ScreamChance);
+                if (scream == 1 && !calledScream)
+                {
+                    ZombieScream();
+                    calledScream = true;
+                }
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * m_HeightMultiplier, (transform.forward + transform.right).normalized, out hit, m_SightDistance))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                scream = Random.Range(1, m_ScreamChance);
+                if (scream == 1 && !calledScream)
+                {
+                    ZombieScream();
+                    calledScream = true;
+                }
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * m_HeightMultiplier, (transform.forward - transform.right).normalized, out hit, m_SightDistance))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                scream = Random.Range(1, m_ScreamChance);
+                if (scream == 1 && !calledScream)
+                {
+                    ZombieScream();
+                    calledScream = true;
+                }
+            }
+        }
+    }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        ZombieSight();
+    //    }
+    //}
 }
