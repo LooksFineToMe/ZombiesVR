@@ -37,8 +37,8 @@ public class TouchPadMovement : MonoBehaviour
     private void Update()
     {
         if (sprint.state)
-        { moveSpeed = 4; }
+        { moveSpeed = 2.5f; }
         else
-        { moveSpeed = 2; }
+        { moveSpeed = 1.5f; }
     }
 }

@@ -1961,7 +1961,6 @@ GameObject:
   - component: {fileID: 2128776211385337984}
   - component: {fileID: 199717014584656906}
   - component: {fileID: 632906999150555480}
-  - component: {fileID: 6110367515534649339}
   m_Layer: 0
   m_Name: Magazine
   m_TagString: Untagged
@@ -2031,19 +2030,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6110367515534649339
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7136523727263419575}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.028538685, y: 0.02105441, z: 0.054176807}
-  m_Center: {x: -0.000000007450581, y: 0.047804665, z: 0.01437211}
 --- !u!1 &7291067114828869258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2612,7 @@ GameObject:
   - component: {fileID: -4349057994074433489}
   - component: {fileID: 5841331525327139285}
   - component: {fileID: 1502820594830606052}
+  - component: {fileID: 4495861747815306669}
   m_Layer: 0
   m_Name: Mag
   m_TagString: Untagged
@@ -2883,6 +2870,19 @@ MonoBehaviour:
   isBluntWeapon: 0
   impactTarget: {fileID: 0}
   impact: {x: 0, y: 0, z: 0}
+--- !u!65 &4495861747815306669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598708035778058004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.028538685, y: 0.02105441, z: 0.040071964}
+  m_Center: {x: -0.000000007450581, y: -0.01, z: 0.002141714}
 --- !u!1 &9142074730401996701
 GameObject:
   m_ObjectHideFlags: 0
