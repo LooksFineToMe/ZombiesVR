@@ -11,6 +11,7 @@ TagManager:
   - Pistol
   - Magazine
   - Belt
+  - Players_Car
   layers:
   - Default
   - TransparentFX
