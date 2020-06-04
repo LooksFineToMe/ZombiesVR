@@ -9,6 +9,8 @@ public class EnemyBodyParts : MonoBehaviour
     public bool isDetachable;
     [Tooltip("If this gameobject is detachable then ask if its also the leg, if this is a leg then we set to a crawling anitmation when detached")]
     public bool isLeg = false;
+    [Tooltip("If this gameobject is detachable then ask if its also the head, if this is a head then deny calling the scream animation")]
+    public bool isHead = false;
     [Tooltip("The Particle effects to instantiate on detatch")]
     public GameObject bloodParticle;
     public GameObject particlePos;
@@ -59,6 +61,11 @@ public class EnemyBodyParts : MonoBehaviour
         if (isLeg && !aiZombie.crawling)  //create crawler zombie if the detached game object is a leg
         {
             StartCoroutine(aiZombie.CreateCrawler());
+        }
+
+        if (isHead)
+        {
+            aiZombie.headless = true;
         }
     }
 

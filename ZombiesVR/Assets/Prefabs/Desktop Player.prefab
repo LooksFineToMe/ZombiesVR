@@ -67,7 +67,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 122679
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   playerVolume: {fileID: 1984785792}
   damageIntensity: 0.5
   vgReset: 1
+  vrpp: {fileID: 0}
 --- !u!143 &344833710
 CharacterController:
   m_ObjectHideFlags: 0

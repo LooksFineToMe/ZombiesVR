@@ -17,12 +17,12 @@ public class AIZombie : MonoBehaviour
                                 //the zombie will not move from their current position
 
     [Header("Sight")]
-    private bool calledScream = false;
     [SerializeField] int m_ScreamChance = 5;
-    private int scream;
     [SerializeField] float m_HeightMultiplier;
     [SerializeField] float m_SightDistance = 10;
-
+    private bool calledScream = false;
+    private bool canScream = false;
+    private int scream;
 
     [Header("Combat")]
     [SerializeField] bool m_Eliminated = false;
@@ -35,6 +35,7 @@ public class AIZombie : MonoBehaviour
     [HideInInspector] public bool fightingPlayer;
 
     [HideInInspector] public bool crawling = false;
+    [HideInInspector] public bool headless = false;
     private bool isBleeding = false;
     private float m_BleedingSpeed;
     
@@ -70,22 +71,20 @@ public class AIZombie : MonoBehaviour
 
         if (m_Target != null && !m_RH.ragdolled)
         {
-            
             withinRange = CalculateDistance();
 
             if (withinRange && !crawling && !m_Eliminated && !m_RH.ragdolled)
             {
-                fightingPlayer = true; //bool to tell the body parts to apply damage
-                m_Animations.SetBool("Attacking", true);
                 AttackPlayer();
-                m_NavMesh.speed = .5f;
-                RotateTowards();
-            }
 
-            if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
+            }
+            else if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
             {
                 fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
                 m_Animations.SetBool("Attacking", false);
+
+                if (!canWalk)
+                    Invoke(nameof(ResetCanWalk), .5f);
 
                 if (canWalk)
                 {
@@ -93,8 +92,13 @@ public class AIZombie : MonoBehaviour
                 }
                 else if (crawling)
                 {
-                    MoveTowards(.05f);
+                    MoveTowards(.03f);
                 }
+
+                if (!calledScream)
+                    canScream = true;
+                else
+                    canScream = false;
             }
         }
         else
@@ -104,6 +108,11 @@ public class AIZombie : MonoBehaviour
 
         if (isBleeding)
             BleedingOut();
+    }
+
+    private void ResetCanWalk()
+    {
+        canWalk = true;
     }
 
     private void Update()
@@ -128,8 +137,17 @@ public class AIZombie : MonoBehaviour
 
     private void AttackPlayer()
     {
+        canWalk = false;
+
+        m_Animations.SetBool("Attacking", true);
+
+        m_NavMesh.speed = .5f;
+        RotateTowards();
+
+        fightingPlayer = true; //bool to tell the body parts to apply damage
         int randomNumber = Random.Range(1, 2);
         m_Animations.SetTrigger("Attack" + randomNumber);
+        canScream = false;
     }
 
     private void MoveTowards(float agentSpeed)
@@ -141,7 +159,6 @@ public class AIZombie : MonoBehaviour
             if (target != Vector3.zero)
             {
                 m_NavMesh.speed = agentSpeed;
-
                 m_NavMesh.destination = m_Target.transform.position;
 
                 Quaternion newRot = Quaternion.LookRotation(target);
@@ -259,7 +276,7 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = false;
     }
 
-    [ContextMenu("Scream")]
+    [ContextMenu("Scream")] //to be called randomly when within zombie sight
     private void ZombieScream()
     {
         canWalk = false;
@@ -326,58 +343,35 @@ public class AIZombie : MonoBehaviour
         canWalk = true;
     }
 
-    private void ZombieSight()
+    private void ZombieSight() //this method calls the zombie scream randomly if the player is close enough and a ray hits them
     {
+        float distance = Vector3.Distance(transform.position, m_Target.transform.position);
+        float screamDistance = m_SightDistance / 2;
+
         RaycastHit hit;
+        //zombie's line of sight and distance
         Debug.DrawRay(transform.position + Vector3.up * m_HeightMultiplier, transform.forward * m_SightDistance, Color.red);
-        Debug.DrawRay(transform.position + Vector3.up * m_HeightMultiplier, (transform.forward + transform.right).normalized * m_SightDistance, Color.red);
-        Debug.DrawRay(transform.position + Vector3.up * m_HeightMultiplier, (transform.forward - transform.right).normalized * m_SightDistance, Color.red);
+        //minimum distance the player can be to call the scream method
+        Debug.DrawRay(transform.position + Vector3.up, transform.forward * screamDistance, Color.blue);
 
         if (Physics.Raycast(transform.position + Vector3.up * m_HeightMultiplier, transform.forward, out hit, m_SightDistance))
         {
             if (hit.collider.CompareTag("Player"))
             {
                 scream = Random.Range(1, m_ScreamChance);
-                if (scream == 1 && !calledScream)
+                if (scream == 1 && !calledScream && !crawling && !headless && canScream)
                 {
-                    ZombieScream();
-                    calledScream = true;
-                }
-            }
-        }
-
-        if (Physics.Raycast(transform.position + Vector3.up * m_HeightMultiplier, (transform.forward + transform.right).normalized, out hit, m_SightDistance))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                scream = Random.Range(1, m_ScreamChance);
-                if (scream == 1 && !calledScream)
-                {
-                    ZombieScream();
-                    calledScream = true;
-                }
-            }
-        }
-
-        if (Physics.Raycast(transform.position + Vector3.up * m_HeightMultiplier, (transform.forward - transform.right).normalized, out hit, m_SightDistance))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                scream = Random.Range(1, m_ScreamChance);
-                if (scream == 1 && !calledScream)
-                {
-                    ZombieScream();
-                    calledScream = true;
+                    if (distance < screamDistance)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        ZombieScream();
+                        calledScream = true;
+                    }
                 }
             }
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        ZombieSight();
-    //    }
-    //}
 }
