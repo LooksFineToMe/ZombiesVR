@@ -11,6 +11,7 @@ public class AIZombie : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float m_MovementSpeed = 5f;
     [SerializeField] float m_RotationSpeed = 5f;
+    [SerializeField] bool isRunner = false;
     [SerializeField] Rigidbody[] m_rb;
     [SerializeField] public RagdollHelper m_RH;
     private bool canWalk;       //the canWalk bool is first called in the FINDTARGET() function, if canWalk is false, 
@@ -33,6 +34,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [HideInInspector] public bool fightingPlayer;
+
 
     [HideInInspector] public bool crawling = false;
     [HideInInspector] public bool headless = false;
@@ -80,9 +82,6 @@ public class AIZombie : MonoBehaviour
             }
             else if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
             {
-                fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
-                m_Animations.SetBool("Attacking", false);
-
                 if (!canWalk)
                     Invoke(nameof(ResetCanWalk), .5f);
 
@@ -137,8 +136,10 @@ public class AIZombie : MonoBehaviour
 
     private void AttackPlayer()
     {
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = false;
         canWalk = false;
-
+        m_Animations.SetBool("Walking", false);
         m_Animations.SetBool("Attacking", true);
 
         m_NavMesh.speed = .5f;
@@ -155,14 +156,28 @@ public class AIZombie : MonoBehaviour
         if (!m_Eliminated && canWalk)
         {
             Vector3 target = m_Target.transform.position - transform.position;
+            fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
+            m_Animations.SetBool("Attacking", false);
 
             if (target != Vector3.zero)
             {
-                m_NavMesh.speed = agentSpeed;
+                if (!isRunner)
+                {
+                    m_Animations.SetBool("Walking", true);
+                    m_Animations.SetBool("Running", false);
+                    m_NavMesh.speed = agentSpeed;
+
+                }
+                else if (isRunner)
+                {
+                    m_Animations.SetBool("Walking", false);
+                    m_Animations.SetBool("Running", true);
+                    m_NavMesh.speed = agentSpeed * 3;
+                }
+
                 m_NavMesh.destination = m_Target.transform.position;
 
                 Quaternion newRot = Quaternion.LookRotation(target);
-
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_RotationSpeed * Time.deltaTime);
             }
         }
@@ -214,7 +229,7 @@ public class AIZombie : MonoBehaviour
         }
     }
 
-    [ContextMenu("Ragdoll")]
+    [ContextMenu("Ragdoll")] //context menu for testing purposes
     void Ragdoll()
     {
         StartCoroutine(ZombieRagdoll());
@@ -267,8 +282,11 @@ public class AIZombie : MonoBehaviour
     public IEnumerator CreateCrawler()
     {
         m_RH.ragdolled = true;
+        crawling = true;
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = true;
+        if (isRunner)
+            isRunner = false;
         yield return new WaitForSeconds(m_TimeToGetUp);
         m_RH.ragdolled = false;
         m_Animations.SetTrigger("Crawler");
