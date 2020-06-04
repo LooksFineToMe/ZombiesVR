@@ -24,10 +24,10 @@ public class JerryCanSpawner : MonoBehaviour
         m_JerryCans[2].transform.position = m_3rdSpawnLocations[randomLocationIndex].transform.position;
         //4TH JERRYCAN
         randomLocationIndex = Random.Range(0, m_4thSpawnLocations.Length);
-        m_JerryCans[3].transform.position = m_3rdSpawnLocations[randomLocationIndex].transform.position;
+        m_JerryCans[3].transform.position = m_4thSpawnLocations[randomLocationIndex].transform.position;
         //5TH JERRYCAN
         randomLocationIndex = Random.Range(0, m_5thSpawnLocations.Length);
-        m_JerryCans[4].transform.position = m_3rdSpawnLocations[randomLocationIndex].transform.position;
+        m_JerryCans[4].transform.position = m_5thSpawnLocations[randomLocationIndex].transform.position;
 
     }
 }
