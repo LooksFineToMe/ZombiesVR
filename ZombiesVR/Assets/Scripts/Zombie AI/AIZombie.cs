@@ -71,7 +71,7 @@ public class AIZombie : MonoBehaviour
         clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
         //print(clipinfo[0].clip.name);
 
-        if (m_Target != null && !m_RH.ragdolled)
+        if (m_Target != null)
         {
             withinRange = CalculateDistance();
 
@@ -116,7 +116,7 @@ public class AIZombie : MonoBehaviour
 
     private void Update()
     {
-        if (!calledScream)
+        if (!calledScream && m_Target != null)
             ZombieSight();
     }
 
