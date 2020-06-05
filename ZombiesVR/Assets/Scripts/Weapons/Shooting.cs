@@ -49,6 +49,8 @@ public class Shooting : MonoBehaviour
     [Tooltip("Is the gun Fully auto or semi auto")]
     public bool semiAuto;
 
+    public RecoilTest recoil;
+
     //=================================================================================
 
     [Header("FeedBack")]
@@ -75,7 +77,8 @@ public class Shooting : MonoBehaviour
     [Header("Spawning")]
     [Tooltip("The Mag that'll drop")]
     public Spawner_Mag spawner_Mag;
-    
+
+    [Tooltip("Rigibody of the gun for recoil")]
     public Rigidbody rb;
     //=================================================================================
     //public Animator animator;
@@ -83,7 +86,7 @@ public class Shooting : MonoBehaviour
     {
         gunClick = GetComponent<AudioSource>();
         interactable = GetComponent<Interactable>();
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
     void Update()
@@ -138,8 +141,9 @@ public class Shooting : MonoBehaviour
         Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
         //Adds velocity
         bulletrb.velocity = barrelPivot.forward * shootingSpeed;
-        rb.AddRelativeTorque(recoilAmount, 0, 0);
+        //rb.AddRelativeTorque(recoilAmount, 0, 0);
         UpdateAmmoCount();
+        recoil.Recoil();
     }
     [ContextMenu("Reload")]
     public void Reloading(int reloadAmount)

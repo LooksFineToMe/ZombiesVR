@@ -24,6 +24,7 @@ public class PickUPItem : MonoBehaviour
         {
             gameObject.GetComponent<Magazine>().timer = 0;
         }
+        
     }
     public void DropObject()
     {
