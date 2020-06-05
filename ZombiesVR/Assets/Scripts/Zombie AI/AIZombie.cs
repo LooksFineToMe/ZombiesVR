@@ -11,15 +11,21 @@ public class AIZombie : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float m_MovementSpeed = 5f;
     [SerializeField] float m_RotationSpeed = 5f;
+    [Tooltip("If enabled, turn this zombie into a runner")]
     [SerializeField] bool isRunner = false;
+    [Tooltip("After calling the Scream Method, have a random chance to enable Zombie Run")]
+    [SerializeField] int m_RunnerChance = 10;
     [SerializeField] Rigidbody[] m_rb;
     [SerializeField] public RagdollHelper m_RH;
     private bool canWalk;       //the canWalk bool is first called in the FINDTARGET() function, if canWalk is false, 
                                 //the zombie will not move from their current position
 
     [Header("Sight")]
+    [Tooltip("A random number picked between 1 and the value set here")]
     [SerializeField] int m_ScreamChance = 5;
+    [Tooltip("The Height of the zombies sight to call scream")]
     [SerializeField] float m_HeightMultiplier;
+    [Tooltip("The maximum amount of distance the zombie can see and enable the scream method randomly")]
     [SerializeField] float m_SightDistance = 10;
     private bool calledScream = false;
     private bool canScream = false;
@@ -107,6 +113,9 @@ public class AIZombie : MonoBehaviour
 
         if (isBleeding)
             BleedingOut();
+
+        if (!calledScream && m_Target != null)
+            ZombieSight();
     }
 
     private void ResetCanWalk()
@@ -116,8 +125,7 @@ public class AIZombie : MonoBehaviour
 
     private void Update()
     {
-        if (!calledScream && m_Target != null)
-            ZombieSight();
+
     }
 
     //for testing purposes, will intergrate AI Wander soon
@@ -141,8 +149,6 @@ public class AIZombie : MonoBehaviour
         canWalk = false;
         m_Animations.SetBool("Walking", false);
         m_Animations.SetBool("Attacking", true);
-
-        m_NavMesh.speed = .5f;
         RotateTowards();
 
         fightingPlayer = true; //bool to tell the body parts to apply damage
@@ -172,7 +178,7 @@ public class AIZombie : MonoBehaviour
                 {
                     m_Animations.SetBool("Walking", false);
                     m_Animations.SetBool("Running", true);
-                    m_NavMesh.speed = agentSpeed * 3;
+                    m_NavMesh.speed = agentSpeed * 4;
                 }
 
                 m_NavMesh.destination = m_Target.transform.position;
@@ -229,7 +235,7 @@ public class AIZombie : MonoBehaviour
         }
     }
 
-    [ContextMenu("Ragdoll")] //context menu for testing purposes
+    [ContextMenu("Ragdoll")] //method for testing purposes
     void Ragdoll()
     {
         StartCoroutine(ZombieRagdoll());
@@ -279,6 +285,7 @@ public class AIZombie : MonoBehaviour
         }
     }
 
+    //when the zombie loses one of their legs, call this method to start the Crawling animation
     public IEnumerator CreateCrawler()
     {
         m_RH.ragdolled = true;
@@ -302,6 +309,15 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = true;
         Invoke(nameof(ResetScream), 3f);
+
+        if (!isRunner) //after calling scream have a random chance to set the zombie to runner
+        {
+            int rand = Random.Range(1, m_RunnerChance);
+            if (rand == 1)
+            {
+                isRunner = true;
+            }
+        }
     }
 
     private void ResetScream()                                    
