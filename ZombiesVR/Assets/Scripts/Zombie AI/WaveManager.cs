@@ -51,7 +51,7 @@ public class WaveManager : MonoBehaviour
 
     private void CreateWave()
     {
-        m_NextWave = Time.fixedDeltaTime + m_TimeOffset;
+        m_NextWave = Time.deltaTime + m_TimeOffset;
         //this could be buggy
         while (m_CurrentValueOfWave < m_WaveSpawnValue)
         {

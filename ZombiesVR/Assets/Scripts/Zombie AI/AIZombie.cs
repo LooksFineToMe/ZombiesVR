@@ -12,7 +12,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] float m_MovementSpeed = 5f;
     [SerializeField] float m_RotationSpeed = 5f;
     [Tooltip("If enabled, turn this zombie into a runner")]
-    [SerializeField] bool isRunner = false;
+    [SerializeField] public bool isRunner = false;
     [Tooltip("After calling the Scream Method, have a random chance to enable Zombie Run")]
     [SerializeField] int m_RunnerChance = 10;
     [SerializeField] Rigidbody[] m_rb;
@@ -161,6 +161,11 @@ public class AIZombie : MonoBehaviour
     {
         if (!m_Eliminated && canWalk)
         {
+            if (m_Spawner.m_LivingZombies.Count == 1 && !isRunner)
+            {
+                isRunner = true;
+            }
+
             Vector3 target = m_Target.transform.position - transform.position;
             fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
             m_Animations.SetBool("Attacking", false);
