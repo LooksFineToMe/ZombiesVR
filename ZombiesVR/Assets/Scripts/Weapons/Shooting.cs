@@ -8,37 +8,69 @@ using System;
 
 public class Shooting : MonoBehaviour
 {
+    //=================================================================================
     [Header("SteamVR Inputs")]
+    [Tooltip("The fire button")]
     public SteamVR_Action_Boolean fireAction;
+
+    [Tooltip("Drop mag button")]
     public SteamVR_Action_Boolean dropMagAction;
+
+    [Tooltip("The trackpad haptic setting")]
     public SteamVR_Action_Vibration trackPadHaptic;
 
+    //=================================================================================
+
     [Header("BulletSettings")]
+    [Tooltip("The Bullet prefab that'll spawn when the player shoots")]
     public GameObject bullet;
+
+    [Tooltip("The pivot point where the bullet will shoot")]
     public Transform barrelPivot;
+
+    [Tooltip("The speed of the bullet when fired")]
     public float shootingSpeed = 1;
+
+    [Tooltip("The firerate of the gun if it's not semi auto")]
     public float fireRate = 0.5f;
+
+    [Tooltip("The current ammo in the gun")]
     public int currentAmmo = 0;
+
+    [Tooltip("Checks if there is a mag in the gun")]
     public bool magInGun;
+
+    [Tooltip("The amount of recoil the gun will produce when shot")]
     public int recoilAmount = -15;// Recoil must be -(Number)
+
+    [Tooltip("The reloadPoint Class")]
     public ReloadPoint reloadPoint;
+
+    [Tooltip("Is the gun Fully auto or semi auto")]
     public bool semiAuto;
 
+    //=================================================================================
 
     [Header("FeedBack")]
-    public Text currentAmmoText;
+    [Tooltip("The gun click noise when out of ammo")]
     public AudioSource gunClick;
-    public ParticleSystem muzzleflash;
-    public GameObject magazine;
-    public GameObject droppedMag;
 
+    [Tooltip("The muzzle flash of the gun")]
+    public ParticleSystem muzzleflash;
+
+    [Tooltip("The magazine in the gun")]
+    public GameObject magazine;
+
+    [Tooltip("The Mag that'll drop")]
+    public GameObject droppedMag;
+    //=================================================================================
     [Header("BulletEffects")]
     private Interactable interactable;//This script is needed to figure out the hand that is holding the gun
     [SerializeField] float nextTimeToFire = 0f;
     [Header("Spawning")]
     public Spawner_Mag spawner_Mag;
     public Rigidbody rb;
-
+    //=================================================================================
     //public Animator animator;
     private void Start()
     {

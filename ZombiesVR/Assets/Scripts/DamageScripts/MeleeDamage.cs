@@ -6,82 +6,95 @@ using UnityEngine;
 public class MeleeDamage : MonoBehaviour
 {
     Rigidbody rb;
-    public float minimumVelocity = 0.05f;
-    public float axeDamage = 3;
-    public float axeForce = 30f;
+    [Tooltip("The minimum Velocity the player has to swing to deal the extra damage Type")]
+    public float extraVelocity = 4f;
+
+    public float minimumVelocity = 1f;
+
+    [Tooltip("The base damage of the weapon")]
+    public float baseDamage = 3;
+
+    [Tooltip("The base force power of the weapon")]
+    public float baseForce = 30f;
+
+    [Tooltip("The body part damage of the weapon")]
     public int bodypartDamage;
+
+    [Tooltip("Is this a blunt weapon or not?")]
     public bool isBluntWeapon;
 
     [Header("RagDoll Settings")]
-    public Rigidbody impactTarget = null;
-    public Vector3 impact;
+    //[HideInInspector]
+    public Rigidbody impactTarget = null;//Uncomment hide in inpector when we clean the null referneces
 
-    float timer;
+    float timer;//The timer is to ensure we don't double hit the enemy. Cooldown.
+    float cooldown = 0.2f;//cooldown for the timer; 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        
+        rb = GetComponent<Rigidbody>();//Get the rigibody on startup
     }
     private void OnCollisionEnter(Collision collision)
     {
-        
-        if (collision.gameObject.CompareTag("Enemy")) 
+        if (collision.gameObject.CompareTag("Enemy"))//The initial check for the enemy hit 
         {
-            ContactPoint contactPoint = collision.contacts[0];
-            
-            
-            Quaternion rot = Quaternion.FromToRotation(Vector3.forward, contactPoint.normal);
+            ContactPoint contactPoint = collision.contacts[0];//Saves the contact point for adding force postion
 
+            //Checks if the collided object has 1.Rigibody, 2. AIZombie Class, 
             if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<AIZombie>() != null)
             {
-                
-                //find the RagdollHelper component and activate ragdolling
-
+                //Creates a zombie variable to access the zombie ragdoll
                 AIZombie zombie = collision.rigidbody.GetComponentInParent<AIZombie>();
-                //print(hit.collider.GetComponentInParent<RagdollHelper>().ToString());
-                
-                //zombie.anim = collision.rigidbody.GetComponentInParent<Animator>();
-                ////we need to find a way to set the animator of the object being hit
 
-
-                //set the impact target to whatever the ray hit
+                //Creates an impactTarget variable for the collision to add force to.
                 impactTarget = collision.rigidbody;
 
-                //impact direction also according to the ray
-                //impact = axePos.transform.TransformDirection(Vector3.forward) * 2.0f;
-                //to make the connected objects follow even though the simulated body joints
-                //might stretch
-                if (collision.rigidbody.GetComponentInParent<AIZombie>().m_RH.ragdolled == false && rb.velocity.magnitude >= minimumVelocity)
+                //Checks if the collided object has 1.RagDolled = false, 2.Velocity > ExtraVelocity
+                if (collision.rigidbody.GetComponentInParent<AIZombie>().m_RH.ragdolled == false && rb.velocity.magnitude >= extraVelocity)
                 {
+                    //Starts the coroutine in AIZombie Class
                     StartCoroutine(zombie.ZombieRagdoll());
-                    collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(axeDamage);
-                    //impactTarget.AddForce(axePos.transform.forward * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
-                    impactTarget.AddForce(-contactPoint.normal * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
-                    impactTarget = null;
+
+                    //Adds the damage to the EnemyBodyParts class
+                    collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(baseDamage);
+
+                    //Adds the force to the other gameObject
+                    impactTarget.AddForce(-contactPoint.normal * (baseForce * rb.velocity.magnitude), ForceMode.VelocityChange);
                 }
-                else if (rb.velocity.magnitude > 1f && rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy") && timer >= .2f && isBluntWeapon == true)
+
+                //Checks if the collided object has 1. Weapon Velocity > MinimumVelocity, 2. Velocity < Extra Velocity, 3. timer > cooldown, 4. IsBluntWeapon = true.
+                else if (rb.velocity.magnitude > minimumVelocity && rb.velocity.magnitude < extraVelocity && timer >= cooldown && isBluntWeapon == true)
                 {
+                    //Resets timer to 0
                     timer = 0;
+
+                    //Starts the corotine to ragdoll the zombie.
                     StartCoroutine(zombie.ZombieRagdoll());
-                    impactTarget.AddForce(-contactPoint.normal * (axeForce * rb.velocity.magnitude), ForceMode.VelocityChange);
-                    collision.rigidbody.GetComponent<EnemyBodyParts>().BluntDamage(axeDamage);
+
+                    //Adds the force to the other gameObject
+                    impactTarget.AddForce(-contactPoint.normal * (baseForce * rb.velocity.magnitude), ForceMode.VelocityChange);
+                    
+                    //Adds the damage to the enemyBodyparts class
+                    collision.rigidbody.GetComponent<EnemyBodyParts>().BluntDamage(baseDamage);
                 }
-                else if (rb.velocity.magnitude > 1f && rb.velocity.magnitude < minimumVelocity && collision.gameObject.CompareTag("Enemy") && timer >= .2f && isBluntWeapon == false)
+
+                //Checks if the collided object has 1. Weapon Velocity > MinimumVelocity, 2. Velocity < Extra Velocity, 3. timer > cooldown, 4. IsBluntWeapon = false. 
+                else if (rb.velocity.magnitude > minimumVelocity && rb.velocity.magnitude < extraVelocity && timer >= .2f && isBluntWeapon == false)
                 {
+                    //Resets timer to 0
                     timer = 0;
-                    collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(axeDamage, bodypartDamage);
+
+                    //Adds the damage to the enemy bodypart class
+                    collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(baseDamage, bodypartDamage);
                 }
+                impactTarget = null;//Clears the impact target
             }
-            
         }
-        //REMEMBER TO RE_ENABLE THIS
-        
-        
     }
     
     private void Update()
     {
-        timer += Time.deltaTime;
-        print(rb.velocity);
+        //Checks if the timer is above 1
+        if (timer <= 1) { timer += Time.deltaTime; }  
+        print("Weapon Velocity is: " + rb.velocity.magnitude);
     }
 }

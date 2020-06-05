@@ -1555,8 +1555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d8126d24224fc4fb9551194fe3b977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  player: {fileID: 0}
+  m_WalkSpeed: 1.5
+  m_RunSpeed: 2.5
   touchPadInput:
     actionPath: /actions/default/in/TouchPadMove
     needsReinit: 0
@@ -1581,7 +1581,6 @@ MonoBehaviour:
   playerVolume: {fileID: 2440628066908440234}
   damageIntensity: 0.5
   vgReset: 1
-  vrpp: {fileID: 4335952626281798632}
 --- !u!1 &568205370083091519
 GameObject:
   m_ObjectHideFlags: 0
