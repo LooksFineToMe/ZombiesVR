@@ -63,12 +63,19 @@ public class Shooting : MonoBehaviour
 
     [Tooltip("The Mag that'll drop")]
     public GameObject droppedMag;
+
     //=================================================================================
     [Header("BulletEffects")]
+    [Tooltip("Accesses to interactable Class")]
     private Interactable interactable;//This script is needed to figure out the hand that is holding the gun
+
+    [Tooltip("")]
     [SerializeField] float nextTimeToFire = 0f;
+
     [Header("Spawning")]
+    [Tooltip("The Mag that'll drop")]
     public Spawner_Mag spawner_Mag;
+    
     public Rigidbody rb;
     //=================================================================================
     //public Animator animator;
