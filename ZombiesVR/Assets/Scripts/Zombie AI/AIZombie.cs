@@ -40,6 +40,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [HideInInspector] public bool fightingPlayer;
+    private bool m_PickedNumber;
 
 
     [HideInInspector] public bool crawling = false;
@@ -152,9 +153,20 @@ public class AIZombie : MonoBehaviour
         RotateTowards();
 
         fightingPlayer = true; //bool to tell the body parts to apply damage
-        int randomNumber = Random.Range(1, 2);
-        m_Animations.SetTrigger("Attack" + randomNumber);
+        if (!m_PickedNumber && fightingPlayer)
+        {
+            int randomNumber = Random.Range(1, 4);
+            m_Animations.SetTrigger("Attack" + randomNumber);
+            print("Attack Number: " + randomNumber.ToString());
+            m_PickedNumber = true;
+            Invoke(nameof(ResetNumberPick), 1.5f);
+        }
         canScream = false;
+    }
+
+    private void ResetNumberPick()
+    {
+        m_PickedNumber = false;
     }
 
     private void MoveTowards(float agentSpeed)
