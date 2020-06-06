@@ -244,6 +244,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 4889026486400246948}
   - {fileID: 7279292489356589799}
+  - {fileID: -4425496792513157974}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -326,6 +327,34 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.9166667
   m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &-4425496792513157974
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Attacking
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Attack1
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 9111325234754704895}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.6875
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -500,13 +529,13 @@ AnimatorStateMachine:
     m_Position: {x: 560, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9111325234754704895}
-    m_Position: {x: 260, y: 610, z: 0}
+    m_Position: {x: 190, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7777813514285572471}
-    m_Position: {x: 600, y: 610, z: 0}
+    m_Position: {x: 690, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8272922311437001506}
-    m_Position: {x: 440, y: 730, z: 0}
+    m_Position: {x: 440, y: 770, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -3820963472256553669}
@@ -1079,6 +1108,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Attack3
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8272922311437001506}
