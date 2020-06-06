@@ -29,7 +29,8 @@ public class AIZombie : MonoBehaviour
     [SerializeField] float m_SightDistance = 10;
     private bool calledScream = false;
     private bool canScream = false;
-    private int scream;
+    private int m_RandScream;
+    private bool m_PickedScreamNumber;
 
     [Header("Combat")]
     [SerializeField] bool m_Eliminated = false;
@@ -40,6 +41,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [HideInInspector] public bool fightingPlayer;
+    private bool m_PickedFightNumber;
 
 
     [HideInInspector] public bool crawling = false;
@@ -68,7 +70,7 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.speed = m_MovementSpeed;
         m_NavMesh.angularSpeed = m_RotationSpeed;
 
-        m_HeightMultiplier = 1.36f;
+        m_HeightMultiplier = 1.28f;
     }
 
     // Update is called once per frame
@@ -84,12 +86,13 @@ public class AIZombie : MonoBehaviour
             if (withinRange && !crawling && !m_Eliminated && !m_RH.ragdolled)
             {
                 AttackPlayer();
-
             }
             else if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
             {
                 if (!canWalk)
-                    Invoke(nameof(ResetCanWalk), .5f);
+                    Invoke(nameof(ResetCanWalk), 1.5f);
+                else if (!canWalk && isRunner)
+                    Invoke(nameof(ResetCanWalk), 2.5f);
 
                 if (canWalk)
                 {
@@ -152,16 +155,26 @@ public class AIZombie : MonoBehaviour
         RotateTowards();
 
         fightingPlayer = true; //bool to tell the body parts to apply damage
-        int randomNumber = Random.Range(1, 2);
-        m_Animations.SetTrigger("Attack" + randomNumber);
+        if (!m_PickedFightNumber && fightingPlayer)
+        {
+            int randomNumber = Random.Range(1, 4);
+            m_Animations.SetTrigger("Attack" + randomNumber);
+            m_PickedFightNumber = true;
+            Invoke(nameof(ResetNumberPick), 1.5f);
+        }
         canScream = false;
+    }
+
+    private void ResetNumberPick()
+    {
+        m_PickedFightNumber = false;
     }
 
     private void MoveTowards(float agentSpeed)
     {
         if (!m_Eliminated && canWalk)
         {
-            if (m_Spawner.m_LivingZombies.Count == 1 && !isRunner)
+            if (m_Spawner.m_LivingZombies.Count == 1 && !isRunner && !crawling)
             {
                 isRunner = true;
             }
@@ -229,7 +242,7 @@ public class AIZombie : MonoBehaviour
         m_Spawner = waveManager;
     }
 
-    //lose hp, did we knock the player over with the weapon? or did we kill him with the next blow || call function on collision enter
+    //lose hp call function on collision enter
     public void TakePlayerDamage(float damageSource/*, bool knocked*/)
     {
         m_HeathPoints -= damageSource;
@@ -278,7 +291,7 @@ public class AIZombie : MonoBehaviour
         m_BleedingSpeed += bleedSpeed; //adds the private float to + this local variable
     }
 
-    private void BleedingOut() //if bleed out is true then call this function every frame until death
+    private void BleedingOut() //if isBleading is true then call this function every frame until death
     {
         if (m_HeathPoints >= 0 && !m_Eliminated)
         {
@@ -318,6 +331,7 @@ public class AIZombie : MonoBehaviour
         if (!isRunner) //after calling scream have a random chance to set the zombie to runner
         {
             int rand = Random.Range(1, m_RunnerChance);
+
             if (rand == 1)
             {
                 isRunner = true;
@@ -397,20 +411,26 @@ public class AIZombie : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                scream = Random.Range(1, m_ScreamChance);
-                if (scream == 1 && !calledScream && !crawling && !headless && canScream)
+                if (distance > screamDistance)
                 {
-                    if (distance < screamDistance)
+                    if (!m_PickedScreamNumber)
                     {
-                        return;
-                    }
-                    else
-                    {
-                        ZombieScream();
-                        calledScream = true;
+                        m_RandScream = Random.Range(1, m_ScreamChance);
+                        m_PickedScreamNumber = true;
+                        Invoke(nameof(ResetScreamNumber), 1.5f);
+                        if (m_RandScream == 1 && !calledScream && !crawling && !headless && canScream)
+                        {
+                            ZombieScream();
+                            calledScream = true;
+                        }
                     }
                 }
             }
         }
+    }
+
+    private void ResetScreamNumber()
+    {
+        m_PickedScreamNumber = false;
     }
 }
