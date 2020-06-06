@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR;
 using Valve.VR.InteractionSystem;
-using UnityEngine.UI;
-using System;
+using Valve.VR;
 
-public class Shooting : MonoBehaviour
+public class ShotGunShooting : MonoBehaviour
 {
     //=================================================================================
     [Header("SteamVR Inputs")]
@@ -26,7 +24,7 @@ public class Shooting : MonoBehaviour
     public GameObject bullet;
 
     [Tooltip("The pivot point where the bullet will shoot")]
-    public Transform barrelPivot;
+    public Transform[] barrelPivot;
 
     [Tooltip("The speed of the bullet when fired")]
     public float shootingSpeed = 1;
@@ -90,7 +88,7 @@ public class Shooting : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {   
+    {
         nextTimeToFire += Time.deltaTime;
         if (interactable.attachedToHand != null)
         {
@@ -128,7 +126,7 @@ public class Shooting : MonoBehaviour
         reloadPoint.magInGun = false;
         magazine.SetActive(false);
         Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
-        if (currentAmmo == 0) { spawner_Mag.SpawnAmmo(); }        
+        if (currentAmmo == 0) { spawner_Mag.SpawnAmmo(); }
         currentAmmo = 0;
         print("Drop Magazine");
         //remember to add a way for the dropped mag to carry the ammo count with it
@@ -138,9 +136,14 @@ public class Shooting : MonoBehaviour
     {
         if (muzzleflash != null) { muzzleflash.Play(); }
         //Spawns Bullet
-        Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
-        //Adds velocity
-        bulletrb.velocity = barrelPivot.forward * shootingSpeed;
+        for (int i = 0; i < barrelPivot.Length; i++)
+        {
+            Rigidbody bulletrb = Instantiate(bullet, barrelPivot[i].position, barrelPivot[i].rotation).GetComponent<Rigidbody>();
+            bulletrb.velocity = barrelPivot[i].forward * shootingSpeed;
+        }
+        //Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
+        ////Adds velocity
+        //bulletrb.velocity = barrelPivot.forward * shootingSpeed;
         //rb.AddRelativeTorque(recoilAmount, 0, 0);
         UpdateAmmoCount();
         recoil.Recoil();
@@ -160,7 +163,7 @@ public class Shooting : MonoBehaviour
         print("Add Ammo Count");
         //currentAmmoText.text = currentAmmo.ToString();
     }
-    
+
     private void Pulse(float duration, float frequency, float amplitude, SteamVR_Input_Sources whichHand)
     {
         trackPadHaptic.Execute(0, duration, frequency, amplitude, whichHand);
