@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 7226316031008326174}
   - component: {fileID: 1806522462234048552}
   - component: {fileID: 5345359276438357201}
+  - component: {fileID: 373765458667770458}
+  - component: {fileID: 4394084089128021046}
+  - component: {fileID: 1359898898726014118}
+  - component: {fileID: 7511048143021563794}
   m_Layer: 0
   m_Name: Bench_01
   m_TagString: Untagged
@@ -80,3 +84,55 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &373765458667770458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913879404829782029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.030832008, y: 0.53249305, z: 0.54530907}
+  m_Center: {x: 0.62030214, y: 0.26627508, z: 0.054677546}
+--- !u!65 &4394084089128021046
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913879404829782029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.270955, y: 0.7980575, z: 0.17822886}
+  m_Center: {x: 0, y: 0.3990572, z: -0.23854406}
+--- !u!65 &1359898898726014118
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913879404829782029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.031786382, y: 0.5320869, z: 0.54563653}
+  m_Center: {x: -0.6195826, y: 0.26627508, z: 0.05484116}
+--- !u!65 &7511048143021563794
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913879404829782029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.270955, y: 0.39215037, z: 0.65531915}
+  m_Center: {x: 0, y: 0.19610372, z: 0}
