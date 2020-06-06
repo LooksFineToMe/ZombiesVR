@@ -29,7 +29,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] float m_SightDistance = 10;
     private bool calledScream = false;
     private bool canScream = false;
-    private int scream;
+    private int m_RandScream;
     private bool m_PickedScreamNumber;
 
     [Header("Combat")]
@@ -70,7 +70,7 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.speed = m_MovementSpeed;
         m_NavMesh.angularSpeed = m_RotationSpeed;
 
-        m_HeightMultiplier = 1.36f;
+        m_HeightMultiplier = 1.28f;
     }
 
     // Update is called once per frame
@@ -86,12 +86,13 @@ public class AIZombie : MonoBehaviour
             if (withinRange && !crawling && !m_Eliminated && !m_RH.ragdolled)
             {
                 AttackPlayer();
-
             }
             else if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
             {
                 if (!canWalk)
-                    Invoke(nameof(ResetCanWalk), .5f);
+                    Invoke(nameof(ResetCanWalk), 1.5f);
+                else if (!canWalk && isRunner)
+                    Invoke(nameof(ResetCanWalk), 2.5f);
 
                 if (canWalk)
                 {
@@ -173,7 +174,7 @@ public class AIZombie : MonoBehaviour
     {
         if (!m_Eliminated && canWalk)
         {
-            if (m_Spawner.m_LivingZombies.Count == 1 && !isRunner)
+            if (m_Spawner.m_LivingZombies.Count == 1 && !isRunner && !crawling)
             {
                 isRunner = true;
             }
@@ -241,7 +242,7 @@ public class AIZombie : MonoBehaviour
         m_Spawner = waveManager;
     }
 
-    //lose hp, did we knock the player over with the weapon? or did we kill him with the next blow || call function on collision enter
+    //lose hp call function on collision enter
     public void TakePlayerDamage(float damageSource/*, bool knocked*/)
     {
         m_HeathPoints -= damageSource;
@@ -290,7 +291,7 @@ public class AIZombie : MonoBehaviour
         m_BleedingSpeed += bleedSpeed; //adds the private float to + this local variable
     }
 
-    private void BleedingOut() //if bleed out is true then call this function every frame until death
+    private void BleedingOut() //if isBleading is true then call this function every frame until death
     {
         if (m_HeathPoints >= 0 && !m_Eliminated)
         {
@@ -414,10 +415,10 @@ public class AIZombie : MonoBehaviour
                 {
                     if (!m_PickedScreamNumber)
                     {
-                        scream = Random.Range(1, m_ScreamChance);
+                        m_RandScream = Random.Range(1, m_ScreamChance);
                         m_PickedScreamNumber = true;
                         Invoke(nameof(ResetScreamNumber), 1.5f);
-                        if (scream == 1 && !calledScream && !crawling && !headless && canScream)
+                        if (m_RandScream == 1 && !calledScream && !crawling && !headless && canScream)
                         {
                             ZombieScream();
                             calledScream = true;
