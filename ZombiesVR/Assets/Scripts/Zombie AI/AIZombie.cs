@@ -415,7 +415,6 @@ public class AIZombie : MonoBehaviour
                     if (!m_PickedScreamNumber)
                     {
                         scream = Random.Range(1, m_ScreamChance);
-                        print("Scream Number: " + scream.ToString());
                         m_PickedScreamNumber = true;
                         Invoke(nameof(ResetScreamNumber), 1.5f);
                         if (scream == 1 && !calledScream && !crawling && !headless && canScream)
