@@ -6,19 +6,23 @@ using Valve.VR;
 
 public class GunPickUp : MonoBehaviour
 {
-    public Interactable interactable;
     public GameObject leftHand;
     public GameObject rightHand;
     // Start is called before the first frame update
     private void Start()
     {
-        interactable = GetComponent<Interactable>();
+
     }
     public void PickUpGun()
     {
-        //SteamVR_Input_Sources inputSource;
-        //if (inputSource.LeftHand) { leftHand.SetActive(true); }
-        //else if (interactable.attachedToHand.handType == SteamVR_Input_Sources.RightHand) { rightHand.SetActive(true); }
+        if (gameObject.GetComponentInParent<Hand>().handType == SteamVR_Input_Sources.LeftHand)
+        {
+            leftHand.SetActive(true);
+        }
+        if (gameObject.GetComponentInParent<Hand>().handType == SteamVR_Input_Sources.RightHand)
+        {
+            rightHand.SetActive(true);
+        }
     }
     public void DropGun()
     {

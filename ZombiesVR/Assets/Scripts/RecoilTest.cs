@@ -20,7 +20,8 @@ public class RecoilTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        if (timer <= 1) { timer += Time.deltaTime; }
+        
         if (timer < recoilTime)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, finish.localPosition, recoilForce * Time.deltaTime);

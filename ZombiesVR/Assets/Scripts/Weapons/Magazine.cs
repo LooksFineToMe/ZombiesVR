@@ -46,7 +46,7 @@ public class Magazine : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        if (other.gameObject.CompareTag("Belt") && timer >= .4f)
+        if (other.gameObject.CompareTag("Belt") && timer >= .3f)
         {
             if (m_Interactable.attachedToHand == true)
             {

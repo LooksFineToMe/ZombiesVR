@@ -95,6 +95,6 @@ public class MeleeDamage : MonoBehaviour
     {
         //Checks if the timer is above 1
         if (timer <= 1) { timer += Time.deltaTime; }  
-        print("Weapon Velocity is: " + rb.velocity.magnitude);
+        //print("Weapon Velocity is: " + rb.velocity.magnitude);
     }
 }
