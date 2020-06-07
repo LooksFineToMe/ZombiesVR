@@ -19,8 +19,6 @@ public class EnemyBodyParts : MonoBehaviour
     [Tooltip("Specify if this body part can apply damage to the player")]
     public bool applyDamage = false;
     [Tooltip("The time until this zombie is allowed to hit the player again")]
-    public float hitReset = 1f;
-    private bool hitPlayer;
     public float bleedTimer;
     private int bodyPartDamaged;
 
@@ -79,21 +77,13 @@ public class EnemyBodyParts : MonoBehaviour
         print("collided with " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponentInParent<PlayerStats>() != null)
         {
-            if (aiZombie.fightingPlayer && applyDamage && !hitPlayer)
+            if (aiZombie.fightingPlayer && applyDamage)
             {
                 collision.gameObject.GetComponentInParent<PlayerStats>().TakeDamage();
-                hitPlayer = true;
-                Invoke(nameof(HitReset), hitReset);
                 print("hit " + collision.gameObject.name);
             }
         }
     }
-
-    private void HitReset()
-    {
-        hitPlayer = false;
-    }
-
     //desktop
     //private void OnControllerColliderHit(ControllerColliderHit controllerHit)
     //{

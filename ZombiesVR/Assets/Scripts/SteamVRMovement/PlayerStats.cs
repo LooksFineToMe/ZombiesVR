@@ -11,17 +11,20 @@ public class PlayerStats : MonoBehaviour
     [Header("Player's Stats")]
     public int health = 5;
     public int magCount;
+    public bool playerIsDead;
 
     [Header("Damage Effects")]
     [Tooltip("The Box PP Volume attacted the player camera")]
     public Volume playerVolume;
     [Tooltip("How intense the vignette is when taking damage")]
-    public float damageIntensity = .5f;
+    public float damageIntensity;
     [Tooltip("How quickly we want the damage vignette to reset")]
     public float vgReset = 1f;
-
     private Vignette vg;
 
+    [Header("timers")]
+    float coolDownTimer;
+    public float hitCooldown;
     private void Start()
     {
         playerVolume.profile.TryGet(out vg);
@@ -29,7 +32,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        if (vg.intensity.value >= .1)
+        if (coolDownTimer <= hitCooldown + .2f) { coolDownTimer += Time.deltaTime; }
+        if (vg.intensity.value >= damageIntensity /*playerIsDead == true*/)
         {
             vg.intensity.value = Mathf.Lerp(vg.intensity.value, 0, vgReset * Time.deltaTime);
         }
@@ -37,25 +41,63 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage()
     {
-        health -= 1;
-
-        DamageEffect();
-        
-        print("player has been hit");
-        if (health <= 0)
+        if (coolDownTimer > hitCooldown)
         {
-            GameOver();
+            hitCooldown = 0;
+            health -= 1;
+
+            DamageEffect();
+
+            print("player has been hit");
+            if (health <= 0)
+            {
+                playerIsDead = true;
+                GameOver();
+            }
+            if (health >= 5)
+            {
+                health = 5;
+            }
         }
+        
     }
 
     [ContextMenu("Damage")]
     private void DamageEffect()
     {
-        vg.intensity.value = damageIntensity;
+        if (health >= 5)
+        {
+            //vg.intensity.value = .9f;
+            //damageIntensity = .3f;
+        }
+        if (health == 4)
+        {
+            vg.intensity.value = .9f;
+            damageIntensity = .3f;
+        }
+        if (health == 3)
+        {
+            vg.intensity.value = .9f;
+            damageIntensity = .5f;
+        }
+        if (health == 2)
+        {
+            vg.intensity.value = 1;
+            damageIntensity = .7f;
+        }
+        if (health == 1)
+        {
+            vg.intensity.value = 1f;
+            damageIntensity = .9f;
+        }
+        
+
+
     }
 
     private void GameOver()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
