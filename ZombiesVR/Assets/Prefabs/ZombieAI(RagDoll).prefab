@@ -132,7 +132,6 @@ MonoBehaviour:
   particlePos: {fileID: 6740941827861631420}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 2.5
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &350500412017914899
@@ -328,7 +327,6 @@ MonoBehaviour:
   particlePos: {fileID: 5296930020163922890}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 1
-  hitReset: 1
   bleedTimer: 1
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &699441125155980076
@@ -543,6 +541,7 @@ MonoBehaviour:
   m_Animations: {fileID: 1078998178780695412}
   withinRange: 0
   fightingPlayer: 0
+  m_Spine: {fileID: 4571195173475737156}
   crawling: 0
   headless: 0
   m_Target: {fileID: 0}
@@ -955,7 +954,6 @@ MonoBehaviour:
   particlePos: {fileID: 7790032735906111414}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 5
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &2580898409645346776
@@ -1598,7 +1596,6 @@ MonoBehaviour:
   particlePos: {fileID: 2475074623359654352}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 15
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!136 &5115114905782349388
@@ -1870,7 +1867,6 @@ MonoBehaviour:
   particlePos: {fileID: 2578415652037762679}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 2.5
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5296930020163922890
@@ -2005,7 +2001,6 @@ MonoBehaviour:
   particlePos: {fileID: 7477610181958831603}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 2
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5306740754457704079
@@ -2138,7 +2133,6 @@ MonoBehaviour:
   particlePos: {fileID: 0}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5712107732584854225
@@ -2458,7 +2452,6 @@ MonoBehaviour:
   particlePos: {fileID: 6404271777985140990}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 1
-  hitReset: 1
   bleedTimer: 1
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6404271777985140990
@@ -2593,7 +2586,6 @@ MonoBehaviour:
   particlePos: {fileID: 6630742375939194882}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 2.5
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6440334716574478845
@@ -2883,7 +2875,6 @@ MonoBehaviour:
   particlePos: {fileID: 7790032735906111414}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 5
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6851599486617088581
@@ -3188,7 +3179,6 @@ MonoBehaviour:
   particlePos: {fileID: 0}
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
-  hitReset: 1
   bleedTimer: 0
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &7806679214906844608

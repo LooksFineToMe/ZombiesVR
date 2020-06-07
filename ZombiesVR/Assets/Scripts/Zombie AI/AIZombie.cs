@@ -40,6 +40,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] public int m_AttackDamage = 1;
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
+    [SerializeField] Transform m_Spine;
     [HideInInspector] public bool fightingPlayer;
     private bool m_PickedFightNumber;
 
@@ -70,7 +71,7 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.speed = m_MovementSpeed;
         m_NavMesh.angularSpeed = m_RotationSpeed;
 
-        m_HeightMultiplier = 1.28f;
+        m_HeightMultiplier = 1.15f;
     }
 
     // Update is called once per frame
@@ -83,16 +84,22 @@ public class AIZombie : MonoBehaviour
         {
             withinRange = CalculateDistance();
 
-            if (withinRange && !crawling && !m_Eliminated && !m_RH.ragdolled)
+            if (withinRange && !crawling && !m_Eliminated &&!m_RH.ragdolled)
             {
                 AttackPlayer();
             }
             else if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
             {
                 if (!canWalk)
-                    Invoke(nameof(ResetCanWalk), 1.5f);
+                {
+                    Invoke(nameof(ResetCanWalk), 2);
+                    m_Animations.SetBool("Attacking", false);
+                }
                 else if (!canWalk && isRunner)
-                    Invoke(nameof(ResetCanWalk), 2.5f);
+                {
+                    Invoke(nameof(ResetCanWalk), 3);
+                    m_Animations.SetBool("Attacking", false);
+                }
 
                 if (canWalk)
                 {
@@ -126,9 +133,14 @@ public class AIZombie : MonoBehaviour
         canWalk = true;
     }
 
-    private void Update()
+    //could do something with this if it was better
+    public void Twitch()
     {
-
+        if (m_Spine != null)
+        {
+            float rotY = m_Spine.rotation.y;
+            m_Spine.localEulerAngles = Vector3.Lerp(m_Spine.localEulerAngles, new Vector3(0, rotY + .5f, 0), 1 * Time.deltaTime);
+        }
     }
 
     //for testing purposes, will intergrate AI Wander soon
@@ -181,7 +193,6 @@ public class AIZombie : MonoBehaviour
 
             Vector3 target = m_Target.transform.position - transform.position;
             fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
-            m_Animations.SetBool("Attacking", false);
 
             if (target != Vector3.zero)
             {
