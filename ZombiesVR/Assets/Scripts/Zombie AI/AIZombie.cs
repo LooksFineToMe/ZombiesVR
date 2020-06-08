@@ -33,7 +33,7 @@ public class AIZombie : MonoBehaviour
     private bool m_PickedScreamNumber;
 
     [Header("Combat")]
-    [SerializeField] bool m_Eliminated = false;
+    [SerializeField] public bool m_Eliminated = false;
     [SerializeField] float m_AttackRange = 2f;
     [SerializeField] float m_TimeToGetUp = 2f;
     [SerializeField] public float m_HeathPoints = 100;

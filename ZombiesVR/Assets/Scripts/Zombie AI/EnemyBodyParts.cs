@@ -77,7 +77,7 @@ public class EnemyBodyParts : MonoBehaviour
         print("collided with " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponentInParent<PlayerStats>() != null)
         {
-            if (aiZombie.fightingPlayer && applyDamage)
+            if (aiZombie.fightingPlayer && !aiZombie.m_Eliminated && applyDamage)
             {
                 collision.gameObject.GetComponentInParent<PlayerStats>().TakeDamage();
                 print("hit " + collision.gameObject.name);
