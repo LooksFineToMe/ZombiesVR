@@ -609,7 +609,7 @@ MonoBehaviour:
   trackPadHaptic:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
-  bullet: {fileID: 1044082343842805234, guid: 7fa8852e0c214264c84a92dc44affccf, type: 3}
+  bullet: {fileID: 1044082343842805234, guid: 845c7eff8718abb4598250950a784c6a, type: 3}
   barrelPivot: {fileID: 7223474794034056110}
   shootingSpeed: 40
   fireRate: 0.3
@@ -778,7 +778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4357166269412892445
 Transform:
   m_ObjectHideFlags: 0
@@ -4709,7 +4709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7223474794871846899
 Transform:
   m_ObjectHideFlags: 0
