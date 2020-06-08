@@ -416,7 +416,7 @@ public class AIZombie : MonoBehaviour
     }
 
     [ContextMenu("Death Animation")] //for testing
-    private void CallDeathAnimation()
+    public void CallDeathAnimation()
     {
         if (!crawling && !m_RH.ragdolled)
         {
@@ -427,6 +427,7 @@ public class AIZombie : MonoBehaviour
     public IEnumerator DeathAnimation()
     {
         m_Animations.SetTrigger("DeathAnimation");
+        m_Eliminated = true;
         canWalk = false;
         m_Eliminated = true;
         m_NavMesh.velocity = Vector3.zero;

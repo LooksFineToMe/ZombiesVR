@@ -8,6 +8,7 @@ public class BulletProperties : MonoBehaviour
     public float timeToDestroy;
     public float bulletDamage = 1;
     public int bodypartDamage = 1;
+    public bool heavy;
 
     [Header("RagDollPhysics")]
     public Transform bulletPos;
@@ -22,7 +23,7 @@ public class BulletProperties : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contactPoint = collision.contacts[0];
-        if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<RagdollHelper>() != null)
+        if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<RagdollHelper>() != null && heavy == false)
         {
             
             //find the RagdollHelper component and activate ragdolling
@@ -53,6 +54,27 @@ public class BulletProperties : MonoBehaviour
                 //impactTarget.AddForce(bulletPos.transform.forward * bulletForce, ForceMode.VelocityChange);
             }
         }
+        else if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<RagdollHelper>() != null && heavy == true)
+        {
+
+            //find the RagdollHelper component and activate ragdolling
+
+            RagdollHelper helper = collision.rigidbody.GetComponentInParent<RagdollHelper>();
+            //print(hit.collider.GetComponentInParent<RagdollHelper>().ToString());
+
+            helper.anim = collision.rigidbody.GetComponentInParent<Animator>();
+            //we need to find a way to set the animator of the object being hit
+
+
+            //set the impact target to whatever the ray hit
+            impactTarget = collision.rigidbody;
+
+            //collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(bulletDamage, bodypartDamage);
+
+            impactTarget = null;
+            collision.rigidbody.GetComponentInParent<AIZombie>().CallDeathAnimation();
+        }
+
         if (collision.gameObject.CompareTag("Enemy")) 
         { 
             //collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/);
