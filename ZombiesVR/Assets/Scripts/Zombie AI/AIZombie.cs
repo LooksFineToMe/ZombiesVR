@@ -291,7 +291,7 @@ public class AIZombie : MonoBehaviour
     [ContextMenu("Kill")]
     private void DeahtEvent()
     {
-        m_Eliminated = true; //bool to tell the AI to stop moving
+        m_Eliminated = true;
 
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = true;
@@ -368,7 +368,7 @@ public class AIZombie : MonoBehaviour
     [ContextMenu("Stagger")]
     public void Stagger()
     {
-        if (!crawling)
+        if (!crawling && !m_Eliminated)
         {
             canWalk = false;
             m_Animations.SetBool("Staggered", true);
@@ -428,6 +428,7 @@ public class AIZombie : MonoBehaviour
     {
         m_Animations.SetTrigger("DeathAnimation");
         canWalk = false;
+        m_Eliminated = true;
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = true;
         m_Spawner.m_LivingZombies.Remove(this);
