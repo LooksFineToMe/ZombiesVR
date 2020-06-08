@@ -42,6 +42,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] public bool withinRange;
     [SerializeField] Transform m_Spine;
     [HideInInspector] public bool fightingPlayer;
+    [HideInInspector] public bool powerDeath;
     private bool m_PickedFightNumber;
 
 
@@ -93,12 +94,10 @@ public class AIZombie : MonoBehaviour
                 if (!canWalk)
                 {
                     Invoke(nameof(ResetCanWalk), 2);
-                    m_Animations.SetBool("Attacking", false);
                 }
                 else if (!canWalk && isRunner)
                 {
                     Invoke(nameof(ResetCanWalk), 3);
-                    m_Animations.SetBool("Attacking", false);
                 }
 
                 if (canWalk)
@@ -131,6 +130,7 @@ public class AIZombie : MonoBehaviour
     private void ResetCanWalk()
     {
         canWalk = true;
+        m_Animations.SetBool("Attacking", false);
     }
 
     //could do something with this if it was better
@@ -163,18 +163,19 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = false;
         canWalk = false;
         m_Animations.SetBool("Walking", false);
+        m_Animations.SetBool("Running", false);
         m_Animations.SetBool("Attacking", true);
         RotateTowards();
 
         fightingPlayer = true; //bool to tell the body parts to apply damage
-        if (!m_PickedFightNumber && fightingPlayer)
-        {
-            int randomNumber = Random.Range(1, 4);
-            m_Animations.SetTrigger("Attack" + randomNumber);
-            m_PickedFightNumber = true;
-            Invoke(nameof(ResetNumberPick), 1.5f);
-        }
         canScream = false;
+        //if (!m_PickedFightNumber && fightingPlayer)
+        //{
+        //    int randomNumber = Random.Range(1, 4);
+        //    m_Animations.SetTrigger("Attack" + randomNumber);
+        //    m_PickedFightNumber = true;
+        //    Invoke(nameof(ResetNumberPick), 1.5f);
+        //}
     }
 
     private void ResetNumberPick()
@@ -260,7 +261,14 @@ public class AIZombie : MonoBehaviour
 
         if (m_HeathPoints <= 0)
         {
-            DeahtEvent();
+            if (!powerDeath)
+            {
+                DeahtEvent();
+            }
+            else
+            {
+
+            }
         }
     }
 
@@ -405,6 +413,27 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.velocity = agentVelocity;
         m_NavMesh.isStopped = false;
         canWalk = true;
+    }
+
+    [ContextMenu("Death Animation")] //for testing
+    private void CallDeathAnimation()
+    {
+        if (!crawling && !m_RH.ragdolled)
+        {
+            StartCoroutine(DeathAnimation());
+        }
+    }
+
+    public IEnumerator DeathAnimation()
+    {
+        m_Animations.SetTrigger("DeathAnimation");
+        canWalk = false;
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = true;
+        m_Spawner.m_LivingZombies.Remove(this);
+        yield return new WaitForSeconds(.85f);
+        m_RH.ragdolled = true;
+        Destroy(this.gameObject, 5);
     }
 
     private void ZombieSight() //this method calls the zombie scream randomly if the player is close enough and a ray hits them
