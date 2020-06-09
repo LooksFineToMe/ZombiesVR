@@ -9379,8 +9379,8 @@ GameObject:
   - component: {fileID: 2040350926330952727}
   - component: {fileID: 5573158931402571887}
   m_Layer: 10
-  m_Name: BulletSmallFire
-  m_TagString: Untagged
+  m_Name: BulletFire 1
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14086,6 +14086,7 @@ MonoBehaviour:
   timeToDestroy: 2
   bulletDamage: 20
   bodypartDamage: 2
+  heavy: 0
   bulletPos: {fileID: 1044082343843051070}
   impactTarget: {fileID: 0}
   bulletForce: 10

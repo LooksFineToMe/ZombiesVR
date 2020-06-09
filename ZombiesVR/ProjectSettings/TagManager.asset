@@ -12,6 +12,7 @@ TagManager:
   - Magazine
   - Belt
   - Players_Car
+  - JerryCan
   layers:
   - Default
   - TransparentFX

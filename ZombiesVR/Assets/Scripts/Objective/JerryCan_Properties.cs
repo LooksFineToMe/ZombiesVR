@@ -37,11 +37,16 @@ public class JerryCan_Properties : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Players_Car") && m_Used == false && m_Interactable.attachedToHand == true)
+        if (other.gameObject.CompareTag("JerryCan") && m_Used == false && m_Interactable.attachedToHand == true)
         {
+            //OLDSYSTEM!
+            //m_Used = true;
+            //m_Refilling = true;
+            //m_RefillUI.enabled = true;
+            //OLDSYSTEM
             m_Used = true;
-            m_Refilling = true;
-            m_RefillUI.enabled = true;
+            other.gameObject.GetComponentInParent<PlaceJerryCan>().PlacedJerryCan();
+            CarFilled();
         }
     }
 
@@ -54,7 +59,8 @@ public class JerryCan_Properties : MonoBehaviour
     {
         m_Refilling = false;
         m_WinManager.CheckRefills();
-        m_RefillUI.enabled = false;
-        Destroy(gameObject, 5);
+        m_Interactable.attachedToHand.DetachObject(gameObject);
+        //m_RefillUI.enabled = false;
+        Destroy(gameObject);
     }
 }

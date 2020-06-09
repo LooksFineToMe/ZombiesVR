@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8326266584991188695}
   m_Layer: 10
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 10
   bulletDamage: 1
+  bodypartDamage: 1
+  heavy: 0
   bulletPos: {fileID: 7348525535776300295}
   impactTarget: {fileID: 0}
   bulletForce: 10
