@@ -14,6 +14,7 @@ public class ComboManager : MonoBehaviour
     private bool m_ResetAudio = false;
 
     [Header("Audio")]
+    [SerializeField] AudioSource m_AudioSFX;
     [SerializeField] AudioClip[] m_TrackListOne;
     private bool called = false;
 
@@ -22,6 +23,8 @@ public class ComboManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_CurrentCombo = 0;
+
         d_AudioSource = GetComponent<DoubleAudioSource>();
     }
 
@@ -61,10 +64,18 @@ public class ComboManager : MonoBehaviour
         {
             m_HasCombo = true;
             CrossFadeAudioSource(m_TrackListOne[2], .5f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
         }
-        else if (m_CurrentCombo == 14)
+        else if (m_CurrentCombo == 20)
         {
+            //boooom
             CrossFadeAudioSource(m_TrackListOne[3], 1f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+        }
+        else if (m_CurrentCombo == 30)
+        {
+            CrossFadeAudioSource(m_TrackListOne[8], 1f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
         }
     }
 

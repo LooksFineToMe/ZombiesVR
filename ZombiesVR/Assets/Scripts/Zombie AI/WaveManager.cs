@@ -22,6 +22,9 @@ public class WaveManager : MonoBehaviour
     [Tooltip("How difficult the game will be, Higher values will mean harder difficulties")]
     [SerializeField] int m_IncrementValues = 5;
 
+    float timer = 5;
+    float currentTime;
+
     //assign the targets for the AI
     private List<GameObject> m_Targets;
 
@@ -42,6 +45,7 @@ public class WaveManager : MonoBehaviour
             SpawnWave();
             m_CurrentValueOfWave = 0;
         }
+
         //if all zombies are dead create the next wave to spawn
         if (m_LivingZombies.Count <= 0)
         {
@@ -50,6 +54,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    //this works for the first wave but not for everything else
     private void CreateWave()
     {
         m_NextWave = Time.deltaTime + m_TimeOffset;
