@@ -9,6 +9,7 @@ public class WaveManager : MonoBehaviour
     [HideInInspector] public List<AIZombie> m_LivingZombies;
     [SerializeField] public List<GameObject> m_SpawnLocations;
     [SerializeField] public List<GameObject> m_Players;
+    [SerializeField] public ComboManager s_ComboManager;
 
     [Header("Waves Specific")]
     [Tooltip("How long between waves and when the next wave begins")]

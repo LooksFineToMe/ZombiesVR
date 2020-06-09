@@ -63,6 +63,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] public int m_WaveValue = 1;
 
     [HideInInspector] public WaveManager m_Spawner;
+    [HideInInspector] public ComboManager m_ComboManager;
     public AnimatorClipInfo[] clipinfo;//Matts
 
     // Start is called before the first frame update
@@ -91,6 +92,8 @@ public class AIZombie : MonoBehaviour
             }
             else if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
             {
+                fightingPlayer = false; //bool to tell the body parts to apply damage
+
                 if (!canWalk)
                 {
                     Invoke(nameof(ResetCanWalk), 2);
@@ -167,7 +170,6 @@ public class AIZombie : MonoBehaviour
         m_Animations.SetBool("Attacking", true);
         RotateTowards();
 
-        fightingPlayer = true; //bool to tell the body parts to apply damage
         canScream = false;
         //if (!m_PickedFightNumber && fightingPlayer)
         //{
@@ -249,9 +251,11 @@ public class AIZombie : MonoBehaviour
         }
     }
 
+    //so the wave manager knows when the zombie has been eliminated or not
     public void SetWaveManager(WaveManager waveManager)
     {
         m_Spawner = waveManager;
+        m_ComboManager = waveManager.s_ComboManager;
     }
 
     //lose hp call function on collision enter
@@ -272,6 +276,45 @@ public class AIZombie : MonoBehaviour
         }
     }
 
+    [ContextMenu("Kill")]
+    private void DeahtEvent()
+    {
+        m_Eliminated = true;
+
+        m_NavMesh.velocity = Vector3.zero;
+        m_NavMesh.isStopped = true;
+
+        m_Spawner.m_LivingZombies.Remove(this);
+        m_ComboManager.m_CurrentCombo += 1;
+
+        m_RH.ragdolled = true;
+        //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
+        Destroy(this.gameObject, 5);//keep this to optimise performence
+    }
+
+    [ContextMenu("Death Animation")] //for testing
+    public void CallDeathAnimation()
+    {
+        if (!crawling && !m_Eliminated)
+        {
+            m_Animations.SetTrigger("DeathAnimation");
+            m_Eliminated = true;
+            canWalk = false;
+            m_Eliminated = true;
+            m_NavMesh.velocity = Vector3.zero;
+            m_NavMesh.isStopped = true;
+            m_Spawner.m_LivingZombies.Remove(this);
+            m_ComboManager.AddCombo();
+            Invoke(nameof(DeathAnimation), .85f);
+        }
+    }
+
+    private void DeathAnimation()
+    {
+        m_RH.ragdolled = true;
+        Destroy(this.gameObject, 5);
+    }
+
     [ContextMenu("Ragdoll")] //method for testing purposes
     void Ragdoll()
     {
@@ -286,21 +329,6 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = true;
         yield return new WaitForSeconds(m_TimeToGetUp);
         m_RH.ragdolled = false;
-    }
-
-    [ContextMenu("Kill")]
-    private void DeahtEvent()
-    {
-        m_Eliminated = true;
-
-        m_NavMesh.velocity = Vector3.zero;
-        m_NavMesh.isStopped = true;
-
-        m_Spawner.m_LivingZombies.Remove(this);
-
-        m_RH.ragdolled = true;
-        //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
-        Destroy(this.gameObject, 5);//keep this to optimise performence
     }
 
     //call this in body part scripts
@@ -413,29 +441,6 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.velocity = agentVelocity;
         m_NavMesh.isStopped = false;
         canWalk = true;
-    }
-
-    [ContextMenu("Death Animation")] //for testing
-    public void CallDeathAnimation()
-    {
-        if (!crawling && !m_RH.ragdolled)
-        {
-            StartCoroutine(DeathAnimation());
-        }
-    }
-
-    public IEnumerator DeathAnimation()
-    {
-        m_Animations.SetTrigger("DeathAnimation");
-        m_Eliminated = true;
-        canWalk = false;
-        m_Eliminated = true;
-        m_NavMesh.velocity = Vector3.zero;
-        m_NavMesh.isStopped = true;
-        m_Spawner.m_LivingZombies.Remove(this);
-        yield return new WaitForSeconds(.85f);
-        m_RH.ragdolled = true;
-        Destroy(this.gameObject, 5);
     }
 
     private void ZombieSight() //this method calls the zombie scream randomly if the player is close enough and a ray hits them
