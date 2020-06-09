@@ -16,6 +16,7 @@ public class WinManager : MonoBehaviour
     public Animator animator;
     public ParticleSystem[] explosions;
     public GameObject explodeTrigger;
+    public GameObject[] itemsBlockingExit;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +83,10 @@ public class WinManager : MonoBehaviour
         }
         explodeTrigger.SetActive(false);
         print("Animation.Play();");
+        foreach (GameObject exitBlock in itemsBlockingExit)
+        {
+            exitBlock.SetActive(false);
+        }
         print("Sound.Play();");
     }
 }
