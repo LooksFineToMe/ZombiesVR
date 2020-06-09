@@ -19,15 +19,23 @@ public class PickUPItem : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
         if (gameObject.GetComponent<MeshCollider>() != null) { gameObject.GetComponent<MeshCollider>().isTrigger = false; }
+        //if (gameObject.GetComponent<BoxCollider>() != null) { gameObject.GetComponent<BoxCollider>().isTrigger = true;}
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
         if (gameObject.GetComponent<Magazine>() != null)
         {
             gameObject.GetComponent<Magazine>().timer = 0;
         }
-        
+    }
+    public void PickUpMedKit()
+    {
+        if (gameObject.GetComponent<MeshCollider>() != null) { gameObject.GetComponent<MeshCollider>().isTrigger = false; }
+        if (gameObject.GetComponent<BoxCollider>() != null) { gameObject.GetComponent<BoxCollider>().isTrigger = true; }
+        gameObject.GetComponent<Rigidbody>().isKinematic = false;
     }
     public void DropObject()
     {
         gameObject.layer = LayerMask.NameToLayer("Default");
+        if (gameObject.GetComponent<MeshCollider>() != null) { gameObject.GetComponent<MeshCollider>().isTrigger = false; }
+        if (gameObject.GetComponent<BoxCollider>() != null) { gameObject.GetComponent<BoxCollider>().isTrigger = false; }
     }
 }
