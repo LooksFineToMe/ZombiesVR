@@ -3017,6 +3017,7 @@ GameObject:
   - component: {fileID: 7798308304327840132}
   - component: {fileID: 4068661923136062022}
   - component: {fileID: 6070141051577764998}
+  - component: {fileID: 1353128952}
   m_Layer: 0
   m_Name: Shell_HLD
   m_TagString: Untagged
@@ -3087,6 +3088,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1353128952
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014697825387590588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.072760195, y: 0.12704813, z: 0.187778}
+  m_Center: {x: 0.000000007450581, y: -0.004862964, z: -0.030665636}
 --- !u!1 &5021311197631522451
 GameObject:
   m_ObjectHideFlags: 0
@@ -3159,6 +3173,7 @@ GameObject:
   - component: {fileID: 9110003245676128932}
   - component: {fileID: 6978475248346241452}
   - component: {fileID: 828176922153206718}
+  - component: {fileID: 586053129}
   m_Layer: 0
   m_Name: KBZ
   m_TagString: Untagged
@@ -3235,6 +3250,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &586053129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184322832252475960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.069901556, y: 0.08879066, z: 0.2752657}
+  m_Center: {x: 0, y: 0.029621731, z: 0.08410263}
 --- !u!1 &5218808890803009078
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,7 +3307,6 @@ GameObject:
   - component: {fileID: 4034050049486257487}
   - component: {fileID: 9045410157434047322}
   - component: {fileID: 8690417545645700847}
-  - component: {fileID: 318564984}
   - component: {fileID: 318564983}
   - component: {fileID: 651370355270880415}
   - component: {fileID: 559389317}
@@ -3516,19 +3543,6 @@ MonoBehaviour:
   previewPoseSelection: 0
   blendingBehaviours: []
   scale: 1
---- !u!65 &318564984
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5332211126129594396}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.059539195, y: 0.060330987, z: 0.43533087}
-  m_Center: {x: 0, y: 0.119220674, z: 0.24825835}
 --- !u!114 &318564983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3568,7 +3582,7 @@ MonoBehaviour:
   recoil: {fileID: 1607890428}
   gunClick: {fileID: 0}
   muzzleflash: {fileID: 0}
-  magazine: {fileID: 7632550643136416215}
+  magazine: {fileID: 8778452157396302347}
   droppedMag: {fileID: 0}
   nextTimeToFire: 0
   spawner_Mag: {fileID: 0}
@@ -3580,6 +3594,7 @@ MonoBehaviour:
   - {fileID: 4596210737748982364}
   - {fileID: 3021589658472631237}
   - {fileID: 8242050809860672131}
+  openBarrel: {fileID: 7632550643136416215}
 --- !u!114 &651370355270880415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5335,8 +5350,8 @@ GameObject:
   - component: {fileID: 1066876630820548962}
   - component: {fileID: 5215265025302170802}
   m_Layer: 0
-  m_Name: TrippleShell
-  m_TagString: Untagged
+  m_Name: TrippleShellPoint
+  m_TagString: ShotGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6141,7 +6156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5909064057181045383
 Transform:
   m_ObjectHideFlags: 0

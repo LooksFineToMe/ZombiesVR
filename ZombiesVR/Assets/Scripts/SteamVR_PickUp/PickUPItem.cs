@@ -17,7 +17,10 @@ public class PickUPItem : MonoBehaviour
     }
     public void PickUpObject()
     {
-        gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
+        foreach (Transform trans in gameObject.GetComponentsInChildren<Transform>(true))
+        { 
+            trans.gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
+        }
         if (gameObject.GetComponent<MeshCollider>() != null) { gameObject.GetComponent<MeshCollider>().isTrigger = false; }
         //if (gameObject.GetComponent<BoxCollider>() != null) { gameObject.GetComponent<BoxCollider>().isTrigger = true;}
         gameObject.GetComponent<Rigidbody>().isKinematic = false;

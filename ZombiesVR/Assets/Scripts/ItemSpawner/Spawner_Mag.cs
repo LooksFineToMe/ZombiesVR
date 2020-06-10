@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner_Mag : MonoBehaviour
 {
-    public GameObject magToSpawn;
+    public GameObject[] magToSpawn;
     public Transform[] spawnLocations;
     int maxSpawnLocations;
     int randomNumber;
@@ -28,6 +28,7 @@ public class Spawner_Mag : MonoBehaviour
     public void SpawnAmmo()
     {
         randomNumber = Random.Range(0, maxSpawnLocations);
-        Instantiate(magToSpawn, spawnLocations[randomNumber].transform.position, Quaternion.identity);
+        int randommagazine = Random.Range(0, magToSpawn.Length);
+        Instantiate(magToSpawn[randommagazine], spawnLocations[randomNumber].transform.position, Quaternion.identity);
     }
 }

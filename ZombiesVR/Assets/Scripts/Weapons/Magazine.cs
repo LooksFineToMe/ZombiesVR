@@ -54,12 +54,11 @@ public class Magazine : MonoBehaviour
             }
             gameObject.transform.parent = other.gameObject.transform;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            gameObject.GetComponent<BoxCollider>().isTrigger = true;
-            for (int i = 0; i < gameObject.GetComponentsInChildren<BoxCollider>().Length; i++)
-            {
-                gameObject.GetComponentsInChildren<BoxCollider>()[0].isTrigger = true;
-            }
             
+            foreach (Transform trans in gameObject.GetComponentsInChildren<Transform>(true))
+            {
+                trans.gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
+            }
         }
     }
 }

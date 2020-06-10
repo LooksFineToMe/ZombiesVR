@@ -13,6 +13,7 @@ TagManager:
   - Belt
   - Players_Car
   - JerryCan
+  - ShotGun
   layers:
   - Default
   - TransparentFX

@@ -83,6 +83,7 @@ public class ShotGunShooting : MonoBehaviour
     [Header("ShotGunSpecific")]
     public GameObject shellsToSpawn;
     public Transform[] shellLocations;
+    public GameObject openBarrel;
     private void Start()
     {
         gunClick = GetComponent<AudioSource>();
@@ -126,6 +127,7 @@ public class ShotGunShooting : MonoBehaviour
         if (rb.velocity.magnitude > 2)
         {
             animator.SetBool("Reload", false);
+            openBarrel.SetActive(false);
         }
     }
     [ContextMenu("DropMag")]
@@ -136,7 +138,7 @@ public class ShotGunShooting : MonoBehaviour
             StartCoroutine(ShellEject());
         }
         reloadPoint.magInGun = false;
-        
+        openBarrel.SetActive(true);
         //Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
         //if (currentAmmo == 0) { spawner_Mag.SpawnAmmo(); }
         currentAmmo = 0;
@@ -151,6 +153,7 @@ public class ShotGunShooting : MonoBehaviour
             Rigidbody shellrb = Instantiate(shellsToSpawn, shellPivot.transform.position, shellPivot.rotation).GetComponent<Rigidbody>();
             shellrb.velocity = shellPivot.forward * 4f;
             magazine.SetActive(false);
+            spawner_Mag.SpawnAmmo();
         }
     }
     [ContextMenu("Fire")]
