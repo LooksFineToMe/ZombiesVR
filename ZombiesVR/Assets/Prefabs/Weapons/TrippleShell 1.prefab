@@ -163,7 +163,10 @@ MonoBehaviour:
   magCount: 3
   magazine: {fileID: 3337693083282030027}
   timer: 0
-  bullets: []
+  bullets:
+  - {fileID: 5633940438321019987}
+  - {fileID: 6343342494709272010}
+  - {fileID: 254284199815498892}
 --- !u!114 &6565068220578790438
 MonoBehaviour:
   m_ObjectHideFlags: 0

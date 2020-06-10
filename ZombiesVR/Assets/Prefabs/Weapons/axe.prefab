@@ -3032,7 +3032,7 @@ MonoBehaviour:
   extraVelocity: 4
   minimumVelocity: 1
   baseDamage: 3
-  baseForce: 30
+  baseForce: 10
   bodypartDamage: 3
   isBluntWeapon: 0
   impactTarget: {fileID: 0}
