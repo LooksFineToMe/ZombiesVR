@@ -516,7 +516,7 @@ MonoBehaviour:
   m_MovementSpeed: 5
   m_RotationSpeed: 50
   isRunner: 0
-  m_RunnerChance: 10
+  m_RunnerChance: 5
   m_rb:
   - {fileID: 7790032735906111413}
   - {fileID: 2578415652037762678}
@@ -530,7 +530,7 @@ MonoBehaviour:
   - {fileID: 5296930020163922889}
   - {fileID: 682690439838600733}
   m_RH: {fileID: 1315178961373879097}
-  m_ScreamChance: 20
+  m_ScreamChance: 5
   m_HeightMultiplier: 0
   m_SightDistance: 15
   m_Eliminated: 0
@@ -540,13 +540,15 @@ MonoBehaviour:
   m_AttackDamage: 1
   m_Animations: {fileID: 1078998178780695412}
   withinRange: 0
-  fightingPlayer: 0
   m_Spine: {fileID: 4571195173475737156}
+  fightingPlayer: 0
+  powerDeath: 0
   crawling: 0
   headless: 0
   m_Target: {fileID: 0}
   m_WaveValue: 1
   m_Spawner: {fileID: 0}
+  m_ComboManager: {fileID: 0}
 --- !u!114 &2865079556040226247
 MonoBehaviour:
   m_ObjectHideFlags: 0

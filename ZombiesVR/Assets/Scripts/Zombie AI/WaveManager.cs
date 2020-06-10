@@ -37,7 +37,7 @@ public class WaveManager : MonoBehaviour
     {
         m_LivingZombies = new List<AIZombie>();
 
-        m_TimeOffset = 3f;
+        //m_TimeOffset = 3f;
     }
 
     // Update is called once per frame

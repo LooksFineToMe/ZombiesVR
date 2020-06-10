@@ -26,6 +26,12 @@ public class ComboManager : MonoBehaviour
     private bool m_TrackOne;
     private bool m_TrackTwo;
 
+    private bool m_CalledZero;
+    private bool m_CalledOne;
+    private bool m_CalledTwo;
+    private bool m_CalledThree;
+    private bool m_CalledFour;
+
     private DoubleAudioSource d_AudioSource;
 
     // Start is called before the first frame update
@@ -56,7 +62,8 @@ public class ComboManager : MonoBehaviour
                 if (m_CurrentTime <= 0)
                 {
                     m_CurrentTime = 0;
-                    m_CurrentCombo = 2;
+                    m_CurrentCombo = 0;
+                        //rework this
                     //if (m_HasCombo)
                     //{
                     //    CrossFadeAudioSource(m_TrackListOne[1], 5f);
@@ -69,7 +76,6 @@ public class ComboManager : MonoBehaviour
         PickTrack();
     }
 
-    //need to add break music
     //don't forget about choosing different songs for different waves
     public void AddCombo()
     {
@@ -77,6 +83,7 @@ public class ComboManager : MonoBehaviour
         m_CurrentCombo += 1;
         m_CurrentTime = m_TimeReset;
 
+        //there's should be a better way to do this
         if (m_TrackOne)
             TrackListOne();
         else if (m_TrackTwo)
@@ -101,49 +108,56 @@ public class ComboManager : MonoBehaviour
 
     private void TrackListOne()
     {
-        if (m_CurrentCombo == 1)
+        if (m_CurrentCombo == 1 && !m_CalledZero)
         {
             m_HasCombo = true;
-            CrossFadeAudioSource(m_TrackListOne[0], .5f);
+            CrossFadeAudioSource(m_TrackListOne[2], .5f); //low
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledZero = true;
         }
-        else if (m_CurrentCombo == 10)
+        else if (m_CurrentCombo == 10 && !m_CalledOne) //medium
         {
             CrossFadeAudioSource(m_TrackListOne[7], 1f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledOne = true;
         }
-        else if (m_CurrentCombo == 20)
+        else if (m_CurrentCombo == 20 && !m_CalledTwo) //high
         {
             CrossFadeAudioSource(m_TrackListOne[3], 1f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledTwo = true;
         }
     }
 
     private void TrackListTwo()
     {
-        if (m_CurrentCombo == 1)
+        if (m_CurrentCombo == 1 && !m_CalledZero)
         {
             m_HasCombo = true;
             CrossFadeAudioSource(m_TrackListTwo[1], .5f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledZero = true;
         }
-        else if (m_CurrentCombo == 10)
+        else if (m_CurrentCombo == 10 && !m_CalledOne)
         {
             m_HasCombo = true;
             CrossFadeAudioSource(m_TrackListTwo[2], .5f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledOne = true;
         }
-        else if (m_CurrentCombo == 20)
+        else if (m_CurrentCombo == 20 && !m_CalledTwo)
         {
             m_HasCombo = true;
             CrossFadeAudioSource(m_TrackListTwo[3], .5f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledTwo = true;
         }
-        else if (m_CurrentCombo == 15)
+        else if (m_CurrentCombo == 30 && !m_CalledThree)
         {
             m_HasCombo = true;
             CrossFadeAudioSource(m_TrackListTwo[4], .5f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledThree = true;
         }
     }
 
@@ -155,7 +169,17 @@ public class ComboManager : MonoBehaviour
             CrossFadeAudioSource(m_TrackListTwo[0], 5f);
             m_CurrentCombo = 0;
             m_CallBreakSong = true;
+            ResetCalls();
         }
+    }
+
+    private void ResetCalls()
+    {
+        m_CalledZero = false;
+        m_CalledOne = false;
+        m_CalledTwo = false;
+        m_CalledThree = false;
+        m_CalledFour = false;
     }
     
     //plays music when the player has higher or decreased combo

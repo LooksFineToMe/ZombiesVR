@@ -74,7 +74,7 @@ public class EnemyBodyParts : MonoBehaviour
     //vr
     private void OnCollisionEnter(Collision collision)
     {
-        print("collided with " + collision.gameObject.name);
+        //print("collided with " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponentInParent<PlayerStats>() != null)
         {
             if (aiZombie.fightingPlayer && !aiZombie.m_Eliminated && applyDamage)
