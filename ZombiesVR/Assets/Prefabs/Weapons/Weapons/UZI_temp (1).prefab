@@ -709,8 +709,8 @@ MonoBehaviour:
   recoil: {fileID: 4067216375144100522}
   gunClick: {fileID: 0}
   muzzleflash: {fileID: 0}
-  magazine: {fileID: 7851169127642664481}
-  droppedMag: {fileID: 8598708035778058004, guid: 007de53442849f044bb094599e6e64db,
+  magazine: {fileID: 7856703259991406362}
+  droppedMag: {fileID: 3464858243792537977, guid: fd65f682f0897a44ca0579157a25ba69,
     type: 3}
   nextTimeToFire: 0
   spawner_Mag: {fileID: 0}
