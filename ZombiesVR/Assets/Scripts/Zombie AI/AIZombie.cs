@@ -252,11 +252,10 @@ public class AIZombie : MonoBehaviour
     }
 
     //so the wave manager knows when the zombie has been eliminated or not
-    public void SetWaveManager(WaveManager waveManager)
+    public void SetWaveManager(WaveManager waveManager, ComboManager comboManager)
     {
         m_Spawner = waveManager;
-        if(m_ComboManager != null) //temp condition
-            m_ComboManager = waveManager.s_ComboManager;
+        //m_ComboManager = comboManager;
     }
 
     //lose hp call function on collision enter
@@ -286,8 +285,7 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = true;
 
         m_Spawner.m_LivingZombies.Remove(this);
-        if(m_ComboManager != null) //temp condition
-            m_ComboManager.m_CurrentCombo += 1;
+        //m_ComboManager.m_CurrentCombo += 1;
 
         m_RH.ragdolled = true;
         //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
@@ -306,8 +304,7 @@ public class AIZombie : MonoBehaviour
             m_NavMesh.velocity = Vector3.zero;
             m_NavMesh.isStopped = true;
             m_Spawner.m_LivingZombies.Remove(this);
-            if(m_ComboManager != null) //temp condition
-                m_ComboManager.AddCombo();
+            //m_ComboManager.AddCombo();
             Invoke(nameof(DeathAnimation), .85f);
         }
     }

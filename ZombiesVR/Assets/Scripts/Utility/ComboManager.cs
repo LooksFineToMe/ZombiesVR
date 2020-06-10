@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ComboManager : MonoBehaviour
 {
+    [SerializeField] WaveManager m_WaveManager;
     [Header("Combos")]
     [Tooltip("The Players current combo, updated per zombie elimination.")]
     [SerializeField] public int m_CurrentCombo;
@@ -14,9 +15,10 @@ public class ComboManager : MonoBehaviour
     private bool m_ResetAudio = false;
 
     [Header("Audio")]
+    [SerializeField] AudioSource m_MainAudioSource;
     [SerializeField] AudioSource m_AudioSFX;
     [SerializeField] AudioClip[] m_TrackListOne;
-    private bool called = false;
+    private bool m_Fade = true;
 
     private DoubleAudioSource d_AudioSource;
 
@@ -25,12 +27,21 @@ public class ComboManager : MonoBehaviour
     {
         m_CurrentCombo = 0;
 
+        m_MainAudioSource.volume = 0;
         d_AudioSource = GetComponent<DoubleAudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //for first wave start up
+        if (m_Fade)
+        {
+            StartCoroutine(FadeAudioSource.StartFade(m_MainAudioSource, .1f, 1));
+            if (m_MainAudioSource.volume >= .5f)
+                m_Fade = false;
+        }
+
         if (m_CurrentCombo > 0)
         {
             if (m_CurrentTime > 0)
@@ -50,11 +61,8 @@ public class ComboManager : MonoBehaviour
         }
     }
 
-    private void ResetParameters()
-    {
-        m_ResetAudio = false;
-    }
-
+    //need to add break music
+    //don't forget about choosing different songs for different waves
     public void AddCombo()
     {
         m_CurrentCombo += 1;
@@ -66,20 +74,20 @@ public class ComboManager : MonoBehaviour
             CrossFadeAudioSource(m_TrackListOne[2], .5f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
         }
-        else if (m_CurrentCombo == 20)
+        else if (m_CurrentCombo == 15)
         {
-            //boooom
+            m_TimeReset += 2f;
+            CrossFadeAudioSource(m_TrackListOne[7], 1f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+        }
+        else if (m_CurrentCombo == 25)
+        {
             CrossFadeAudioSource(m_TrackListOne[3], 1f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
         }
-        else if (m_CurrentCombo == 30)
-        {
-            CrossFadeAudioSource(m_TrackListOne[8], 1f);
-            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
-        }
     }
-
-    [ContextMenu("CrossFade")]
+    
+    //plays music when the player has higher or decreased combo
     private void CrossFadeAudioSource(AudioClip comboClip, float fadeTime)
     {
         d_AudioSource.CrossFade(comboClip, 1, fadeTime);
