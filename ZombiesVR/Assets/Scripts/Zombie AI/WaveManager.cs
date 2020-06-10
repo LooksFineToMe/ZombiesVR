@@ -14,16 +14,15 @@ public class WaveManager : MonoBehaviour
     [Header("Waves Specific")]
     [Tooltip("How long between waves and when the next wave begins")]
     [SerializeField] float m_TimeOffset = 10f;
+    [SerializeField] public int CurrentWave;
     private float m_NextWave;
+    private bool m_Break;
 
     [SerializeField] int m_WaveSpawnValue = 20;
     private float m_CurrentValueOfWave;
 
     [Tooltip("How difficult the game will be, Higher values will mean harder difficulties")]
     [SerializeField] int m_IncrementValues = 5;
-
-    float timer = 5;
-    float currentTime;
 
     //assign the targets for the AI
     private List<GameObject> m_Targets;
@@ -33,7 +32,9 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_LivingZombies = new List<AIZombie>();    
+        m_LivingZombies = new List<AIZombie>();
+
+        m_TimeOffset = 3f;
     }
 
     // Update is called once per frame
@@ -44,6 +45,7 @@ public class WaveManager : MonoBehaviour
         {
             SpawnWave();
             m_CurrentValueOfWave = 0;
+            m_Break = false;
         }
 
         //if all zombies are dead create the next wave to spawn
@@ -51,20 +53,21 @@ public class WaveManager : MonoBehaviour
         {
             m_WaveSpawnValue += m_IncrementValues;
             CreateWave();
+            m_Break = true;
         }
     }
 
     //this works for the first wave but not for everything else
     private void CreateWave()
     {
-        m_NextWave = Time.deltaTime + m_TimeOffset;
+        m_NextWave = Time.time + m_TimeOffset;
         //this could be buggy
         while (m_CurrentValueOfWave < m_WaveSpawnValue)
         {
             AIZombie zombie = Instantiate(m_Zombies[Random.Range(0, m_Zombies.Count - 1)]);
             zombie.transform.parent = gameObject.transform;
             zombie.transform.position = m_SpawnLocations[Random.Range(0, m_SpawnLocations.Count - 1)].transform.position;
-            zombie.SetWaveManager(this);
+            zombie.SetWaveManager(this, s_ComboManager);
             zombie.m_Spawner = this;
             m_CurrentValueOfWave += zombie.m_WaveValue;
             m_LivingZombies.Add(zombie);
@@ -80,5 +83,6 @@ public class WaveManager : MonoBehaviour
             zombie.gameObject.SetActive(true);
         }
         m_ReadyForNextWave = false;
+        CurrentWave += 1;
     }
 }
