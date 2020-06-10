@@ -2169,9 +2169,11 @@ MonoBehaviour:
   m_Players:
   - {fileID: 344833707}
   s_ComboManager: {fileID: 1766690622}
-  m_TimeOffset: 3
-  CurrentWave: 0
-  m_WaveSpawnValue: 1
+  m_TimeOffset: 5
+  m_CurrentWave: 0
+  m_AmountOfTracks: 2
+  m_ChosenTrack: 0
+  m_WaveSpawnValue: 10
   m_IncrementValues: 1
 --- !u!4 &646235307
 Transform:
@@ -2185,7 +2187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &739980815
 PrefabInstance:
@@ -2314,7 +2316,7 @@ Transform:
   - {fileID: 1618433353}
   - {fileID: 739980816}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051096419
 GameObject:
@@ -4661,7 +4663,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1618433351
 PrefabInstance:
@@ -4978,6 +4980,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 436b21d9211164b43b36f66100d46bdc, type: 3}
   - {fileID: 8300000, guid: d3ee1ffaf36a10840a4d3c15f986035f, type: 3}
   - {fileID: 8300000, guid: df0dfe709ce92444787e68dc3f8dddbb, type: 3}
+  m_TrackListTwo:
+  - {fileID: 8300000, guid: 5f77b3cf479d9ce40afaa40985d72602, type: 3}
+  - {fileID: 8300000, guid: 436687adeb2b26f49b752574e779857a, type: 3}
+  - {fileID: 8300000, guid: 3bef3336b23dbfd498d615a4f12db62b, type: 3}
+  - {fileID: 8300000, guid: 6ae076b6a809fc249928e8e8695ac68a, type: 3}
+  - {fileID: 8300000, guid: 0ebb52a142270034aba6a155fa492a71, type: 3}
 --- !u!4 &1766690623
 Transform:
   m_ObjectHideFlags: 0
@@ -4990,7 +4998,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1766690624
 AudioSource:
@@ -5098,7 +5106,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8e34ca9505743984da1b1ea3da16d9c1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5f77b3cf479d9ce40afaa40985d72602, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.45
   m_Pitch: 1
@@ -6359,7 +6367,7 @@ RectTransform:
   m_Children:
   - {fileID: 110570027}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
