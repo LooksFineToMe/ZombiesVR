@@ -79,7 +79,10 @@ public class ShotGunShooting : MonoBehaviour
     [Tooltip("Rigibody of the gun for recoil")]
     public Rigidbody rb;
     //=================================================================================
-    //public Animator animator;
+    public Animator animator;
+    [Header("ShotGunSpecific")]
+    public GameObject shellsToSpawn;
+    public Transform[] shellLocations;
     private void Start()
     {
         gunClick = GetComponent<AudioSource>();
@@ -112,24 +115,43 @@ public class ShotGunShooting : MonoBehaviour
         if (interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;//Checks what hand the gun is in
-            if (dropMagAction[source].state && magInGun == true)
+            if (dropMagAction[source].state /*&& magInGun == true*/)
             {
                 Pulse(0.1f, 75, 75, source);//This Passes through the values for controller vibration
                 magInGun = false;
+                animator.SetBool("Reload", true);
                 DropMag();
             }
+        }
+        if (rb.velocity.magnitude > 2)
+        {
+            animator.SetBool("Reload", false);
         }
     }
     [ContextMenu("DropMag")]
     private void DropMag()
     {
+        if (reloadPoint.magInGun == true)
+        {
+            StartCoroutine(ShellEject());
+        }
         reloadPoint.magInGun = false;
-        magazine.SetActive(false);
-        Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
-        if (currentAmmo == 0) { spawner_Mag.SpawnAmmo(); }
+        
+        //Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
+        //if (currentAmmo == 0) { spawner_Mag.SpawnAmmo(); }
         currentAmmo = 0;
         print("Drop Magazine");
         //remember to add a way for the dropped mag to carry the ammo count with it
+    }
+    IEnumerator ShellEject()
+    {
+        yield return new WaitForSeconds(.4f);
+        foreach (Transform shellPivot in shellLocations)
+        {
+            Rigidbody shellrb = Instantiate(shellsToSpawn, shellPivot.transform.position, shellPivot.rotation).GetComponent<Rigidbody>();
+            shellrb.velocity = shellPivot.forward * 4f;
+            magazine.SetActive(false);
+        }
     }
     [ContextMenu("Fire")]
     void Fire()
