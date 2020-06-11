@@ -1902,7 +1902,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18166
+  m_Name: pb_Mesh44554
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2173,6 +2173,7 @@ MonoBehaviour:
   m_CurrentWave: 0
   m_AmountOfTracks: 2
   m_ChosenTrack: 0
+  m_Break: 0
   m_WaveSpawnValue: 10
   m_IncrementValues: 1
 --- !u!4 &646235307
@@ -4133,7 +4134,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18224
+  m_Name: pb_Mesh44612
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5761,7 +5762,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18288
+  m_Name: pb_Mesh44664
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6024,6 +6025,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 675696019634315812, guid: d298c5e796b526143b0c8bcc1ac17b11,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 713a87290b5629f408ad1db49afa03ec, type: 3}
     - target: {fileID: 675696019634315864, guid: d298c5e796b526143b0c8bcc1ac17b11,
         type: 3}
       propertyPath: m_Name
@@ -6089,6 +6095,11 @@ PrefabInstance:
       propertyPath: m_WaveManager
       value: 
       objectReference: {fileID: 646235306}
+    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
+        type: 3}
+      propertyPath: m_TrackListTwo.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 713a87290b5629f408ad1db49afa03ec, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d298c5e796b526143b0c8bcc1ac17b11, type: 3}
 --- !u!1001 &7284773577772128774
