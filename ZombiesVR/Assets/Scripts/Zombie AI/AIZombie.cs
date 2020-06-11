@@ -41,7 +41,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [SerializeField] Transform m_Spine;
-    [HideInInspector] public bool fightingPlayer;
+    [HideInInspector] public bool m_FightingPlayer;
     [HideInInspector] public bool powerDeath;
     private bool m_PickedFightNumber;
 
@@ -92,7 +92,7 @@ public class AIZombie : MonoBehaviour
             }
             else if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
             {
-                fightingPlayer = false; //bool to tell the body parts to apply damage
+                m_FightingPlayer = false; //bool to tell the body parts to apply damage
 
                 if (!canWalk)
                 {
@@ -162,6 +162,7 @@ public class AIZombie : MonoBehaviour
 
     private void AttackPlayer()
     {
+        m_FightingPlayer = true;
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = false;
         canWalk = false;
@@ -180,10 +181,10 @@ public class AIZombie : MonoBehaviour
         //}
     }
 
-    private void ResetNumberPick()
-    {
-        m_PickedFightNumber = false;
-    }
+    //private void ResetNumberPick()
+    //{
+    //    m_PickedFightNumber = false;
+    //}
 
     private void MoveTowards(float agentSpeed)
     {
@@ -195,7 +196,7 @@ public class AIZombie : MonoBehaviour
             }
 
             Vector3 target = m_Target.transform.position - transform.position;
-            fightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
+            m_FightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
 
             if (target != Vector3.zero)
             {
@@ -460,7 +461,7 @@ public class AIZombie : MonoBehaviour
             {
                 if (distance > screamDistance)
                 {
-                    if (!m_PickedScreamNumber)
+                    if (!m_PickedScreamNumber && !m_Eliminated)
                     {
                         m_RandScream = Random.Range(1, m_ScreamChance);
                         m_PickedScreamNumber = true;
