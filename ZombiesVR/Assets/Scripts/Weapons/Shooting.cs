@@ -54,8 +54,6 @@ public class Shooting : MonoBehaviour
     //=================================================================================
 
     [Header("FeedBack")]
-    [Tooltip("The gun click noise when out of ammo")]
-    public AudioSource gunClick;
 
     [Tooltip("The muzzle flash of the gun")]
     public ParticleSystem muzzleflash;
@@ -82,12 +80,21 @@ public class Shooting : MonoBehaviour
     public Rigidbody rb;
     //=================================================================================
     public Animator animator;
+    public bool isCocked;
+    //==========================================
+    [Header("GunSounds")]
+    public GameObject sound_Shot;
+    public GameObject sound_Click;
+    public GameObject sound_Cock;
+    public GameObject sound_MagClipDown;
+    public GameObject sound_MagClipUp;
+
     private void Start()
     {
-        gunClick = GetComponent<AudioSource>();
         interactable = GetComponent<Interactable>();
         //rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        animator.SetBool("OutOfAmmo", true);
     }
     // Update is called once per frame
     void Update()
@@ -96,7 +103,7 @@ public class Shooting : MonoBehaviour
         if (interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;//Checks what hand the gun is in
-            if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo > 0 && semiAuto == true)
+            if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo > 0 && semiAuto == true && isCocked == true)
             {
                 print("implement ammo");
                 currentAmmo--;
@@ -104,13 +111,18 @@ public class Shooting : MonoBehaviour
                 Fire();
                 Pulse(0.1f, 150, 75, source);//This Passes through the values for controller vibration
             }
-            else if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo <= 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo <= 0 && semiAuto == true)
+            else if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo <= 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo <= 0 && semiAuto == true /*&& isCocked == true*/)
             {
                 animator.SetBool("OutOfAmmo", true);
+                if (sound_Click != null) { Instantiate(sound_Click, barrelPivot.position, barrelPivot.rotation); }
                 currentAmmo = 0;
                 nextTimeToFire = 0;
-                if (gunClick != null) { gunClick.Play(); }
                 Pulse(0.1f, 75, 75, source);//This Passes through the values for controller vibration
+            }
+            if (currentAmmo < 1)
+            {
+                animator.SetBool("OutOfAmmo", true);
+                isCocked = false;
             }
         }
         if (interactable.attachedToHand != null)
@@ -124,9 +136,16 @@ public class Shooting : MonoBehaviour
             }
         }
     }
+    public void CockingGun()
+    {
+        if (sound_Cock != null) { Instantiate(sound_Cock, barrelPivot.position, barrelPivot.rotation); }
+        isCocked = true;
+        animator.SetBool("OutOfAmmo", false);
+    }
     [ContextMenu("DropMag")]
     private void DropMag()
     {
+        if (sound_MagClipDown != null) { Instantiate(sound_MagClipDown, barrelPivot.position, barrelPivot.rotation); }
         reloadPoint.magInGun = false;
         magazine.SetActive(false);
         Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
@@ -140,6 +159,7 @@ public class Shooting : MonoBehaviour
     {
         animator.SetTrigger("Fire");
         if (muzzleflash != null) { muzzleflash.Play(); }
+        if (sound_Shot != null) { Instantiate(sound_Shot, barrelPivot.position, barrelPivot.rotation); }
         //Spawns Bullet
         Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
         //Adds velocity
@@ -152,11 +172,11 @@ public class Shooting : MonoBehaviour
     public void Reloading(int reloadAmount)
     {
         //Add reload
+        if (sound_MagClipUp != null) { Instantiate(sound_MagClipUp, barrelPivot.position, barrelPivot.rotation); }
         magInGun = true;
         magazine.SetActive(true);
         currentAmmo = reloadAmount;
         print("Reloading: " + reloadAmount + "Bullets");
-        if (gunClick != null) { gunClick.Play(); }
     }
     void UpdateAmmoCount()
     {

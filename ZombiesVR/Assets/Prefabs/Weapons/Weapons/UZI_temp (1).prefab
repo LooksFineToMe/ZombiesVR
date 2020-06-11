@@ -701,7 +701,7 @@ MonoBehaviour:
   barrelPivot: {fileID: 7851169126711253655}
   shootingSpeed: 40
   fireRate: 0.1
-  currentAmmo: 40
+  currentAmmo: 0
   magInGun: 0
   recoilAmount: -15
   reloadPoint: {fileID: 7851169127720965040}
@@ -715,6 +715,8 @@ MonoBehaviour:
   nextTimeToFire: 0
   spawner_Mag: {fileID: 0}
   rb: {fileID: 0}
+  animator: {fileID: 0}
+  isCocked: 0
 --- !u!95 &308368176400672418
 Animator:
   serializedVersion: 3
@@ -5542,7 +5544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6580819147652203785
 Transform:
   m_ObjectHideFlags: 0
