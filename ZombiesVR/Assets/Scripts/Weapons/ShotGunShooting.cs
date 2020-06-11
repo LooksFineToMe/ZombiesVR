@@ -184,6 +184,7 @@ public class ShotGunShooting : MonoBehaviour
         ////Adds velocity
         //bulletrb.velocity = barrelPivot.forward * shootingSpeed;
         //rb.AddRelativeTorque(recoilAmount, 0, 0);
+        animator.SetTrigger("Fire");
         UpdateAmmoCount();
         recoil.Recoil();
     }
