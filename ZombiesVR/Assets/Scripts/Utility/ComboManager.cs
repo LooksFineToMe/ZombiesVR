@@ -84,9 +84,9 @@ public class ComboManager : MonoBehaviour
         m_CurrentTime = m_TimeReset;
 
         //there's should be a better way to do this
-        if (m_TrackOne)
+        if (m_TrackOne && !m_WaveManager.m_Break)
             TrackListOne();
-        else if (m_TrackTwo)
+        else if (m_TrackTwo && !m_WaveManager.m_Break)
             TrackListTwo();
 
     }

@@ -41,7 +41,7 @@ public class CameraShoot : MonoBehaviour
                     //impact direction also according to the ray
                     impact = ray.direction * impactForce;
 
-                    ai.CallDeathAnimation();
+                    ai.TakePlayerDamage(40);
                     ai.Stagger();
                     //hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(2);
                     

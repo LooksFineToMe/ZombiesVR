@@ -19,7 +19,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int m_AmountOfTracks = 2;
     [HideInInspector] public int m_ChosenTrack;
     private float m_NextWave;
-    private bool m_Break;
+    [HideInInspector] public bool m_Break;
 
     [SerializeField] int m_WaveSpawnValue = 20;
     private float m_CurrentValueOfWave;

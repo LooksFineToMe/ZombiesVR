@@ -92,10 +92,10 @@ public class AIZombie : MonoBehaviour
             }
             else if (!withinRange && !m_Eliminated && !m_RH.ragdolled)
             {
-                m_FightingPlayer = false; //bool to tell the body parts to apply damage
+                m_FightingPlayer = false; 
 
-                if (!canWalk)
-                {
+                if (!canWalk) //if out of combat invoke the canWalk Method after a delay so the ai doesn't attack while walking
+                {             //as of now this doesn't work as well as intended
                     Invoke(nameof(ResetCanWalk), 2);
                 }
                 else if (!canWalk && isRunner)
@@ -162,7 +162,7 @@ public class AIZombie : MonoBehaviour
 
     private void AttackPlayer()
     {
-        m_FightingPlayer = true;
+        m_FightingPlayer = true; //bool to tell the body parts to apply damage
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = false;
         canWalk = false;
