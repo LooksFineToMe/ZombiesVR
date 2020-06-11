@@ -707,7 +707,6 @@ MonoBehaviour:
   reloadPoint: {fileID: 7851169127720965040}
   semiAuto: 0
   recoil: {fileID: 4067216375144100522}
-  gunClick: {fileID: 0}
   muzzleflash: {fileID: 0}
   magazine: {fileID: 7856703259991406362}
   droppedMag: {fileID: 3464858243792537977, guid: fd65f682f0897a44ca0579157a25ba69,
@@ -717,6 +716,13 @@ MonoBehaviour:
   rb: {fileID: 0}
   animator: {fileID: 0}
   isCocked: 0
+  sound_Shot: {fileID: 7202804747138919653, guid: 9c0c7524f455f094fa4a7fccfee4b88a,
+    type: 3}
+  sound_Click: {fileID: 923961635470217194, guid: 9bf43ef08dbd99a4c8cf36a55b6b1a62,
+    type: 3}
+  sound_Cock: {fileID: 0}
+  sound_MagClipDown: {fileID: 0}
+  sound_MagClipUp: {fileID: 0}
 --- !u!95 &308368176400672418
 Animator:
   serializedVersion: 3
