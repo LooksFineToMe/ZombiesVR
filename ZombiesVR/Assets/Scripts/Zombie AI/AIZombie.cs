@@ -285,7 +285,7 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = true;
 
         m_Spawner.m_LivingZombies.Remove(this);
-        m_ComboManager.m_CurrentCombo += 1;
+        m_ComboManager.AddCombo();
 
         m_RH.ragdolled = true;
         //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
