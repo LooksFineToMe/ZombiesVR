@@ -15,6 +15,7 @@ public class BulletProperties : MonoBehaviour
     public Rigidbody impactTarget;
     public float bulletForce = 10;
     public GameObject particle;
+    public GameObject bloodSplat;
     void Start()
     {
         Destroy(gameObject, timeToDestroy);
@@ -76,7 +77,8 @@ public class BulletProperties : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Enemy")) 
-        { 
+        {
+            Instantiate(bloodSplat, transform.position, transform.rotation);
             //collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/);
             Destroy(gameObject);
             //gameObject.GetComponent<SphereCollider>().enabled = false;
