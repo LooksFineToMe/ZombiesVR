@@ -29,6 +29,9 @@ public class MeleeDamage : MonoBehaviour
 
     float timer;//The timer is to ensure we don't double hit the enemy. Cooldown.
     float cooldown = 0.2f;//cooldown for the timer; 
+
+    public TrailRenderer weaponTrail;
+    public float weaponTrailwidth = .1f;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();//Get the rigibody on startup
@@ -94,7 +97,24 @@ public class MeleeDamage : MonoBehaviour
     private void Update()
     {
         //Checks if the timer is above 1
-        if (timer <= 1) { timer += Time.deltaTime; }  
+        if (timer <= 1) { timer += Time.deltaTime; }
         //print("Weapon Velocity is: " + rb.velocity.magnitude);
+        if (weaponTrail != null)
+        {
+            if (rb.velocity.magnitude > minimumVelocity && rb.velocity.magnitude <= extraVelocity)
+            {
+                weaponTrail.startColor = Color.white;
+                weaponTrail.startWidth = weaponTrailwidth;
+            }
+            else if (rb.velocity.magnitude > extraVelocity)
+            {
+                weaponTrail.startColor = Color.red;
+            }
+            else
+            {
+                weaponTrail.startWidth = Mathf.Lerp(weaponTrail.startWidth, 0, 10 * Time.deltaTime);
+            }
+        }
+        
     }
 }

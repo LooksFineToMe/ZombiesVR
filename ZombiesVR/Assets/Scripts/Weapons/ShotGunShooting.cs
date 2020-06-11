@@ -84,6 +84,13 @@ public class ShotGunShooting : MonoBehaviour
     public GameObject shellsToSpawn;
     public Transform[] shellLocations;
     public GameObject openBarrel;
+    public bool gunCocked;
+    [Header("Sounds")]
+    public GameObject sound_Shot;
+    public GameObject sound_Click;
+    public GameObject sound_Cock;
+    public GameObject sound_MagClipDown;
+    public GameObject sound_MagClipUp;
     private void Start()
     {
         gunClick = GetComponent<AudioSource>();
@@ -97,7 +104,7 @@ public class ShotGunShooting : MonoBehaviour
         if (interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;//Checks what hand the gun is in
-            if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo > 0 && semiAuto == true)
+            if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo > 0 && semiAuto == false && gunCocked == true || fireAction[source].stateDown && currentAmmo > 0 && semiAuto == true && gunCocked == true)
             {
                 print("implement ammo");
                 currentAmmo--;
@@ -108,6 +115,7 @@ public class ShotGunShooting : MonoBehaviour
             else if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo <= 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo <= 0 && semiAuto == true)
             {
                 currentAmmo = 0;
+                if (sound_Click != null) { Instantiate(sound_Click, barrelPivot[0].position, barrelPivot[0].rotation); }
                 nextTimeToFire = 0;
                 if (gunClick != null) { gunClick.Play(); }
                 Pulse(0.1f, 75, 75, source);//This Passes through the values for controller vibration
@@ -118,16 +126,19 @@ public class ShotGunShooting : MonoBehaviour
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;//Checks what hand the gun is in
             if (dropMagAction[source].state /*&& magInGun == true*/)
             {
+                gunCocked = false;
                 Pulse(0.1f, 75, 75, source);//This Passes through the values for controller vibration
                 magInGun = false;
                 animator.SetBool("Reload", true);
                 DropMag();
             }
         }
-        if (rb.velocity.magnitude > 2)
+        if (rb.velocity.magnitude > 2 && gunCocked == false)
         {
+            gunCocked = true;
             animator.SetBool("Reload", false);
             openBarrel.SetActive(false);
+            if (sound_Cock != null) { Instantiate(sound_Cock, barrelPivot[0].position, barrelPivot[0].rotation); }
         }
     }
     [ContextMenu("DropMag")]
@@ -137,6 +148,7 @@ public class ShotGunShooting : MonoBehaviour
         {
             StartCoroutine(ShellEject());
         }
+        if (sound_MagClipDown != null) { Instantiate(sound_MagClipDown, barrelPivot[0].position, barrelPivot[0].rotation); }
         reloadPoint.magInGun = false;
         openBarrel.SetActive(true);
         //Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
@@ -153,8 +165,9 @@ public class ShotGunShooting : MonoBehaviour
             Rigidbody shellrb = Instantiate(shellsToSpawn, shellPivot.transform.position, shellPivot.rotation).GetComponent<Rigidbody>();
             shellrb.velocity = shellPivot.forward * 4f;
             magazine.SetActive(false);
-            spawner_Mag.SpawnAmmo();
         }
+        spawner_Mag.SpawnAmmo();
+        //Posibly add sound for eject
     }
     [ContextMenu("Fire")]
     void Fire()
@@ -166,6 +179,7 @@ public class ShotGunShooting : MonoBehaviour
             Rigidbody bulletrb = Instantiate(bullet, barrelPivot[i].position, barrelPivot[i].rotation).GetComponent<Rigidbody>();
             bulletrb.velocity = barrelPivot[i].forward * shootingSpeed;
         }
+        if (sound_Shot != null) { Instantiate(sound_Shot, barrelPivot[0].position, barrelPivot[0].rotation); }
         //Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
         ////Adds velocity
         //bulletrb.velocity = barrelPivot.forward * shootingSpeed;
@@ -177,6 +191,7 @@ public class ShotGunShooting : MonoBehaviour
     public void Reloading(int reloadAmount)
     {
         //Add reload
+        if (sound_MagClipUp != null) { Instantiate(sound_MagClipUp, barrelPivot[0].position, barrelPivot[0].rotation); }
         magInGun = true;
         magazine.SetActive(true);
         currentAmmo = reloadAmount;

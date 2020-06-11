@@ -1660,7 +1660,7 @@ GameObject:
   - component: {fileID: 1274632836}
   - component: {fileID: 1563112373}
   m_Layer: 0
-  m_Name: RayCastPos
+  m_Name: TrailRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3036,6 +3036,7 @@ MonoBehaviour:
   bodypartDamage: 3
   isBluntWeapon: 0
   impactTarget: {fileID: 0}
+  weaponTrail: {fileID: 1563112373}
 --- !u!114 &174128442
 MonoBehaviour:
   m_ObjectHideFlags: 0
