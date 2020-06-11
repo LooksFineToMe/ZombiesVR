@@ -81,12 +81,13 @@ public class Shooting : MonoBehaviour
     [Tooltip("Rigibody of the gun for recoil")]
     public Rigidbody rb;
     //=================================================================================
-    //public Animator animator;
+    public Animator animator;
     private void Start()
     {
         gunClick = GetComponent<AudioSource>();
         interactable = GetComponent<Interactable>();
         //rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -105,6 +106,7 @@ public class Shooting : MonoBehaviour
             }
             else if (fireAction[source].state && nextTimeToFire >= fireRate && currentAmmo <= 0 && semiAuto == false || fireAction[source].stateDown && currentAmmo <= 0 && semiAuto == true)
             {
+                animator.SetBool("OutOfAmmo", true);
                 currentAmmo = 0;
                 nextTimeToFire = 0;
                 if (gunClick != null) { gunClick.Play(); }
@@ -136,6 +138,7 @@ public class Shooting : MonoBehaviour
     [ContextMenu("Fire")]
     void Fire()
     {
+        animator.SetTrigger("Fire");
         if (muzzleflash != null) { muzzleflash.Play(); }
         //Spawns Bullet
         Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
