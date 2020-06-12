@@ -208,11 +208,11 @@ GameObject:
   - component: {fileID: 7565336786618009874}
   m_Layer: 0
   m_Name: ReloadPoint
-  m_TagString: Untagged
+  m_TagString: Revolver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2418043618053694319
 Transform:
   m_ObjectHideFlags: 0
@@ -1287,7 +1287,7 @@ MonoBehaviour:
   currentAmmo: 0
   magInGun: 0
   recoilAmount: -15
-  reloadPoint: {fileID: 0}
+  reloadPoint: {fileID: 7565336786618009874}
   semiAuto: 1
   recoil: {fileID: 1657618139418008262}
   gunClick: {fileID: 0}
@@ -5930,7 +5930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2856943683870442859
 Transform:
   m_ObjectHideFlags: 0
@@ -5974,14 +5974,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5328048774074410589}
-  m_LocalRotation: {x: -0, y: -0, z: -0.568254, w: 0.82285327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0039, y: 0.0165, z: 0.0252}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8401531751039574495}
   m_Father: {fileID: 3463908474049863213}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -69.257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5369558831386068399
 GameObject:
   m_ObjectHideFlags: 0

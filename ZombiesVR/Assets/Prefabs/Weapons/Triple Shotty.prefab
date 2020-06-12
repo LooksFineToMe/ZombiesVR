@@ -3574,7 +3574,7 @@ MonoBehaviour:
   - {fileID: 1940050813}
   shootingSpeed: 30
   fireRate: 0.5
-  currentAmmo: 3
+  currentAmmo: 0
   magInGun: 0
   recoilAmount: -15
   reloadPoint: {fileID: 1066876630820548962}
