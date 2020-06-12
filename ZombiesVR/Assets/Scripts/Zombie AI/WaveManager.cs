@@ -38,7 +38,7 @@ public class WaveManager : MonoBehaviour
     {
         m_LivingZombies = new List<AIZombie>();
 
-        //m_TimeOffset = 3f;
+        //m_TimeOffset = 3f; //the idea behind this was that the first wave starts quick but increased for every other wave
     }
 
     // Update is called once per frame
@@ -58,12 +58,9 @@ public class WaveManager : MonoBehaviour
             m_WaveSpawnValue += m_IncrementValues;
             CreateWave();
             m_Break = true; //just for debugging but could use for something else
-            //if(m_CurrentWave != 0)
-            //    s_ComboManager.BreakSong();
         }
     }
-
-    //this works for the first wave but not for everything else
+    
     private void CreateWave()
     {
         m_NextWave = Time.time + m_TimeOffset;

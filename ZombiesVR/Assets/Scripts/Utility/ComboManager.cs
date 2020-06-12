@@ -5,6 +5,7 @@ using UnityEngine;
 public class ComboManager : MonoBehaviour
 {
     [SerializeField] WaveManager m_WaveManager;
+
     #region Combo
     [Header("Combos")]
     [Tooltip("The Players current combo, updated per zombie elimination.")]
@@ -82,6 +83,7 @@ public class ComboManager : MonoBehaviour
         }
     }
     
+    //combo points are added when the player eliminates a zombie
     public void AddCombo()
     {
         m_CurrentCombo += 1;
@@ -98,7 +100,8 @@ public class ComboManager : MonoBehaviour
             TrackListThree();
     }
 
-    //this needs to be changed for effiency
+    #region In-Game Tracks
+    //this needs to be changed for effiency || also need to add a system so it doesn't choose the same track twice
     public void SetupTrack()
     {
         if (m_WaveManager.m_ChosenTrack == 0)
@@ -123,7 +126,7 @@ public class ComboManager : MonoBehaviour
         }
     }
 
-    //really shouldn't keep doing this method, it will get messy || I hope there's a better way to do this, too many steps to add a new track
+    //really shouldn't be doing this method, it gets messy || I hope there's a better way to do this, too many steps to add a new track
     public void PlayWaveTrack()
     {
         if (m_TrackZero)
@@ -260,7 +263,8 @@ public class ComboManager : MonoBehaviour
         m_CalledThree = false;
         m_CalledFour = false;
     }
-    
+    #endregion
+
     //crossfade between music when the player has higher or decreased combo
     private void CrossFadeAudioSource(AudioClip comboClip, float fadeTime)
     {
