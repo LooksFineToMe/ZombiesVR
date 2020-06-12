@@ -15,6 +15,7 @@ TagManager:
   - JerryCan
   - ShotGun
   - UZI
+  - Revolver
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Hands
   - PickedUpObject
   - Blood
-  - 
+  - TERRAIN
   - 
   - 
   - 
