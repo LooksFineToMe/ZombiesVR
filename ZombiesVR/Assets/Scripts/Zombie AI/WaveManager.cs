@@ -15,11 +15,12 @@ public class WaveManager : MonoBehaviour
     [Tooltip("How long between waves and when the next wave begins")]
     [SerializeField] float m_TimeOffset = 10f;
     [SerializeField] public int m_CurrentWave;
-    [Tooltip("The number of tracks we're using. A track will randomly picked when a wave starts.")]
+    [Tooltip("The number of tracks we're using. A track will randomly be picked when a wave starts.")]
     [SerializeField] int m_AmountOfTracks = 2;
     [HideInInspector] public int m_ChosenTrack;
     private float m_NextWave;
     [HideInInspector] public bool m_Break;
+    private bool m_PickedTrack;
 
     [SerializeField] int m_WaveSpawnValue = 20;
     private float m_CurrentValueOfWave;
@@ -57,8 +58,8 @@ public class WaveManager : MonoBehaviour
             m_WaveSpawnValue += m_IncrementValues;
             CreateWave();
             m_Break = true; //just for debugging but could use for something else
-            if(m_CurrentWave != 0)
-                s_ComboManager.BreakSong();
+            //if(m_CurrentWave != 0)
+            //    s_ComboManager.BreakSong();
         }
     }
 
@@ -66,6 +67,7 @@ public class WaveManager : MonoBehaviour
     private void CreateWave()
     {
         m_NextWave = Time.time + m_TimeOffset;
+
         //this could be buggy
         while (m_CurrentValueOfWave < m_WaveSpawnValue)
         {
@@ -78,7 +80,9 @@ public class WaveManager : MonoBehaviour
             m_LivingZombies.Add(zombie);
             zombie.gameObject.SetActive(false);
         }
+
         m_ReadyForNextWave = true;
+        PickBreakTrack();
     }
 
     private void SpawnWave()
@@ -88,13 +92,16 @@ public class WaveManager : MonoBehaviour
             zombie.gameObject.SetActive(true);
         }
         m_ReadyForNextWave = false;
+        m_PickedTrack = false;
         m_CurrentWave += 1;
-        PickTrack();
+        s_ComboManager.PlayWaveTrack();
     }
 
-    private void PickTrack()
+    private void PickBreakTrack()
     {
         m_ChosenTrack = Random.Range(0, m_AmountOfTracks);
+        s_ComboManager.ResetCalls();
+        s_ComboManager.SetupTrack();
         print("Chosen Track: " + m_ChosenTrack.ToString());
     }
 }
