@@ -52,6 +52,7 @@ MonoBehaviour:
   m_LowIntensityCombo: 10
   m_MediumIntensityCombo: 20
   m_HighIntensityCombo: 30
+  m_HigherIntensityCombo: 40
   m_TimeReset: 3
   m_AudioSFX: {fileID: 675696019634315814}
   m_TrackListZero:
@@ -72,6 +73,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 436b21d9211164b43b36f66100d46bdc, type: 3}
   - {fileID: 8300000, guid: 44c375de8fade614cb2036680df4bff4, type: 3}
   - {fileID: 8300000, guid: a847f577a64f1bb4988e5ba769b17c6f, type: 3}
+  m_TrackListThree:
+  - {fileID: 8300000, guid: 152f43685a58e9a47b01d02a880db0a3, type: 3}
+  - {fileID: 8300000, guid: 4db68ea6abe795948904d81be4014afd, type: 3}
+  - {fileID: 8300000, guid: bb7049ea86b9d9b4c90fded151cf4648, type: 3}
+  - {fileID: 8300000, guid: d1ed5f7c99bb897459c11c0cef5df01b, type: 3}
+  - {fileID: 8300000, guid: 760325f0e47115f448af820ca5af8f9c, type: 3}
+  - {fileID: 8300000, guid: d4131fe90a2e35a4393b230f5d6de32a, type: 3}
 --- !u!114 &675696019634315815
 MonoBehaviour:
   m_ObjectHideFlags: 0

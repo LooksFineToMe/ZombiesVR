@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ComboManager : MonoBehaviour
 {
-    #region General
     [SerializeField] WaveManager m_WaveManager;
+    #region Combo
     [Header("Combos")]
     [Tooltip("The Players current combo, updated per zombie elimination.")]
     [SerializeField] public int m_CurrentCombo;
@@ -15,6 +15,8 @@ public class ComboManager : MonoBehaviour
     [SerializeField] int m_MediumIntensityCombo = 20;
     [Tooltip("High Music Intensity, change music when the player eliminates zombies consecutively")]
     [SerializeField] int m_HighIntensityCombo = 30;
+    [Tooltip("Higher Music Intensity, change music when the player eliminates zombies consecutively")]
+    [SerializeField] int m_HigherIntensityCombo = 40;
     [Tooltip("How long the player can maintain their combo. Current Time is reset to this value per elimination.")]
     [SerializeField] float m_TimeReset = 2;
     private float m_CurrentTime; //current value decaying over time
@@ -29,6 +31,7 @@ public class ComboManager : MonoBehaviour
     [SerializeField] AudioClip[] m_TrackListZero;
     [SerializeField] AudioClip[] m_TrackListOne;
     [SerializeField] AudioClip[] m_TrackListTwo;
+    [SerializeField] AudioClip[] m_TrackListThree;
     #endregion
 
     #region Song Booleans 
@@ -37,6 +40,7 @@ public class ComboManager : MonoBehaviour
     private bool m_TrackZero;
     private bool m_TrackOne;
     private bool m_TrackTwo;
+    private bool m_TrackThree;
 
     private bool m_CalledZero;
     private bool m_CalledOne;
@@ -90,6 +94,8 @@ public class ComboManager : MonoBehaviour
             TrackListOne();
         else if (m_TrackTwo && !m_WaveManager.m_Break)
             TrackListTwo();
+        else if (m_TrackThree && !m_WaveManager.m_Break)
+            TrackListThree();
     }
 
     //this needs to be changed for effiency
@@ -110,9 +116,14 @@ public class ComboManager : MonoBehaviour
             CrossFadeAudioSource(m_TrackListTwo[0], 5f);
             m_TrackTwo = true;
         }
+        else if (m_WaveManager.m_ChosenTrack == 3)
+        {
+            CrossFadeAudioSource(m_TrackListThree[0], 5f);
+            m_TrackThree = true;
+        }
     }
 
-    //really shouldn't keep doing this method, it will get messy
+    //really shouldn't keep doing this method, it will get messy || I hope there's a better way to do this, too many steps to add a new track
     public void PlayWaveTrack()
     {
         if (m_TrackZero)
@@ -129,6 +140,11 @@ public class ComboManager : MonoBehaviour
         {
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip); //place holder
             CrossFadeAudioSource(m_TrackListTwo[1], .8f);
+        }
+        else if (m_TrackThree)
+        {
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip); //place holder
+            CrossFadeAudioSource(m_TrackListThree[1], .8f);
         }
     }
 
@@ -198,6 +214,35 @@ public class ComboManager : MonoBehaviour
             CrossFadeAudioSource(m_TrackListTwo[4], .5f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
             m_CalledTwo = true;
+        }
+    }
+
+    private void TrackListThree()
+    {
+        //ignore the first track as it will play when the wave begins
+        if (m_CurrentCombo == m_LowIntensityCombo && !m_CalledZero)
+        {
+            CrossFadeAudioSource(m_TrackListThree[2], .5f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledZero = true;
+        }
+        else if (m_CurrentCombo == m_MediumIntensityCombo && !m_CalledOne)
+        {
+            CrossFadeAudioSource(m_TrackListThree[3], .5f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledOne = true;
+        }
+        else if (m_CurrentCombo == m_HighIntensityCombo && !m_CalledTwo)
+        {
+            CrossFadeAudioSource(m_TrackListThree[4], .5f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledTwo = true;
+        }
+        else if (m_CurrentCombo == m_HigherIntensityCombo && m_CalledThree)
+        {
+            CrossFadeAudioSource(m_TrackListThree[5], .5f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+            m_CalledThree = true;
         }
     }
 

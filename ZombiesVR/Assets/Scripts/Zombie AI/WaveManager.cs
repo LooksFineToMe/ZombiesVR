@@ -15,7 +15,7 @@ public class WaveManager : MonoBehaviour
     [Tooltip("How long between waves and when the next wave begins")]
     [SerializeField] float m_TimeOffset = 10f;
     [SerializeField] public int m_CurrentWave;
-    [Tooltip("The number of tracks we're using. A track will randomly be picked when a wave starts.")]
+    [Tooltip("[THIS EXCLUDES THE MAXIMUM VALUE] The number of tracks we have to randomly pick from.")]
     [SerializeField] int m_AmountOfTracks = 2;
     [HideInInspector] public int m_ChosenTrack;
     private float m_NextWave;
