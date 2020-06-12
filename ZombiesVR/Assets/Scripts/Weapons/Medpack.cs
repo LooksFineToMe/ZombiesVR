@@ -11,6 +11,7 @@ public class Medpack : MonoBehaviour
     bool isUsing;
     public SteamVR_Action_Boolean healAction;
     private Interactable interactable;
+    public float timer;
     private void Start()
     {
         interactable = GetComponent<Interactable>();
@@ -21,6 +22,10 @@ public class Medpack : MonoBehaviour
     }
     private void Update()
     {
+        if (timer <= 1)
+        {
+            timer += Time.deltaTime;
+        }
         if (interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;
@@ -42,6 +47,20 @@ public class Medpack : MonoBehaviour
             used = true;
             other.GetComponentInParent<PlayerStats>().health += healthRegen;
             Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Belt") && timer >= .3f)
+        {
+            if (interactable.attachedToHand == true)
+            {
+                interactable.attachedToHand.DetachObject(gameObject);
+            }
+            gameObject.transform.parent = other.gameObject.transform;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+            foreach (Transform trans in gameObject.GetComponentsInChildren<Transform>(true))
+            {
+                trans.gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
+            }
         }
     }
 }
