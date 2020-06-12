@@ -85,6 +85,7 @@ public class ShotGunShooting : MonoBehaviour
     public Transform[] shellLocations;
     public GameObject openBarrel;
     public bool gunCocked;
+    public float shellVelocity = 4;
     [Header("Sounds")]
     public GameObject sound_Shot;
     public GameObject sound_Click;
@@ -148,7 +149,7 @@ public class ShotGunShooting : MonoBehaviour
         {
             StartCoroutine(ShellEject());
         }
-        if (sound_MagClipDown != null) { Instantiate(sound_MagClipDown, barrelPivot[0].position, barrelPivot[0].rotation); }
+        
         reloadPoint.magInGun = false;
         openBarrel.SetActive(true);
         //Instantiate(droppedMag, magazine.transform.position, Quaternion.identity).GetComponent<Magazine>().magCount = currentAmmo;
@@ -163,10 +164,11 @@ public class ShotGunShooting : MonoBehaviour
         foreach (Transform shellPivot in shellLocations)
         {
             Rigidbody shellrb = Instantiate(shellsToSpawn, shellPivot.transform.position, shellPivot.rotation).GetComponent<Rigidbody>();
-            shellrb.velocity = shellPivot.forward * 4f;
+            shellrb.velocity = shellPivot.forward * shellVelocity;
             magazine.SetActive(false);
         }
         spawner_Mag.SpawnAmmo();
+        if (sound_MagClipDown != null) { Instantiate(sound_MagClipDown, barrelPivot[0].position, barrelPivot[0].rotation); }
         //Posibly add sound for eject
     }
     [ContextMenu("Fire")]

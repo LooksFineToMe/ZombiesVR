@@ -81,6 +81,8 @@ public class Shooting : MonoBehaviour
     //=================================================================================
     public Animator animator;
     public bool isCocked;
+    public GameObject Bulletshell;
+    public Transform bulletShellEjectPivot;
     //==========================================
     [Header("GunSounds")]
     public GameObject sound_Shot;
@@ -164,9 +166,12 @@ public class Shooting : MonoBehaviour
         Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
         //Adds velocity
         bulletrb.velocity = barrelPivot.forward * shootingSpeed;
+        Rigidbody shellEject = Instantiate(Bulletshell, bulletShellEjectPivot.position, bulletShellEjectPivot.rotation).GetComponent<Rigidbody>();
+        shellEject.AddForce(bulletShellEjectPivot.forward * 2.5f, ForceMode.VelocityChange);
         //rb.AddRelativeTorque(recoilAmount, 0, 0);
         UpdateAmmoCount();
         recoil.Recoil();
+
     }
     [ContextMenu("Reload")]
     public void Reloading(int reloadAmount)

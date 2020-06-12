@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &951526524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 951526525}
+  m_Layer: 11
+  m_Name: ShellEjectPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &951526525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951526524}
+  m_LocalRotation: {x: -0.24440356, y: 0.6635261, z: 0.24440366, w: 0.6635261}
+  m_LocalPosition: {x: 0.0184, y: 0.0071, z: 0.0054}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3714442171413969217}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -40.442, y: 90.00001, z: 0}
 --- !u!1 &24506338132374702
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +91,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.750576e-10, y: 0.05265605, z: 0.004361351}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 951526525}
   m_Father: {fileID: 5375036556659780014}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -123,8 +154,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.084917486, y: 0.06514579, z: 0.062954016}
-  m_Center: {x: 0.000000007450581, y: 0.009676374, z: -0.120750524}
+  m_Size: {x: 0.032439016, y: 0.056680262, z: 0.2667489}
+  m_Center: {x: 0.000000007450581, y: -0.006706127, z: 0.0032395653}
 --- !u!114 &28043921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc653814dd113c49b4ed94d3f058b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunsInteractable: {fileID: 1482856013101163491}
   gun: {fileID: 3055681520434410372}
+  pistolColliders:
+  - {fileID: 7223474793199409553}
+  - {fileID: 3812401352292687896}
 --- !u!114 &28043922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,14 +744,19 @@ MonoBehaviour:
   rb: {fileID: 0}
   animator: {fileID: 0}
   isCocked: 0
+  Bulletshell: {fileID: 8403397458045662379, guid: 0557d57ed0b4c604daf8e34014fc0484,
+    type: 3}
+  bulletShellEjectPivot: {fileID: 951526525}
   sound_Shot: {fileID: 7202804747138919653, guid: 9c0c7524f455f094fa4a7fccfee4b88a,
     type: 3}
   sound_Click: {fileID: 923961635470217194, guid: 9bf43ef08dbd99a4c8cf36a55b6b1a62,
     type: 3}
   sound_Cock: {fileID: 63631034258512722, guid: 537df6694c9f1f14f9247bfd7706c9ff,
     type: 3}
-  sound_MagClipDown: {fileID: 0}
-  sound_MagClipUp: {fileID: 0}
+  sound_MagClipDown: {fileID: 5364153805236528135, guid: 04958500341490e428259d6a41ad2c89,
+    type: 3}
+  sound_MagClipUp: {fileID: 2566912680655721830, guid: 0ce73be1d9bfca54694c25634cd58e98,
+    type: 3}
 --- !u!95 &904536933729154971
 Animator:
   serializedVersion: 3

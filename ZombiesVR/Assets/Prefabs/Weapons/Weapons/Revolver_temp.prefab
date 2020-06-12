@@ -1309,11 +1309,17 @@ MonoBehaviour:
   - {fileID: 8772236329297658614}
   openBarrel: {fileID: 736010195149259700}
   gunCocked: 0
-  sound_Shot: {fileID: 0}
-  sound_Click: {fileID: 0}
-  sound_Cock: {fileID: 0}
-  sound_MagClipDown: {fileID: 0}
-  sound_MagClipUp: {fileID: 0}
+  shellVelocity: 2
+  sound_Shot: {fileID: 5652776289217898364, guid: 40aa5d7da0f904244816b08545c38a75,
+    type: 3}
+  sound_Click: {fileID: 2868865308030270433, guid: f00297ba247d0a24e84d9ebf7a121d49,
+    type: 3}
+  sound_Cock: {fileID: 9190483462512313302, guid: 6475cdd1454d6cc44aa7cc0c27db8651,
+    type: 3}
+  sound_MagClipDown: {fileID: 3751699551201315141, guid: 402c8362c3009004aa1fdced103abbff,
+    type: 3}
+  sound_MagClipUp: {fileID: 1406338851130948486, guid: 20fb9c20918dc9847a3cb995cfc8f8d5,
+    type: 3}
 --- !u!1 &3989577280936093873
 GameObject:
   m_ObjectHideFlags: 0

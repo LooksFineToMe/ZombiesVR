@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2060796451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060796452}
+  m_Layer: 11
+  m_Name: ShellEjectPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060796452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060796451}
+  m_LocalRotation: {x: -0.20089197, y: 0.67511785, z: 0.2102801, w: 0.67796797}
+  m_LocalPosition: {x: 0.0282, y: 0.11, z: 0.0144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5351633884322960917}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -33.802002, y: 89.468, z: 0.957}
 --- !u!1 &30808868925560909
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +727,7 @@ MonoBehaviour:
   trackPadHaptic:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
-  bullet: {fileID: 1044082343842805234, guid: 7fa8852e0c214264c84a92dc44affccf, type: 3}
+  bullet: {fileID: 1044082343842805234, guid: 845c7eff8718abb4598250950a784c6a, type: 3}
   barrelPivot: {fileID: 7851169126711253655}
   shootingSpeed: 40
   fireRate: 0.1
@@ -716,13 +746,18 @@ MonoBehaviour:
   rb: {fileID: 0}
   animator: {fileID: 0}
   isCocked: 0
-  sound_Shot: {fileID: 7202804747138919653, guid: 9c0c7524f455f094fa4a7fccfee4b88a,
+  Bulletshell: {fileID: 8403397458045662379, guid: 0557d57ed0b4c604daf8e34014fc0484,
     type: 3}
-  sound_Click: {fileID: 923961635470217194, guid: 9bf43ef08dbd99a4c8cf36a55b6b1a62,
+  bulletShellEjectPivot: {fileID: 2060796452}
+  sound_Shot: {fileID: 4367243983081000298, guid: 009f5967005102b4582b78e4059fef17,
+    type: 3}
+  sound_Click: {fileID: 5364153805236528135, guid: 04958500341490e428259d6a41ad2c89,
     type: 3}
   sound_Cock: {fileID: 0}
-  sound_MagClipDown: {fileID: 0}
-  sound_MagClipUp: {fileID: 0}
+  sound_MagClipDown: {fileID: 8916507320370899089, guid: 1149e6dcd02cd224eb235b609e49e8ff,
+    type: 3}
+  sound_MagClipUp: {fileID: 2566912680655721830, guid: 0ce73be1d9bfca54694c25634cd58e98,
+    type: 3}
 --- !u!95 &308368176400672418
 Animator:
   serializedVersion: 3
@@ -5869,6 +5904,7 @@ Transform:
   - {fileID: 7851169127312052023}
   - {fileID: 4656530338003667262}
   - {fileID: 7851169126711253655}
+  - {fileID: 2060796452}
   m_Father: {fileID: 4067216375144100523}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
