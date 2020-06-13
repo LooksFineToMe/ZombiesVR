@@ -16,6 +16,7 @@ public class BulletProperties : MonoBehaviour
     public float bulletForce = 10;
     public GameObject particle;
     public GameObject bloodSplat;
+    public bool punchThrough;
     void Start()
     {
         Destroy(gameObject, timeToDestroy);
@@ -75,8 +76,9 @@ public class BulletProperties : MonoBehaviour
             impactTarget = null;
             collision.rigidbody.GetComponentInParent<AIZombie>().CallDeathAnimation();
         }
+        
 
-        if (collision.gameObject.CompareTag("Enemy")) 
+        if (collision.gameObject.CompareTag("Enemy") && punchThrough == false) 
         {
             Instantiate(bloodSplat, transform.position, transform.rotation);
             //collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/);
@@ -84,7 +86,13 @@ public class BulletProperties : MonoBehaviour
             //gameObject.GetComponent<SphereCollider>().enabled = false;
             //particle.SetActive(false);
         }
-        
-        
+        else if (collision.gameObject.CompareTag("Enemy") && punchThrough == false)
+        {
+            Instantiate(bloodSplat, transform.position, transform.rotation);
+            //collision.gameObject.GetComponent<EnemyBodyParts>().DamageBodyPart(bulletDamage/*, false*/);
+            //gameObject.GetComponent<SphereCollider>().enabled = false;
+            //particle.SetActive(false);
+        }
+
     }
 }

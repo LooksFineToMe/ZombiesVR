@@ -60,6 +60,246 @@ Transform:
   m_Father: {fileID: 9110003245676128932}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0.19000001, y: -9.773001, z: 0}
+--- !u!1 &292920898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292920899}
+  m_Layer: 0
+  m_Name: PivotPellet1 (13)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &292920899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292920898}
+  m_LocalRotation: {x: -0.08709917, y: -0.1329715, z: -0.85003924, w: -0.502161}
+  m_LocalPosition: {x: 0.03419995, y: 0.029300004, z: 0.2623998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: -7.9660006, y: 16.521, z: -242.303}
+--- !u!1 &447524408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 447524409}
+  m_Layer: 0
+  m_Name: PivotPellet1 (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &447524409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447524408}
+  m_LocalRotation: {x: 0.032490287, y: 0.010438544, z: -0.8568415, w: -0.5144493}
+  m_LocalPosition: {x: -0.0164001, y: 0.05460003, z: 0.2623998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: -0.89000005, y: -3.8090003, z: -241.93199}
+--- !u!1 &488680820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488680821}
+  m_Layer: 0
+  m_Name: PivotPellet1 (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &488680821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488680820}
+  m_LocalRotation: {x: 0.02453615, y: -0.0075367405, z: -0.7086364, w: 0.70510685}
+  m_LocalPosition: {x: -0.0164001, y: 0.05460003, z: 0.2623998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 1.371, y: -2.6030002, z: -90.317}
+--- !u!1 &620432784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 620432785}
+  m_Layer: 0
+  m_Name: PivotPellet1 (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &620432785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620432784}
+  m_LocalRotation: {x: -0.003523189, y: -0.049354166, z: -0.7102211, w: 0.7022377}
+  m_LocalPosition: {x: -0.012900116, y: 0.007499963, z: 0.2623998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: -4.3040004, y: -3.6980002, z: -90.509}
+--- !u!1 &1161516190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161516191}
+  m_Layer: 0
+  m_Name: PivotPellet1 (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161516191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161516190}
+  m_LocalRotation: {x: -0.076354995, y: -0.0067613395, z: -0.7304732, w: 0.6786259}
+  m_LocalPosition: {x: -0.0105998535, y: 0.045400053, z: 0.2623998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: -6.518, y: 5.9140005, z: -94.552}
+--- !u!1 &1200155158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1200155159}
+  m_Layer: 0
+  m_Name: PivotPellet1 (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1200155159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200155158}
+  m_LocalRotation: {x: 0.068050474, y: -0.06870841, z: -0.705329, w: 0.70225304}
+  m_LocalPosition: {x: 0.03419995, y: 0.029300004, z: 0.2623998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: -0.07700001, y: -11.099001, z: -90.243004}
+--- !u!1 &1229107719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1229107720}
+  m_Layer: 0
+  m_Name: PivotPellet1 (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1229107720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229107719}
+  m_LocalRotation: {x: -0.058710273, y: 0.061770614, z: -0.7057589, w: 0.7033078}
+  m_LocalPosition: {x: 0.031900164, y: 0.021199971, z: 0.25059998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0.264, y: 9.774, z: -90.177}
+--- !u!1 &1292172277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1292172278}
+  m_Layer: 0
+  m_Name: PivotPellet1 (16)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1292172278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292172277}
+  m_LocalRotation: {x: -0.06782757, y: -0.03836714, z: -0.8552324, w: -0.5123524}
+  m_LocalPosition: {x: -0.012900116, y: 0.007499963, z: 0.2623998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0.22200002, y: 8.936001, z: -241.833}
 --- !u!1 &1568247623
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +390,36 @@ Transform:
   m_Father: {fileID: 9110003245676128932}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 6.5230002, z: 0}
+--- !u!1 &1663982304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663982305}
+  m_Layer: 0
+  m_Name: PivotPellet1 (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1663982305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663982304}
+  m_LocalRotation: {x: -0.036798723, y: 0.037103467, z: -0.7077045, w: 0.7045733}
+  m_LocalPosition: {x: -0.030899765, y: 0.036600024, z: 0.25059998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0.038000003, y: 5.991, z: -90.25201}
 --- !u!1 &1679806750
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +480,36 @@ Transform:
   m_Father: {fileID: 9197625994847052303}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1871216026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871216027}
+  m_Layer: 0
+  m_Name: PivotPellet1 (15)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1871216027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871216026}
+  m_LocalRotation: {x: -0.010612131, y: -0.01277008, z: -0.85553366, w: -0.5174808}
+  m_LocalPosition: {x: 0.031900164, y: 0.021199971, z: 0.25059998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: -0.623, y: 1.7980001, z: -242.346}
 --- !u!1 &1940050812
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +540,66 @@ Transform:
   m_Father: {fileID: 9110003245676128932}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 1.371, y: -2.6030002, z: -0.062000003}
+--- !u!1 &2012628311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2012628312}
+  m_Layer: 0
+  m_Name: PivotPellet1 (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2012628312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012628311}
+  m_LocalRotation: {x: -0.03156369, y: -0.0730903, z: -0.85451806, w: -0.51328397}
+  m_LocalPosition: {x: -0.030899765, y: 0.036600024, z: 0.25059998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: -5.308, y: 7.4430003, z: -242.329}
+--- !u!1 &2075596649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2075596650}
+  m_Layer: 0
+  m_Name: PivotPellet1 (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2075596650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075596649}
+  m_LocalRotation: {x: 0.02279254, y: 0.0093765715, z: -0.85719323, w: -0.5144049}
+  m_LocalPosition: {x: -0.0105998535, y: 0.045400053, z: 0.2623998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110003245676128932}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: -0.423, y: -2.7930002, z: -241.926}
 --- !u!1 &14646338420656664
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,6 +3560,18 @@ Transform:
   - {fileID: 168532406}
   - {fileID: 86768058}
   - {fileID: 1940050813}
+  - {fileID: 1663982305}
+  - {fileID: 1200155159}
+  - {fileID: 1161516191}
+  - {fileID: 1229107720}
+  - {fileID: 620432785}
+  - {fileID: 488680821}
+  - {fileID: 2012628312}
+  - {fileID: 292920899}
+  - {fileID: 2075596650}
+  - {fileID: 1871216027}
+  - {fileID: 1292172278}
+  - {fileID: 447524409}
   m_Father: {fileID: 9167296854269485062}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3564,7 +3936,7 @@ MonoBehaviour:
   trackPadHaptic:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
-  bullet: {fileID: 1044082343842805234, guid: 7fa8852e0c214264c84a92dc44affccf, type: 3}
+  bullet: {fileID: 1044082343842805234, guid: f5b386bc723efb746b8c8a159528034f, type: 3}
   barrelPivot:
   - {fileID: 1568247624}
   - {fileID: 1635452395}
@@ -3572,6 +3944,18 @@ MonoBehaviour:
   - {fileID: 168532406}
   - {fileID: 86768058}
   - {fileID: 1940050813}
+  - {fileID: 1663982305}
+  - {fileID: 1200155159}
+  - {fileID: 1161516191}
+  - {fileID: 1229107720}
+  - {fileID: 620432785}
+  - {fileID: 488680821}
+  - {fileID: 2012628312}
+  - {fileID: 292920899}
+  - {fileID: 2075596650}
+  - {fileID: 1871216027}
+  - {fileID: 1292172278}
+  - {fileID: 447524409}
   shootingSpeed: 30
   fireRate: 0.5
   currentAmmo: 0

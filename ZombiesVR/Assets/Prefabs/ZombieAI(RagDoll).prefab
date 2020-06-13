@@ -133,6 +133,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 2.5
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &350500412017914899
 GameObject:
@@ -328,6 +330,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 1
   bleedTimer: 1
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &699441125155980076
 GameObject:
@@ -516,7 +520,7 @@ MonoBehaviour:
   m_MovementSpeed: 5
   m_RotationSpeed: 50
   isRunner: 0
-  m_RunnerChance: 5
+  m_RunnerChance: 2
   m_rb:
   - {fileID: 7790032735906111413}
   - {fileID: 2578415652037762678}
@@ -530,7 +534,7 @@ MonoBehaviour:
   - {fileID: 5296930020163922889}
   - {fileID: 682690439838600733}
   m_RH: {fileID: 1315178961373879097}
-  m_ScreamChance: 5
+  m_ScreamChance: 4
   m_HeightMultiplier: 0
   m_SightDistance: 15
   m_Eliminated: 0
@@ -541,7 +545,7 @@ MonoBehaviour:
   m_Animations: {fileID: 1078998178780695412}
   withinRange: 0
   m_Spine: {fileID: 4571195173475737156}
-  fightingPlayer: 0
+  m_FightingPlayer: 0
   powerDeath: 0
   crawling: 0
   headless: 0
@@ -957,6 +961,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 5
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &2580898409645346776
 GameObject:
@@ -1599,6 +1605,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 15
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!136 &5115114905782349388
 CapsuleCollider:
@@ -1870,6 +1878,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 2.5
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5296930020163922890
 GameObject:
@@ -2004,6 +2014,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 2
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5306740754457704079
 GameObject:
@@ -2136,6 +2148,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 0
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &5712107732584854225
 GameObject:
@@ -2455,6 +2469,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 1
   bleedTimer: 1
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6404271777985140990
 GameObject:
@@ -2589,6 +2605,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 2.5
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6440334716574478845
 GameObject:
@@ -2878,6 +2896,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 5
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &6851599486617088581
 GameObject:
@@ -3182,6 +3202,8 @@ MonoBehaviour:
   bloodOffset: {x: 0, y: 0, z: 0}
   applyDamage: 0
   bleedTimer: 0
+  soundZombieHit: {fileID: 4236677279804347110, guid: a3dfdbc417a26ca4ea740984479c0918,
+    type: 3}
   detachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &7806679214906844608
 GameObject:

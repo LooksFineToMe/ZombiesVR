@@ -22,6 +22,8 @@ public class EnemyBodyParts : MonoBehaviour
     public float bleedTimer;
     private int bodyPartDamaged;
 
+    public GameObject soundZombieHit;
+
     public Vector3 detachedScale;
     
     //added "knocked" bool to AI.TAKEPLAYERDAMAGE
@@ -46,6 +48,7 @@ public class EnemyBodyParts : MonoBehaviour
         if (isDetachable == true && bodyPartDamaged >= 3)
         {
             DetachGameObject();
+            
         }
     }
 
@@ -69,6 +72,7 @@ public class EnemyBodyParts : MonoBehaviour
         {
             aiZombie.headless = true;
         }
+        if (soundZombieHit != null) { Instantiate(soundZombieHit, transform.position, transform.rotation); }
     }
 
     //vr
