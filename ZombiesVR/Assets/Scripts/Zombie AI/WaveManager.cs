@@ -15,9 +15,6 @@ public class WaveManager : MonoBehaviour
     [Tooltip("How long between waves and when the next wave begins")]
     [SerializeField] float m_TimeOffset = 10f;
     [SerializeField] public int m_CurrentWave;
-    [Tooltip("[THIS EXCLUDES THE MAXIMUM VALUE] The number of tracks we have to randomly pick from.")]
-    [SerializeField] int m_AmountOfTracks = 2;
-    [HideInInspector] public int m_ChosenTrack;
     private float m_NextWave;
     [HideInInspector] public bool m_Break;
     private bool m_PickedTrack;
@@ -79,7 +76,7 @@ public class WaveManager : MonoBehaviour
         }
 
         m_ReadyForNextWave = true;
-        PickBreakTrack();
+        s_ComboManager.PickBreakTrack();
     }
 
     private void SpawnWave()
@@ -89,16 +86,7 @@ public class WaveManager : MonoBehaviour
             zombie.gameObject.SetActive(true);
         }
         m_ReadyForNextWave = false;
-        m_PickedTrack = false;
         m_CurrentWave += 1;
         s_ComboManager.PlayWaveTrack();
-    }
-
-    private void PickBreakTrack()
-    {
-        m_ChosenTrack = Random.Range(0, m_AmountOfTracks);
-        s_ComboManager.ResetCalls();
-        s_ComboManager.SetupTrack();
-        print("Chosen Track: " + m_ChosenTrack.ToString());
     }
 }

@@ -54,6 +54,7 @@ MonoBehaviour:
   m_HighIntensityCombo: 30
   m_HigherIntensityCombo: 40
   m_TimeReset: 3
+  m_AmountOfTracks: 4
   m_AudioSFX: {fileID: 675696019634315814}
   m_TrackListZero:
   - {fileID: 8300000, guid: 26bc74a91483f8a47a333c2fc96a3d86, type: 3}

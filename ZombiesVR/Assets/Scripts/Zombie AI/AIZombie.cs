@@ -12,7 +12,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] float m_MovementSpeed = 5f;
     [SerializeField] float m_RotationSpeed = 5f;
     [Tooltip("If enabled, turn this zombie into a runner")]
-    [SerializeField] public bool isRunner = false;
+    [SerializeField] public bool isRunner;
     [Tooltip("After calling the Scream Method, have a random chance to enable Zombie Run")]
     [SerializeField] int m_RunnerChance = 10;
     [SerializeField] Rigidbody[] m_rb;

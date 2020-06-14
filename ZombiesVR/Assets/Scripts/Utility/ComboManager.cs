@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GG.Infrastructure.Utils;
+    
 public class ComboManager : MonoBehaviour
 {
     [SerializeField] WaveManager m_WaveManager;
@@ -27,12 +29,17 @@ public class ComboManager : MonoBehaviour
 
     #region Audio
     [Header("Audio")]
+    [Tooltip("[THIS EXCLUDES THE MAXIMUM VALUE] The number of tracks we have to randomly pick from.")]
+    [SerializeField] int m_AmountOfTracks = 4;
     [Tooltip("The bottom Audio Source Component. Holds the SFX for when the player hits a combo milestone")]
     [SerializeField] AudioSource m_AudioSFX;
     [SerializeField] AudioClip[] m_TrackListZero;
     [SerializeField] AudioClip[] m_TrackListOne;
     [SerializeField] AudioClip[] m_TrackListTwo;
     [SerializeField] AudioClip[] m_TrackListThree;
+    private int m_ChosenTrack;
+
+    private Randomizer m_Randomizer;
     #endregion
 
     #region Song Booleans 
@@ -57,6 +64,8 @@ public class ComboManager : MonoBehaviour
     {
         m_CurrentCombo = 0;
         d_AudioSource = GetComponent<DoubleAudioSource>();
+
+        m_Randomizer = new Randomizer(m_AmountOfTracks);
     }
 
     // Update is called once per frame
@@ -104,22 +113,22 @@ public class ComboManager : MonoBehaviour
     //this needs to be changed for effiency || also need to add a system so it doesn't choose the same track twice
     public void SetupTrack()
     {
-        if (m_WaveManager.m_ChosenTrack == 0)
+        if (m_ChosenTrack == 0)
         {
             CrossFadeAudioSource(m_TrackListZero[0], 5f);
             m_TrackZero = true;
         }
-        else if (m_WaveManager.m_ChosenTrack == 1)
+        else if (m_ChosenTrack == 1)
         {
             CrossFadeAudioSource(m_TrackListOne[0], 5f);
             m_TrackOne = true;
         }
-        else if (m_WaveManager.m_ChosenTrack == 2)
+        else if (m_ChosenTrack == 2)
         {
             CrossFadeAudioSource(m_TrackListTwo[0], 5f);
             m_TrackTwo = true;
         }
-        else if (m_WaveManager.m_ChosenTrack == 3)
+        else if (m_ChosenTrack == 3)
         {
             CrossFadeAudioSource(m_TrackListThree[0], 5f);
             m_TrackThree = true;
@@ -264,6 +273,14 @@ public class ComboManager : MonoBehaviour
         m_CalledFour = false;
     }
     #endregion
+
+    public void PickBreakTrack()
+    {
+        m_ChosenTrack = m_Randomizer.SelectFlatDistributed();
+        ResetCalls();
+        SetupTrack();
+        print("Chosen Track: " + m_ChosenTrack.ToString());
+    }
 
     //crossfade between music when the player has higher or decreased combo
     private void CrossFadeAudioSource(AudioClip comboClip, float fadeTime)
