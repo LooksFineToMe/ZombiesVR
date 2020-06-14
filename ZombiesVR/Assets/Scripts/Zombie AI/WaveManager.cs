@@ -9,11 +9,12 @@ public class WaveManager : MonoBehaviour
     [HideInInspector] public List<AIZombie> m_LivingZombies;
     [SerializeField] public List<GameObject> m_SpawnLocations;
     [SerializeField] public List<GameObject> m_Players;
-    [SerializeField] public ComboManager s_ComboManager;
+    [SerializeField] public ComboManager m_ComboManager;
 
     [Header("Waves Specific")]
     [Tooltip("How long between waves and when the next wave begins")]
     [SerializeField] float m_TimeOffset = 10f;
+    [SerializeField] AudioSource m_EndAndStartOfWaveSFX;
     [SerializeField] public int m_CurrentWave;
     private float m_NextWave;
     [HideInInspector] public bool m_Break;
@@ -68,7 +69,7 @@ public class WaveManager : MonoBehaviour
             AIZombie zombie = Instantiate(m_Zombies[Random.Range(0, m_Zombies.Count - 1)]);
             zombie.transform.parent = gameObject.transform;
             zombie.transform.position = m_SpawnLocations[Random.Range(0, m_SpawnLocations.Count - 1)].transform.position;
-            zombie.SetWaveManager(this, s_ComboManager);
+            zombie.SetWaveManager(this, m_ComboManager);
             zombie.m_Spawner = this;
             m_CurrentValueOfWave += zombie.m_WaveValue;
             m_LivingZombies.Add(zombie);
@@ -76,7 +77,8 @@ public class WaveManager : MonoBehaviour
         }
 
         m_ReadyForNextWave = true;
-        s_ComboManager.PickBreakTrack();
+        m_ComboManager.PickBreakTrack();
+        m_EndAndStartOfWaveSFX.PlayOneShot(m_EndAndStartOfWaveSFX.clip);
     }
 
     private void SpawnWave()
@@ -87,6 +89,7 @@ public class WaveManager : MonoBehaviour
         }
         m_ReadyForNextWave = false;
         m_CurrentWave += 1;
-        s_ComboManager.PlayWaveTrack();
+        m_ComboManager.PlayWaveTrack();
+        m_EndAndStartOfWaveSFX.PlayOneShot(m_EndAndStartOfWaveSFX.clip);
     }
 }

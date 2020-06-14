@@ -140,22 +140,18 @@ public class ComboManager : MonoBehaviour
     {
         if (m_TrackZero)
         {
-            m_AudioSFX.PlayOneShot(m_AudioSFX.clip); //place holder
             CrossFadeAudioSource(m_TrackListZero[1], .8f);
         }
         else if (m_TrackOne)
         {
-            m_AudioSFX.PlayOneShot(m_AudioSFX.clip); //place holder
             CrossFadeAudioSource(m_TrackListOne[1], .8f);
         }
         else if (m_TrackTwo)
         {
-            m_AudioSFX.PlayOneShot(m_AudioSFX.clip); //place holder
             CrossFadeAudioSource(m_TrackListTwo[1], .8f);
         }
         else if (m_TrackThree)
         {
-            m_AudioSFX.PlayOneShot(m_AudioSFX.clip); //place holder
             CrossFadeAudioSource(m_TrackListThree[1], .8f);
         }
     }
