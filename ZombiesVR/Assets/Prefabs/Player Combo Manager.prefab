@@ -54,13 +54,14 @@ MonoBehaviour:
   m_HighIntensityCombo: 30
   m_HigherIntensityCombo: 40
   m_TimeReset: 3
+  m_Volume: 0.4
   m_AmountOfTracks: 4
   m_AudioSFX: {fileID: 675696019634315814}
   m_TrackListZero:
   - {fileID: 8300000, guid: 26bc74a91483f8a47a333c2fc96a3d86, type: 3}
   - {fileID: 8300000, guid: 4c2c48c1df469654aa80a0e76739aacf, type: 3}
-  - {fileID: 8300000, guid: 03c37a9cc1d90004cad5a67de401b254, type: 3}
   - {fileID: 8300000, guid: e31ef4359b000a343931f909cb38bbe4, type: 3}
+  - {fileID: 8300000, guid: 03c37a9cc1d90004cad5a67de401b254, type: 3}
   - {fileID: 8300000, guid: 00c55bb1019a7204fb722c5f32123ba4, type: 3}
   m_TrackListOne:
   - {fileID: 8300000, guid: 713a87290b5629f408ad1db49afa03ec, type: 3}
@@ -300,7 +301,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ae00cebe3cd85f341aea2dca61876541, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

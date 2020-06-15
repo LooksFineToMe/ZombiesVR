@@ -33,6 +33,9 @@ public class AIZombie : MonoBehaviour
     private bool m_PickedScreamNumber;
 
     [Header("Combat")]
+    [SerializeField] AudioSource m_ZombieSfxSource;
+    [SerializeField] AudioClip[] m_ZombieSFX;
+    [SerializeField] int m_RandSfxChance = 5;
     [SerializeField] public bool m_Eliminated = false;
     [SerializeField] float m_AttackRange = 2f;
     [SerializeField] float m_TimeToGetUp = 2f;
@@ -44,7 +47,8 @@ public class AIZombie : MonoBehaviour
     [HideInInspector] public bool m_FightingPlayer;
     [HideInInspector] public bool powerDeath;
     private bool m_PickedFightNumber;
-
+    private bool m_PickedSfxNumber;
+    private bool m_CalledSFX = false;
 
     [HideInInspector] public bool crawling = false;
     [HideInInspector] public bool headless = false;
@@ -117,6 +121,11 @@ public class AIZombie : MonoBehaviour
                 else
                     canScream = false;
             }
+
+            if (!calledScream)
+                ZombieSight();
+            if(!m_Eliminated || !m_RH.ragdolled)
+                PlayAudioEffect();
         }
         else
         {
@@ -125,9 +134,6 @@ public class AIZombie : MonoBehaviour
 
         if (isBleeding)
             BleedingOut();
-
-        if (!calledScream && m_Target != null)
-            ZombieSight();
     }
 
     private void ResetCanWalk()
@@ -231,6 +237,37 @@ public class AIZombie : MonoBehaviour
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_RotationSpeed * Time.deltaTime);
         }
+    }
+
+    //this is messsy
+    private void PlayAudioEffect()
+    {
+        if (!m_PickedSfxNumber)
+        {
+            int rand = Random.Range(1, m_RandSfxChance);
+            m_PickedSfxNumber = true;
+            Invoke(nameof(SFXReset), 5);
+
+            if (rand == 1 && !m_CalledSFX)
+            {
+                //pick and play a random sound frrom an array and exclude the sound at 0
+                int p = Random.Range(1, m_ZombieSFX.Length);
+                m_ZombieSfxSource.clip = m_ZombieSFX[p];
+                m_ZombieSfxSource.PlayOneShot(m_ZombieSfxSource.clip);
+
+                m_ZombieSFX[p] = m_ZombieSFX[0];
+                m_ZombieSFX[0] = m_ZombieSfxSource.clip;
+                m_CalledSFX = true;
+                Invoke(nameof(SFXReset), 1f);
+            }
+        }
+    }
+
+    private void SFXReset()
+    {
+        m_PickedSfxNumber = false;
+        m_CalledSFX = false;
+        print("SFX Reset");
     }
 
     private bool CalculateDistance()
