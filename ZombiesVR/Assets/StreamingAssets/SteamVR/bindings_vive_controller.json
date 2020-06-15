@@ -112,20 +112,6 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grabgrip"
-                  }
-               },
-               "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.05",
-                  "click_deactivate_threshold" : "0",
-                  "force_input" : "force"
-               },
-               "path" : "/user/hand/left/input/grip"
-            },
-            {
-               "inputs" : {
-                  "click" : {
                      "output" : "/actions/default/in/grabpinch"
                   }
                },
@@ -161,7 +147,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grabgrip"
+                     "output" : "/actions/default/in/teleport"
                   }
                },
                "mode" : "toggle_button",
@@ -186,6 +172,15 @@
                   }
                },
                "mode" : "toggle_button",
+               "path" : "/user/hand/left/input/grip"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/grabgrip"
+                  }
+               },
+               "mode" : "toggle_button",
                "path" : "/user/hand/right/input/application_menu"
             },
             {
@@ -194,7 +189,7 @@
                      "output" : "/actions/default/in/grabgrip"
                   }
                },
-               "mode" : "button",
+               "mode" : "toggle_button",
                "path" : "/user/hand/right/input/grip"
             },
             {
@@ -234,6 +229,15 @@
                   }
                },
                "mode" : "trigger",
+               "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "held" : {
+                     "output" : "/actions/default/in/teleport"
+                  }
+               },
+               "mode" : "button",
                "path" : "/user/hand/right/input/trigger"
             }
          ]
