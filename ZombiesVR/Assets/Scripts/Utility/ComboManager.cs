@@ -29,6 +29,7 @@ public class ComboManager : MonoBehaviour
 
     #region Audio
     [Header("Audio")]
+    [SerializeField] float m_Volume = 1;
     [Tooltip("[THIS EXCLUDES THE MAXIMUM VALUE] The number of tracks we have to randomly pick from.")]
     [SerializeField] int m_AmountOfTracks = 4;
     [Tooltip("The bottom Audio Source Component. Holds the SFX for when the player hits a combo milestone")]
@@ -281,6 +282,6 @@ public class ComboManager : MonoBehaviour
     //crossfade between music when the player has higher or decreased combo
     private void CrossFadeAudioSource(AudioClip comboClip, float fadeTime)
     {
-        d_AudioSource.CrossFade(comboClip, 1, fadeTime);
+        d_AudioSource.CrossFade(comboClip, m_Volume, fadeTime);
     }
 }
