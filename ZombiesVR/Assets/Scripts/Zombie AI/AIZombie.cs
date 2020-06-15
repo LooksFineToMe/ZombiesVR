@@ -267,7 +267,6 @@ public class AIZombie : MonoBehaviour
     {
         m_PickedSfxNumber = false;
         m_CalledSFX = false;
-        print("SFX Reset");
     }
 
     private bool CalculateDistance()
