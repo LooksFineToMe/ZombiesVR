@@ -40,7 +40,7 @@ public class ComboManager : MonoBehaviour
     [SerializeField] AudioClip[] m_TrackListThree;
     private int m_ChosenTrack;
 
-    private int m_ComboIncrement = 1;
+    private int m_ComboIncrement;
 
     private Randomizer m_Randomizer;
 
@@ -135,9 +135,9 @@ public class ComboManager : MonoBehaviour
         // Finally playing the CrossFade for the CurrentCombo track
         // CurrentCombo is the track to play from the music Index of the array
         #endregion
-        if (m_CurrentCombo % m_ComboIncrement == 0 && m_CurrentCombo != 0)
+        if (m_CurrentCombo % m_ComboIncrement == 0 && m_CurrentCombo != 0) //returning error "attempting to devide by zero"
         {
-            print("added"); //not printing
+            print("combo");
             m_CurrentCombo++;
             m_CurrentCombo = Math.Max(m_CurrentCombo, albumRange);
             CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[m_CurrentCombo], .5f);
