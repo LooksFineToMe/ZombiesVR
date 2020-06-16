@@ -9,6 +9,7 @@
     }
         SubShader
     {
+        
         Tags { "RenderType" = "Opaque" "Queue" = "Geometry+2" }
         ColorMask RGB
         Cull Front
