@@ -44,9 +44,8 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [SerializeField] Transform m_Spine;
-    [HideInInspector] public bool m_FightingPlayer;
+     public bool m_FightingPlayer;
     [HideInInspector] public bool powerDeath;
-    private bool m_PickedFightNumber;
     private bool m_PickedSfxNumber;
     private bool m_CalledSFX = false;
 
@@ -178,19 +177,7 @@ public class AIZombie : MonoBehaviour
         RotateTowards();
 
         canScream = false;
-        //if (!m_PickedFightNumber && fightingPlayer)
-        //{
-        //    int randomNumber = Random.Range(1, 4);
-        //    m_Animations.SetTrigger("Attack" + randomNumber);
-        //    m_PickedFightNumber = true;
-        //    Invoke(nameof(ResetNumberPick), 1.5f);
-        //}
     }
-
-    //private void ResetNumberPick()
-    //{
-    //    m_PickedFightNumber = false;
-    //}
 
     private void MoveTowards(float agentSpeed)
     {
@@ -355,6 +342,8 @@ public class AIZombie : MonoBehaviour
     [ContextMenu("Ragdoll")] //method for testing purposes
     void Ragdoll()
     {
+        if (m_FightingPlayer)
+            m_FightingPlayer = false;
         StartCoroutine(ZombieRagdoll());
     }
 
