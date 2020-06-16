@@ -44,7 +44,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] Animator m_Animations;
     [SerializeField] public bool withinRange;
     [SerializeField] Transform m_Spine;
-     public bool m_FightingPlayer;
+    [HideInInspector] public bool m_FightingPlayer;
     [HideInInspector] public bool powerDeath;
     private bool m_PickedSfxNumber;
     private bool m_CalledSFX = false;
@@ -309,7 +309,8 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = true;
 
         m_Spawner.m_LivingZombies.Remove(this);
-        m_ComboManager.AddCombo();
+        //m_ComboManager.AddCombo();
+        m_ComboManager.BeatCombo();
 
         m_RH.ragdolled = true;
         //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over

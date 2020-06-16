@@ -40,7 +40,11 @@ public class ComboManager : MonoBehaviour
     [SerializeField] AudioClip[] m_TrackListThree;
     private int m_ChosenTrack;
 
+    private int m_ComboIncrement = 1;
+
     private Randomizer m_Randomizer;
+
+    [SerializeField] RandomTrackPicker[] randMusic;
     #endregion
 
     #region Song Booleans 
@@ -66,7 +70,7 @@ public class ComboManager : MonoBehaviour
         m_CurrentCombo = 0;
         d_AudioSource = GetComponent<DoubleAudioSource>();
 
-        m_Randomizer = new Randomizer(m_AmountOfTracks);
+        m_Randomizer = new Randomizer(randMusic.Length);
     }
 
     // Update is called once per frame
@@ -97,64 +101,94 @@ public class ComboManager : MonoBehaviour
     public void AddCombo()
     {
         m_CurrentCombo += 1;
+        BeatCombo();
         m_CurrentTime = m_TimeReset;
 
+
+
         //there has to be a better method than this
-        if (m_TrackZero && !m_WaveManager.m_Break)
-            TrackListZero();
-        else if (m_TrackOne && !m_WaveManager.m_Break)
-            TrackListOne();
-        else if (m_TrackTwo && !m_WaveManager.m_Break)
-            TrackListTwo();
-        else if (m_TrackThree && !m_WaveManager.m_Break)
-            TrackListThree();
+        //if (m_TrackZero && !m_WaveManager.m_Break)
+        //    TrackListZero();
+        //else if (m_TrackOne && !m_WaveManager.m_Break)
+        //    TrackListOne();
+        //else if (m_TrackTwo && !m_WaveManager.m_Break)
+        //    TrackListTwo();
+        //else if (m_TrackThree && !m_WaveManager.m_Break)
+        //    TrackListThree();
+    }
+
+    public void BeatCombo()
+    {
+        int albumRange = randMusic[m_ChosenTrack].Music.Length;
+        #region Discription
+        // Could be 0+1 to 6 or 0+1 to 3
+        // If m_CurrentCombo can be divided with no remainder of the ComboIncrement
+        // And the m_CurrentCombo is not 0 then combo is dividable by the ComboIncrement
+        // then increment the CurrentCombo as the combo will be between the albumRange
+        // the albumRange is from 0 through to the maximum in the Album
+        // CurrentCombo adds 1 to the track combo every ComboIncrement
+        // CurrentCombo can never be more then the albumRange
+        // hench the math.Max capping the maximum at the albumRange
+        // Finally playing the CrossFade for the CurrentCombo track
+        // CurrentCombo is the track to play from the music Index of the array
+        #endregion
+
+        if (m_CurrentCombo % m_ComboIncrement == 0 && m_CurrentCombo != 0)
+        {
+            print("added");
+            m_CurrentCombo++;
+            m_CurrentCombo = Math.Max(m_CurrentCombo, albumRange);
+            CrossFadeAudioSource(randMusic[m_ChosenTrack].Music[m_CurrentCombo], .5f);
+            m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
+        }
     }
 
     #region In-Game Tracks
     //this needs to be changed for effiency || also need to add a system so it doesn't choose the same track twice
     public void SetupTrack()
     {
-        if (m_ChosenTrack == 0)
-        {
-            CrossFadeAudioSource(m_TrackListZero[0], 5f);
-            m_TrackZero = true;
-        }
-        else if (m_ChosenTrack == 1)
-        {
-            CrossFadeAudioSource(m_TrackListOne[0], 5f);
-            m_TrackOne = true;
-        }
-        else if (m_ChosenTrack == 2)
-        {
-            CrossFadeAudioSource(m_TrackListTwo[0], 5f);
-            m_TrackTwo = true;
-        }
-        else if (m_ChosenTrack == 3)
-        {
-            CrossFadeAudioSource(m_TrackListThree[0], 5f);
-            m_TrackThree = true;
-        }
+        //if (m_ChosenTrack == 0)
+        //{
+        //    CrossFadeAudioSource(m_TrackListZero[0], 5f);
+        //    m_TrackZero = true;
+        //}
+        //else if (m_ChosenTrack == 1)
+        //{
+        //    CrossFadeAudioSource(m_TrackListOne[0], 5f);
+        //    m_TrackOne = true;
+        //}
+        //else if (m_ChosenTrack == 2)
+        //{
+        //    CrossFadeAudioSource(m_TrackListTwo[0], 5f);
+        //    m_TrackTwo = true;
+        //}
+        //else if (m_ChosenTrack == 3)
+        //{
+        //    CrossFadeAudioSource(m_TrackListThree[0], 5f);
+        //    m_TrackThree = true;
+        //}
     }
 
     //really shouldn't be doing this method, it gets messy || I hope there's a better way to do this, too many steps to add a new track
     public void PlayWaveTrack()
     {
-        if (m_TrackZero)
-        {
-            CrossFadeAudioSource(m_TrackListZero[1], .8f);
-        }
-        else if (m_TrackOne)
-        {
-            CrossFadeAudioSource(m_TrackListOne[1], .8f);
-        }
-        else if (m_TrackTwo)
-        {
-            CrossFadeAudioSource(m_TrackListTwo[1], .8f);
-        }
-        else if (m_TrackThree)
-        {
-            CrossFadeAudioSource(m_TrackListThree[1], .8f);
-        }
+        CrossFadeAudioSource(randMusic[m_ChosenTrack].Music[1], .5f);
+        //if (m_TrackZero)
+        //{
+        //    CrossFadeAudioSource(m_TrackListZero[1], .8f);
+        //}
+        //else if (m_TrackOne)
+        //{
+        //    CrossFadeAudioSource(m_TrackListOne[1], .8f);
+        //}
+        //else if (m_TrackTwo)
+        //{
+        //    CrossFadeAudioSource(m_TrackListTwo[1], .8f);
+        //}
+        //else if (m_TrackThree)
+        //{
+        //    CrossFadeAudioSource(m_TrackListThree[1], .8f);
+        //}
     }
 
     private void TrackListZero()
@@ -274,8 +308,9 @@ public class ComboManager : MonoBehaviour
     public void PickBreakTrack()
     {
         m_ChosenTrack = m_Randomizer.SelectFlatDistributed();
+        CrossFadeAudioSource(randMusic[m_ChosenTrack].Music[0], .5f);
         ResetCalls();
-        SetupTrack();
+        //SetupTrack();
         print("Chosen Track: " + m_ChosenTrack.ToString());
     }
 
