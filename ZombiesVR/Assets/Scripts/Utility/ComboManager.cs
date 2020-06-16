@@ -44,7 +44,7 @@ public class ComboManager : MonoBehaviour
 
     private Randomizer m_Randomizer;
 
-    [SerializeField] RandomTrackPicker[] randMusic;
+    [SerializeField] RandomTrackPicker[] m_TrackList;
     #endregion
 
     #region Song Booleans 
@@ -70,7 +70,7 @@ public class ComboManager : MonoBehaviour
         m_CurrentCombo = 0;
         d_AudioSource = GetComponent<DoubleAudioSource>();
 
-        m_Randomizer = new Randomizer(randMusic.Length);
+        m_Randomizer = new Randomizer(m_TrackList.Length);
     }
 
     // Update is called once per frame
@@ -119,7 +119,10 @@ public class ComboManager : MonoBehaviour
 
     public void BeatCombo()
     {
-        int albumRange = randMusic[m_ChosenTrack].Music.Length;
+        int albumRange = m_TrackList[m_ChosenTrack].Music.Length;
+        //m_CurrentCombo++; Adds 2 combo per elimination, returns index out of range error
+        print(m_CurrentCombo); //always returning 0
+
         #region Discription
         // Could be 0+1 to 6 or 0+1 to 3
         // If m_CurrentCombo can be divided with no remainder of the ComboIncrement
@@ -132,13 +135,12 @@ public class ComboManager : MonoBehaviour
         // Finally playing the CrossFade for the CurrentCombo track
         // CurrentCombo is the track to play from the music Index of the array
         #endregion
-
         if (m_CurrentCombo % m_ComboIncrement == 0 && m_CurrentCombo != 0)
         {
-            print("added");
+            print("added"); //not printing
             m_CurrentCombo++;
             m_CurrentCombo = Math.Max(m_CurrentCombo, albumRange);
-            CrossFadeAudioSource(randMusic[m_ChosenTrack].Music[m_CurrentCombo], .5f);
+            CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[m_CurrentCombo], .5f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
         }
     }
@@ -172,7 +174,7 @@ public class ComboManager : MonoBehaviour
     //really shouldn't be doing this method, it gets messy || I hope there's a better way to do this, too many steps to add a new track
     public void PlayWaveTrack()
     {
-        CrossFadeAudioSource(randMusic[m_ChosenTrack].Music[1], .5f);
+        CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[1], .5f);
         //if (m_TrackZero)
         //{
         //    CrossFadeAudioSource(m_TrackListZero[1], .8f);
@@ -308,8 +310,8 @@ public class ComboManager : MonoBehaviour
     public void PickBreakTrack()
     {
         m_ChosenTrack = m_Randomizer.SelectFlatDistributed();
-        CrossFadeAudioSource(randMusic[m_ChosenTrack].Music[0], .5f);
-        ResetCalls();
+        CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[0], .5f);
+        //ResetCalls();
         //SetupTrack();
         print("Chosen Track: " + m_ChosenTrack.ToString());
     }

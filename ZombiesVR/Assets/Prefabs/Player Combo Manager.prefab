@@ -82,7 +82,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d1ed5f7c99bb897459c11c0cef5df01b, type: 3}
   - {fileID: 8300000, guid: 760325f0e47115f448af820ca5af8f9c, type: 3}
   - {fileID: 8300000, guid: d4131fe90a2e35a4393b230f5d6de32a, type: 3}
-  randMusic:
+  m_TrackList:
   - Music:
     - {fileID: 8300000, guid: 713a87290b5629f408ad1db49afa03ec, type: 3}
     - {fileID: 8300000, guid: 436687adeb2b26f49b752574e779857a, type: 3}
