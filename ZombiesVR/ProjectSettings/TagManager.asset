@@ -16,6 +16,10 @@ TagManager:
   - ShotGun
   - UZI
   - Revolver
+  - GlockMag
+  - UziMag
+  - ShotGunMag
+  - RevolverMag
   layers:
   - Default
   - TransparentFX
