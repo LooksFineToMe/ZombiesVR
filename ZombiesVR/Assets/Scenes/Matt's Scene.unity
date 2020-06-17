@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 9d66a1c2dca1328448e1d5f23610a75a,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3710,7 +3710,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-227498
+  m_Name: pb_Mesh420956
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4421,26 +4421,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 128657805}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1921091227 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5444120685136965262, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-    type: 3}
-  m_PrefabInstance: {fileID: 8427328553396249091}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1921091229
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921091227}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.2879796
-  m_Height: 0.68
-  m_Direction: 1
-  m_Center: {x: 0.00000017881393, y: -0.120000035, z: -0.0014462471}
 --- !u!1 &1940869891
 GameObject:
   m_ObjectHideFlags: 0
@@ -21792,61 +21772,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1546532578}
-    - target: {fileID: 1981594744452404995, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 1546532578}
-    - target: {fileID: 4505171215129574459, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.391
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505171215129574459, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.157
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543150802879436275, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.118
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497319885599475921, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.236
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497319885599475921, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.325
-      objectReference: {fileID: 0}
-    - target: {fileID: 6163828845500334595, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.291
-      objectReference: {fileID: 0}
-    - target: {fileID: 6163828845500334595, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.282
-      objectReference: {fileID: 0}
-    - target: {fileID: 7868502434592623537, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.391
-      objectReference: {fileID: 0}
-    - target: {fileID: 7868502434592623537, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.144
-      objectReference: {fileID: 0}
-    - target: {fileID: 7911825480283268188, guid: 2ffd00bf0feea8a479d438fe692e1b59,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8427328551957604414, guid: 2ffd00bf0feea8a479d438fe692e1b59,
         type: 3}
       propertyPath: player
@@ -21912,8 +21837,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1981594744452404995, guid: 2ffd00bf0feea8a479d438fe692e1b59, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ffd00bf0feea8a479d438fe692e1b59, type: 3}
 --- !u!4 &8469836820268565989
 Transform:
