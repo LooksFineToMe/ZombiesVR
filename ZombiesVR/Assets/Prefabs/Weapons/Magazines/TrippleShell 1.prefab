@@ -108,9 +108,10 @@ GameObject:
   - component: {fileID: 6565068220578790438}
   - component: {fileID: 6565068220578790433}
   - component: {fileID: 2452461579307051679}
+  - component: {fileID: 4829638972457832350}
   m_Layer: 0
   m_Name: TrippleShell 1
-  m_TagString: Untagged
+  m_TagString: ShotGunMag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: ShotGun
-  magCount: 3
+  magCount: 1
+  maxAmmo: 1
   magazine: {fileID: 3337693083282030027}
   timer: 0
   bullets:
@@ -308,6 +310,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d81366771bbd142a3f281fb69265e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &4829638972457832350
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337693083282030027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.057572514, y: 0.059166, z: 0.047262296}
+  m_Center: {x: 0.0077830106, y: -0.054778837, z: 0}
 --- !u!1 &5633940438321019987
 GameObject:
   m_ObjectHideFlags: 0

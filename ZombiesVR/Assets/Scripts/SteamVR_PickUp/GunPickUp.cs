@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 using Valve.VR;
+using System;
 
 public class GunPickUp : MonoBehaviour
 {
     public GameObject leftHand;
     public GameObject rightHand;
+    public bool glock = false;
+    public bool uzi = false;
+    public bool shotGun = false;
+    public bool revolver = false;
+    public BackPack backPack;
     // Start is called before the first frame update
     private void Start()
     {
@@ -24,6 +30,8 @@ public class GunPickUp : MonoBehaviour
             rightHand.SetActive(true);
         }
     }
+
+
     public void DropGun()
     {
         leftHand.SetActive(false);
