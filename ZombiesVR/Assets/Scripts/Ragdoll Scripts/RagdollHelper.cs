@@ -57,7 +57,7 @@ public class RagdollHelper : MonoBehaviour
     List<BodyPart> bodyParts = new List<BodyPart>();
 
     //Declare an Animator member variable, initialized in Start to point to this gameobject's Animator component.
-    [HideInInspector] public Animator anim;
+    public Animator anim;
 
     // Initialization, first frame of game
     void Start()

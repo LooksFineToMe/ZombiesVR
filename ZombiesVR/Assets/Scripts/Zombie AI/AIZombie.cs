@@ -226,6 +226,25 @@ public class AIZombie : MonoBehaviour
         }
     }
 
+    private bool CalculateDistance()
+    {
+        Vector3 position = transform.position;
+        Vector3 targetPos = m_Target.transform.position;
+
+        Vector3 distance = position - targetPos;
+
+        float largeDistance = Mathf.Max(Mathf.Abs(distance.x), Mathf.Abs(distance.z));
+
+        if (largeDistance <= m_AttackRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     //this is messsy
     private void PlayAudioEffect()
     {
@@ -254,25 +273,6 @@ public class AIZombie : MonoBehaviour
     {
         m_PickedSfxNumber = false;
         m_CalledSFX = false;
-    }
-
-    private bool CalculateDistance()
-    {
-        Vector3 position = transform.position;
-        Vector3 targetPos = m_Target.transform.position;
-
-        Vector3 distance = position - targetPos;
-
-        float largeDistance = Mathf.Max(Mathf.Abs(distance.x), Mathf.Abs(distance.z));
-
-        if (largeDistance <= m_AttackRange)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     //so the wave manager knows when the zombie has been eliminated or not
@@ -329,7 +329,7 @@ public class AIZombie : MonoBehaviour
             m_NavMesh.velocity = Vector3.zero;
             m_NavMesh.isStopped = true;
             m_Spawner.m_LivingZombies.Remove(this);
-            m_ComboManager.AddCombo();
+            m_ComboManager.BeatCombo();
             Invoke(nameof(DeathAnimation), .85f);
         }
     }

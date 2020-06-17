@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 3458140204834844647}
   - component: {fileID: 5314364940096184278}
   m_Layer: 0
-  m_Name: AI Zombie
+  m_Name: Test AI Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

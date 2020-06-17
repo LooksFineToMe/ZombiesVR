@@ -77,7 +77,7 @@ public class WaveManager : MonoBehaviour
         }
 
         m_ReadyForNextWave = true;
-        m_ComboManager.PickBreakTrack();
+        m_ComboManager.SetupWaveTrack();
         m_EndAndStartOfWaveSFX.PlayOneShot(m_EndAndStartOfWaveSFX.clip);
     }
 
