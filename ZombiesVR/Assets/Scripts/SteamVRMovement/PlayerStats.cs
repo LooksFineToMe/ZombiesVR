@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (coolDownTimer > hitCooldown)
         {
-            hitCooldown = 0;
+            coolDownTimer = 0;
             health -= 1;
 
             DamageEffect();
