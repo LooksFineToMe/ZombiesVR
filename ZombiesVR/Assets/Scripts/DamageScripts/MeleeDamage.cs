@@ -32,7 +32,9 @@ public class MeleeDamage : MonoBehaviour
 
     public TrailRenderer weaponTrail;
     public float weaponTrailwidth = .1f;
-    private void Start()
+
+    public GameObject soundKnockHit;
+private void Start()
     {
         rb = GetComponent<Rigidbody>();//Get the rigibody on startup
     }
@@ -78,6 +80,8 @@ public class MeleeDamage : MonoBehaviour
                     
                     //Adds the damage to the enemyBodyparts class
                     collision.rigidbody.GetComponent<EnemyBodyParts>().BluntDamage(baseDamage);
+
+                    if (soundKnockHit != null) { Instantiate(soundKnockHit, transform.position, transform.rotation); }
                 }
 
                 //Checks if the collided object has 1. Weapon Velocity > MinimumVelocity, 2. Velocity < Extra Velocity, 3. timer > cooldown, 4. IsBluntWeapon = false. 

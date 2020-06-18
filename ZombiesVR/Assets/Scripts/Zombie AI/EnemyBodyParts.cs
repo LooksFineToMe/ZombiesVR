@@ -34,6 +34,7 @@ public class EnemyBodyParts : MonoBehaviour
         {
             DetachGameObject();
         }
+        
     }
     public void BluntDamage(float damageSource)
     {
@@ -48,8 +49,8 @@ public class EnemyBodyParts : MonoBehaviour
         if (isDetachable == true && bodyPartDamaged >= 3)
         {
             DetachGameObject();
-            
         }
+        
     }
 
     [ContextMenu("Dismemberment")]
