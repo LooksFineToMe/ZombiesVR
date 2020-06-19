@@ -31,16 +31,16 @@ TagManager:
   - 
   - 
   - Player
-  - Enemy
+  - 
   - Bullet
-  - Gun
-  - SpawnArea
+  - 
+  - 
   - DEV_LAYER
   - Hands
   - PickedUpObject
-  - Blood
+  - 
   - TERRAIN
-  - TeleportLayer
+  - 
   - 
   - 
   - 

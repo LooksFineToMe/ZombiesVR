@@ -539,7 +539,7 @@ MonoBehaviour:
   hand: {fileID: 0}
   collisionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 156983
   fingerColliders:
     thumbColliders:
     - {fileID: 4000011285245488}
@@ -586,10 +586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f8d7423500067469029fc0403497de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraVelocity: 6
-  minimumVelocity: 1.5
+  extraVelocity: 4
+  minimumVelocity: 1.25
   baseDamage: 10
-  baseForce: 5
+  baseForce: 10
   bodypartDamage: 0
   isBluntWeapon: 1
   impactTarget: {fileID: 0}

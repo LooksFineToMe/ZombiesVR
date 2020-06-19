@@ -1528,8 +1528,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: Pistol
-  magCount: 14
-  maxAmmo: 14
+  magCount: 20
+  maxAmmo: 20
   magazine: {fileID: 8598708035778058004}
   timer: 0
   bullets:
@@ -1597,6 +1597,7 @@ MonoBehaviour:
   impactTarget: {fileID: 0}
   weaponTrail: {fileID: 0}
   weaponTrailwidth: 0.1
+  soundKnockHit: {fileID: 0}
 --- !u!65 &4495861747815306669
 BoxCollider:
   m_ObjectHideFlags: 0
