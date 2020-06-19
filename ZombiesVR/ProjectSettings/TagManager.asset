@@ -20,6 +20,7 @@ TagManager:
   - UziMag
   - ShotGunMag
   - RevolverMag
+  - Weapon
   layers:
   - Default
   - TransparentFX

@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 4000011495277878}
   - component: {fileID: 114000010572907066}
   - component: {fileID: 54000013135273658}
+  - component: {fileID: 6229775259697038754}
   m_Layer: 14
   m_Name: HandColliderLeft
   m_TagString: Untagged
@@ -757,7 +758,29 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &6229775259697038754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013588331694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f8d7423500067469029fc0403497de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extraVelocity: 6
+  minimumVelocity: 1.5
+  baseDamage: 10
+  baseForce: 5
+  bodypartDamage: 0
+  isBluntWeapon: 1
+  impactTarget: {fileID: 0}
+  weaponTrail: {fileID: 0}
+  weaponTrailwidth: 0.1
+  soundKnockHit: {fileID: 0}
 --- !u!1 &1000013918884664
 GameObject:
   m_ObjectHideFlags: 0

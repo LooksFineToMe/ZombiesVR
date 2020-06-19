@@ -2766,7 +2766,7 @@ GameObject:
   - component: {fileID: 174128442}
   m_Layer: 0
   m_Name: axe
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3029,8 +3029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f8d7423500067469029fc0403497de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraVelocity: 4
-  minimumVelocity: 1
+  extraVelocity: 5
+  minimumVelocity: 2
   baseDamage: 3
   baseForce: 10
   bodypartDamage: 3
@@ -3038,6 +3038,7 @@ MonoBehaviour:
   impactTarget: {fileID: 0}
   weaponTrail: {fileID: 1563112373}
   weaponTrailwidth: 0.1
+  soundKnockHit: {fileID: 0}
 --- !u!114 &174128442
 MonoBehaviour:
   m_ObjectHideFlags: 0
