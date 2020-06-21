@@ -50,6 +50,7 @@ MonoBehaviour:
   m_WaveManager: {fileID: 0}
   m_CurrentCombo: 0
   m_TimeReset: 3
+  m_DecreaseIntensityOverTime: 0
   m_ComboThreshold: 10
   m_Volume: 1
   m_AudioSFX: {fileID: 675696019634315814}
@@ -74,7 +75,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d1ed5f7c99bb897459c11c0cef5df01b, type: 3}
     - {fileID: 8300000, guid: 760325f0e47115f448af820ca5af8f9c, type: 3}
   - Music:
-    - {fileID: 8300000, guid: 8e34ca9505743984da1b1ea3da16d9c1, type: 3}
+    - {fileID: 8300000, guid: f3c502740c294244bb29ed2fb0e2422a, type: 3}
     - {fileID: 8300000, guid: 23c4c37ab9f39bc41ac1f80c27c32203, type: 3}
     - {fileID: 8300000, guid: 436b21d9211164b43b36f66100d46bdc, type: 3}
     - {fileID: 8300000, guid: 44c375de8fade614cb2036680df4bff4, type: 3}
