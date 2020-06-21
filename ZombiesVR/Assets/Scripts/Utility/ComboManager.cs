@@ -14,7 +14,7 @@ public class ComboManager : MonoBehaviour
     [SerializeField] public int m_CurrentCombo;
     [SerializeField] float m_TimeReset = 2;
     [Tooltip("If Checked, Music will will go down the ladder of intensity to the Element 1 of the track list")]
-    [SerializeField] bool m_DecreaseIntensityOverTime = false;
+    [SerializeField] bool m_DecreaseIntensityOverTime = true;
     [Tooltip("The Combo Threshhold at which the music will change")]
     [SerializeField] int m_ComboThreshold = 10;
     private int m_ComboTrack = 1;
@@ -45,7 +45,7 @@ public class ComboManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_CurrentCombo > 1)
+        if (m_HasCombo && m_DecreaseIntensityOverTime)
         {
             if (m_CurrentTime > 0)
             {
@@ -54,12 +54,7 @@ public class ComboManager : MonoBehaviour
                 {
                     m_CurrentTime = 0;
                     m_CurrentCombo = 0;
-
-                    if (m_HasCombo && m_DecreaseIntensityOverTime)
-                    {
-                        DecTrackTrans();
-                        m_HasCombo = false;
-                    }
+                    DecTrackTrans();
                 }
             }
         }
@@ -76,6 +71,7 @@ public class ComboManager : MonoBehaviour
         //increment combo meter
         m_CurrentCombo++;
         m_CurrentTime = m_TimeReset;
+        m_HasCombo = true;
 
         //function to reset
         //every tenth kill play next track so
@@ -98,9 +94,11 @@ public class ComboManager : MonoBehaviour
         if (m_ComboTrack != 1)
         {
             m_ComboTrack--;
-            m_CurrentTime = m_TimeReset + 10;
-            CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[m_ComboTrack], .5f);
+            m_CurrentTime = m_TimeReset + 5;
+            CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[m_ComboTrack], 3f);
             print("Decreased section to: " + m_ComboTrack);
+            if (m_ComboTrack == 1)
+                m_HasCombo = false;
         }
         else
         {
