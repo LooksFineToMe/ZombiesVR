@@ -84,9 +84,8 @@ public class WaveManager : MonoBehaviour
     private void SpawnWave()
     {
         foreach (AIZombie zombie in m_LivingZombies)
-        {
             zombie.gameObject.SetActive(true);
-        }
+
         m_ReadyForNextWave = false;
         m_CurrentWave += 1;
         m_ComboManager.PlayWaveTrack();

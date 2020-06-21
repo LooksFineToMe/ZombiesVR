@@ -13,10 +13,12 @@ public class ComboManager : MonoBehaviour
     [Tooltip("The Players current combo, updated per zombie elimination.")]
     [SerializeField] public int m_CurrentCombo;
     [SerializeField] float m_TimeReset = 2;
+    [Tooltip("If Checked, Music will will go down the ladder of intensity to the Element 1 of the track list")]
+    [SerializeField] bool m_DecreaseIntensityOverTime = false;
     [Tooltip("The Combo Threshhold at which the music will change")]
     [SerializeField] int m_ComboThreshold = 10;
     private int m_ComboTrack = 1;
-
+    private bool m_HasCombo;
     private float m_CurrentTime; //current value decaying over time
     #endregion
 
@@ -52,22 +54,24 @@ public class ComboManager : MonoBehaviour
                 {
                     m_CurrentTime = 0;
                     m_CurrentCombo = 0;
-                        //we can either have this reset to the lowest intensity of the track or slowly climb down the ladder of intensity
-                        //or we can have this turned off and never reset the music
-                    //if (m_HasCombo)
-                    //{
-                    //    CrossFadeAudioSource(m_TrackListOne[1], 5f);
-                    //    m_HasCombo = false;
-                    //}
+
+                    if (m_HasCombo && m_DecreaseIntensityOverTime)
+                    {
+                        DecTrackTrans();
+                        m_HasCombo = false;
+                    }
                 }
             }
         }
     }
 
-    public void BeatCombo()
+    /// <summary>
+    /// Increases the intensity of music
+    /// </summary>
+    public void IncTrackTrans()
     {
         int albumRange = m_TrackList[m_ChosenTrack].Music.Length - 1; //element 0 is always filled with a break track and autoswitches to
-                                                                      //element 1 on wave start up
+                                                                                                                //element 1 on wave start up
 
         //increment combo meter
         m_CurrentCombo++;
@@ -79,18 +83,43 @@ public class ComboManager : MonoBehaviour
         {
             m_ComboTrack++;
             //Plays audio everytime audio source changes
-            print("current section selected: " + m_ComboTrack);
+            print("Current section selected: " + m_ComboTrack);
             CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[m_ComboTrack], .5f);
             m_AudioSFX.PlayOneShot(m_AudioSFX.clip);
             m_CurrentCombo = 0;
         }
     }
+
+    /// <summary>
+    /// Decreases the intensity of the music
+    /// </summary>
+    private void DecTrackTrans()
+    {
+        if (m_ComboTrack != 1)
+        {
+            m_ComboTrack--;
+            m_CurrentTime = m_TimeReset + 10;
+            CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[m_ComboTrack], .5f);
+            print("Decreased section to: " + m_ComboTrack);
+        }
+        else
+        {
+            print("Lowest Intensity|| Current section: " + m_ComboTrack);
+        }
+
+    }
     
+    /// <summary>
+    /// Plays Element 1 of the chosen track from the Array Class
+    /// </summary>
     public void PlayWaveTrack()
     {
         CrossFadeAudioSource(m_TrackList[m_ChosenTrack].Music[1], .5f);
     }
 
+    /// <summary>
+    /// Randomly picks a track from an Array class and play element 0
+    /// </summary>
     public void SetupWaveTrack()
     {
         m_CurrentCombo = 0;

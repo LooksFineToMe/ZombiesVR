@@ -82,7 +82,7 @@ public class AIZombie : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
+        //clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
         //print(clipinfo[0].clip.name);
 
         if (m_Target != null)
@@ -106,14 +106,11 @@ public class AIZombie : MonoBehaviour
                     Invoke(nameof(ResetCanWalk), 3);
                 }
 
+                //movement speed base if the zombies have legs or not
                 if (canWalk)
-                {
                     MoveTowards(1);
-                }
                 else if (crawling)
-                {
                     MoveTowards(.03f);
-                }
 
                 if (!calledScream)
                     canScream = true;
@@ -123,6 +120,7 @@ public class AIZombie : MonoBehaviour
 
             if (!calledScream)
                 ZombieSight();
+
             if(!m_Eliminated || !m_RH.ragdolled)
                 PlayAudioEffect();
         }
@@ -148,6 +146,7 @@ public class AIZombie : MonoBehaviour
         {
             float rotY = m_Spine.rotation.y;
             m_Spine.localEulerAngles = Vector3.Lerp(m_Spine.localEulerAngles, new Vector3(0, rotY + .5f, 0), 1 * Time.deltaTime);
+            //not lerping back to original pos btw
         }
     }
 
@@ -167,6 +166,7 @@ public class AIZombie : MonoBehaviour
 
     private void AttackPlayer()
     {
+        RotateTowards();
         m_FightingPlayer = true; //bool to tell the body parts to apply damage
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = false;
@@ -174,7 +174,6 @@ public class AIZombie : MonoBehaviour
         m_Animations.SetBool("Walking", false);
         m_Animations.SetBool("Running", false);
         m_Animations.SetBool("Attacking", true);
-        RotateTowards();
 
         canScream = false;
     }
@@ -287,7 +286,7 @@ public class AIZombie : MonoBehaviour
     {
         m_HeathPoints -= damageSource;
 
-        if (m_HeathPoints <= 0)
+        if (m_HeathPoints <= 0 && !m_Eliminated)
         {
             if (!powerDeath)
             {
@@ -309,8 +308,7 @@ public class AIZombie : MonoBehaviour
         m_NavMesh.isStopped = true;
 
         m_Spawner.m_LivingZombies.Remove(this);
-        //m_ComboManager.AddCombo();
-        m_ComboManager.BeatCombo();
+        m_ComboManager.IncTrackTrans();
 
         m_RH.ragdolled = true;
         //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
@@ -329,12 +327,12 @@ public class AIZombie : MonoBehaviour
             m_NavMesh.velocity = Vector3.zero;
             m_NavMesh.isStopped = true;
             m_Spawner.m_LivingZombies.Remove(this);
-            m_ComboManager.BeatCombo();
-            Invoke(nameof(DeathAnimation), .85f);
+            m_ComboManager.IncTrackTrans();
+            Invoke(nameof(DeathRagdoll), .85f);
         }
     }
 
-    private void DeathAnimation()
+    private void DeathRagdoll()
     {
         m_RH.ragdolled = true;
         Destroy(this.gameObject, 5);
@@ -490,7 +488,7 @@ public class AIZombie : MonoBehaviour
                     if (!m_PickedScreamNumber && !m_Eliminated)
                     {
                         m_RandScream = Random.Range(1, m_ScreamChance);
-                        m_PickedScreamNumber = true;
+                        m_PickedScreamNumber = true; //this is a really dumb method
                         Invoke(nameof(ResetScreamNumber), 1.5f);
                         if (m_RandScream == 1 && !calledScream && !crawling && !headless && canScream)
                         {
