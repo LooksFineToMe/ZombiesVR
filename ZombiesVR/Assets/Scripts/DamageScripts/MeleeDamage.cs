@@ -38,6 +38,7 @@ private void Start()
     {
         rb = GetComponent<Rigidbody>();//Get the rigibody on startup
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))//The initial check for the enemy hit 

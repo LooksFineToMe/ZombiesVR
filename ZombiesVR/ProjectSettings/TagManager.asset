@@ -20,6 +20,7 @@ TagManager:
   - UziMag
   - ShotGunMag
   - RevolverMag
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -30,16 +31,16 @@ TagManager:
   - 
   - 
   - Player
-  - Enemy
+  - 
   - Bullet
-  - Gun
-  - SpawnArea
+  - 
+  - 
   - DEV_LAYER
   - Hands
   - PickedUpObject
-  - Blood
+  - 
   - TERRAIN
-  - TeleportLayer
+  - 
   - 
   - 
   - 
