@@ -6,6 +6,8 @@ using Valve.VR.InteractionSystem;
 
 public class Medpack : MonoBehaviour
 {
+    public Material medpackDefault;
+    public Material medpackActive;
     public int healthRegen;
     bool used;
     bool isUsing;
@@ -32,12 +34,13 @@ public class Medpack : MonoBehaviour
             if (healAction[source].state)
             {
                 isUsing = true;
+                gameObject.GetComponent<Renderer>().material = medpackActive;
             }
-            
         }
         else
         {
             isUsing = false;
+            gameObject.GetComponent<Renderer>().material = medpackDefault;
         }
     }
     private void OnTriggerEnter(Collider other)
