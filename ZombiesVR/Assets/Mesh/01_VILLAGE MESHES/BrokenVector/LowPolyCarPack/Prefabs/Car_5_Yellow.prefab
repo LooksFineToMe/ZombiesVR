@@ -91,6 +91,9 @@ GameObject:
   - component: {fileID: 490478}
   - component: {fileID: 3364544}
   - component: {fileID: 2328836}
+  - component: {fileID: 1020617087167993769}
+  - component: {fileID: 4596266112036133647}
+  - component: {fileID: 1216883001955647146}
   m_Layer: 0
   m_Name: Car_5_Yellow
   m_TagString: Untagged
@@ -165,6 +168,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1020617087167993769
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.012198604, y: 0.010716402, z: 0.019182099}
+  m_Center: {x: 0.018950146, y: -0.0027117229, z: 2.3014792e-17}
+--- !u!65 &4596266112036133647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.021386556, y: 0.016139848, z: 0.019182099}
+  m_Center: {x: 0.0021055746, y: 5.911878e-25, z: -2.7499454e-19}
+--- !u!65 &1216883001955647146
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016473565, y: 0.010652602, z: 0.019182099}
+  m_Center: {x: -0.016812675, y: -0.0027436232, z: -7.735734e-17}
 --- !u!1 &166266
 GameObject:
   m_ObjectHideFlags: 0
