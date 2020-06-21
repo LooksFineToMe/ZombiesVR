@@ -49,39 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WaveManager: {fileID: 0}
   m_CurrentCombo: 0
-  m_LowIntensityCombo: 10
-  m_MediumIntensityCombo: 20
-  m_HighIntensityCombo: 30
-  m_HigherIntensityCombo: 40
   m_TimeReset: 3
+  m_ComboThreshold: 10
   m_Volume: 1
-  m_AmountOfTracks: 4
   m_AudioSFX: {fileID: 675696019634315814}
-  m_TrackListZero:
-  - {fileID: 8300000, guid: 26bc74a91483f8a47a333c2fc96a3d86, type: 3}
-  - {fileID: 8300000, guid: 4c2c48c1df469654aa80a0e76739aacf, type: 3}
-  - {fileID: 8300000, guid: e31ef4359b000a343931f909cb38bbe4, type: 3}
-  - {fileID: 8300000, guid: 03c37a9cc1d90004cad5a67de401b254, type: 3}
-  - {fileID: 8300000, guid: 00c55bb1019a7204fb722c5f32123ba4, type: 3}
-  m_TrackListOne:
-  - {fileID: 8300000, guid: 713a87290b5629f408ad1db49afa03ec, type: 3}
-  - {fileID: 8300000, guid: 436687adeb2b26f49b752574e779857a, type: 3}
-  - {fileID: 8300000, guid: 3bef3336b23dbfd498d615a4f12db62b, type: 3}
-  - {fileID: 8300000, guid: 6ae076b6a809fc249928e8e8695ac68a, type: 3}
-  - {fileID: 8300000, guid: 0ebb52a142270034aba6a155fa492a71, type: 3}
-  m_TrackListTwo:
-  - {fileID: 8300000, guid: 8e34ca9505743984da1b1ea3da16d9c1, type: 3}
-  - {fileID: 8300000, guid: 23c4c37ab9f39bc41ac1f80c27c32203, type: 3}
-  - {fileID: 8300000, guid: 436b21d9211164b43b36f66100d46bdc, type: 3}
-  - {fileID: 8300000, guid: 44c375de8fade614cb2036680df4bff4, type: 3}
-  - {fileID: 8300000, guid: a847f577a64f1bb4988e5ba769b17c6f, type: 3}
-  m_TrackListThree:
-  - {fileID: 8300000, guid: 152f43685a58e9a47b01d02a880db0a3, type: 3}
-  - {fileID: 8300000, guid: 4db68ea6abe795948904d81be4014afd, type: 3}
-  - {fileID: 8300000, guid: bb7049ea86b9d9b4c90fded151cf4648, type: 3}
-  - {fileID: 8300000, guid: d1ed5f7c99bb897459c11c0cef5df01b, type: 3}
-  - {fileID: 8300000, guid: 760325f0e47115f448af820ca5af8f9c, type: 3}
-  - {fileID: 8300000, guid: d4131fe90a2e35a4393b230f5d6de32a, type: 3}
   m_TrackList:
   - Music:
     - {fileID: 8300000, guid: 713a87290b5629f408ad1db49afa03ec, type: 3}
@@ -102,6 +73,18 @@ MonoBehaviour:
     - {fileID: 8300000, guid: bb7049ea86b9d9b4c90fded151cf4648, type: 3}
     - {fileID: 8300000, guid: d1ed5f7c99bb897459c11c0cef5df01b, type: 3}
     - {fileID: 8300000, guid: 760325f0e47115f448af820ca5af8f9c, type: 3}
+  - Music:
+    - {fileID: 8300000, guid: 8e34ca9505743984da1b1ea3da16d9c1, type: 3}
+    - {fileID: 8300000, guid: 23c4c37ab9f39bc41ac1f80c27c32203, type: 3}
+    - {fileID: 8300000, guid: 436b21d9211164b43b36f66100d46bdc, type: 3}
+    - {fileID: 8300000, guid: 44c375de8fade614cb2036680df4bff4, type: 3}
+  - Music:
+    - {fileID: 8300000, guid: 43d6089e777a7b5479253b6aa61ed89f, type: 3}
+    - {fileID: 8300000, guid: c1ed0b1d547b54e4e8aae68ed844ed54, type: 3}
+    - {fileID: 8300000, guid: a3c1f54e4d7801e4d9fbabbf2abca30f, type: 3}
+    - {fileID: 8300000, guid: 7a92d2ff5f2abdf4aa88c76d97cf67f8, type: 3}
+    - {fileID: 8300000, guid: eb812961f934e934eb2ee881c109c6bb, type: 3}
+    - {fileID: 8300000, guid: c4a8d64092abe5b45b06267ee29b0406, type: 3}
 --- !u!114 &675696019634315815
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -66,7 +66,8 @@ public class ComboManager : MonoBehaviour
 
     public void BeatCombo()
     {
-        int albumRange = m_TrackList[m_ChosenTrack].Music.Length;
+        int albumRange = m_TrackList[m_ChosenTrack].Music.Length - 1; //element 0 is always filled with a break track and autoswitches to
+                                                                      //element 1 on wave start up
 
         //increment combo meter
         m_CurrentCombo++;
@@ -74,7 +75,7 @@ public class ComboManager : MonoBehaviour
 
         //function to reset
         //every tenth kill play next track so
-        if (m_CurrentCombo == m_ComboThreshold && m_ComboTrack < albumRange)
+        if (m_CurrentCombo == m_ComboThreshold && m_ComboTrack != albumRange)
         {
             m_ComboTrack++;
             //Plays audio everytime audio source changes

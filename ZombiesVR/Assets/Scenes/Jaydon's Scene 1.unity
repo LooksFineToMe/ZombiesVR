@@ -2368,11 +2368,11 @@ MonoBehaviour:
   m_Players:
   - {fileID: 344833707}
   m_ComboManager: {fileID: 1766690622}
-  m_TimeOffset: 1
+  m_TimeOffset: 15
   m_EndAndStartOfWaveSFX: {fileID: 1394794852}
   m_CurrentWave: 0
   m_Break: 0
-  m_WaveSpawnValue: 2
+  m_WaveSpawnValue: 26
   m_IncrementValues: 1
 --- !u!4 &646235307
 Transform:
@@ -6358,49 +6358,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
         type: 3}
-      propertyPath: m_TrackList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
-        type: 3}
-      propertyPath: m_TrackList.Array.data[3].Music.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
-        type: 3}
       propertyPath: m_WaveManager
       value: 
       objectReference: {fileID: 646235306}
-    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
-        type: 3}
-      propertyPath: m_TrackList.Array.data[3].Music.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8e34ca9505743984da1b1ea3da16d9c1, type: 3}
-    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
-        type: 3}
-      propertyPath: m_TrackList.Array.data[3].Music.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 23c4c37ab9f39bc41ac1f80c27c32203, type: 3}
-    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
-        type: 3}
-      propertyPath: m_TrackList.Array.data[3].Music.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 436b21d9211164b43b36f66100d46bdc, type: 3}
-    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
-        type: 3}
-      propertyPath: m_TrackList.Array.data[3].Music.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 44c375de8fade614cb2036680df4bff4, type: 3}
-    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
-        type: 3}
-      propertyPath: m_TrackList.Array.data[3].Music.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 760325f0e47115f448af820ca5af8f9c, type: 3}
-    - target: {fileID: 675696019634315867, guid: d298c5e796b526143b0c8bcc1ac17b11,
-        type: 3}
-      propertyPath: m_ComboThreshold
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d298c5e796b526143b0c8bcc1ac17b11, type: 3}
 --- !u!1001 &7284773577772128774
