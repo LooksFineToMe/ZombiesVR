@@ -127,7 +127,14 @@ public class AIZombie : MonoBehaviour
                 ZombieSight();
 
             if(!m_Eliminated || !m_RH.ragdolled)
-                PlayAudioEffect();
+            {
+                if (!m_PickedSfxNumber)
+                {
+                    PlayAudioEffect();
+                    Invoke(nameof(SFXReset), 1);
+                    m_PickedSfxNumber = true;
+                }
+            }
         }
         else
         {
@@ -255,25 +262,35 @@ public class AIZombie : MonoBehaviour
     //this is messsy
     private void PlayAudioEffect()
     {
-        if (!m_PickedSfxNumber)
+        int rand = Random.Range(1, m_RandSfxChance);
+        if (rand == 1 && !m_CalledSFX)
         {
-            int rand = Random.Range(1, m_RandSfxChance);
-            m_PickedSfxNumber = true;
-            Invoke(nameof(SFXReset), 5);
+            //pick and play a random sound frrom an array and exclude the sound at 0
+            int p = Random.Range(1, m_ZombieSFX.Length);
+            m_ZombieSfxSource.clip = m_ZombieSFX[p];
+            m_ZombieSfxSource.PlayOneShot(m_ZombieSfxSource.clip);
 
-            if (rand == 1 && !m_CalledSFX)
-            {
-                //pick and play a random sound frrom an array and exclude the sound at 0
-                int p = Random.Range(1, m_ZombieSFX.Length);
-                m_ZombieSfxSource.clip = m_ZombieSFX[p];
-                m_ZombieSfxSource.PlayOneShot(m_ZombieSfxSource.clip);
-
-                m_ZombieSFX[p] = m_ZombieSFX[0];
-                m_ZombieSFX[0] = m_ZombieSfxSource.clip;
-                m_CalledSFX = true;
-                Invoke(nameof(SFXReset), 1f);
-            }
+            m_ZombieSFX[p] = m_ZombieSFX[0];
+            m_ZombieSFX[0] = m_ZombieSfxSource.clip;
         }
+        //if (!m_PickedSfxNumber)
+        //{
+        //    int rand = Random.Range(1, m_RandSfxChance);
+        //    m_PickedSfxNumber = true;
+        //    Invoke(nameof(SFXReset), 5);
+
+        //    if (rand == 1 && !m_CalledSFX)
+        //    {
+        //        //pick and play a random sound frrom an array and exclude the sound at 0
+        //        int p = Random.Range(1, m_ZombieSFX.Length);
+        //        m_ZombieSfxSource.clip = m_ZombieSFX[p];
+        //        m_ZombieSfxSource.PlayOneShot(m_ZombieSfxSource.clip);
+
+        //        m_ZombieSFX[p] = m_ZombieSFX[0];
+        //        m_ZombieSFX[0] = m_ZombieSfxSource.clip;
+        //        Invoke(nameof(SFXReset), 1f);
+        //    }
+        //}
     }
 
     private void SFXReset()

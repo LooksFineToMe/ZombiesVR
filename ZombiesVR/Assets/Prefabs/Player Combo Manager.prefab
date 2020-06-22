@@ -86,6 +86,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 7a92d2ff5f2abdf4aa88c76d97cf67f8, type: 3}
     - {fileID: 8300000, guid: eb812961f934e934eb2ee881c109c6bb, type: 3}
     - {fileID: 8300000, guid: c4a8d64092abe5b45b06267ee29b0406, type: 3}
+  - Music:
+    - {fileID: 8300000, guid: 85fff2bb854397849966f68b3de98619, type: 3}
+    - {fileID: 8300000, guid: 4efe80f8be35e41488dcdc03cf04f376, type: 3}
+    - {fileID: 8300000, guid: abb3b9fd7e9224a4382e1370802bfeeb, type: 3}
+    - {fileID: 8300000, guid: 84fbb9bcf7ca08d40a6b665889be034d, type: 3}
+    - {fileID: 8300000, guid: 7be51689c8c767f4bb24a2398752b3a6, type: 3}
+    - {fileID: 8300000, guid: 0a2ef575b1d70554693b5b67ad4d6d51, type: 3}
 --- !u!114 &675696019634315815
 MonoBehaviour:
   m_ObjectHideFlags: 0
