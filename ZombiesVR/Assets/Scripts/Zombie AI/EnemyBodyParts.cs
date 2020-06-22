@@ -41,6 +41,10 @@ public class EnemyBodyParts : MonoBehaviour
     {
         aiZombie.TakePlayerDamage(damageSource/*, knocked*/);
         bodyPartDamaged += bodypartDamage;
+        if (isDetachable == true && bodyPartDamaged >= 3)
+        {
+            DetachGameObject();
+        }
     }
 
     public void Stagger(float damageSource, int bodypartDamage)
