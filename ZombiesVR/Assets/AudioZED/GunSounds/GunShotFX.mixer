@@ -15,7 +15,9 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: a346dbb9faa31cf41b3369c530b8b812
+    name: GunSoundFX
   m_AudioMixerGroupViews:
   - guids:
     - b69e902848b04c547b11ca62f2ca7add
