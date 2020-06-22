@@ -58,7 +58,7 @@ private void Start()
                 if (collision.rigidbody.GetComponentInParent<AIZombie>().m_RH.ragdolled == false && rb.velocity.magnitude >= extraVelocity)
                 {
                     //Starts the coroutine in AIZombie Class
-                    StartCoroutine(zombie.ZombieRagdoll());
+                    zombie.Ragdoll();
 
                     //Adds the damage to the EnemyBodyParts class
                     collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart((int)baseDamage);
