@@ -37,5 +37,7 @@ public class ScoreManager : MonoBehaviour
 
         GameObject popUp = Instantiate(m_ScorePopUp, pos, Quaternion.identity);
         Destroy(popUp, 1.23f);
+        Debug.Log("Pos" + pos);
+        Debug.Log("Score" + score);
     }
 }

@@ -61,8 +61,9 @@ private void Start()
                     StartCoroutine(zombie.ZombieRagdoll());
 
                     //Adds the damage to the EnemyBodyParts class
-                    collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(baseDamage);
-                    //zombie.m_ScoreManager.ScorePopUp(contactPoint.normal, (int)baseDamage); //maybe not
+                    collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart((int)baseDamage);
+
+                    zombie.m_ScoreManager.ScorePopUp(-contactPoint.normal, (int)baseDamage / 5); //maybe not
 
                     //Adds the force to the other gameObject
                     impactTarget.AddForce(-contactPoint.normal * (baseForce * rb.velocity.magnitude), ForceMode.VelocityChange);

@@ -55,6 +55,7 @@ public class BulletProperties : MonoBehaviour
                 //impactTarget.AddForce(bulletPos.transform.forward * bulletForce, ForceMode.VelocityChange);
             }
         }
+
         else if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<RagdollHelper>() != null && heavy == true)
         {
 
