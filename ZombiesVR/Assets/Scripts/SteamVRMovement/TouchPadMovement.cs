@@ -25,6 +25,13 @@ public class TouchPadMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.GetInt("TouchpadEnable") == 0)
+        {
+            //this.enabled = false;
+            m_RunSpeed = 0;
+            m_WalkSpeed = 0;
+            m_moveSpeed = 0;
+        }
         player = GetComponent<Player>();//Get the player class on start up
         capsuleCollider = GetComponent<CapsuleCollider>();//Get the capsule collider on start up
     }
