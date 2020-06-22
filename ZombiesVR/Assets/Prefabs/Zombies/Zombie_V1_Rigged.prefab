@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_MovementSpeed: 5
   m_RotationSpeed: 50
   isRunner: 0
-  m_RunnerChance: 2
+  m_RunnerChance: 4
   m_rb:
   - {fileID: 2665025822207941796}
   - {fileID: 7845456076050406975}
@@ -1730,7 +1730,7 @@ MonoBehaviour:
   - {fileID: 7497686317202159101}
   - {fileID: 1581274987901565889}
   m_RH: {fileID: 1432651164677035477}
-  m_ScreamChance: 2
+  m_ScreamChance: 3
   m_HeightMultiplier: 0
   m_SightDistance: 15
   m_ScoreValue: 10
@@ -1743,7 +1743,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9dc592ccd7f862041ba5114cc779cb7d, type: 3}
   - {fileID: 8300000, guid: 3cbc4aa3f137d1d47955de5062060889, type: 3}
   - {fileID: 8300000, guid: 3c98df52bf9f31446ac7ffc207918315, type: 3}
-  m_RandSfxChance: 3
+  m_RandSfxChance: 5
   m_Eliminated: 0
   m_AttackRange: 1
   m_TimeToGetUp: 5
