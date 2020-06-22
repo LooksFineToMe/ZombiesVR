@@ -76,16 +76,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 2
-  bulletDamage: 20
+  bulletDamage: 5
   bodypartDamage: 2
   heavy: 0
   bulletPos: {fileID: 1044082343843051070}
   impactTarget: {fileID: 0}
   bulletForce: 10
-  particle: {fileID: 0}
-  bloodSplat: {fileID: 6201139717999988167, guid: b5d26c4af610bc946b50610f4367c711,
+  particle: {fileID: 6201139717999988167, guid: b5d26c4af610bc946b50610f4367c711,
     type: 3}
-  punchThrough: 1
+  bloodSplat: {fileID: 0}
 --- !u!1 &5020541694016680648
 GameObject:
   m_ObjectHideFlags: 0
