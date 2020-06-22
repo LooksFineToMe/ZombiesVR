@@ -287,13 +287,15 @@ public class AIZombie : MonoBehaviour
     //lose hp call function on collision enter
     public void TakePlayerDamage(float damageSource/*, bool knocked*/)
     {
-        m_HeathPoints -= damageSource;
+        int rFloat = Mathf.RoundToInt(damageSource);
+        if(!m_Eliminated)
+            m_HeathPoints -= damageSource;
 
+        m_ScoreManager.m_CurrentScore += rFloat / 5;
         if (m_HeathPoints <= 0 && !m_Eliminated)
         {
             if (!powerDeath)
             {
-                int rFloat = Mathf.RoundToInt(damageSource);
                 DeahtEvent(rFloat);
             }
             else
@@ -375,7 +377,7 @@ public class AIZombie : MonoBehaviour
         {
             m_HeathPoints -= m_BleedingSpeed * Time.deltaTime;
         }
-        else if (m_HeathPoints <= 0)
+        else if (m_HeathPoints <= 0 && !m_Eliminated)
         {
             DeahtEvent(m_ScoreValue);
         }

@@ -35,13 +35,20 @@ public class CameraShoot : MonoBehaviour
                     //find the RagdollHelper component and activate ragdolling
                     RagdollHelper helper = hit.rigidbody.GetComponentInParent<RagdollHelper>();
                     AIZombie ai = hit.rigidbody.GetComponentInParent<AIZombie>();
+
                     //set the impact target to whatever the ray hit
                     impactTarget = hit.rigidbody;
 
                     //impact direction also according to the ray
                     impact = ray.direction * impactForce;
 
-                    ai.TakePlayerDamage(40);
+                    if (hit.rigidbody.GetComponent<EnemyBodyParts>() != null)
+                    {
+                        EnemyBodyParts Limbs = hit.rigidbody.GetComponent<EnemyBodyParts>();
+                        Limbs.DamageBodyPart(24.5f);
+                    }
+
+                    ai.TakePlayerDamage(23.3f);
                     ai.Stagger();
                     //hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(2);
                     
@@ -83,6 +90,5 @@ public class CameraShoot : MonoBehaviour
             weapon.GetComponent<Rigidbody>().isKinematic = false;
             weapon.transform.parent = weapon.transform;
         }
-
     }
 }
