@@ -38,7 +38,7 @@ public class Magazine : MonoBehaviour
     public void Detachobject() 
     {
         m_Interactable.attachedToHand.DetachObject(magazine);
-        Destroy(gameObject);
+        Destroy(magazine);
     }
     private void OnTriggerEnter(Collider other)
     {

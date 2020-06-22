@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1574438715936824795}
   - component: {fileID: 577179129968789235}
   - component: {fileID: 4956329563442117733}
+  - component: {fileID: 1110576935871231543}
   m_Layer: 0
   m_Name: Sound_UZIShot
   m_TagString: Untagged
@@ -142,3 +143,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 0.5
+--- !u!164 &1110576935871231543
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367243983081000298}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -300
+  m_DecayTime: 2.31
+  m_DecayHFRatio: 0.64
+  m_ReflectionsLevel: -711
+  m_ReverbLevel: 83
+  m_ReverbDelay: 0.017
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 6
