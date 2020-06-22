@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using TMPro;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class AIZombie : MonoBehaviour
@@ -288,10 +289,13 @@ public class AIZombie : MonoBehaviour
     public void TakePlayerDamage(float damageSource/*, bool knocked*/)
     {
         int rFloat = Mathf.RoundToInt(damageSource);
-        if(!m_Eliminated)
-            m_HeathPoints -= damageSource;
 
-        m_ScoreManager.m_CurrentScore += rFloat / 5;
+        if(!m_Eliminated)
+        {
+            m_HeathPoints -= damageSource;
+            m_ScoreManager.m_CurrentScore += rFloat / 5;
+        }
+
         if (m_HeathPoints <= 0 && !m_Eliminated)
         {
             if (!powerDeath)

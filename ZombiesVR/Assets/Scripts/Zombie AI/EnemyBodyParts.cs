@@ -29,8 +29,6 @@ public class EnemyBodyParts : MonoBehaviour
     //added "knocked" bool to AI.TAKEPLAYERDAMAGE
     public void DamageBodyPart(float damageSource/*, bool knocked*/)
     {
-        int rFloat = Mathf.RoundToInt(damageSource);
-
         aiZombie.TakePlayerDamage(damageSource + extraDamage/*, knocked*/);
         if (isDetachable == true)
         {
@@ -95,6 +93,7 @@ public class EnemyBodyParts : MonoBehaviour
             }
         }
     }
+
     //desktop
     //private void OnControllerColliderHit(ControllerColliderHit controllerHit)
     //{

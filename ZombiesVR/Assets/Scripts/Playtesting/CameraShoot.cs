@@ -38,17 +38,17 @@ public class CameraShoot : MonoBehaviour
 
                     //set the impact target to whatever the ray hit
                     impactTarget = hit.rigidbody;
-
                     //impact direction also according to the ray
                     impact = ray.direction * impactForce;
 
-                    if (hit.rigidbody.GetComponent<EnemyBodyParts>() != null)
-                    {
-                        EnemyBodyParts Limbs = hit.rigidbody.GetComponent<EnemyBodyParts>();
-                        Limbs.DamageBodyPart(24.5f);
-                    }
+                    //if (hit.rigidbody.GetComponent<EnemyBodyParts>() != null)
+                    //{
+                    //    EnemyBodyParts Limbs = hit.rigidbody.GetComponent<EnemyBodyParts>();
+                    //    Limbs.DamageBodyPart(24.5f);
+                    //}
 
                     ai.TakePlayerDamage(23.3f);
+
                     ai.Stagger();
                     //hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(2);
                     
