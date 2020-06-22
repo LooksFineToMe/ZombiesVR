@@ -63,8 +63,8 @@ private void Start()
                     //Adds the damage to the EnemyBodyParts class
                     collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart((int)baseDamage);
 
-                    
 
+                    zombie.m_ScoreManager.ScorePopUp(contactPoint.point, (int)baseDamage / 5); //maybe not
                     //Adds the force to the other gameObject
                     impactTarget.AddForce(-contactPoint.normal * (baseForce * rb.velocity.magnitude), ForceMode.VelocityChange);
                 }
@@ -82,9 +82,10 @@ private void Start()
                     impactTarget.AddForce(-contactPoint.normal * (baseForce * rb.velocity.magnitude), ForceMode.VelocityChange);
                     
                     //Adds the damage to the enemyBodyparts class
-                    collision.rigidbody.GetComponent<EnemyBodyParts>().BluntDamage(baseDamage);
+                    collision.rigidbody.GetComponent<EnemyBodyParts>().BluntDamage(baseDamage, bodypartDamage);
 
                     if (soundKnockHit != null) { Instantiate(soundKnockHit, transform.position, transform.rotation); }
+                    zombie.m_ScoreManager.ScorePopUp(contactPoint.point, (int)baseDamage / 5); //maybe not
                 }
 
                 //Checks if the collided object has 1. Weapon Velocity > MinimumVelocity, 2. Velocity < Extra Velocity, 3. timer > cooldown, 4. IsBluntWeapon = false. 
@@ -95,8 +96,9 @@ private void Start()
 
                     //Adds the damage to the enemy bodypart class
                     collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(baseDamage, bodypartDamage);
+                    zombie.m_ScoreManager.ScorePopUp(contactPoint.point, (int)baseDamage / 5); //maybe not
                 }
-                zombie.m_ScoreManager.ScorePopUp(contactPoint.point, (int)baseDamage); //maybe not
+                
                 impactTarget = null;//Clears the impact target
             }
         }

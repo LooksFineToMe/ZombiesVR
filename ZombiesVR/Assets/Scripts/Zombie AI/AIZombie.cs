@@ -72,6 +72,8 @@ public class AIZombie : MonoBehaviour
     [HideInInspector] public ScoreManager m_ScoreManager;
     public AnimatorClipInfo[] clipinfo;//Matts
 
+    public Vector3 offset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -321,8 +323,11 @@ public class AIZombie : MonoBehaviour
 
         m_Spawner.m_LivingZombies.Remove(this);
         m_ComboManager.IncTrackTrans();
-
+        m_ScoreManager.ScorePopUp(transform.position + offset, damageScore);
         m_RH.ragdolled = true;
+
+        
+
         //get all rigibodies and disable "Is Kinematic" so the ragdoll can take over
         Destroy(this.gameObject, 5);//keep this to optimise performence
     }

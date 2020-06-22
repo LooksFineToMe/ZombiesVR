@@ -1761,6 +1761,7 @@ MonoBehaviour:
   m_Spawner: {fileID: 0}
   m_ComboManager: {fileID: 0}
   m_ScoreManager: {fileID: 0}
+  offset: {x: 0, y: 1.5, z: 0}
 --- !u!114 &1432651164677035477
 MonoBehaviour:
   m_ObjectHideFlags: 0

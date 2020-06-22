@@ -21,6 +21,9 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+    void UpdateScoreUI()
+    {
         m_ScoreText.text = "Points: " + m_CurrentScore.ToString();
     }
 
@@ -36,9 +39,9 @@ public class ScoreManager : MonoBehaviour
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 2.2f, transform.position.z);
 
         GameObject popUp = Instantiate(m_ScorePopUp,  pos, Quaternion.identity);
-        popUp.GetComponentInChildren<TextMeshPro>().text = score.ToString();
         Destroy(popUp, 1.23f);
         Debug.Log("Pos" + pos);
         Debug.Log("Score" + score);
+        UpdateScoreUI();
     }
 }

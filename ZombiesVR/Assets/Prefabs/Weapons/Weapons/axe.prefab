@@ -3031,7 +3031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraVelocity: 4
   minimumVelocity: 1.25
-  baseDamage: 3
+  baseDamage: 30
   baseForce: 10
   bodypartDamage: 3
   isBluntWeapon: 0

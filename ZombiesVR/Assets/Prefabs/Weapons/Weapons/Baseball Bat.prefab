@@ -2644,9 +2644,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f8d7423500067469029fc0403497de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraVelocity: 5
+  extraVelocity: 4
   minimumVelocity: 1.25
-  baseDamage: 3
+  baseDamage: 30
   baseForce: 10
   bodypartDamage: 1
   isBluntWeapon: 1

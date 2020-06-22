@@ -37,9 +37,10 @@ public class EnemyBodyParts : MonoBehaviour
         
     }
 
-    public void BluntDamage(float damageSource)
+    public void BluntDamage(float damageSource, int bodypartDamage)
     {
         aiZombie.TakePlayerDamage(damageSource/*, knocked*/);
+        bodyPartDamaged += bodypartDamage;
     }
 
     public void Stagger(float damageSource, int bodypartDamage)

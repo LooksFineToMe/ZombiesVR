@@ -601,16 +601,16 @@ MonoBehaviour:
   isRunner: 0
   m_RunnerChance: 2
   m_rb:
-  - {fileID: 9118709688483590413, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590414, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590415, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590640, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590641, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590642, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590643, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590644, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590645, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
-  - {fileID: 9118709688483590646, guid: d9edd778c5deec045a55587b9c8a7efd, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   m_RH: {fileID: 9118709688483590619}
   m_ScreamChance: 2
@@ -644,6 +644,7 @@ MonoBehaviour:
   m_Spawner: {fileID: 0}
   m_ComboManager: {fileID: 0}
   m_ScoreManager: {fileID: 0}
+  offset: {x: 0, y: 1.5, z: 0}
 --- !u!114 &9118709688483590620
 MonoBehaviour:
   m_ObjectHideFlags: 0
