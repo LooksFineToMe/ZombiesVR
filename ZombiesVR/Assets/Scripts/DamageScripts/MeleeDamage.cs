@@ -63,7 +63,7 @@ private void Start()
                     //Adds the damage to the EnemyBodyParts class
                     collision.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart((int)baseDamage);
 
-                    zombie.m_ScoreManager.ScorePopUp(-contactPoint.normal, (int)baseDamage / 5); //maybe not
+                    
 
                     //Adds the force to the other gameObject
                     impactTarget.AddForce(-contactPoint.normal * (baseForce * rb.velocity.magnitude), ForceMode.VelocityChange);
@@ -96,6 +96,7 @@ private void Start()
                     //Adds the damage to the enemy bodypart class
                     collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(baseDamage, bodypartDamage);
                 }
+                zombie.m_ScoreManager.ScorePopUp(contactPoint.point, (int)baseDamage); //maybe not
                 impactTarget = null;//Clears the impact target
             }
         }
