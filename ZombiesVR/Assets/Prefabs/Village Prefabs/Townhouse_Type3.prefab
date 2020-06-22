@@ -17,8 +17,8 @@ GameObject:
   m_Name: Townhouse_Type3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2132892281263608371
 Transform:
@@ -60,8 +60,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa12f837c52fb714091bd61299db85e9, type: 2}
-  - {fileID: 2100000, guid: 5db7bb2c4617be74a8038de685360abe, type: 2}
+  - {fileID: 2100000, guid: f24a666ce348a694ba1fdacb11e93fcc, type: 2}
+  - {fileID: 2100000, guid: f24a666ce348a694ba1fdacb11e93fcc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

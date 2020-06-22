@@ -122,6 +122,9 @@ GameObject:
   - component: {fileID: 2017442679757067136}
   - component: {fileID: 7050270670592365337}
   - component: {fileID: 3783961344979492959}
+  - component: {fileID: 6224887884458702444}
+  - component: {fileID: 8284521078716387210}
+  - component: {fileID: 3677003639294503722}
   m_Layer: 0
   m_Name: Church_01_Building
   m_TagString: Untagged
@@ -191,3 +194,42 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6224887884458702444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4714974205151792191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.831827, y: 24.560993, z: 37.241867}
+  m_Center: {x: 4.3902655, y: 12.280497, z: 0.0000038146973}
+--- !u!65 &8284521078716387210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4714974205151792191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7631626, y: 6.320529, z: 3.6702728}
+  m_Center: {x: -4.4206934, y: 3.1602645, z: -13.94598}
+--- !u!65 &3677003639294503722
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4714974205151792191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.281221, y: 37.879246, z: 9.241936}
+  m_Center: {x: -7.770562, y: 18.939623, z: 7.1394043}
