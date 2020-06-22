@@ -1496,6 +1496,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4954549113800737848, guid: 7fce10aaae7724644a7c5b4b3193bf3c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -864
+      objectReference: {fileID: 0}
     - target: {fileID: 4954549113800737849, guid: 7fce10aaae7724644a7c5b4b3193bf3c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1626,6 +1631,35 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 38685319}
+    - target: {fileID: 4954549114735308351, guid: 7fce10aaae7724644a7c5b4b3193bf3c,
+        type: 3}
+      propertyPath: m_Text
+      value: 'ORIGINAL SOUNDTRACK
+
+        Jaymes Jackson
+
+
+        SPECIAL THANKS
+
+        Igor
+        Aheme
+
+        Mykhailo Khadzhynov
+
+
+        ADDITIONAL SOUND FX & ASSETS
+
+        Soundsnap.com
+
+        Turbosquid.com
+
+        Textures.com
+
+        Broken
+        Vector Low Poly Packs
+
+        Essential Ground Material Vol.1'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fce10aaae7724644a7c5b4b3193bf3c, type: 3}
 --- !u!224 &499639943 stripped
