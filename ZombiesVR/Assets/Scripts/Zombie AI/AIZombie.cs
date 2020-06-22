@@ -87,7 +87,6 @@ public class AIZombie : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(m_FightingPlayer);
         //clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
         //print(clipinfo[0].clip.name);
 
