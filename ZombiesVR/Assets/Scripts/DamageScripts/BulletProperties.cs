@@ -42,6 +42,7 @@ public class BulletProperties : MonoBehaviour
             collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(bulletDamage, bodypartDamage);
 
             impactTarget = null;
+            
             //impact direction also according to the ray
             //impact = axePos.transform.TransformDirection(Vector3.forward) * 2.0f;
             //to make the connected objects follow even though the simulated body joints
@@ -54,6 +55,8 @@ public class BulletProperties : MonoBehaviour
                 //impactTarget.AddForce(-contactPoint.normal * (bulletForce), ForceMode.VelocityChange);
                 //impactTarget.AddForce(bulletPos.transform.forward * bulletForce, ForceMode.VelocityChange);
             }
+            Instantiate(particle, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
 
         else if (collision.rigidbody != null && collision.rigidbody.GetComponentInParent<RagdollHelper>() != null && heavy == true)
@@ -75,6 +78,8 @@ public class BulletProperties : MonoBehaviour
 
             impactTarget = null;
             collision.rigidbody.GetComponentInParent<AIZombie>().PowerDeath();
+            Instantiate(particle, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 }
