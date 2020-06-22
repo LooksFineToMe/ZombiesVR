@@ -10,6 +10,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] public List<GameObject> m_SpawnLocations;
     [SerializeField] public List<GameObject> m_Players;
     [SerializeField] public ComboManager m_ComboManager;
+    [SerializeField] public ScoreManager m_ScoreManager;
 
     [Header("Waves Specific")]
     [Tooltip("How long between waves and when the next wave begins")]
@@ -69,7 +70,7 @@ public class WaveManager : MonoBehaviour
             AIZombie zombie = Instantiate(m_Zombies[Random.Range(0, m_Zombies.Count - 1)]);
             zombie.transform.parent = gameObject.transform;
             zombie.transform.position = m_SpawnLocations[Random.Range(0, m_SpawnLocations.Count - 1)].transform.position;
-            zombie.SetWaveManager(this, m_ComboManager);
+            zombie.AssignManager(this, m_ComboManager, m_ScoreManager);
             zombie.m_Spawner = this;
             m_CurrentValueOfWave += zombie.m_WaveValue;
             m_LivingZombies.Add(zombie);

@@ -74,7 +74,7 @@ public class BulletProperties : MonoBehaviour
             //collision.rigidbody.GetComponent<EnemyBodyParts>().Stagger(bulletDamage, bodypartDamage);
 
             impactTarget = null;
-            collision.rigidbody.GetComponentInParent<AIZombie>().CallDeathAnimation();
+            collision.rigidbody.GetComponentInParent<AIZombie>().PowerDeath();
         }
         
 

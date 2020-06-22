@@ -33,6 +33,7 @@ public class AIZombie : MonoBehaviour
     private bool m_PickedScreamNumber;
 
     [Header("Combat")]
+    [SerializeField] int m_ScoreValue = 10;
     [SerializeField] AudioSource m_ZombieSfxSource;
     [SerializeField] AudioClip[] m_ZombieSFX;
     [SerializeField] int m_RandSfxChance = 5;
@@ -67,6 +68,7 @@ public class AIZombie : MonoBehaviour
 
     [HideInInspector] public WaveManager m_Spawner;
     [HideInInspector] public ComboManager m_ComboManager;
+    [HideInInspector] public ScoreManager m_ScoreManager;
     public AnimatorClipInfo[] clipinfo;//Matts
 
     // Start is called before the first frame update
@@ -275,10 +277,11 @@ public class AIZombie : MonoBehaviour
     }
 
     //so the wave manager knows when the zombie has been eliminated or not
-    public void SetWaveManager(WaveManager waveManager, ComboManager comboManager)
+    public void AssignManager(WaveManager waveManager, ComboManager comboManager, ScoreManager scoreManager)
     {
         m_Spawner = waveManager;
         m_ComboManager = comboManager;
+        m_ScoreManager = scoreManager;
     }
 
     //lose hp call function on collision enter
@@ -290,7 +293,8 @@ public class AIZombie : MonoBehaviour
         {
             if (!powerDeath)
             {
-                DeahtEvent();
+                int rFloat = Mathf.RoundToInt(damageSource);
+                DeahtEvent(rFloat);
             }
             else
             {
@@ -300,9 +304,11 @@ public class AIZombie : MonoBehaviour
     }
 
     [ContextMenu("Kill")]
-    private void DeahtEvent()
+    private void DeahtEvent(int damageScore)
     {
         m_Eliminated = true;
+
+        m_ScoreManager.m_CurrentScore += m_ScoreValue + damageScore;
 
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = true;
@@ -316,7 +322,7 @@ public class AIZombie : MonoBehaviour
     }
 
     [ContextMenu("Death Animation")] //for testing
-    public void CallDeathAnimation()
+    public void PowerDeath()
     {
         if (!crawling && !m_Eliminated)
         {
@@ -371,7 +377,7 @@ public class AIZombie : MonoBehaviour
         }
         else if (m_HeathPoints <= 0)
         {
-            DeahtEvent();
+            DeahtEvent(m_ScoreValue);
         }
     }
 
