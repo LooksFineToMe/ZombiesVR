@@ -1733,6 +1733,9 @@ MonoBehaviour:
   m_ScreamChance: 2
   m_HeightMultiplier: 0
   m_SightDistance: 15
+  m_ScoreValue: 10
+  m_ScorePopUp: {fileID: 2894509613887704403, guid: 315e462d039ac034fa872c81e3400c1a,
+    type: 3}
   m_ZombieSfxSource: {fileID: 4364421705509716904}
   m_ZombieSFX:
   - {fileID: 8300000, guid: 2c6841d0e91f0f649a60ed143b6e3660, type: 3}
@@ -1759,6 +1762,7 @@ MonoBehaviour:
   m_WaveValue: 1
   m_Spawner: {fileID: 0}
   m_ComboManager: {fileID: 0}
+  m_ScoreManager: {fileID: 0}
 --- !u!114 &1432651164677035477
 MonoBehaviour:
   m_ObjectHideFlags: 0
