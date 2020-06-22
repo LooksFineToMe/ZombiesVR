@@ -318,8 +318,9 @@ public class AIZombie : MonoBehaviour
 
         m_ScoreManager.m_CurrentScore += m_ScoreValue + damageScore;
 
-        m_NavMesh.velocity = Vector3.zero;
-        m_NavMesh.isStopped = true;
+        m_NavMesh.enabled = false;
+        StopAllCoroutines();
+        CancelInvoke();
 
         m_Spawner.m_LivingZombies.Remove(this);
         m_ComboManager.IncTrackTrans();
@@ -340,9 +341,11 @@ public class AIZombie : MonoBehaviour
             m_Animations.SetTrigger("DeathAnimation");
             m_Eliminated = true;
             canWalk = false;
+
             m_Eliminated = true;
-            m_NavMesh.velocity = Vector3.zero;
-            m_NavMesh.isStopped = true;
+            m_NavMesh.enabled = false;
+            StopAllCoroutines();
+            CancelInvoke();
             m_Spawner.m_LivingZombies.Remove(this);
             m_ComboManager.IncTrackTrans();
             Invoke(nameof(DeathRagdoll), .85f);
