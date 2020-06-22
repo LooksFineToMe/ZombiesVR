@@ -48,7 +48,7 @@ public class CameraShoot : MonoBehaviour
                     //}
 
                     //ai.TakePlayerDamage(23.3f);
-                    StartCoroutine(ai.ZombieRagdoll());
+                    ai.Ragdoll();
                     //ai.Stagger();
                     //hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(2);
                     

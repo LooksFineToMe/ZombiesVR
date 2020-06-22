@@ -378,11 +378,14 @@ public class AIZombie : MonoBehaviour
         Destroy(this.gameObject, 5);
     }
 
-    [ContextMenu("Ragdoll")] //method for testing purposes
-    void Ragdoll()
+    [ContextMenu("Ragdoll")]
+    public void Ragdoll()
     {
         if (m_FightingPlayer)
             m_FightingPlayer = false;
+        if (!m_RH.ragdolled)
+            StopAllCoroutines();
+
         StartCoroutine(ZombieRagdoll());
     }
 
