@@ -87,6 +87,7 @@ public class AIZombie : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        print(m_FightingPlayer);
         //clipinfo = m_Animations.GetCurrentAnimatorClipInfo(0);
         //print(clipinfo[0].clip.name);
 
@@ -172,7 +173,11 @@ public class AIZombie : MonoBehaviour
     private void AttackPlayer()
     {
         RotateTowards();
-        m_FightingPlayer = true; //bool to tell the body parts to apply damage
+        if (m_RH.ragdolled)
+            m_FightingPlayer = false; //bool to tell the body parts to apply damage
+        else
+            m_FightingPlayer = true;
+
         m_NavMesh.velocity = Vector3.zero;
         m_NavMesh.isStopped = false;
         canWalk = false;
@@ -193,7 +198,6 @@ public class AIZombie : MonoBehaviour
             }
 
             Vector3 target = m_Target.transform.position - transform.position;
-            m_FightingPlayer = false; //set to false so the zombies don't deal damage they're not supposed to
 
             if (target != Vector3.zero)
             {

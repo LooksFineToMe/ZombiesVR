@@ -47,9 +47,9 @@ public class CameraShoot : MonoBehaviour
                     //    Limbs.DamageBodyPart(24.5f);
                     //}
 
-                    ai.TakePlayerDamage(23.3f);
-
-                    ai.Stagger();
+                    //ai.TakePlayerDamage(23.3f);
+                    StartCoroutine(ai.ZombieRagdoll());
+                    //ai.Stagger();
                     //hit.rigidbody.GetComponent<EnemyBodyParts>().DamageBodyPart(2);
                     
                     //the impact will be reapplied for the next 250ms
