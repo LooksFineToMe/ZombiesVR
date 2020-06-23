@@ -15,6 +15,8 @@ public class UIButtons : MonoBehaviour
     public Slider gunFXVol;
     public AudioMixer music;
     public AudioMixer sound;
+    public AudioMixer master;
+    public AudioMixer gunfx;
     private void Start()
     {
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("QualitySettings"));
@@ -63,12 +65,12 @@ public class UIButtons : MonoBehaviour
     }
     public void SetMasterVolume(float volume)
     {
-        sound.SetFloat("MasterVol", volume);
+        master.SetFloat("MasterVol", volume);
         PlayerPrefs.SetFloat("Master", volume);
     }
     public void UISetGunEffectsVolume(float volume)
     {
-        sound.SetFloat("GunSoundFX", volume);
+        gunfx.SetFloat("GunSoundFX", volume);
         PlayerPrefs.SetFloat("GunFX", volume);
     }
     public void UITouchPadMovement(bool touchPad)
