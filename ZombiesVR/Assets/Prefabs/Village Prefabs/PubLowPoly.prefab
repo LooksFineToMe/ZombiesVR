@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6071050292596116423}
   - component: {fileID: 2962157633097052657}
   - component: {fileID: 8802069723102432520}
+  - component: {fileID: 2749951587420532250}
+  - component: {fileID: 4687720388210574253}
   m_Layer: 0
   m_Name: PubLowPoly
   m_TagString: Untagged
@@ -79,3 +81,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2749951587420532250
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069505499043985876}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.425223, y: 8.0387745, z: 8.371182}
+  m_Center: {x: 0.72457457, y: 0, z: 0}
+--- !u!65 &4687720388210574253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069505499043985876}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8297577, y: 4.107954, z: 8.371182}
+  m_Center: {x: -4.4064217, y: 1.9654102, z: 0}

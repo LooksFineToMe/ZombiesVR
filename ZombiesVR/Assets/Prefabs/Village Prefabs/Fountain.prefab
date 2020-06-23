@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7766972996313420604}
   - component: {fileID: 6357596100273319779}
   - component: {fileID: 7592411077505677423}
+  - component: {fileID: 3667444965131466673}
   m_Layer: 0
   m_Name: Fountain_base
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &3667444965131466673
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27308361429812554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 19.689663
+  m_Height: 4.9703555
+  m_Direction: 1
+  m_Center: {x: -0.0000009536743, y: 2.4851778, z: 0}
 --- !u!1 &2315566670406361342
 GameObject:
   m_ObjectHideFlags: 0

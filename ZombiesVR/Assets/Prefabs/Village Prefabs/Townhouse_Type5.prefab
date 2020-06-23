@@ -51,6 +51,8 @@ GameObject:
   - component: {fileID: 5578246991263992751}
   - component: {fileID: 3473098479581114777}
   - component: {fileID: 7137754339932261728}
+  - component: {fileID: 2871635899735943790}
+  - component: {fileID: 6606530262356300731}
   m_Layer: 0
   m_Name: House3
   m_TagString: Untagged
@@ -119,3 +121,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2871635899735943790
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877355510701521340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.779991, y: 4.0420475, z: 10.724}
+  m_Center: {x: 2.4277349, y: 0, z: 0}
+--- !u!65 &6606530262356300731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877355510701521340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.754188, y: 4.0420475, z: 5.678027}
+  m_Center: {x: 0, y: 0, z: -2.5229864}

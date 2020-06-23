@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 5126139377990782605}
   - component: {fileID: 4213313326618735803}
   - component: {fileID: 7585252880946071618}
+  - component: {fileID: 2629940653155018533}
   m_Layer: 0
   m_Name: window2
   m_TagString: Untagged
@@ -119,3 +120,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2629940653155018533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8176545992185658526}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 122.86453, y: 203.91841, z: 16.966751}
+  m_Center: {x: -0.00048828125, y: 0, z: -0.0009765625}
