@@ -14,7 +14,7 @@ public class Target : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.CompareTag("Bullet"))
+        if (collision.collider.gameObject.CompareTag("projectile"))
         {
             m_Animations.SetTrigger("Hit");
         }
