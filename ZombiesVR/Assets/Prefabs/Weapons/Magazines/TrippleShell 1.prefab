@@ -222,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254284199815498892}
   m_LocalRotation: {x: 0.0037692306, y: -0, z: -0, w: 0.9999929}
-  m_LocalPosition: {x: 0.0203, y: -0.0095, z: -0.017103195}
+  m_LocalPosition: {x: 0.0272, y: -0.0121, z: -0.0285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8979643031129880569}
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateActionSetOnAttach:
     actionSetPath: 
-  hideHandOnAttach: 0
+  hideHandOnAttach: 1
   hideSkeletonOnAttach: 0
   hideControllerOnAttach: 0
   handAnimationOnPickup: 0
@@ -2189,7 +2189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5633940438321019987}
   m_LocalRotation: {x: 0.0037692306, y: -0, z: -0, w: 0.9999929}
-  m_LocalPosition: {x: -0.022100449, y: -0.009500027, z: -0.017103195}
+  m_LocalPosition: {x: -0.015200138, y: -0.012099981, z: -0.02850008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8979643031129880569}
@@ -2446,7 +2446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6343342494709272010}
   m_LocalRotation: {x: 0.0037692306, y: -0, z: -0, w: 0.9999929}
-  m_LocalPosition: {x: -0.0005002022, y: 0.016799212, z: -0.0169034}
+  m_LocalPosition: {x: 0.0064001083, y: 0.014199257, z: -0.028300285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8979643031129880569}

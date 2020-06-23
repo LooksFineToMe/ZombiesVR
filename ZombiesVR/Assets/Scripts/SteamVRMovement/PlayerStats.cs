@@ -25,6 +25,8 @@ public class PlayerStats : MonoBehaviour
     [Header("timers")]
     float coolDownTimer;
     public float hitCooldown;
+
+    public MedpackSpawner medpackSpawner;
     private void Start()
     {
         playerVolume.profile.TryGet(out vg);
@@ -61,14 +63,20 @@ public class PlayerStats : MonoBehaviour
         }
         
     }
+    public void HealPlayer()
+    {
+        health = 5;
+        medpackSpawner.SpawnMedpack();
+        DamageEffect();
+    }
 
     [ContextMenu("Damage")]
     private void DamageEffect()
     {
         if (health >= 5)
         {
-            //vg.intensity.value = .9f;
-            //damageIntensity = .3f;
+            vg.intensity.value = .9f;
+            damageIntensity = 0f;
         }
         if (health == 4)
         {

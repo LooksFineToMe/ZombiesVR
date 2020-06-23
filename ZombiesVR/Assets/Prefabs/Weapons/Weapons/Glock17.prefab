@@ -749,7 +749,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   animator: {fileID: 0}
   isCocked: 0
-  Bulletshell: {fileID: 8403397458045662379, guid: 0557d57ed0b4c604daf8e34014fc0484,
+  Bulletshell: {fileID: 4864301243375369580, guid: 44bee09013c2eb04b8b66e7a6a21f490,
     type: 3}
   bulletShellEjectPivot: {fileID: 951526525}
   sound_Shot: {fileID: 7202804747138919653, guid: 9c0c7524f455f094fa4a7fccfee4b88a,

@@ -57,9 +57,9 @@ namespace Valve.VR
         protected void Awake()
         {
             if (previewLeftInstance != null)
-                DestroyImmediate(previewLeftInstance);
+                Destroy(previewLeftInstance);
             if (previewRightInstance != null)
-                DestroyImmediate(previewRightInstance);
+                Destroy(previewRightInstance);
 
             blendPoses = new SkeletonBlendablePose[skeletonAdditionalPoses.Count + 1];
             for (int i = 0; i < blendPoseCount; i++)

@@ -266,7 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e725c54950fdb148bcc365c8aeeba81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  medpackDefault: {fileID: 2100000, guid: 45958db469422d440b7e64455fc58c0c, type: 2}
+  medpackActive: {fileID: 2100000, guid: a108aa4d8c478bc488b18eb0c2c32e0e, type: 2}
   healthRegen: 2
   healAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  timer: 0

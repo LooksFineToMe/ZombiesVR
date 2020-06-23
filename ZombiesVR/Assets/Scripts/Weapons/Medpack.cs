@@ -48,7 +48,7 @@ public class Medpack : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && used == false && isUsing == true)
         {
             used = true;
-            other.GetComponentInParent<PlayerStats>().health += healthRegen;
+            other.GetComponentInParent<PlayerStats>().HealPlayer();
             Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("Belt") && timer >= .3f)
