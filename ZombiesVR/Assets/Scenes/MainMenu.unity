@@ -6468,6 +6468,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 781075172}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &789511921 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2579879931808013003, guid: 3d2fa29d553631b4ba63300d04127c60,
+    type: 3}
+  m_PrefabInstance: {fileID: 1429644408}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802841308
 GameObject:
   m_ObjectHideFlags: 0
@@ -11780,7 +11792,7 @@ PrefabInstance:
       objectReference: {fileID: 1893548491}
     - target: {fileID: 873360625, guid: 3d2fa29d553631b4ba63300d04127c60, type: 3}
       propertyPath: m_Options.m_Options.Array.data[0].m_Text
-      value: Low
+      value: High
       objectReference: {fileID: 0}
     - target: {fileID: 873360625, guid: 3d2fa29d553631b4ba63300d04127c60, type: 3}
       propertyPath: m_Options.m_Options.Array.data[1].m_Text
@@ -11788,7 +11800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873360625, guid: 3d2fa29d553631b4ba63300d04127c60, type: 3}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
-      value: High
+      value: Low
       objectReference: {fileID: 0}
     - target: {fileID: 741704713611026473, guid: 3d2fa29d553631b4ba63300d04127c60,
         type: 3}
@@ -13981,6 +13993,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1852486280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7500326150335644506, guid: 3d2fa29d553631b4ba63300d04127c60,
+    type: 3}
+  m_PrefabInstance: {fileID: 1429644408}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1892165907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14110,10 +14134,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuPannel: {fileID: 1138621302}
   creditsPannel: {fileID: 499639944}
-  musicVol: {fileID: 244022730}
-  soundVol: {fileID: 1845374043}
-  masterVol: {fileID: 0}
-  gunFXVol: {fileID: 0}
+  musicVol: {fileID: 789511921}
+  soundVol: {fileID: 244022730}
+  masterVol: {fileID: 1845374043}
+  gunFXVol: {fileID: 1852486280}
   music: {fileID: 24100000, guid: a9c69273291afab44a6d7b30efaa9247, type: 2}
   sound: {fileID: 24100000, guid: 39b67020a0e613a4e98376878a38e46f, type: 2}
 --- !u!114 &1893548492
