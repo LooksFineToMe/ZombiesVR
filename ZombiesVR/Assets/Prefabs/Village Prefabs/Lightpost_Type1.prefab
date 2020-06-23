@@ -302,6 +302,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: lamp export
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f8102d35fd33a354497dd2886075169c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8102d35fd33a354497dd2886075169c, type: 3}
 --- !u!1 &1342239462006733814 stripped
