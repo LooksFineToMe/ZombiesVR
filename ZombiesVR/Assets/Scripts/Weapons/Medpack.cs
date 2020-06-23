@@ -36,12 +36,13 @@ public class Medpack : MonoBehaviour
                 isUsing = true;
                 gameObject.GetComponent<Renderer>().material = medpackActive;
             }
+            else
+            {
+                isUsing = false;
+                gameObject.GetComponent<Renderer>().material = medpackDefault;
+            }
         }
-        else
-        {
-            isUsing = false;
-            gameObject.GetComponent<Renderer>().material = medpackDefault;
-        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
