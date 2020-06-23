@@ -6,7 +6,7 @@ public class EndGame : MonoBehaviour
 {
     bool gameOver = false;
     float timer;
-    string scenename;
+    public string scenename;
     private void Update()
     {
         if (gameOver == true)
