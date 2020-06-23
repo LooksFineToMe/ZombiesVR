@@ -53,8 +53,11 @@ public class PlayerStats : MonoBehaviour
             print("player has been hit");
             if (health <= 0)
             {
+                vg.color.value = Color.black;
+                vg.intensity.value = 1f;
+                damageIntensity = 1f;
                 playerIsDead = true;
-                GameOver();
+                Invoke("GameOver", 3.0f);
             }
             if (health >= 5)
             {
