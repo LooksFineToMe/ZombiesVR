@@ -27,6 +27,8 @@ public class PlayerStats : MonoBehaviour
     public float hitCooldown;
 
     public MedpackSpawner medpackSpawner;
+
+    public string scenename = "MainMenu";
     private void Start()
     {
         playerVolume.profile.TryGet(out vg);
@@ -109,6 +111,6 @@ public class PlayerStats : MonoBehaviour
     private void GameOver()
     {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(scenename);
     }
 }
