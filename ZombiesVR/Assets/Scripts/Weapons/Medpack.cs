@@ -9,7 +9,7 @@ public class Medpack : MonoBehaviour
     public Material medpackDefault;
     public Material medpackActive;
     public int healthRegen;
-    bool used;
+    bool used = false;
     bool isUsing;
     public SteamVR_Action_Boolean healAction;
     private Interactable interactable;
@@ -52,19 +52,19 @@ public class Medpack : MonoBehaviour
             other.GetComponentInParent<PlayerStats>().HealPlayer();
             Destroy(gameObject);
         }
-        if (other.gameObject.CompareTag("Belt") && timer >= .3f)
-        {
-            if (interactable.attachedToHand == true)
-            {
-                interactable.attachedToHand.DetachObject(gameObject);
-            }
-            gameObject.transform.parent = other.gameObject.transform;
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        //if (other.gameObject.CompareTag("Belt") && timer >= .3f)
+        //{
+        //    if (interactable.attachedToHand == true)
+        //    {
+        //        interactable.attachedToHand.DetachObject(gameObject);
+        //    }
+        //    gameObject.transform.parent = other.gameObject.transform;
+        //    gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-            foreach (Transform trans in gameObject.GetComponentsInChildren<Transform>(true))
-            {
-                trans.gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
-            }
-        }
+        //    foreach (Transform trans in gameObject.GetComponentsInChildren<Transform>(true))
+        //    {
+        //        trans.gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
+        //    }
+        //}
     }
 }
