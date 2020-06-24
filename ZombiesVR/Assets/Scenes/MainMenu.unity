@@ -13044,7 +13044,7 @@ PrefabInstance:
       objectReference: {fileID: 1893548491}
     - target: {fileID: 873360625, guid: 3d2fa29d553631b4ba63300d04127c60, type: 3}
       propertyPath: m_Options.m_Options.Array.data[0].m_Text
-      value: High
+      value: Low
       objectReference: {fileID: 0}
     - target: {fileID: 873360625, guid: 3d2fa29d553631b4ba63300d04127c60, type: 3}
       propertyPath: m_Options.m_Options.Array.data[1].m_Text
@@ -13052,7 +13052,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873360625, guid: 3d2fa29d553631b4ba63300d04127c60, type: 3}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
-      value: Low
+      value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 873360625, guid: 3d2fa29d553631b4ba63300d04127c60, type: 3}
+      propertyPath: m_Value
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1353534061, guid: 3d2fa29d553631b4ba63300d04127c60, type: 3}
       propertyPath: m_text
