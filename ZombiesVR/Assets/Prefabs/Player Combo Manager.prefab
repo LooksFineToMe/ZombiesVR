@@ -50,8 +50,8 @@ MonoBehaviour:
   m_WaveManager: {fileID: 0}
   m_CurrentCombo: 0
   m_TimeReset: 5
-  m_DecreaseIntensityOverTime: 1
-  m_ComboThreshold: 10
+  m_DecreaseIntensityOverTime: 0
+  m_ComboThreshold: 4
   m_Volume: 1
   m_AudioSFX: {fileID: 675696019634315814}
   m_TrackList:
